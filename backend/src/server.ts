@@ -49,9 +49,13 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-mongoose
-  .connect(process.env.MONGO_URI || "")
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) =>
-    console.log("MongoDB connection failed:", err.message)
-  );
+if (process.env.MONGO_URI) {
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB connected"))
+    .catch((err) =>
+      console.log("MongoDB connection failed:", err.message)
+    );
+} else {
+  console.log("MongoDB URI not provided");
+}
