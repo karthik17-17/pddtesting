@@ -21,7 +21,7 @@ router.post("/send-otp", async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: "NeuroStay AI OTP Verification",
-      text: `Your OTP Code is: ${otp}`,
+      text: `Your OTP is ${otp}`,
     });
 
     res.json({
