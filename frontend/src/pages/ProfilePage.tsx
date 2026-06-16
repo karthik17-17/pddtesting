@@ -8,10 +8,20 @@ const API_URL = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.c
 export default function ProfilePage() {
   const { user, logoutUser } = useAuth();
   const navigate = useNavigate();
-  const { info } = useToast();
+  const { info, success, error } = useToast();
 
   const [totalBookings, setTotalBookings] = useState(0);
   const [savedHotels, setSavedHotels] = useState(0);
+
+  // Modal states
+  const [showEditProfile, setShowEditProfile] = useState(false);
+  const [showChangePassword, setShowChangePassword] = useState(false);
+  
+  // Form states
+  const [editName, setEditName] = useState(user?.name || "");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const rawSearches: string[] = (() => {
     try {
@@ -53,6 +63,57 @@ export default function ProfilePage() {
       .slice(0, 2);
   };
 
+  const handleEditProfile = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!user?.email) return;
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/api/auth/profile`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: user.email, name: editName }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        loginUser(localStorage.getItem("token") || "", data.user);
+        success("Success", "Profile updated successfully!");
+        setShowEditProfile(false);
+      } else {
+        error("Error", data.message || "Failed to update profile");
+      }
+    } catch (err) {
+      error("Error", "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!user?.email) return;
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/api/auth/password`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: user.email, currentPassword, newPassword }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        success("Success", "Password updated successfully!");
+        setShowChangePassword(false);
+        setCurrentPassword("");
+        setNewPassword("");
+      } else {
+        error("Error", data.message || "Failed to update password");
+      }
+    } catch (err) {
+      error("Error", "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen w-full bg-[#071028] text-white p-4 md:p-8 lg:p-10">
       <div className="w-full max-w-7xl mx-auto flex flex-col gap-6">
@@ -83,14 +144,14 @@ export default function ProfilePage() {
               <button
                 id="edit-profile-btn"
                 className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl font-semibold transition text-sm"
-                onClick={() => info("Coming Soon", "Edit Profile feature will be available soon!")}
+                onClick={() => setShowEditProfile(true)}
               >
                 ✏️ Edit Profile
               </button>
               <button
                 id="change-password-btn"
                 className="w-full bg-purple-600 hover:bg-purple-500 text-white py-2.5 rounded-xl font-semibold transition text-sm"
-                onClick={() => info("Coming Soon", "Change Password feature will be available soon!")}
+                onClick={() => setShowChangePassword(true)}
               >
                 🔒 Change Password
               </button>
@@ -179,6 +240,91 @@ export default function ProfilePage() {
         </div>
 
       </div>
+
+      {/* Edit Profile Modal */}
+      {showEditProfile && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-[#1F2937] border border-white/10 p-6 rounded-2xl w-full max-w-md shadow-2xl">
+            <h3 className="text-xl font-bold mb-4">Edit Profile</h3>
+            <form onSubmit={handleEditProfile} className="flex flex-col gap-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-300 mb-1">Name</label>
+                <input
+                  type="text"
+                  required
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  className="w-full bg-[#111827] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition"
+                />
+              </div>
+              <div className="flex justify-end gap-3 mt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowEditProfile(false)}
+                  className="px-4 py-2 rounded-xl font-medium text-slate-300 hover:text-white transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-cyan-500 hover:bg-cyan-400 text-[#071028] px-6 py-2 rounded-xl font-bold transition disabled:opacity-50"
+                >
+                  {loading ? "Saving..." : "Save Changes"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Change Password Modal */}
+      {showChangePassword && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-[#1F2937] border border-white/10 p-6 rounded-2xl w-full max-w-md shadow-2xl">
+            <h3 className="text-xl font-bold mb-4">Change Password</h3>
+            <form onSubmit={handleChangePassword} className="flex flex-col gap-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-300 mb-1">Current Password</label>
+                <input
+                  type="password"
+                  required
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  className="w-full bg-[#111827] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-300 mb-1">New Password</label>
+                <input
+                  type="password"
+                  required
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  className="w-full bg-[#111827] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition"
+                />
+              </div>
+              <div className="flex justify-end gap-3 mt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowChangePassword(false)}
+                  className="px-4 py-2 rounded-xl font-medium text-slate-300 hover:text-white transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 rounded-xl font-bold transition disabled:opacity-50"
+                >
+                  {loading ? "Updating..." : "Update Password"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
