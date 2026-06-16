@@ -14,7 +14,7 @@ import {
 import { useRouter } from 'expo-router';
 import axios from 'axios';
 
-const API_URL = "http://10.115.33.17:5000";
+const API_URL = "https://neurostay-ai.onrender.com";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();

@@ -19,7 +19,7 @@ import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
 
-const API_URL = "http://10.115.33.17:5000";
+const API_URL = "https://neurostay-ai.onrender.com";
 
 type Hotel = {
   id: number;

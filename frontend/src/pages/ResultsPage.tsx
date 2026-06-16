@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://10.115.33.17:5000";
+const API_URL = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.com";
 
 type Hotel = {
   id: number;

@@ -16,7 +16,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter, Link } from 'expo-router';
 import axios from 'axios';
 
-const API_URL = "http://10.115.33.17:5000";
+const API_URL = "https://neurostay-ai.onrender.com";
 
 export default function LoginPage() {
   const router = useRouter();

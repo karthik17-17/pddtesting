@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://10.115.33.17:5000";
+const API_URL = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.com";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
