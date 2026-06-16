@@ -22,10 +22,11 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
+import { useAuth } from "./context/AuthContext";
 
 function AppContent() {
   const location = useLocation();
-  const token = localStorage.getItem("token");
+  const { token } = useAuth();
 
   const isAuthRoute = ["/login", "/register", "/forgot-password"].includes(
     location.pathname.toLowerCase()
@@ -34,11 +35,12 @@ function AppContent() {
   const showNav = token && !isAuthRoute;
 
   return (
-    <div className="min-h-screen bg-[#071028] text-white flex w-full">
+    <div className="h-screen bg-[#071028] text-white flex flex-col overflow-hidden">
       {showNav && <Navbar />}
 
-      <div className={`flex-1 flex flex-col ${showNav ? "md:ml-64 pt-16 pb-16 md:pt-0 md:pb-0" : ""} w-full`}>
-        <main className="flex-1 w-full">
+      {/* Content area: offset by sidebar width on desktop, fills remaining viewport height */}
+      <div className={`flex-1 overflow-auto ${showNav ? "md:ml-64 pb-16 md:pb-0 pt-16 md:pt-0" : ""}`}>
+        <main className="w-full min-h-full">
           <Routes>
             {/* Public Routes - protected */}
             <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />

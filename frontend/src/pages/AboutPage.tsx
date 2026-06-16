@@ -1,11 +1,11 @@
 function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#071028] text-white p-8">
+    <div className="min-h-screen w-full bg-[#071028] text-white p-6 md:p-8 lg:p-10">
       <h1 className="text-7xl font-bold mb-8">
         About NeuroStay AI
       </h1>
 
-      <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-8 max-w-5xl">
+      <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-8 w-full max-w-7xl">
         <p className="text-gray-300 text-xl leading-9">
           NeuroStay AI is an AI-powered hotel discovery platform.
           It helps users find hotels based on budget, location,

@@ -34,7 +34,7 @@ export default function ComparePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#071028] text-white p-8">
+    <div className="min-h-screen w-full bg-[#071028] text-white p-6 md:p-8 lg:p-10">
       <h1 className="text-5xl font-bold mb-4">Compare Hotels</h1>
 
       <p className="text-slate-300 mb-8">

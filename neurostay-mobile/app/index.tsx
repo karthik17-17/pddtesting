@@ -11,11 +11,25 @@ export default function IndexPage() {
     const checkAuth = async () => {
       try {
         const token = await AsyncStorage.getItem('token');
-        if (token) {
-          router.replace('/home');
-        } else {
-          router.replace('/login');
+        const userStr = await AsyncStorage.getItem('user');
+
+        // Validate both token and user exist and user has required fields
+        if (token && userStr) {
+          try {
+            const user = JSON.parse(userStr);
+            if (user && user.name && user.email) {
+              router.replace('/home');
+              return;
+            }
+          } catch (e) {
+            // Invalid user JSON - clear and redirect to login
+            await AsyncStorage.removeItem('token');
+            await AsyncStorage.removeItem('user');
+          }
         }
+
+        // No valid auth - go to login
+        router.replace('/login');
       } catch (error) {
         console.error('IndexPage checkAuth error:', error);
         router.replace('/login');

@@ -1,13 +1,14 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const { user, logoutUser } = useAuth();
 
-  const userName = localStorage.getItem("userName") || "mounika";
+  const userName = user?.name || "User";
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userName");
+    logoutUser();
     navigate("/login");
   };
 
@@ -24,42 +25,44 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-[#070B1D] border-r border-white/10 px-6 py-7 text-white">
-      <h1 className="text-3xl font-extrabold mb-7 tracking-tight">
-        NeuroStay
-      </h1>
+    <aside className="fixed left-0 top-0 h-screen w-64 bg-[#070B1D] border-r border-white/10 px-6 py-7 text-white flex flex-col justify-between">
+      <div>
+        <h1 className="text-3xl font-extrabold mb-7 tracking-tight">
+          NeuroStay
+        </h1>
 
-      <div className="bg-[#1E293B] rounded-2xl px-4 py-4 mb-7">
-        <p className="text-sm text-slate-400">👤 Welcome</p>
-        <h2 className="text-base font-bold mt-1">{userName}</h2>
+        <div className="bg-[#1E293B] rounded-2xl px-4 py-4 mb-7">
+          <p className="text-sm text-slate-400">👤 Welcome</p>
+          <h2 className="text-base font-bold mt-1">{userName}</h2>
+        </div>
+
+        <nav className="space-y-3">
+          {menuItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-3 rounded-xl font-semibold transition ${
+                  isActive
+                    ? "bg-[#1E293B] text-cyan-400 border-l-4 border-cyan-500 pl-3"
+                    : "text-slate-300 hover:bg-[#1E293B] hover:text-white"
+                }`
+              }
+            >
+              <span>{item.icon}</span>
+              <span>{item.name}</span>
+            </NavLink>
+          ))}
+        </nav>
       </div>
 
-      <nav className="space-y-3">
-        {menuItems.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.path}
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 rounded-xl font-semibold transition ${
-                isActive
-                  ? "bg-[#1E293B] text-white"
-                  : "text-slate-300 hover:bg-[#1E293B] hover:text-white"
-              }`
-            }
-          >
-            <span>{item.icon}</span>
-            <span>{item.name}</span>
-          </NavLink>
-        ))}
-
-        <button
-          onClick={handleLogout}
-          className="flex items-center gap-3 w-full px-4 py-3 rounded-xl font-semibold text-red-400 hover:bg-red-500/10 transition"
-        >
-          <span>🚪</span>
-          <span>Logout</span>
-        </button>
-      </nav>
+      <button
+        onClick={handleLogout}
+        className="flex items-center gap-3 w-full px-4 py-3 rounded-xl font-semibold text-red-400 hover:bg-red-500/10 transition mt-auto"
+      >
+        <span>🚪</span>
+        <span>Logout</span>
+      </button>
     </aside>
   );
 }

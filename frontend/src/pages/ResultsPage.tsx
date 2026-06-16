@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useToast } from "../context/ToastContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://10.115.33.17:5000";
 
@@ -15,45 +16,33 @@ type Hotel = {
   mapLink: string;
 };
 
-function buildHotelQuery(input: string) {
-  const text = input.toLowerCase();
-
-  const cities = ["chennai", "hyderabad", "bangalore", "mumbai", "delhi", "pune", "kolkata", "goa"];
-  const city = cities.find((c) => text.includes(c)) || input;
-
-  let budget = "";
-  if (text.includes("high cost") || text.includes("luxury") || text.includes("premium")) {
-    budget = "luxury";
-  } else if (text.includes("low cost") || text.includes("cheap") || text.includes("budget")) {
-    budget = "budget";
-  }
-
-  return `${budget} hotels in ${city}`.trim();
-}
 
 export default function ResultsPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { success, error, warning } = useToast();
 
-  const rawQuery = searchParams.get("query") || "Chennai";
-  const query = buildHotelQuery(rawQuery);
+  const rawQuery = searchParams.get("query") || "";
 
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const fetchHotels = async () => {
+      setLoading(true);
+      setHasError(false);
       try {
         const res = await fetch(`${API_URL}/api/serpapi/hotels`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ query }),
+          body: JSON.stringify({ query: rawQuery }),
         });
 
         if (!res.ok) {
-          alert("ResultsPage #1");
+          setHasError(true);
           setHotels([]);
           setLoading(false);
           return;
@@ -61,14 +50,15 @@ export default function ResultsPage() {
 
         const data = await res.json();
 
-        if (data.success === true && Array.isArray(data.hotels) && data.hotels.length > 0) {
+        if (data.success === true && Array.isArray(data.hotels)) {
           setHotels(data.hotels);
         } else {
+          setHasError(true);
           setHotels([]);
         }
       } catch (error) {
         console.error("ResultsPage error:", error);
-        alert("ResultsPage #2");
+        setHasError(true);
         setHotels([]);
       } finally {
         setLoading(false);
@@ -76,7 +66,7 @@ export default function ResultsPage() {
     };
 
     fetchHotels();
-  }, [query]);
+  }, [rawQuery]);
 
   const openDetails = (hotel: Hotel) => {
     localStorage.setItem("selectedHotel", JSON.stringify(hotel));
@@ -103,14 +93,14 @@ export default function ResultsPage() {
       });
 
       if (!res.ok) {
-        alert("ResultsPage save #1");
+        error("Save Failed", "Could not save hotel. Please try again.");
         return;
       }
 
-      alert("Hotel saved");
-    } catch (error) {
-      console.error("Save hotel error:", error);
-      alert("ResultsPage save #2");
+      success("Hotel Saved! ❤️", `${hotel.name} has been added to your saved list.`);
+    } catch (err) {
+      console.error("Save hotel error:", err);
+      error("Save Failed", "Could not connect to server. Please try again.");
     }
   };
 
@@ -120,7 +110,7 @@ export default function ResultsPage() {
     );
 
     if (compareHotels.find((item: Hotel) => item.name === hotel.name)) {
-      alert("Hotel already added");
+      warning("Already Added", `${hotel.name} is already in your compare list.`);
       return;
     }
 
@@ -129,7 +119,7 @@ export default function ResultsPage() {
       JSON.stringify([...compareHotels, hotel])
     );
 
-    alert("Hotel added to compare");
+    success("Added to Compare 📊", `${hotel.name} added. Go to Compare page to view.`);
   };
 
   if (loading) {
@@ -141,14 +131,14 @@ export default function ResultsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#071028] text-white p-4 md:p-8">
+    <div className="min-h-screen w-full bg-[#071028] text-white p-4 md:p-8 lg:p-10">
       <h1 className="text-3xl md:text-5xl font-bold mb-4">Hotel Recommendations</h1>
 
       <p className="mb-8">
-        Search: <span className="text-cyan-400">{query}</span>
+        Search: <span className="text-cyan-400">{rawQuery}</span>
       </p>
 
-      {hotels.length === 0 ? (
+      {hasError ? (
         <p className="text-red-400">No hotels found.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

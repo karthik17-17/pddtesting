@@ -20,12 +20,30 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
+    // Clean up old keys automatically
+    const oldKeys = ["currentUser", "profile", "username", "userName"];
+    oldKeys.forEach((key) => {
+      localStorage.removeItem(key);
+    });
+
     const savedToken = localStorage.getItem("token");
     const savedUser = localStorage.getItem("user");
 
     if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
+      try {
+        const parsedUser = JSON.parse(savedUser);
+        if (parsedUser && typeof parsedUser === "object" && parsedUser.name && parsedUser.email) {
+          setToken(savedToken);
+          setUser(parsedUser);
+        } else {
+          // If old wrong user data structure exists, clear it automatically
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+        }
+      } catch (e) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+      }
     }
   }, []);
 
@@ -39,6 +57,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logoutUser = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    
+    // Clear any potential old keys on logout
+    const oldKeys = ["currentUser", "profile", "username", "userName"];
+    oldKeys.forEach((key) => {
+      localStorage.removeItem(key);
+    });
+
     setToken(null);
     setUser(null);
   };

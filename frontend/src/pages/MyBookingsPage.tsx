@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useToast } from "../context/ToastContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -16,6 +17,7 @@ type Booking = {
 
 export default function MyBookingsPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const { success } = useToast();
 
   const fetchBookings = async () => {
     const res = await fetch(`${API_URL}/api/bookings`);
@@ -38,13 +40,13 @@ export default function MyBookingsPage() {
     const data = await res.json();
 
     if (data.success) {
-      alert("Booking cancelled");
+      success("Booking Cancelled", "Your booking has been cancelled successfully.");
       fetchBookings();
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#071028] text-white p-8">
+    <div className="min-h-screen w-full bg-[#071028] text-white p-6 md:p-8 lg:p-10">
       <h1 className="text-5xl font-bold mb-8">My Bookings</h1>
 
       {bookings.length === 0 ? (

@@ -10,12 +10,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter, Link } from 'expo-router';
 import axios from 'axios';
 
-const API_URL = "http://10.214.205.17:5000";
+const API_URL = "http://10.115.33.17:5000";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -23,10 +24,19 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = async () => {
-    if (!name || !email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+    setError('');
+
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      setError('Please fill in all fields.');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters.');
       return;
     }
 
@@ -36,34 +46,47 @@ export default function RegisterPage() {
         name,
         email,
         password,
+      }, {
+        headers: { 'Bypass-Tunnel-Reminder': 'true' },
+        timeout: 10000,
       });
 
       const data = response.data;
 
       if (data.success || data.token) {
+        const userObj = data.user || { name, email };
         await AsyncStorage.setItem('token', data.token || 'demo-token');
-        await AsyncStorage.setItem('user', JSON.stringify(data.user || { name, email }));
+        await AsyncStorage.setItem('user', JSON.stringify(userObj));
         router.replace('/home');
       } else {
-        Alert.alert('Registration Failed', data.message || 'Registration failed');
+        setError(data.message || 'Registration failed. Please try again.');
       }
-    } catch (error: any) {
-      console.error('RegisterPage error:', error);
-      // Fallback demo registration on connection failure
-      Alert.alert(
-        'Connection Failed',
-        'Could not reach server. Logging in using demo credentials.',
-        [
-          {
-            text: 'OK',
-            onPress: async () => {
-              await AsyncStorage.setItem('token', 'demo-token');
-              await AsyncStorage.setItem('user', JSON.stringify({ name, email }));
-              router.replace('/home');
+    } catch (err: any) {
+      console.error('RegisterPage error:', err);
+
+      if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
+        setError('Connection timed out. Check your network.');
+      } else if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        // Offline/demo fallback
+        Alert.alert(
+          'Server Unavailable',
+          'Could not reach server. Create demo account?',
+          [
+            { text: 'Cancel', style: 'cancel' },
+            {
+              text: 'Demo Register',
+              onPress: async () => {
+                const userObj = { name, email };
+                await AsyncStorage.setItem('token', 'demo-token');
+                await AsyncStorage.setItem('user', JSON.stringify(userObj));
+                router.replace('/home');
+              },
             },
-          },
-        ]
-      );
+          ]
+        );
+      }
     } finally {
       setLoading(false);
     }
@@ -74,52 +97,84 @@ export default function RegisterPage() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
+      <StatusBar barStyle="light-content" />
       <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
         <View style={styles.card}>
-          <Text style={styles.title}>Register</Text>
-          <Text style={styles.subtitle}>Create your NeuroStay AI account</Text>
+          {/* Logo */}
+          <Text style={styles.title}>NeuroStay AI</Text>
+          <Text style={styles.subtitle}>Create your smart hotel account</Text>
 
+          {/* Error */}
+          {error ? (
+            <View style={styles.errorBox}>
+              <Text style={styles.errorText}>⚠️ {error}</Text>
+            </View>
+          ) : null}
+
+          {/* Name */}
+          <Text style={styles.label}>Full Name</Text>
           <TextInput
             style={styles.input}
-            placeholder="Full Name"
-            placeholderTextColor="#94a3b8"
+            placeholder="Your full name"
+            placeholderTextColor="#475569"
             value={name}
-            onChangeText={setName}
+            onChangeText={(t) => { setName(t); setError(''); }}
+            autoCapitalize="words"
+            returnKeyType="next"
           />
 
+          {/* Email */}
+          <Text style={styles.label}>Email Address</Text>
           <TextInput
             style={styles.input}
-            placeholder="Email"
-            placeholderTextColor="#94a3b8"
+            placeholder="you@example.com"
+            placeholderTextColor="#475569"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={(t) => { setEmail(t); setError(''); }}
             autoCapitalize="none"
             keyboardType="email-address"
+            returnKeyType="next"
           />
 
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor="#94a3b8"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-            autoCapitalize="none"
-          />
+          {/* Password */}
+          <Text style={styles.label}>Password</Text>
+          <View style={styles.passwordContainer}>
+            <TextInput
+              style={styles.passwordInput}
+              placeholder="Min. 6 characters"
+              placeholderTextColor="#475569"
+              value={password}
+              onChangeText={(t) => { setPassword(t); setError(''); }}
+              secureTextEntry={!showPassword}
+              autoCapitalize="none"
+              returnKeyType="done"
+              onSubmitEditing={handleRegister}
+            />
+            <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={styles.showBtn}>
+              <Text style={styles.showBtnText}>{showPassword ? 'Hide' : 'Show'}</Text>
+            </TouchableOpacity>
+          </View>
 
-          <TouchableOpacity style={styles.button} onPress={handleRegister} disabled={loading}>
+          {/* Register Button */}
+          <TouchableOpacity
+            style={[styles.button, loading && styles.buttonDisabled]}
+            onPress={handleRegister}
+            disabled={loading}
+            activeOpacity={0.8}
+          >
             {loading ? (
               <ActivityIndicator color="#071028" />
             ) : (
-              <Text style={styles.buttonText}>Register</Text>
+              <Text style={styles.buttonText}>Create Account</Text>
             )}
           </TouchableOpacity>
 
+          {/* Links */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>Already have an account? </Text>
             <Link href="/login" asChild>
               <TouchableOpacity>
-                <Text style={styles.linkText}>Login</Text>
+                <Text style={styles.linkText}>Sign In</Text>
               </TouchableOpacity>
             </Link>
           </View>
@@ -138,51 +193,106 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     padding: 20,
+    paddingTop: Platform.OS === 'android' ? 40 : 20,
   },
   card: {
     backgroundColor: '#1e293b',
-    padding: 30,
-    borderRadius: 20,
+    padding: 28,
+    borderRadius: 24,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 5,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
+    elevation: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.07)',
   },
   title: {
-    fontSize: 32,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#22d3ee',
     textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: 4,
   },
   subtitle: {
-    fontSize: 14,
-    color: '#94a3b8',
+    fontSize: 13,
+    color: '#64748b',
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom: 24,
+  },
+  errorBox: {
+    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.3)',
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 16,
+  },
+  errorText: {
+    color: '#f87171',
+    fontSize: 13,
+    textAlign: 'center',
+  },
+  label: {
+    color: '#94a3b8',
+    fontSize: 13,
+    fontWeight: '500',
+    marginBottom: 6,
   },
   input: {
     backgroundColor: '#071028',
     color: 'white',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
+    padding: 14,
+    borderRadius: 12,
+    marginBottom: 16,
     borderWidth: 1,
     borderColor: '#334155',
-    fontSize: 16,
+    fontSize: 15,
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#071028',
+    borderRadius: 12,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#334155',
+    overflow: 'hidden',
+  },
+  passwordInput: {
+    flex: 1,
+    color: 'white',
+    padding: 14,
+    fontSize: 15,
+  },
+  showBtn: {
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+  },
+  showBtnText: {
+    color: '#64748b',
+    fontSize: 13,
+    fontWeight: '500',
   },
   button: {
-    backgroundColor: '#22d3ee',
-    padding: 15,
-    borderRadius: 10,
+    backgroundColor: '#a855f7',
+    padding: 16,
+    borderRadius: 14,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 4,
+    shadowColor: '#a855f7',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  buttonDisabled: {
+    opacity: 0.6,
   },
   buttonText: {
-    color: '#071028',
+    color: 'white',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 17,
   },
   footer: {
     flexDirection: 'row',
@@ -190,12 +300,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   footerText: {
-    color: '#94a3b8',
-    fontSize: 15,
+    color: '#64748b',
+    fontSize: 14,
   },
   linkText: {
     color: '#22d3ee',
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });

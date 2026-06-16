@@ -1,1 +1,1 @@
-adb install "C:\Users\MUNI LOKESH\OneDrive\Desktop\neurostay-ai\frontend\android\app\build\outputs\apk\debug\app-debug.apk"
+adb install "c:\projects\neurostay-ai\frontend\android\app\build\outputs\apk\debug\app-debug.apk"

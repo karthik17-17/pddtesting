@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../context/ToastContext";
 
 interface Hotel {
   id: number;
@@ -14,6 +15,7 @@ interface Hotel {
 
 export default function HotelDetailPage() {
   const navigate = useNavigate();
+  const { success, error, warning } = useToast();
 
   const hotel: Hotel | null = JSON.parse(
     localStorage.getItem("selectedHotel") || "null"
@@ -21,7 +23,7 @@ export default function HotelDetailPage() {
 
   if (!hotel) {
     return (
-      <div className="min-h-screen bg-[#071028] text-white p-8">
+      <div className="min-h-screen w-full bg-[#071028] text-white p-6 md:p-8">
         <h1 className="text-4xl font-bold mb-4">Hotel not found</h1>
 
         <button
@@ -57,11 +59,11 @@ export default function HotelDetailPage() {
     const data = await res.json();
 
     if (!res.ok) {
-      alert(data.message || "Save failed");
+      error("Save Failed", data.message || "Could not save hotel.");
       return;
     }
 
-    alert("Hotel saved successfully");
+    success("Hotel Saved! ❤️", `${hotel.name} added to your saved list.`);
   };
 
   const addToCompare = () => {
@@ -70,12 +72,12 @@ export default function HotelDetailPage() {
     );
 
     if (compareHotels.find((item: Hotel) => item.name === hotel.name)) {
-      alert("Hotel already added to compare");
+      warning("Already Added", `${hotel.name} is already in your compare list.`);
       return;
     }
 
     if (compareHotels.length >= 3) {
-      alert("You can compare maximum 3 hotels");
+      warning("Compare Limit", "You can compare a maximum of 3 hotels at a time.");
       return;
     }
 
@@ -84,7 +86,7 @@ export default function HotelDetailPage() {
       JSON.stringify([...compareHotels, hotel])
     );
 
-    alert("Hotel added to compare");
+    success("Added to Compare 📊", `${hotel.name} added. Go to Compare page to view.`);
   };
 
   const bookNow = () => {
@@ -93,7 +95,7 @@ export default function HotelDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#071028] text-white p-8">
+    <div className="min-h-screen w-full bg-[#071028] text-white p-6 md:p-8 lg:p-10">
       <button
         onClick={() => navigate(-1)}
         className="text-cyan-400 font-bold bg-transparent border-none p-0 cursor-pointer outline-none hover:underline"

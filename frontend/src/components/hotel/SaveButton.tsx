@@ -1,3 +1,5 @@
+import { useToast } from "../../context/ToastContext";
+
 type Hotel = {
   id: number;
   name: string;
@@ -13,27 +15,27 @@ type SaveButtonProps = {
 };
 
 function SaveButton({ hotel }: SaveButtonProps) {
+  const { success, warning } = useToast();
+
   const saveHotel = () => {
     const savedIds: number[] = JSON.parse(
       localStorage.getItem("savedHotels") || "[]"
     );
 
     if (savedIds.includes(hotel.id)) {
-      alert("Hotel already saved");
+      warning("Already Saved", `${hotel.name} is already in your saved list.`);
       return;
     }
 
     savedIds.push(hotel.id);
-
     localStorage.setItem("savedHotels", JSON.stringify(savedIds));
-
-    alert("Hotel saved successfully");
+    success("Hotel Saved! ❤️", `${hotel.name} has been added to your saved list.`);
   };
 
   return (
     <button
       onClick={saveHotel}
-      className="w-full mt-3 bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 rounded-xl"
+      className="w-full mt-3 bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 rounded-xl transition"
     >
       💗 Save Hotel
     </button>

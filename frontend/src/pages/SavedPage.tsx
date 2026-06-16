@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useToast } from "../context/ToastContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -17,6 +18,7 @@ interface SavedHotel {
 export default function SavedPage() {
   const [hotels, setHotels] = useState<SavedHotel[]>([]);
   const [loading, setLoading] = useState(true);
+  const { success, error } = useToast();
 
   const fetchSavedHotels = async () => {
     try {
@@ -47,25 +49,25 @@ export default function SavedPage() {
       const data = await res.json();
 
       if (data.success) {
-        alert("Hotel removed successfully");
+        success("Hotel Removed", "Hotel has been removed from your saved list.");
         fetchSavedHotels();
       }
-    } catch (error) {
-      console.error(error);
-      alert("Failed to remove hotel");
+    } catch (err) {
+      console.error(err);
+      error("Remove Failed", "Could not remove hotel. Please try again.");
     }
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#071028] text-white flex justify-center items-center">
+      <div className="min-h-screen w-full bg-[#071028] text-white flex justify-center items-center">
         <h1 className="text-3xl font-bold">Loading Saved Hotels...</h1>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#071028] text-white p-8">
+    <div className="min-h-screen w-full bg-[#071028] text-white p-6 md:p-8 lg:p-10">
       <h1 className="text-5xl font-bold mb-8">
         Saved Hotels
       </h1>

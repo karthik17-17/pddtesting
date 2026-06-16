@@ -1,12 +1,4 @@
-import {
-  GoogleMap,
-  Marker,
-  InfoWindow,
-  useJsApiLoader,
-} from "@react-google-maps/api";
 import { useState } from "react";
-
-const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const hotels = [
   {
@@ -38,102 +30,105 @@ const hotels = [
   },
 ];
 
-const mapContainerStyle = {
-  width: "100%",
-  height: "620px",
-};
-
-const center = {
-  lat: 13.0827,
-  lng: 80.2707,
-};
-
 export default function MapPage() {
-  const [selectedHotel, setSelectedHotel] = useState<any>(null);
+  const [selectedHotel, setSelectedHotel] = useState<any>(hotels[0]);
 
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-  });
-
-  if (!GOOGLE_MAPS_API_KEY) {
-    return (
-      <div className="min-h-screen bg-[#071028] text-white p-8">
-        <h1 className="text-4xl font-bold">Google Maps API key missing</h1>
-        <p className="mt-4">
-          Add VITE_GOOGLE_MAPS_API_KEY in frontend/.env
-        </p>
-      </div>
-    );
-  }
-
-  if (!isLoaded) {
-    return (
-      <div className="min-h-screen bg-[#071028] text-white flex items-center justify-center">
-        Loading Google Map...
-      </div>
-    );
-  }
+  const delta = 0.02;
+  const bbox = `${selectedHotel.lng - delta},${selectedHotel.lat - delta},${selectedHotel.lng + delta},${selectedHotel.lat + delta}`;
+  const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${selectedHotel.lat},${selectedHotel.lng}`;
 
   return (
-    <div className="min-h-screen bg-[#071028] text-white p-8">
-      <h1 className="text-5xl font-bold mb-4">Hotel Location Map</h1>
+    <div className="flex flex-col w-full bg-[#071028] text-white" style={{ height: "calc(100vh - 0px)", minHeight: "100vh" }}>
+      {/* Header */}
+      <div className="px-6 md:px-8 pt-6 pb-4 flex-shrink-0">
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-500 bg-clip-text text-transparent">
+          Hotel Location Map
+        </h1>
+        <p className="text-slate-400 mt-1 text-sm md:text-base">
+          Interactive OpenStreetMap view of NeuroStay AI hotel locations.
+        </p>
+      </div>
 
-      <p className="text-slate-300 mb-8">
-        Google Maps view of NeuroStay AI hotel locations.
-      </p>
+      {/* Main content — flex row that fills remaining height */}
+      <div className="flex flex-col lg:flex-row flex-1 gap-4 px-6 md:px-8 pb-6 overflow-hidden min-h-0">
 
-      <div className="rounded-2xl overflow-hidden border border-slate-700">
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          center={center}
-          zoom={11}
-        >
-          {hotels.map((hotel) => (
-            <Marker
-              key={hotel.id}
-              position={{ lat: hotel.lat, lng: hotel.lng }}
-              onClick={() => setSelectedHotel(hotel)}
-            />
-          ))}
+        {/* Hotel List Panel */}
+        <div className="lg:w-80 flex-shrink-0 flex flex-col gap-3 overflow-y-auto">
+          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-widest flex-shrink-0">
+            Select a Hotel
+          </h2>
 
-          {selectedHotel && (
-            <InfoWindow
-              position={{
-                lat: selectedHotel.lat,
-                lng: selectedHotel.lng,
-              }}
-              onCloseClick={() => setSelectedHotel(null)}
-            >
-              <div style={{ color: "black", minWidth: "220px" }}>
-                <h2 style={{ fontWeight: "bold", fontSize: "18px" }}>
-                  {selectedHotel.name}
-                </h2>
-
-                <p>{selectedHotel.city}</p>
-                <p>⭐ {selectedHotel.rating}</p>
-                <p>{selectedHotel.price} / night</p>
-
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${selectedHotel.lat},${selectedHotel.lng}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{
-                    display: "inline-block",
-                    marginTop: "10px",
-                    background: "#06b6d4",
-                    color: "black",
-                    padding: "8px 12px",
-                    borderRadius: "8px",
-                    fontWeight: "bold",
-                    textDecoration: "none",
-                  }}
-                >
-                  Open Route
-                </a>
+          {hotels.map((hotel) => {
+            const isSelected = selectedHotel.id === hotel.id;
+            return (
+              <div
+                key={hotel.id}
+                onClick={() => setSelectedHotel(hotel)}
+                className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer flex-shrink-0 ${
+                  isSelected
+                    ? "bg-gradient-to-br from-blue-950/80 to-indigo-950/80 border-cyan-500/80 shadow-lg shadow-cyan-950/50 scale-[1.01]"
+                    : "bg-slate-900/60 border-slate-800 hover:border-slate-600 hover:bg-slate-900/80"
+                }`}
+              >
+                <div className="flex justify-between items-start">
+                  <h3 className="font-bold text-base text-white">{hotel.name}</h3>
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 ml-2 flex-shrink-0">
+                    {hotel.city}
+                  </span>
+                </div>
+                <p className="text-slate-400 text-xs mt-1">⭐ {hotel.rating} Rating</p>
+                <div className="flex justify-between items-center mt-3">
+                  <span className="text-cyan-400 font-bold text-sm">
+                    {hotel.price} <span className="text-xs text-slate-500">/ night</span>
+                  </span>
+                  {isSelected && (
+                    <span className="text-xs text-cyan-400 font-semibold flex items-center gap-1">
+                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      On map
+                    </span>
+                  )}
+                </div>
               </div>
-            </InfoWindow>
-          )}
-        </GoogleMap>
+            );
+          })}
+
+          {/* Directions Card */}
+          <div className="p-4 rounded-2xl bg-slate-900/40 border border-slate-800 flex-shrink-0">
+            <h4 className="font-semibold text-slate-300 text-xs mb-0.5">Active Hotel</h4>
+            <p className="text-sm text-white font-medium mb-3">
+              {selectedHotel.name}{" "}
+              <span className="text-slate-400 text-xs">({selectedHotel.city})</span>
+            </p>
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${selectedHotel.lat},${selectedHotel.lng}`}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full text-center block bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-slate-950 py-2.5 px-4 rounded-xl font-bold text-sm transition-all duration-200"
+            >
+              📍 Open in Google Maps
+            </a>
+          </div>
+        </div>
+
+        {/* Map — fills remaining space */}
+        <div className="flex-1 min-h-[300px] lg:min-h-0 relative rounded-3xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl">
+          <iframe
+            title="OpenStreetMap"
+            width="100%"
+            height="100%"
+            style={{
+              border: "none",
+              filter: "invert(90%) hue-rotate(190deg) brightness(85%) contrast(90%)",
+              position: "absolute",
+              inset: 0,
+            }}
+            src={mapUrl}
+          />
+          {/* Hotel name overlay */}
+          <div className="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-md border border-slate-700/50 text-xs px-3 py-1.5 rounded-lg text-slate-300 pointer-events-none shadow-lg z-10">
+            📍 {selectedHotel.name} Location
+          </div>
+        </div>
       </div>
     </div>
   );

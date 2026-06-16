@@ -1,19 +1,29 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../context/ToastContext";
 
 function SearchBar() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
+  const { warning } = useToast();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!query.trim()) {
-      alert("Please enter your hotel search");
+      warning("Empty Search", "Please enter a hotel or location to search.");
       return;
     }
 
     localStorage.setItem("searchQuery", query);
+
+    try {
+      const recent = JSON.parse(localStorage.getItem("recentSearches") || "[]");
+      const updated = [query, ...recent.filter((q: string) => q !== query)].slice(0, 10);
+      localStorage.setItem("recentSearches", JSON.stringify(updated));
+    } catch (e) {
+      console.error("Failed to save search query:", e);
+    }
 
     navigate("/results");
   };

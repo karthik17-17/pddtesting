@@ -1,12 +1,12 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  const { user, token, logoutUser } = useAuth();
 
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    logoutUser();
     navigate("/login");
   };
 
@@ -21,41 +21,45 @@ const Navbar = () => {
 
   return (
     <>
-      <aside className="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-[#070b1d] border-r border-white/10 p-6 flex-col z-50">
-        <Link to="/" className="text-3xl font-bold mb-8">
-          NeuroStay
-        </Link>
+      <aside className="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-[#070b1d] border-r border-white/10 p-6 flex-col justify-between z-50">
+        <div>
+          <Link to="/" className="text-3xl font-bold mb-8 block">
+            NeuroStay
+          </Link>
 
-        <div className="bg-white/10 rounded-2xl p-4 mb-8">
-          <p className="text-sm text-gray-400">Welcome</p>
-          <p className="font-semibold">mounika</p>
+          <div className="bg-white/10 rounded-2xl p-4 mb-8">
+            <p className="text-sm text-gray-400">Welcome</p>
+            <p className="font-semibold">{user?.name || "User"}</p>
+          </div>
+
+          <nav className="flex flex-col gap-3">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `px-4 py-3 rounded-xl font-medium transition flex items-center ${
+                    isActive
+                      ? "bg-white/10 text-cyan-400 border-l-4 border-cyan-500 pl-3"
+                      : "text-gray-300 hover:bg-white/5 hover:text-white"
+                  }`
+                }
+              >
+                <span className="mr-3">{item.icon}</span>
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
         </div>
 
-        <nav className="flex flex-col gap-3">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                `px-4 py-3 rounded-xl font-medium ${
-                  isActive ? "bg-white/10 text-white" : "text-gray-300"
-                }`
-              }
-            >
-              <span className="mr-3">{item.icon}</span>
-              {item.label}
-            </NavLink>
-          ))}
-
-          {token && (
-            <button
-              onClick={logout}
-              className="text-left px-4 py-3 rounded-xl text-red-400"
-            >
-              🚪 Logout
-            </button>
-          )}
-        </nav>
+        {token && (
+          <button
+            onClick={logout}
+            className="text-left px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition mt-auto flex items-center gap-2"
+          >
+            🚪 Logout
+          </button>
+        )}
       </aside>
 
       <header className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#070b1d] border-b border-white/10 z-50 flex items-center justify-between px-4">

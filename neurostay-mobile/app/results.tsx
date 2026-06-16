@@ -19,7 +19,7 @@ import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
 
-const API_URL = "http://10.214.205.17:5000";
+const API_URL = "http://10.115.33.17:5000";
 
 type Hotel = {
   id: number;
@@ -33,27 +33,10 @@ type Hotel = {
   mapLink: string;
 };
 
-function buildHotelQuery(input: string) {
-  const text = input.toLowerCase();
-
-  const cities = ["chennai", "hyderabad", "bangalore", "mumbai", "delhi", "pune", "kolkata", "goa"];
-  const city = cities.find((c) => text.includes(c)) || input;
-
-  let budget = "";
-  if (text.includes("high cost") || text.includes("luxury") || text.includes("premium")) {
-    budget = "luxury";
-  } else if (text.includes("low cost") || text.includes("cheap") || text.includes("budget")) {
-    budget = "budget";
-  }
-
-  return `${budget} hotels in ${city}`.trim();
-}
-
 export default function ResultsPage() {
   const router = useRouter();
   const { query: rawQuery } = useLocalSearchParams<{ query?: string }>();
-  const searchQueryVal = rawQuery || "Chennai";
-  const query = buildHotelQuery(searchQueryVal);
+  const query = rawQuery || "Chennai";
 
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
@@ -63,7 +46,9 @@ export default function ResultsPage() {
     const fetchHotels = async () => {
       setLoading(true);
       try {
-        const response = await axios.post(`${API_URL}/api/serpapi/hotels`, { query });
+        const response = await axios.post(`${API_URL}/api/serpapi/hotels`, { query }, {
+          headers: { 'Bypass-Tunnel-Reminder': 'true' }
+        });
         const data = response.data;
 
         if (data.success === true && Array.isArray(data.hotels)) {

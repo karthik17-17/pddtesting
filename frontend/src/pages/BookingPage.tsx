@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../context/ToastContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://10.115.33.17:5000";
 
 export default function BookingPage() {
   const navigate = useNavigate();
+  const { success, error } = useToast();
 
   const hotel =
     JSON.parse(localStorage.getItem("bookingHotel") || "null") ||
@@ -55,11 +57,11 @@ export default function BookingPage() {
     const data = await res.json();
 
     if (!res.ok) {
-      alert(data.message || "Booking failed");
+      error("Booking Failed", data.message || "Could not confirm booking. Please try again.");
       return;
     }
 
-    alert("Booking confirmed");
+    success("Booking Confirmed! 🎉", `Your stay at ${hotel.name} has been booked successfully.`);
     navigate("/bookings");
   };
 

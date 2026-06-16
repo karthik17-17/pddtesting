@@ -17,7 +17,7 @@ import BottomNav from '../components/BottomNav';
 
 export default function MapPage() {
   const params = useLocalSearchParams<{ url?: string; name?: string }>();
-  const [mapUrl, setMapUrl] = useState('https://www.google.com/maps/search/hotels');
+  const [mapUrl, setMapUrl] = useState('https://www.openstreetmap.org/search?query=hotels');
   const [hotelName, setHotelName] = useState('Hotels Map');
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,7 @@ export default function MapPage() {
             const searches: string[] = JSON.parse(searchesStr);
             if (searches.length > 0) {
               const lastSearch = searches[0];
-              setMapUrl(`https://www.google.com/maps/search/${encodeURIComponent(lastSearch)}`);
+              setMapUrl(`https://www.openstreetmap.org/search?query=${encodeURIComponent(lastSearch)}`);
               setHotelName(`Maps: ${lastSearch}`);
             }
           }
@@ -64,7 +64,7 @@ export default function MapPage() {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle} numberOfLines={1}>{hotelName}</Text>
-        <Text style={styles.headerSubtitle} numberOfLines={1}>Google Maps Integration</Text>
+        <Text style={styles.headerSubtitle} numberOfLines={1}>OpenStreetMap Integration</Text>
       </View>
 
       {/* Map Content */}
@@ -74,7 +74,7 @@ export default function MapPage() {
           
           <Text style={styles.stayTitle}>{hotelName}</Text>
           <Text style={styles.stayDescription}>
-            For the best interactive experience with street view and directions, please open the location in your device's browser or Google Maps app.
+            For the best interactive experience with directions, please open the location in your device's browser or OpenStreetMap application.
           </Text>
 
           <TouchableOpacity style={styles.button} onPress={handleOpenMap}>
