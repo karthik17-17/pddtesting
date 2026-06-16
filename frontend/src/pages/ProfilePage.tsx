@@ -6,9 +6,9 @@ import { useToast } from "../context/ToastContext";
 const API_URL = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.com";
 
 export default function ProfilePage() {
-  const { user, logoutUser } = useAuth();
+  const { user, logoutUser, loginUser } = useAuth();
   const navigate = useNavigate();
-  const { info, success, error } = useToast();
+  const { success, error } = useToast();
 
   const [totalBookings, setTotalBookings] = useState(0);
   const [savedHotels, setSavedHotels] = useState(0);

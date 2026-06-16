@@ -1,41 +1,49 @@
 import { useState } from "react";
 
-const hotels = [
+const fallbackHotels = [
   {
     id: 1,
     name: "Hotel Paradise",
     city: "Chennai",
+    address: "Chennai",
     price: "₹1200",
     rating: 4.5,
-    lat: 13.0827,
-    lng: 80.2707,
   },
   {
     id: 2,
     name: "NeuroStay Inn",
     city: "Chennai",
+    address: "Chennai",
     price: "₹1500",
     rating: 4.2,
-    lat: 13.0418,
-    lng: 80.2341,
   },
   {
     id: 3,
     name: "Budget Comfort Stay",
     city: "Hyderabad",
+    address: "Hyderabad",
     price: "₹900",
     rating: 4.0,
-    lat: 17.385,
-    lng: 78.4867,
   },
 ];
 
 export default function MapPage() {
-  const [selectedHotel, setSelectedHotel] = useState<any>(hotels[0]);
+  const savedHotels = (() => {
+    try {
+      const data = localStorage.getItem("lastSearchResults");
+      if (data) {
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return fallbackHotels;
+  })();
 
-  const delta = 0.02;
-  const bbox = `${selectedHotel.lng - delta},${selectedHotel.lat - delta},${selectedHotel.lng + delta},${selectedHotel.lat + delta}`;
-  const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${selectedHotel.lat},${selectedHotel.lng}`;
+  const [selectedHotel, setSelectedHotel] = useState<any>(savedHotels[0] || fallbackHotels[0]);
+
+  const mapQuery = encodeURIComponent(`${selectedHotel.name} ${selectedHotel.address || selectedHotel.city}`);
+  // Using keyless Google Maps embed to bypass API restrictions
+  const mapUrl = `https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <div className="flex flex-col w-full bg-[#071028] text-white" style={{ height: "calc(100vh - 0px)", minHeight: "100vh" }}>
@@ -45,7 +53,7 @@ export default function MapPage() {
           Hotel Location Map
         </h1>
         <p className="text-slate-400 mt-1 text-sm md:text-base">
-          Interactive OpenStreetMap view of NeuroStay AI hotel locations.
+          Interactive Google Maps view of your NeuroStay AI hotel search results.
         </p>
       </div>
 
@@ -58,7 +66,7 @@ export default function MapPage() {
             Select a Hotel
           </h2>
 
-          {hotels.map((hotel) => {
+          {savedHotels.map((hotel: any) => {
             const isSelected = selectedHotel.id === hotel.id;
             return (
               <div
@@ -72,8 +80,8 @@ export default function MapPage() {
               >
                 <div className="flex justify-between items-start">
                   <h3 className="font-bold text-base text-white">{hotel.name}</h3>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 ml-2 flex-shrink-0">
-                    {hotel.city}
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 ml-2 flex-shrink-0 truncate max-w-[100px]">
+                    {hotel.city || "Location"}
                   </span>
                 </div>
                 <p className="text-slate-400 text-xs mt-1">⭐ {hotel.rating} Rating</p>
@@ -97,10 +105,10 @@ export default function MapPage() {
             <h4 className="font-semibold text-slate-300 text-xs mb-0.5">Active Hotel</h4>
             <p className="text-sm text-white font-medium mb-3">
               {selectedHotel.name}{" "}
-              <span className="text-slate-400 text-xs">({selectedHotel.city})</span>
+              <span className="text-slate-400 text-xs">({selectedHotel.city || selectedHotel.address?.split(',').pop()?.trim() || "Location"})</span>
             </p>
             <a
-              href={`https://www.google.com/maps/dir/?api=1&destination=${selectedHotel.lat},${selectedHotel.lng}`}
+              href={selectedHotel.mapLink || `https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
               target="_blank"
               rel="noreferrer"
               className="w-full text-center block bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-slate-950 py-2.5 px-4 rounded-xl font-bold text-sm transition-all duration-200"
@@ -113,7 +121,7 @@ export default function MapPage() {
         {/* Map — fills remaining space */}
         <div className="flex-1 min-h-[300px] lg:min-h-0 relative rounded-3xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl">
           <iframe
-            title="OpenStreetMap"
+            title="Google Maps Location"
             width="100%"
             height="100%"
             style={{

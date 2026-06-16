@@ -52,6 +52,7 @@ export default function ResultsPage() {
 
         if (data.success === true && Array.isArray(data.hotels)) {
           setHotels(data.hotels);
+          localStorage.setItem("lastSearchResults", JSON.stringify(data.hotels));
         } else {
           setHasError(true);
           setHotels([]);
