@@ -5,37 +5,35 @@ import {
   StyleSheet,
   SafeAreaView,
   StatusBar,
-  ActivityIndicator,
-  TouchableOpacity,
-  Linking,
+  Platform,
 } from 'react-native';
-import * as WebBrowser from 'expo-web-browser';
-import { Ionicons } from '@expo/vector-icons';
+import { WebView } from 'react-native-webview';
 import { useLocalSearchParams } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BottomNav from '../components/BottomNav';
 
 export default function MapPage() {
-  const params = useLocalSearchParams<{ url?: string; name?: string }>();
-  const [mapUrl, setMapUrl] = useState('https://www.openstreetmap.org/search?query=hotels');
-  const [hotelName, setHotelName] = useState('Hotels Map');
+  const params = useLocalSearchParams<{ url?: string; name?: string; address?: string }>();
+  const [mapQuery, setMapQuery] = useState('Hotels in Chennai');
+  const [hotelName, setHotelName] = useState('Interactive Map');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const initMapUrl = async () => {
-      if (params.url) {
-        setMapUrl(params.url);
-        if (params.name) setHotelName(params.name);
+      if (params.name) {
+        // If we came from a specific hotel, use its name and address for the pin
+        const query = `${params.name} ${params.address || ''}`;
+        setMapQuery(query);
+        setHotelName(params.name);
       } else {
-        // Fallback: try to see if there is a recent search city to show maps for
+        // Fallback: try to see if there is a recent search
         try {
           const searchesStr = await AsyncStorage.getItem('recent_searches');
           if (searchesStr) {
             const searches: string[] = JSON.parse(searchesStr);
             if (searches.length > 0) {
-              const lastSearch = searches[0];
-              setMapUrl(`https://www.openstreetmap.org/search?query=${encodeURIComponent(lastSearch)}`);
-              setHotelName(`Maps: ${lastSearch}`);
+              setMapQuery(searches[0]);
+              setHotelName(`Maps: ${searches[0]}`);
             }
           }
         } catch (e) {
@@ -46,16 +44,26 @@ export default function MapPage() {
     };
 
     initMapUrl();
-  }, [params.url, params.name]);
+  }, [params.name, params.address]);
 
-  const handleOpenMap = async () => {
-    try {
-      await WebBrowser.openBrowserAsync(mapUrl);
-    } catch (error) {
-      console.error('Failed to open web browser, trying Linking:', error);
-      Linking.openURL(mapUrl).catch((err) => alert('Could not open map: ' + err));
-    }
-  };
+  // Use the exact keyless embed format we use on the web app!
+  const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <style>
+          body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #0f172a; }
+          iframe { width: 100%; height: 100%; border: none; }
+        </style>
+      </head>
+      <body>
+        <iframe src="${embedUrl}" allowfullscreen></iframe>
+      </body>
+    </html>
+  `;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -64,24 +72,18 @@ export default function MapPage() {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle} numberOfLines={1}>{hotelName}</Text>
-        <Text style={styles.headerSubtitle} numberOfLines={1}>OpenStreetMap Integration</Text>
+        <Text style={styles.headerSubtitle} numberOfLines={1}>Google Maps Integration</Text>
       </View>
 
-      {/* Map Content */}
+      {/* Embedded Map */}
       <View style={styles.content}>
-        <View style={styles.mapCard}>
-          <Ionicons name="map-outline" size={80} color="#22d3ee" style={styles.mapIcon} />
-          
-          <Text style={styles.stayTitle}>{hotelName}</Text>
-          <Text style={styles.stayDescription}>
-            For the best interactive experience with directions, please open the location in your device's browser or OpenStreetMap application.
-          </Text>
-
-          <TouchableOpacity style={styles.button} onPress={handleOpenMap}>
-            <Ionicons name="navigate" size={20} color="#071028" style={styles.buttonIcon} />
-            <Text style={styles.buttonText}>Open Map View</Text>
-          </TouchableOpacity>
-        </View>
+        {!loading && (
+          <WebView 
+            source={{ html: htmlContent }} 
+            style={styles.webview}
+            scalesPageToFit={false}
+          />
+        )}
       </View>
 
       <BottomNav activeTab="Map" />
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#071028',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     paddingHorizontal: 20,
@@ -107,62 +110,14 @@ const styles = StyleSheet.create({
   },
   headerSubtitle: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#22d3ee',
     marginTop: 2,
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 30,
-  },
-  mapCard: {
     backgroundColor: '#0f172a',
-    borderRadius: 20,
-    padding: 30,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#1e293b',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 8,
-    width: '100%',
   },
-  mapIcon: {
-    marginBottom: 20,
-  },
-  stayTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  stayDescription: {
-    fontSize: 14,
-    color: '#94a3b8',
-    textAlign: 'center',
-    lineHeight: 20,
-    marginBottom: 30,
-  },
-  button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#22d3ee',
-    paddingVertical: 14,
-    paddingHorizontal: 24,
-    borderRadius: 12,
-    width: '100%',
-    justifyContent: 'center',
-  },
-  buttonIcon: {
-    marginRight: 8,
-  },
-  buttonText: {
-    color: '#071028',
-    fontSize: 16,
-    fontWeight: 'bold',
+  webview: {
+    flex: 1,
   },
 });

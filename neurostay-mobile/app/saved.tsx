@@ -11,11 +11,15 @@ import {
   Alert,
   Modal,
   ScrollView,
+  Platform,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import axios from 'axios';
 import BottomNav from '../components/BottomNav';
+
+const API_URL = "https://neurostay-ai.onrender.com";
 
 type Hotel = {
   id: number;
@@ -36,11 +40,15 @@ export default function SavedPage() {
 
   const loadSavedHotels = async () => {
     try {
-      const savedStr = await AsyncStorage.getItem('saved_hotels');
-      if (savedStr) {
-        setHotels(JSON.parse(savedStr));
-      } else {
-        setHotels([]);
+      const token = await AsyncStorage.getItem('token');
+      if (!token) return;
+
+      const response = await axios.get(`${API_URL}/api/saved`, {
+        headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' }
+      });
+
+      if (response.data.success) {
+        setHotels(response.data.hotels || []);
       }
     } catch (e) {
       console.error('Failed to load saved hotels:', e);
@@ -53,12 +61,22 @@ export default function SavedPage() {
 
   const handleRemove = async (hotel: Hotel) => {
     try {
+      const token = await AsyncStorage.getItem('token');
+      if (!token) return;
+
+      // Ensure we use the MongoDB _id for removal if available, fallback to searching by name
+      const hotelId = (hotel as any)._id || hotel.id;
+
+      await axios.delete(`${API_URL}/api/saved/${hotel._id || hotel.id}`, {
+        headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' }
+      });
+
       const updated = hotels.filter(item => item.name !== hotel.name);
       setHotels(updated);
-      await AsyncStorage.setItem('saved_hotels', JSON.stringify(updated));
-      Alert.alert('Success', 'Hotel removed from saved list');
-    } catch (e) {
+      Alert.alert('Success', 'Hotel removed from cloud');
+    } catch (e: any) {
       console.error('Failed to remove hotel:', e);
+      Alert.alert('Error', e.response?.data?.message || 'Failed to remove hotel');
     }
   };
 
@@ -223,6 +241,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#071028',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     paddingHorizontal: 20,

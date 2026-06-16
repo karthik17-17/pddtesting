@@ -12,6 +12,7 @@ import {
   Alert,
   Modal,
   ScrollView,
+  Platform,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -69,21 +70,20 @@ export default function ResultsPage() {
 
   const handleSave = async (hotel: Hotel) => {
     try {
-      const savedStr = await AsyncStorage.getItem('saved_hotels');
-      let saved: Hotel[] = savedStr ? JSON.parse(savedStr) : [];
-      
-      const exists = saved.some(item => item.name === hotel.name);
-      if (exists) {
-        Alert.alert('Info', 'Hotel already saved');
+      const token = await AsyncStorage.getItem('token');
+      if (!token) {
+        Alert.alert('Error', 'Please login to save hotels');
         return;
       }
 
-      saved.push(hotel);
-      await AsyncStorage.setItem('saved_hotels', JSON.stringify(saved));
-      Alert.alert('Success', 'Hotel saved successfully');
-    } catch (e) {
+      await axios.post(`${API_URL}/api/saved`, hotel, {
+        headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' }
+      });
+      
+      Alert.alert('Success', 'Hotel saved to cloud successfully');
+    } catch (e: any) {
       console.error('Save hotel error:', e);
-      Alert.alert('Error', 'Failed to save hotel');
+      Alert.alert('Error', e.response?.data?.message || 'Failed to save hotel');
     }
   };
 
@@ -114,7 +114,7 @@ export default function ResultsPage() {
     }
     router.push({
       pathname: '/map',
-      params: { url: hotel.mapLink, name: hotel.name }
+      params: { url: hotel.mapLink, name: hotel.name, address: hotel.address }
     });
   };
 
@@ -258,6 +258,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#071028',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     paddingHorizontal: 20,
