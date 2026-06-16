@@ -1,256 +1,248 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MapView from "../components/map/MapView";
 
-type Hotel = {
-  id: string | number;
+interface Hotel {
+  id: number;
   name: string;
-  location: string;
-  price: string;
+  address: string;
   rating: number;
-  reviewCount?: number;
+  price: string;
   image: string;
-  facilities: string[];
-  aiMatch: number;
-  source?: "google" | "demo";
-};
+  matchScore: number;
+  why: string;
+  mapLink: string;
+}
 
-function HotelDetailPage() {
+export default function HotelDetailPage() {
   const navigate = useNavigate();
-  const [hotel, setHotel] = useState<Hotel | null>(null);
 
-  useEffect(() => {
-    const selectedHotel = JSON.parse(
-      localStorage.getItem("selectedHotel") || "null"
-    );
-
-    setHotel(selectedHotel);
-  }, []);
-
-  const saveHotel = () => {
-    if (!hotel) return;
-
-    const savedHotels = JSON.parse(
-      localStorage.getItem("savedHotels") || "[]"
-    );
-
-    const alreadySaved = savedHotels.find(
-      (item: Hotel) => item.id === hotel.id
-    );
-
-    if (alreadySaved) {
-      alert("Hotel already saved");
-      return;
-    }
-
-    localStorage.setItem(
-      "savedHotels",
-      JSON.stringify([...savedHotels, hotel])
-    );
-
-    alert("Hotel saved successfully");
-  };
-
-  const compareHotel = () => {
-    if (!hotel) return;
-
-    const compareHotels = JSON.parse(
-      localStorage.getItem("compareHotels") || "[]"
-    );
-
-    localStorage.setItem(
-      "compareHotels",
-      JSON.stringify([hotel, ...compareHotels].slice(0, 2))
-    );
-
-    navigate("/compare");
-  };
+  const hotel: Hotel | null = JSON.parse(
+    localStorage.getItem("selectedHotel") || "null"
+  );
 
   if (!hotel) {
     return (
-      <div className="min-h-screen bg-[#071028] text-white flex flex-col items-center justify-center">
-        <h1 className="text-5xl font-bold">
-          Hotel details not found
-        </h1>
+      <div className="min-h-screen bg-[#071028] text-white p-8">
+        <h1 className="text-4xl font-bold mb-4">Hotel not found</h1>
 
         <button
-          onClick={() => navigate("/results")}
-          className="mt-6 bg-cyan-500 text-black font-bold px-8 py-4 rounded-2xl"
+          onClick={() => navigate(-1)}
+          className="text-cyan-400 font-bold bg-transparent border-none p-0 cursor-pointer outline-none hover:underline"
         >
-          Back to Results
+          ← Back to Results
         </button>
       </div>
     );
   }
 
+  const saveHotel = async () => {
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    const res = await fetch(`${API_URL}/api/saved`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        hotelName: hotel.name,
+        hotelImage: hotel.image,
+        price: hotel.price,
+        address: hotel.address,
+        rating: hotel.rating,
+        matchScore: hotel.matchScore,
+        why: hotel.why,
+        mapLink: hotel.mapLink,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || "Save failed");
+      return;
+    }
+
+    alert("Hotel saved successfully");
+  };
+
+  const addToCompare = () => {
+    const compareHotels = JSON.parse(
+      localStorage.getItem("compareHotels") || "[]"
+    );
+
+    if (compareHotels.find((item: Hotel) => item.name === hotel.name)) {
+      alert("Hotel already added to compare");
+      return;
+    }
+
+    if (compareHotels.length >= 3) {
+      alert("You can compare maximum 3 hotels");
+      return;
+    }
+
+    localStorage.setItem(
+      "compareHotels",
+      JSON.stringify([...compareHotels, hotel])
+    );
+
+    alert("Hotel added to compare");
+  };
+
+  const bookNow = () => {
+    localStorage.setItem("bookingHotel", JSON.stringify(hotel));
+    navigate(`/booking/${hotel.id}`);
+  };
+
   return (
     <div className="min-h-screen bg-[#071028] text-white p-8">
-      <img
-        src={hotel.image}
-        alt={hotel.name}
-        className="w-full h-[430px] object-cover rounded-3xl"
-      />
+      <button
+        onClick={() => navigate(-1)}
+        className="text-cyan-400 font-bold bg-transparent border-none p-0 cursor-pointer outline-none hover:underline"
+      >
+        ← Back to Results
+      </button>
 
-      <div className="flex justify-between items-start mt-8">
-        <div>
-          <h1 className="text-6xl font-bold">{hotel.name}</h1>
+      <div className="mt-8 grid lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 bg-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src={hotel.image}
+            alt={hotel.name}
+            className="w-full h-[430px] object-cover"
+          />
 
-          <p className="text-gray-400 text-xl mt-3">
-            📍 {hotel.location}
-          </p>
-        </div>
-
-        <div className="text-right">
-          <div className="bg-cyan-500 text-black px-6 py-3 rounded-2xl font-bold text-xl">
-            ⭐ {hotel.rating} Rating
+          <div className="grid grid-cols-3 gap-3 p-4">
+            <img
+              src={hotel.image}
+              alt={hotel.name}
+              className="h-28 w-full object-cover rounded-xl"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461"
+              alt="room"
+              className="h-28 w-full object-cover rounded-xl"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
+              alt="hotel"
+              className="h-28 w-full object-cover rounded-xl"
+            />
           </div>
 
-          <div
-            className={`mt-3 px-5 py-2 rounded-xl font-bold ${
-              hotel.source === "google"
-                ? "bg-green-500 text-black"
-                : "bg-yellow-500 text-black"
-            }`}
+          <div className="p-8">
+            <h1 className="text-5xl font-bold">{hotel.name}</h1>
+
+            <p className="text-slate-300 mt-4 text-lg">
+              📍 {hotel.address || "Address not available"}
+            </p>
+
+            <div className="flex flex-wrap gap-4 mt-5">
+              <span className="bg-slate-700 px-4 py-2 rounded-xl">
+                ⭐ {hotel.rating} Rating
+              </span>
+
+              <span className="bg-cyan-500 text-black px-4 py-2 rounded-xl font-bold">
+                AI Match {hotel.matchScore}%
+              </span>
+
+              <span className="bg-slate-700 px-4 py-2 rounded-xl">
+                Best for budget stay
+              </span>
+            </div>
+
+            <p className="text-4xl text-cyan-400 font-bold mt-8">
+              {hotel.price}
+            </p>
+
+            <div className="mt-8">
+              <h2 className="text-3xl font-bold mb-4">Facilities</h2>
+
+              <div className="grid md:grid-cols-4 gap-4">
+                <div className="bg-slate-700 p-4 rounded-xl">✅ Free WiFi</div>
+                <div className="bg-slate-700 p-4 rounded-xl">✅ AC Rooms</div>
+                <div className="bg-slate-700 p-4 rounded-xl">✅ Parking</div>
+                <div className="bg-slate-700 p-4 rounded-xl">✅ Safe Stay</div>
+                <div className="bg-slate-700 p-4 rounded-xl">✅ Restaurant</div>
+                <div className="bg-slate-700 p-4 rounded-xl">✅ Room Service</div>
+                <div className="bg-slate-700 p-4 rounded-xl">✅ Family Stay</div>
+                <div className="bg-slate-700 p-4 rounded-xl">✅ 24/7 Support</div>
+              </div>
+            </div>
+
+            <div className="bg-slate-900 p-6 rounded-2xl mt-8">
+              <h2 className="text-3xl font-bold mb-3">Why this hotel?</h2>
+
+              <p className="text-slate-300 text-lg">
+                {hotel.why ||
+                  "Recommended based on location, price, rating and guest preference."}
+              </p>
+            </div>
+
+            <div className="bg-slate-900 p-6 rounded-2xl mt-8">
+              <h2 className="text-3xl font-bold mb-4">Guest Reviews</h2>
+
+              <div className="space-y-4">
+                <div className="bg-slate-800 p-4 rounded-xl">
+                  ⭐⭐⭐⭐⭐ Excellent location and comfortable stay.
+                </div>
+
+                <div className="bg-slate-800 p-4 rounded-xl">
+                  ⭐⭐⭐⭐ Good value for money and friendly staff.
+                </div>
+
+                <div className="bg-slate-800 p-4 rounded-xl">
+                  ⭐⭐⭐⭐ Clean rooms and easy access to transport.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-slate-800 rounded-3xl p-6 h-fit sticky top-8">
+          <h2 className="text-3xl font-bold mb-4">Booking Summary</h2>
+
+          <p className="text-slate-300">Price per night</p>
+          <p className="text-4xl text-cyan-400 font-bold mt-2">
+            {hotel.price}
+          </p>
+
+          <div className="bg-slate-900 rounded-2xl p-5 mt-6">
+            <p>⭐ Rating: {hotel.rating}</p>
+            <p className="mt-2">🧠 AI Match: {hotel.matchScore}%</p>
+            <p className="mt-2">🏨 Recommended Stay</p>
+          </div>
+
+          <button
+            onClick={bookNow}
+            className="w-full bg-cyan-500 hover:bg-cyan-400 text-black py-4 rounded-xl font-bold mt-6"
           >
-            {hotel.source === "google"
-              ? "Google Places"
-              : "Demo Data"}
-          </div>
+            Book Now
+          </button>
+
+          <button
+            onClick={saveHotel}
+            className="w-full bg-slate-700 hover:bg-slate-600 py-4 rounded-xl font-bold mt-4"
+          >
+            Save Hotel
+          </button>
+
+          <button
+            onClick={addToCompare}
+            className="w-full bg-purple-500 hover:bg-purple-400 py-4 rounded-xl font-bold mt-4"
+          >
+            Add to Compare
+          </button>
+
+          {hotel.mapLink && (
+            <a
+              href={hotel.mapLink}
+              target="_blank"
+              rel="noreferrer"
+              className="block text-center border border-cyan-500 py-4 rounded-xl font-bold mt-4"
+            >
+              Open Map
+            </a>
+          )}
         </div>
-      </div>
-
-      <div className="flex flex-wrap gap-4 mt-8">
-        <button
-          onClick={() => navigate(`/booking/${hotel.id}`)}
-          className="bg-cyan-500 hover:bg-cyan-400 px-8 py-4 rounded-2xl text-black font-bold"
-        >
-          Book Now
-        </button>
-
-        <button
-          onClick={saveHotel}
-          className="bg-yellow-500 hover:bg-yellow-400 px-8 py-4 rounded-2xl text-black font-bold"
-        >
-          💗 Save Hotel
-        </button>
-
-        <button
-          onClick={compareHotel}
-          className="bg-purple-600 hover:bg-purple-500 px-8 py-4 rounded-2xl text-white font-bold"
-        >
-          Compare Hotel
-        </button>
-
-        <button
-          onClick={() => navigate("/results")}
-          className="bg-slate-700 hover:bg-slate-600 px-8 py-4 rounded-2xl text-white font-bold"
-        >
-          Back to Results
-        </button>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-8 mt-10">
-        <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-6">
-          <h2 className="text-3xl font-bold mb-5">
-            Facilities
-          </h2>
-
-          <ul className="space-y-3 text-gray-300">
-            {hotel.facilities.map((facility) => (
-              <li key={facility}>✅ {facility}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="md:col-span-2 bg-[#1E293B] border border-gray-700 rounded-3xl p-6">
-          <h2 className="text-3xl font-bold mb-5">
-            About Hotel
-          </h2>
-
-          <p className="text-gray-300 leading-8">
-            {hotel.name} is recommended by NeuroStay AI because it
-            matches your search preferences based on location,
-            facilities, rating, comfort, and travel needs.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-5 mt-8">
-            <div className="bg-[#0F172A] border border-gray-700 rounded-2xl p-5">
-              <p className="text-gray-400">Price</p>
-              <h3 className="text-3xl font-bold text-cyan-400">
-                {hotel.price}
-              </h3>
-            </div>
-
-            <div className="bg-[#0F172A] border border-gray-700 rounded-2xl p-5">
-              <p className="text-gray-400">AI Match</p>
-              <h3 className="text-3xl font-bold text-cyan-400">
-                {hotel.aiMatch}%
-              </h3>
-            </div>
-
-            <div className="bg-[#0F172A] border border-gray-700 rounded-2xl p-5">
-              <p className="text-gray-400">Reviews</p>
-              <h3 className="text-3xl font-bold text-cyan-400">
-                {hotel.reviewCount || 0}
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-6 mt-10">
-        <h2 className="text-3xl font-bold mb-5">
-          Why this hotel?
-        </h2>
-
-        <p className="text-gray-300 leading-8">
-          This hotel has a strong AI match score because it fits your
-          search intent, expected facilities, rating, destination
-          preference, and travel needs.
-        </p>
-      </div>
-
-      <div className="mt-10">
-        <h2 className="text-3xl font-bold mb-5">
-          Public Reviews
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-6">
-            <h3 className="text-2xl font-bold">Rahul</h3>
-            <p className="text-cyan-400 mt-2">⭐ 4.5</p>
-            <p className="text-gray-300 mt-4">
-              Clean rooms and good service.
-            </p>
-          </div>
-
-          <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-6">
-            <h3 className="text-2xl font-bold">Priya</h3>
-            <p className="text-cyan-400 mt-2">⭐ 4.8</p>
-            <p className="text-gray-300 mt-4">
-              Great location and comfortable stay.
-            </p>
-          </div>
-
-          <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-6">
-            <h3 className="text-2xl font-bold">Arjun</h3>
-            <p className="text-cyan-400 mt-2">⭐ 4.3</p>
-            <p className="text-gray-300 mt-4">
-              Nice facilities and peaceful environment.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-10">
-        <h2 className="text-3xl font-bold mb-5">
-          Hotel Location
-        </h2>
-
-        <MapView />
       </div>
     </div>
   );
 }
-
-export default HotelDetailPage;

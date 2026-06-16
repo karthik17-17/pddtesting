@@ -4,14 +4,16 @@ type ProtectedRouteProps = {
   children: React.ReactNode;
 };
 
-function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+const ProtectedRoute = ({
+  children,
+}: ProtectedRouteProps) => {
+  const token = localStorage.getItem("token");
 
-  if (!isLoggedIn) {
+  if (!token) {
     return <Navigate to="/login" replace />;
   }
 
-  return children;
-}
+  return <>{children}</>;
+};
 
 export default ProtectedRoute;

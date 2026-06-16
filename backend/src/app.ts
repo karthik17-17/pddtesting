@@ -1,27 +1,27 @@
-const API_URL = import.meta.env.VITE_API_URL;
+import express from "express";
+import cors from "cors";
 
-export const api = {
-  getBackendStatus: async () => {
-    const response = await fetch(`${API_URL}/`);
-    return response.text();
-  },
+import authRoutes from "./routes/auth.routes";
+import bookingRoutes from "./routes/booking.routes";
+import adminRoutes from "./routes/admin.routes";
+import recommendationRoutes from "./routes/recommendation.routes";
+import savedRoutes from "./routes/saved.routes";
+import serpapiRoutes from "./routes/serpapi.routes";
 
-  testApi: async () => {
-    const response = await fetch(`${API_URL}/api/test`);
-    return response.json();
-  },
+const app = express();
 
-  searchHotels: async (query: string) => {
-    const response = await fetch(`${API_URL}/api/hotels/search`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query }),
-    });
+app.use(cors());
+app.use(express.json());
 
-    return response.json();
-  },
-};
+app.use("/api/auth", authRoutes);
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/recommendations", recommendationRoutes);
+app.use("/api/saved", savedRoutes);
+app.use("/api/serpapi", serpapiRoutes);
 
-export default api;
+app.get("/", (req, res) => {
+  res.send("NeuroStay AI Backend Running");
+});
+
+export default app;

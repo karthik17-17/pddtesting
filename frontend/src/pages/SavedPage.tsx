@@ -1,102 +1,134 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const hotels = [
-  {
-    id: 1,
-    name: "Grand Palace Hotel",
-    location: "Chennai",
-    price: "₹2500",
-    rating: 4.5,
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
-  },
-  {
-    id: 2,
-    name: "Ocean View Resort",
-    location: "Goa",
-    price: "₹4200",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
-  },
-  {
-    id: 3,
-    name: "Mountain Stay Inn",
-    location: "Ooty",
-    price: "₹3100",
-    rating: 4.2,
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-  },
-];
+const API_URL = import.meta.env.VITE_API_URL;
 
-function SavedPage() {
-  const navigate = useNavigate();
-  const [savedIds, setSavedIds] = useState<number[]>([]);
+interface SavedHotel {
+  _id: string;
+  hotelName: string;
+  hotelImage: string;
+  price: string;
+  address: string;
+  rating: number;
+  matchScore: number;
+  why: string;
+  mapLink: string;
+}
 
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("savedHotels") || "[]");
-    setSavedIds(saved);
-  }, []);
+export default function SavedPage() {
+  const [hotels, setHotels] = useState<SavedHotel[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const savedHotels = hotels.filter((hotel) => savedIds.includes(hotel.id));
+  const fetchSavedHotels = async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/saved`);
+      const data = await res.json();
 
-  const removeHotel = (id: number) => {
-    const updated = savedIds.filter((hotelId) => hotelId !== id);
-    setSavedIds(updated);
-    localStorage.setItem("savedHotels", JSON.stringify(updated));
+      if (data.success) {
+        setHotels(data.hotels);
+      }
+
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
   };
 
-  return (
-    <div className="min-h-screen bg-[#071028] text-white px-8 py-10">
-      <h1 className="text-6xl font-bold mb-10">Saved Hotels</h1>
+  useEffect(() => {
+    fetchSavedHotels();
+  }, []);
 
-      {savedHotels.length === 0 ? (
-        <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-10 text-center">
-          <h2 className="text-3xl font-bold">No saved hotels yet</h2>
-          <p className="text-gray-400 mt-4">
-            Save hotels from the Results page.
-          </p>
-        </div>
+  const removeHotel = async (id: string) => {
+    try {
+      const res = await fetch(`${API_URL}/api/saved/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Hotel removed successfully");
+        fetchSavedHotels();
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Failed to remove hotel");
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#071028] text-white flex justify-center items-center">
+        <h1 className="text-3xl font-bold">Loading Saved Hotels...</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#071028] text-white p-8">
+      <h1 className="text-5xl font-bold mb-8">
+        Saved Hotels
+      </h1>
+
+      {hotels.length === 0 ? (
+        <p className="text-gray-400 text-xl">
+          No saved hotels found.
+        </p>
       ) : (
-        <div className="grid md:grid-cols-3 gap-8">
-          {savedHotels.map((hotel) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {hotels.map((hotel) => (
             <div
-              key={hotel.id}
-              className="bg-[#1E293B] rounded-3xl overflow-hidden border border-gray-700"
+              key={hotel._id}
+              className="bg-slate-800 rounded-2xl overflow-hidden shadow-lg"
             >
               <img
-                src={hotel.image}
-                alt={hotel.name}
-                className="w-full h-[240px] object-cover"
+                src={hotel.hotelImage}
+                alt={hotel.hotelName}
+                className="w-full h-56 object-cover"
               />
 
-              <div className="p-6">
-                <h2 className="text-3xl font-bold">{hotel.name}</h2>
+              <div className="p-5">
+                <h2 className="text-2xl font-bold">
+                  {hotel.hotelName}
+                </h2>
 
-                <p className="text-gray-400 mt-2">📍 {hotel.location}</p>
+                <p className="text-slate-400 mt-2">
+                  {hotel.address}
+                </p>
 
-                <div className="flex justify-between items-center mt-6">
-                  <p className="text-cyan-400 text-2xl font-bold">
-                    {hotel.price}
-                  </p>
+                <p className="mt-3">
+                  ⭐ {hotel.rating}
+                </p>
 
-                  <div className="bg-cyan-500 text-black px-4 py-2 rounded-xl font-bold">
-                    ⭐ {hotel.rating}
-                  </div>
+                <p className="text-cyan-400 font-bold mt-2">
+                  {hotel.price}
+                </p>
+
+                <div className="mt-4 bg-cyan-500 text-black px-3 py-2 rounded-lg inline-block font-bold">
+                  Match Score: {hotel.matchScore}%
                 </div>
 
-                <button
-                  onClick={() => navigate(`/hotel/${hotel.id}`)}
-                  className="w-full mt-6 bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-4 rounded-2xl"
-                >
-                  View Details
-                </button>
+                <p className="mt-4 text-gray-300">
+                  {hotel.why}
+                </p>
 
-                <button
-                  onClick={() => removeHotel(hotel.id)}
-                  className="w-full mt-4 bg-red-500 hover:bg-red-400 text-white font-bold py-4 rounded-2xl"
-                >
-                  Remove
-                </button>
+                <div className="flex gap-3 mt-5">
+                  <a
+                    href={hotel.mapLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-cyan-500 px-4 py-2 rounded-lg text-black font-bold"
+                  >
+                    Open Map
+                  </a>
+
+                  <button
+                    onClick={() => removeHotel(hotel._id)}
+                    className="bg-red-500 px-4 py-2 rounded-lg font-bold"
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -105,5 +137,3 @@ function SavedPage() {
     </div>
   );
 }
-
-export default SavedPage;

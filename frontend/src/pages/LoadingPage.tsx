@@ -1,60 +1,71 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-const loadingTexts = [
-  "Analyzing your preferences...",
-  "Checking hotel ratings...",
-  "Finding best locations...",
-  "Matching facilities...",
-  "Generating AI recommendations...",
-];
-
-function LoadingPage() {
+export default function LoadingPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const query = searchParams.get("query") || "";
 
-  const [index, setIndex] = useState(0);
+  const messages = [
+    "🧠 Understanding your request...",
+    "🔍 Searching hotels...",
+    "⭐ Calculating AI match scores...",
+    "📍 Finding nearby locations...",
+    "✨ Preparing recommendations..."
+  ];
+
+  const [step, setStep] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => {
-        if (prev === loadingTexts.length - 1) {
-          return 0;
+      setStep((prev) => {
+        if (prev < messages.length - 1) {
+          return prev + 1;
         }
-        return prev + 1;
+        return prev;
       });
-    }, 700);
+    }, 1500);
 
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
     const timer = setTimeout(() => {
-      navigate(`/results?query=${encodeURIComponent(query)}`);
-    }, 3500);
+      navigate(`/results?query=${query}`);
+    }, 8000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timer);
+    };
   }, [navigate, query]);
 
   return (
-    <div className="min-h-screen bg-[#071028] text-white flex flex-col items-center justify-center px-6">
-      <div className="w-28 h-28 border-[10px] border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+    <div className="min-h-screen bg-[#0F172A] flex items-center justify-center px-6">
+      <div className="w-full max-w-xl bg-white/10 backdrop-blur-xl rounded-3xl border border-white/10 p-10 text-center shadow-2xl">
 
-      <h1 className="text-6xl font-bold mt-10">
-        NeuroStay AI
-      </h1>
+        <div className="w-24 h-24 mx-auto rounded-full border-4 border-cyan-400 border-t-purple-500 animate-spin mb-8"></div>
 
-      <p className="text-gray-300 text-2xl mt-6 transition-all duration-300">
-        {loadingTexts[index]}
-      </p>
+        <h1 className="text-4xl font-bold text-white mb-8">
+          NeuroStay AI
+        </h1>
 
-      <p className="text-cyan-400 text-xl mt-4 text-center">
-        "{query}"
-      </p>
+        <div className="space-y-4">
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`rounded-xl p-4 transition-all duration-500 ${
+                index <= step
+                  ? "bg-cyan-500/20 text-cyan-300"
+                  : "bg-[#1E293B] text-slate-500"
+              }`}
+            >
+              {msg}
+            </div>
+          ))}
+        </div>
+
+        <p className="text-slate-400 mt-8">
+          Finding the perfect hotel for you...
+        </p>
+      </div>
     </div>
   );
 }
-
-export default LoadingPage;

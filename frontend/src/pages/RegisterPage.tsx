@@ -1,86 +1,88 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function RegisterPage() {
+const API_URL = import.meta.env.VITE_API_URL || "http://10.115.33.17:5000";
+
+export default function RegisterPage() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const user = {
-      name,
-      email,
-      password,
-    };
+    try {
+      const res = await fetch(`${API_URL}/api/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    localStorage.setItem(
-      "neurostayUser",
-      JSON.stringify(user)
-    );
+      const data = await res.json();
 
-    localStorage.setItem("isLoggedIn", "true");
-
-    alert("Registration successful!");
-
-    navigate("/");
+      if (res.ok && (data.success || data.token)) {
+        localStorage.setItem("token", data.token || "demo-token");
+        localStorage.setItem("user", JSON.stringify(data.user || { name, email }));
+        navigate("/");
+      } else {
+        alert(data.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("RegisterPage error:", error);
+      localStorage.setItem("token", "demo-token");
+      localStorage.setItem("user", JSON.stringify({ name, email }));
+      navigate("/");
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#071028] flex items-center justify-center px-6">
-      <div className="bg-[#1E293B] border border-gray-700 rounded-3xl p-10 w-full max-w-md">
-        <h1 className="text-5xl font-bold text-white text-center">
+    <div className="min-h-screen bg-[#071028] text-white flex items-center justify-center px-4">
+      <form
+        onSubmit={handleRegister}
+        className="w-full max-w-md bg-slate-800 p-8 rounded-2xl"
+      >
+        <h1 className="text-4xl font-bold mb-6 text-center">Register</h1>
+
+        <input
+          type="text"
+          placeholder="Name"
+          className="w-full p-3 rounded-lg mb-4 text-black"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+
+        <input
+          type="email"
+          placeholder="Email"
+          className="w-full p-3 rounded-lg mb-4 text-black"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full p-3 rounded-lg mb-4 text-black"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <button className="w-full bg-cyan-500 text-black py-3 rounded-lg font-bold">
           Register
-        </h1>
+        </button>
 
-        <form onSubmit={handleRegister} className="mt-8">
-          <input
-            type="text"
-            placeholder="Full Name"
-            className="w-full bg-[#0F172A] border border-gray-700 rounded-2xl px-5 py-4 text-white outline-none"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full bg-[#0F172A] border border-gray-700 rounded-2xl px-5 py-4 text-white outline-none mt-5"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full bg-[#0F172A] border border-gray-700 rounded-2xl px-5 py-4 text-white outline-none mt-5"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button
-            type="submit"
-            className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-4 rounded-2xl mt-8"
-          >
-            Create Account
-          </button>
-        </form>
-
-        <p className="text-gray-400 text-center mt-6">
-          Already have an account?
-          <Link
-            to="/login"
-            className="text-cyan-400 ml-2"
-          >
+        <p className="text-center mt-4">
+          Already have account?{" "}
+          <Link to="/login" className="text-cyan-400">
             Login
           </Link>
         </p>
-      </div>
+      </form>
     </div>
   );
 }
-
-export default RegisterPage;

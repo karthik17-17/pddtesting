@@ -1,131 +1,109 @@
-function ComparePage() {
-  const compareHotels = JSON.parse(
-    localStorage.getItem("compareHotels") || "[]"
-  );
+import { useEffect, useState } from "react";
 
-  const hotel1 = compareHotels[0];
-  const hotel2 = compareHotels[1];
+interface Hotel {
+  id: number;
+  name: string;
+  address: string;
+  rating: number;
+  price: string;
+  image: string;
+  matchScore: number;
+  why: string;
+}
 
-  if (!hotel1 || !hotel2) {
-    return (
-      <div className="min-h-screen bg-[#071028] text-white flex items-center justify-center">
-        <h1 className="text-5xl font-bold">
-          No hotels selected for comparison
-        </h1>
-      </div>
+export default function ComparePage() {
+  const [hotels, setHotels] = useState<Hotel[]>([]);
+
+  useEffect(() => {
+    const compareHotels = JSON.parse(
+      localStorage.getItem("compareHotels") || "[]"
     );
-  }
+
+    setHotels(compareHotels);
+  }, []);
+
+  const removeHotel = (name: string) => {
+    const updated = hotels.filter((hotel) => hotel.name !== name);
+    setHotels(updated);
+    localStorage.setItem("compareHotels", JSON.stringify(updated));
+  };
+
+  const clearAll = () => {
+    localStorage.removeItem("compareHotels");
+    setHotels([]);
+  };
 
   return (
     <div className="min-h-screen bg-[#071028] text-white p-8">
-      {/* TITLE */}
-      <h1 className="text-7xl font-bold text-center">
-        Hotel Comparison
-      </h1>
+      <h1 className="text-5xl font-bold mb-4">Compare Hotels</h1>
 
-      {/* BACK BUTTON */}
-      <div className="flex justify-center mt-6">
-        <button
-          onClick={() => window.history.back()}
-          className="bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-8 py-4 rounded-2xl"
-        >
-          ← Back to Results
-        </button>
-      </div>
+      <p className="text-slate-300 mb-8">
+        Compare price, rating, AI match score and location.
+      </p>
 
-      {/* HOTELS */}
-      <div className="grid md:grid-cols-2 gap-8 mt-14">
-        {[hotel1, hotel2].map((hotel) => (
-          <div
-            key={hotel.id}
-            className="bg-[#1E293B] border border-gray-700 rounded-3xl overflow-hidden"
+      {hotels.length === 0 ? (
+        <div className="bg-slate-800 p-8 rounded-2xl">
+          <h2 className="text-3xl font-bold mb-3">No hotels selected</h2>
+
+          <p className="text-slate-300">
+            Go to Hotels page and click Compare on hotels.
+          </p>
+        </div>
+      ) : (
+        <>
+          <button
+            onClick={clearAll}
+            className="bg-red-500 px-5 py-3 rounded-xl font-bold mb-6"
           >
-            {/* IMAGE */}
-            <img
-              src={hotel.image}
-              alt={hotel.name}
-              className="w-full h-72 object-cover"
-            />
+            Clear All
+          </button>
 
-            <div className="p-8">
-              {/* NAME */}
-              <h2 className="text-5xl font-bold">
-                {hotel.name}
-              </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {hotels.map((hotel) => (
+              <div
+                key={hotel.name}
+                className="bg-slate-800 rounded-2xl overflow-hidden"
+              >
+                <img
+                  src={hotel.image}
+                  alt={hotel.name}
+                  className="w-full h-52 object-cover"
+                />
 
-              {/* LOCATION */}
-              <p className="text-gray-400 mt-3 text-2xl">
-                📍 {hotel.location}
-              </p>
+                <div className="p-5">
+                  <h2 className="text-2xl font-bold">{hotel.name}</h2>
 
-              {/* DETAILS */}
-              <div className="mt-8 space-y-5">
-                <div className="text-2xl">
-                  <span className="text-cyan-400 font-bold">
-                    Price:
-                  </span>{" "}
-                  ₹{hotel.price}
-                </div>
+                  <p className="text-slate-400 mt-2">{hotel.address}</p>
 
-                <div className="text-2xl">
-                  <span className="text-cyan-400 font-bold">
-                    Rating:
-                  </span>{" "}
-                  ⭐ {hotel.rating}
-                </div>
+                  <p className="mt-3">
+                    <span className="text-cyan-400 font-bold">Price:</span>{" "}
+                    {hotel.price}
+                  </p>
 
-                {/* FACILITIES */}
-                <div>
-                  <span className="text-cyan-400 font-bold text-2xl">
-                    Facilities:
-                  </span>
+                  <p className="mt-2">
+                    <span className="text-cyan-400 font-bold">Rating:</span> ⭐{" "}
+                    {hotel.rating}
+                  </p>
 
-                  <div className="flex flex-wrap gap-3 mt-4">
-                    {hotel.facilities?.map(
-                      (facility: string) => (
-                        <div
-                          key={facility}
-                          className="bg-[#0F172A] border border-gray-700 px-4 py-3 rounded-2xl"
-                        >
-                          {facility}
-                        </div>
-                      )
-                    )}
-                  </div>
+                  <p className="mt-2">
+                    <span className="text-cyan-400 font-bold">AI Match:</span>{" "}
+                    {hotel.matchScore}%
+                  </p>
+
+                  <p className="text-slate-300 mt-3">{hotel.why}</p>
+
+                  <button
+                    onClick={() => removeHotel(hotel.name)}
+                    className="mt-5 bg-red-500 px-4 py-2 rounded-lg font-bold"
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
-
-              {/* BOOK BUTTON */}
-              <button
-                onClick={() =>
-                  window.open(
-                    `https://www.google.com/search?q=${hotel.name} ${hotel.location} booking`,
-                    "_blank"
-                  )
-                }
-                className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-4 rounded-2xl mt-8"
-              >
-                Book Now
-              </button>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      {/* AI RECOMMENDATION */}
-      <div className="bg-cyan-500 text-black rounded-3xl p-10 mt-12 text-center">
-        <h2 className="text-6xl font-bold">
-          AI Recommendation
-        </h2>
-
-        <p className="text-3xl mt-6 font-semibold">
-          {hotel2.name} is recommended because of
-          higher ratings, luxury facilities, and
-          better overall experience.
-        </p>
-      </div>
+        </>
+      )}
     </div>
   );
 }
-
-export default ComparePage;

@@ -1,61 +1,96 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
-  const user = JSON.parse(localStorage.getItem("neurostayUser") || "{}");
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
-
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+  const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     navigate("/login");
   };
 
+  const navItems = [
+    { path: "/", label: "Home", icon: "🏠" },
+    { path: "/results?query=Chennai", label: "Hotels", icon: "🏨" },
+    { path: "/map", label: "Map", icon: "🗺️" },
+    { path: "/compare", label: "Compare", icon: "📊" },
+    { path: "/saved", label: "Saved", icon: "💾" },
+    { path: "/profile", label: "Profile", icon: "👤" },
+  ];
+
   return (
-    <nav className="bg-slate-950 border-b border-slate-800 px-8 py-5">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="text-5xl font-bold text-white">
-          NeuroStay AI
+    <>
+      <aside className="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-[#070b1d] border-r border-white/10 p-6 flex-col z-50">
+        <Link to="/" className="text-3xl font-bold mb-8">
+          NeuroStay
         </Link>
 
-        <div className="flex items-center gap-6 text-slate-300 font-medium">
-          <Link to="/">Home</Link>
-          <Link to="/results">Results</Link>
-          <Link to="/saved">Saved</Link>
-          <Link to="/bookings">Bookings</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/map">Map</Link>
-          <Link to="/compare">Compare</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/about">About</Link>
-          <Link to="/summary">Summary</Link>
+        <div className="bg-white/10 rounded-2xl p-4 mb-8">
+          <p className="text-sm text-gray-400">Welcome</p>
+          <p className="font-semibold">mounika</p>
         </div>
 
-        {isLoggedIn ? (
-          <div className="flex items-center gap-4">
-            <p className="text-white font-semibold">
-              {user.name || "User"}
-            </p>
-
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-400 px-5 py-2 rounded-xl font-semibold text-white"
+        <nav className="flex flex-col gap-3">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `px-4 py-3 rounded-xl font-medium ${
+                  isActive ? "bg-white/10 text-white" : "text-gray-300"
+                }`
+              }
             >
-              Logout
+              <span className="mr-3">{item.icon}</span>
+              {item.label}
+            </NavLink>
+          ))}
+
+          {token && (
+            <button
+              onClick={logout}
+              className="text-left px-4 py-3 rounded-xl text-red-400"
+            >
+              🚪 Logout
             </button>
-          </div>
-        ) : (
-          <Link
-            to="/login"
-            className="bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-6 py-3 rounded-xl"
+          )}
+        </nav>
+      </aside>
+
+      <header className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#070b1d] border-b border-white/10 z-50 flex items-center justify-between px-4">
+        <Link to="/" className="text-xl font-bold">
+          NeuroStay
+        </Link>
+
+        {token && (
+          <button
+            onClick={logout}
+            className="text-sm bg-red-500/20 text-red-300 px-3 py-2 rounded-lg"
           >
-            Login
-          </Link>
+            Logout
+          </button>
         )}
-      </div>
-    </nav>
+      </header>
+
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#070b1d] border-t border-white/10 z-50 grid grid-cols-6">
+        {navItems.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) =>
+              `flex flex-col items-center justify-center text-xs ${
+                isActive ? "text-cyan-400" : "text-gray-400"
+              }`
+            }
+          >
+            <span className="text-lg">{item.icon}</span>
+            {item.label}
+          </NavLink>
+        ))}
+      </nav>
+    </>
   );
-}
+};
 
 export default Navbar;

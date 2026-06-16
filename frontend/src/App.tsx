@@ -1,88 +1,64 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 import HomePage from "./pages/HomePage";
 import LoadingPage from "./pages/LoadingPage";
 import ResultsPage from "./pages/ResultsPage";
 import HotelDetailPage from "./pages/HotelDetailPage";
+import BookingPage from "./pages/BookingPage";
+import MyBookingsPage from "./pages/MyBookingsPage";
 import SavedPage from "./pages/SavedPage";
 import ProfilePage from "./pages/ProfilePage";
+import ComparePage from "./pages/ComparePage";
+import MapPage from "./pages/MapPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import AdminDashboardPage from "./pages/AdminDashboardPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import MapPage from "./pages/MapPage";
-import ComparePage from "./pages/ComparePage";
-import ContactPage from "./pages/ContactPage";
-import AboutPage from "./pages/AboutPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import ProjectSummaryPage from "./pages/ProjectSummaryPage";
-import BookingPage from "./pages/BookingPage";
 
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const token = localStorage.getItem("token");
+
+  const isAuthRoute = ["/login", "/register", "/forgot-password"].includes(
+    location.pathname.toLowerCase()
+  );
+
+  const showNav = token && !isAuthRoute;
+
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-[#071028] text-white flex flex-col">
-        {/* NAVBAR */}
-        <Navbar />
+    <div className="min-h-screen bg-[#071028] text-white flex w-full">
+      {showNav && <Navbar />}
 
-        {/* PAGES */}
-        <div className="flex-1">
+      <div className={`flex-1 flex flex-col ${showNav ? "md:ml-64 pt-16 pb-16 md:pt-0 md:pb-0" : ""} w-full`}>
+        <main className="flex-1 w-full">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            {/* Public Routes - protected */}
+            <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+            <Route path="/loading" element={<ProtectedRoute><LoadingPage /></ProtectedRoute>} />
+            <Route path="/results" element={<ProtectedRoute><ResultsPage /></ProtectedRoute>} />
+            <Route path="/hotel/:id" element={<ProtectedRoute><HotelDetailPage /></ProtectedRoute>} />
+            <Route path="/map" element={<ProtectedRoute><MapPage /></ProtectedRoute>} />
+            <Route path="/compare" element={<ProtectedRoute><ComparePage /></ProtectedRoute>} />
+            <Route path="/about" element={<ProtectedRoute><AboutPage /></ProtectedRoute>} />
+            <Route path="/contact" element={<ProtectedRoute><ContactPage /></ProtectedRoute>} />
 
+            {/* Auth */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             <Route
-              path="/loading"
-              element={<LoadingPage />}
+              path="/forgot-password"
+              element={<ForgotPasswordPage />}
             />
 
-            <Route
-              path="/results"
-              element={<ResultsPage />}
-            />
-
-            <Route
-              path="/hotel/:id"
-              element={<HotelDetailPage />}
-            />
-
-            <Route
-              path="/map"
-              element={<MapPage />}
-            />
-
-            <Route
-              path="/compare"
-              element={<ComparePage />}
-            />
-
-            <Route
-              path="/contact"
-              element={<ContactPage />}
-            />
-
-            <Route
-              path="/about"
-              element={<AboutPage />}
-            />
-
-            <Route
-              path="/summary"
-              element={<ProjectSummaryPage />}
-            />
-
-            <Route
-              path="/login"
-              element={<LoginPage />}
-            />
-
-            <Route
-              path="/register"
-              element={<RegisterPage />}
-            />
-
-            {/* BOOKING ROUTES */}
+            {/* Booking */}
             <Route
               path="/booking/:id"
               element={
@@ -96,41 +72,42 @@ function App() {
               path="/bookings"
               element={
                 <ProtectedRoute>
-                  <BookingPage />
+                  <MyBookingsPage />
                 </ProtectedRoute>
               }
             />
 
-            {/* PROTECTED ROUTES */}
+            {/* Saved */}
+            <Route path="/saved" element={<ProtectedRoute><SavedPage /></ProtectedRoute>} />
+
+            {/* Profile */}
+            <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+
+            {/* Admin */}
             <Route
-              path="/saved"
+              path="/admin"
               element={
                 <ProtectedRoute>
-                  <SavedPage />
+                  <AdminDashboardPage />
                 </ProtectedRoute>
               }
             />
 
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <ProfilePage />
-                </ProtectedRoute>
-              }
-            />
-
-            {/* 404 PAGE */}
-            <Route
-              path="*"
-              element={<NotFoundPage />}
-            />
+            {/* 404 */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </div>
+        </main>
 
-        {/* FOOTER */}
-        <Footer />
+        {showNav && <Footer />}
       </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
