@@ -3,10 +3,7 @@ import MapView from "../components/map/MapView";
 
 export default function MapPage() {
   const getDirectionsUrl = (hotel: any) => {
-    if (hotel.latitude && hotel.longitude) {
-      return `https://www.google.com/maps/dir/?api=1&destination=${hotel.latitude},${hotel.longitude}`;
-    }
-    return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(hotel.name + ' ' + (hotel.address || hotel.city || ''))}`;
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hotel.name + ' ' + (hotel.address || ''))}`;
   };
 
   const savedHotels = (() => {

@@ -18,8 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
-
-const API_URL = "http://10.34.36.17:5000";
+import { API_URL } from '../constants/Config';
 
 type Hotel = {
   id: number;

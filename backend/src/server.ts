@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import path from "path";
 
 import otpRoutes from "./routes/otp.routes";
 import authRoutes from "./routes/auth.routes";
@@ -13,6 +14,8 @@ import savedRoutes from "./routes/saved.routes";
 dotenv.config();
 
 const app = express();
+
+app.use("/download", express.static(path.join(__dirname, "../../download")));
 
 app.use(cors({
   origin: "*",

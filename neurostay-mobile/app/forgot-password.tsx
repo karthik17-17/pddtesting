@@ -13,8 +13,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import axios from 'axios';
-
-const API_URL = "http://10.34.36.17:5000";
+import { API_URL } from '../constants/Config';
 
 export default function ForgotPasswordPage() {
   const router = useRouter();

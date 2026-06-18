@@ -5,6 +5,7 @@ export async function apiRequest(path: string, options: RequestInit = {}) {
     ...options,
     headers: {
       "Content-Type": "application/json",
+      "Bypass-Tunnel-Reminder": "true",
       ...(options.headers || {}),
     },
   });

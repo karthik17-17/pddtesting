@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-const API_URL = "http://10.34.36.17:5000";
+import API_URL from "../services/api";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");

@@ -6,25 +6,75 @@ import {
   SafeAreaView,
   StatusBar,
   Platform,
+  TouchableOpacity,
+  Linking,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useLocalSearchParams } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
 import BottomNav from '../components/BottomNav';
 
 export default function MapPage() {
-  const params = useLocalSearchParams<{ url?: string; name?: string; address?: string }>();
+  const params = useLocalSearchParams<{ url?: string; name?: string; address?: string; lat?: string; lng?: string }>();
   const [mapQuery, setMapQuery] = useState('Hotels in Chennai');
   const [hotelName, setHotelName] = useState('Interactive Map');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const initMapUrl = async () => {
+      setLoading(true);
       if (params.name) {
-        // If we came from a specific hotel, use its name and address for the pin
-        const query = `${params.name} ${params.address || ''}`;
-        setMapQuery(query);
         setHotelName(params.name);
+
+        // 1. Prefer lat/lng from parameters
+        const latVal = params.lat;
+        const lngVal = params.lng;
+        
+        if (latVal && lngVal && latVal !== "null" && lngVal !== "null" && latVal !== "" && lngVal !== "") {
+          const latNum = parseFloat(latVal);
+          const lngNum = parseFloat(lngVal);
+          if (!isNaN(latNum) && !isNaN(lngNum)) {
+            setMapQuery(`${latNum},${lngNum}`);
+            setLoading(false);
+            return;
+          }
+        }
+
+        // 2. Geocode using Nominatim if coordinates are missing
+        const cleanAddress = (params.address || "").replace("Address not available", "").trim();
+        const query1 = `${params.name}, ${cleanAddress}, India`.replace(/,+/g, ',').replace(/\s+/g, ' ').trim();
+
+        try {
+          const res1 = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query1)}&limit=1`);
+          const data1 = await res1.json();
+          if (data1 && data1.length > 0) {
+            setMapQuery(`${parseFloat(data1[0].lat)},${parseFloat(data1[0].lon)}`);
+            setLoading(false);
+            return;
+          }
+        } catch (err) {
+          console.error("Mobile geocoding query1 error:", err);
+        }
+
+        // Fallback 1: address + ", India"
+        if (cleanAddress) {
+          const query2 = `${cleanAddress}, India`.replace(/,+/g, ',').replace(/\s+/g, ' ').trim();
+          try {
+            const res2 = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query2)}&limit=1`);
+            const data2 = await res2.json();
+            if (data2 && data2.length > 0) {
+              setMapQuery(`${parseFloat(data2[0].lat)},${parseFloat(data2[0].lon)}`);
+              setLoading(false);
+              return;
+            }
+          } catch (err) {
+            console.error("Mobile geocoding query2 error:", err);
+          }
+        }
+
+        // Fallback 2: Default to Mumbai coords
+        setMapQuery("19.0760,72.8777");
       } else {
         // Fallback: try to see if there is a recent search
         try {
@@ -32,7 +82,7 @@ export default function MapPage() {
           if (searchesStr) {
             const searches: string[] = JSON.parse(searchesStr);
             if (searches.length > 0) {
-              setMapQuery(searches[0]);
+              setMapQuery(`Hotels in ${searches[0]}`);
               setHotelName(`Maps: ${searches[0]}`);
             }
           }
@@ -44,7 +94,15 @@ export default function MapPage() {
     };
 
     initMapUrl();
-  }, [params.name, params.address]);
+  }, [params.name, params.address, params.lat, params.lng]);
+
+  const handleDirections = () => {
+    if (!params.name) return;
+    const cleanAddress = (params.address || "").replace("Address not available", "").trim();
+    const query = `${params.name} ${cleanAddress}`;
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+    Linking.openURL(url).catch(err => console.error("Failed to open URL:", err));
+  };
 
   // Use the exact keyless embed format we use on the web app!
   const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
@@ -86,6 +144,16 @@ export default function MapPage() {
         )}
       </View>
 
+      {/* Directions button */}
+      {params.name && (
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.directionsButton} onPress={handleDirections}>
+            <Ionicons name="navigate" size={20} color="#071028" style={styles.buttonIcon} />
+            <Text style={styles.directionsButtonText}>Get Directions</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
       <BottomNav activeTab="Map" />
     </SafeAreaView>
   );
@@ -119,5 +187,27 @@ const styles = StyleSheet.create({
   },
   webview: {
     flex: 1,
+  },
+  buttonContainer: {
+    padding: 16,
+    backgroundColor: '#071028',
+    borderTopWidth: 1,
+    borderTopColor: '#1e293b',
+  },
+  directionsButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#22d3ee',
+    paddingVertical: 14,
+    borderRadius: 12,
+  },
+  buttonIcon: {
+    marginRight: 8,
+  },
+  directionsButtonText: {
+    color: '#071028',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

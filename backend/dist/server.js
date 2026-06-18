@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const path_1 = __importDefault(require("path"));
 const otp_routes_1 = __importDefault(require("./routes/otp.routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const admin_routes_1 = __importDefault(require("./routes/admin.routes"));
@@ -15,6 +16,7 @@ const serpapi_routes_1 = __importDefault(require("./routes/serpapi.routes"));
 const saved_routes_1 = __importDefault(require("./routes/saved.routes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
+app.use("/download", express_1.default.static(path_1.default.join(__dirname, "../../download")));
 app.use((0, cors_1.default)({
     origin: "*",
     credentials: true

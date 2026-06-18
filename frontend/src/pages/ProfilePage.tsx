@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
-
-const API_URL = "http://10.34.36.17:5000";
+import API_URL from "../services/api";
 
 export default function ProfilePage() {
   const { user, logoutUser, loginUser } = useAuth();

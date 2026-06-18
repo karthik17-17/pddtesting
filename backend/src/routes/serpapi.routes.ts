@@ -12,44 +12,25 @@ router.get("/hotels", (req, res) => {
 
 const normalizeQuery = (query: string): string => {
   let q = query ? query.trim() : "";
-  q = q.replace(/tirupathi/gi, "Tirupati").replace(/srikalahasthi/gi, "Srikalahasti");
   if (!q) return "hotels in Chennai India";
+
+  // Spell fixes
+  q = q.replace(/tirupathi/gi, "Tirupati").replace(/srikalahasthi/gi, "Srikalahasti");
 
   const lower = q.toLowerCase();
 
-  const isCheap = lower.includes("cheap") || lower.includes("budget") || lower.includes("low cost");
-  const isLuxury = lower.includes("luxury") || lower.includes("high cost") || lower.includes("premium");
-
   // If the query does not contain "hotel" or "hotels"
   if (!lower.includes("hotel")) {
-    let prefix = "hotels in";
-    if (isCheap) {
-      prefix = "budget hotels in";
-    } else if (isLuxury) {
-      prefix = "luxury hotels in";
-    }
-
-    // Clean modifiers from the city name
-    let city = q
-      .replace(/\b(cheap|budget|low\s+cost|luxury|high\s+cost|premium)\b/gi, "")
-      .replace(/\s+/g, " ")
-      .trim();
-
-    city = city.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-    q = `${prefix} ${city}`;
+    const capitalized = q
+      .split(/\s+/)
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join(" ");
+    q = `hotels in ${capitalized} India`;
   } else {
-    // The query already contains "hotel" or "hotels"
-    if (isCheap && !lower.includes("budget hotels")) {
-      q = q.replace(/\b(cheap|budget|low\s+cost)\s+hotels?\b/gi, "budget hotels");
-    } else if (isLuxury && !lower.includes("luxury hotels")) {
-      q = q.replace(/\b(luxury|high\s+cost|premium)\s+hotels?\b/gi, "luxury hotels");
+    // Already contains "hotel" or "hotels"
+    if (!lower.includes("india")) {
+      q = `${q} India`;
     }
-  }
-
-  // Ensure "India" is appended
-  if (!q.toLowerCase().includes("india")) {
-    q = q.replace(/,/g, "");
-    q = `${q} India`;
   }
 
   return q.replace(/\s+/g, " ").trim();
@@ -63,78 +44,95 @@ const getCityName = (query: string): string => {
     .replace(/,/g, "")
     .trim();
   
-  // Strip out extra conditions like "with pool", "under 1500" so OSM doesn't fail
   city = city.split(/\s+(with|under|for)\s+/i)[0].trim();
-
   city = city.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
   return city || "Chennai";
 };
 
+const mapHotel = (hotel: any, index: number, city: string) => {
+  const name = hotel.name || hotel.title || "Hotel";
+  const address = hotel.address || hotel.display_name || "Address not available";
+  const rating = parseFloat(String(hotel.overall_rating || hotel.rating || 4.2));
+  
+  // Format price
+  let rawPrice = hotel.rate_per_night?.lowest || hotel.total_rate?.lowest || hotel.price || "Price not available";
+  let price = "Price not available";
+  if (rawPrice && rawPrice !== "Price not available") {
+    let str = String(rawPrice).trim();
+    if (!str.includes("₹") && !str.includes("$") && !str.includes("Rs")) {
+      const digits = str.replace(/[^\d]/g, "");
+      if (digits) {
+        price = `₹${digits}`;
+      } else {
+        price = str;
+      }
+    } else {
+      price = str;
+    }
+  }
+
+  // Handle image
+  let image = "";
+  if (hotel.images && Array.isArray(hotel.images) && hotel.images.length > 0) {
+    image = hotel.images[0]?.thumbnail || hotel.images[0]?.original_image || "";
+  } else {
+    image = hotel.image || hotel.thumbnail || "";
+  }
+
+  // Handle coordinates
+  let lat: number | null = null;
+  let lng: number | null = null;
+  if (hotel.gps_coordinates) {
+    lat = parseFloat(hotel.gps_coordinates.latitude);
+    lng = parseFloat(hotel.gps_coordinates.longitude);
+  } else if (hotel.lat !== undefined && hotel.lon !== undefined) {
+    lat = parseFloat(hotel.lat);
+    lng = parseFloat(hotel.lon);
+  } else if (hotel.latitude !== undefined && hotel.longitude !== undefined) {
+    lat = parseFloat(hotel.latitude);
+    lng = parseFloat(hotel.longitude);
+  }
+
+  const matchScore = hotel.matchScore || Math.max(70, 98 - index * 4);
+  const why = hotel.why || `Good match in ${city} because of user preferences, ratings, and location convenience.`;
+  
+  const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + ' ' + address)}`;
+
+  return {
+    id: index + 1,
+    name,
+    address,
+    rating,
+    price,
+    image,
+    matchScore,
+    why,
+    mapLink,
+    lat,
+    lng
+  };
+};
 
 router.post("/hotels", async (req, res) => {
   const { query } = req.body;
+  console.log("Hotel search query:", query);
+
   const normalizedQuery = normalizeQuery(query);
+  const city = getCityName(query);
 
-  let hotels: any[] = [];
+  let rawHotels: any[] = [];
 
-  // 1. Try google_hotels
-  try {
-    const response = await axios.get("https://serpapi.com/search.json", {
-      params: {
-        engine: "google_hotels",
-        q: normalizedQuery,
-        check_in_date: "2026-06-20",
-        check_out_date: "2026-06-21",
-        adults: 1,
-        currency: "INR",
-        gl: "in",
-        hl: "en",
-        api_key: process.env.SERPAPI_KEY,
-      },
-      timeout: 15000,
-    });
-
-    const properties = response.data.properties || [];
-
-    if (properties.length > 0) {
-      hotels = properties.map((hotel: any, index: number) => ({
-        id: index + 1,
-        name: hotel.name || "Hotel",
-        city: getCityName(query),
-        address: hotel.address || "Address not available",
-        rating: hotel.overall_rating || hotel.rating || 4,
-        price:
-          hotel.rate_per_night?.lowest ||
-          hotel.total_rate?.lowest ||
-          "Price not available",
-        image:
-          (hotel.images && hotel.images[0]?.thumbnail) ||
-          (hotel.images && hotel.images[0]?.original_image) ||
-          hotel.image ||
-          hotel.thumbnail ||
-          "",
-        latitude: hotel.gps_coordinates?.latitude || null,
-        longitude: hotel.gps_coordinates?.longitude || null,
-        source: "SerpApi Google Hotels",
-        website: hotel.website || "",
-        matchScore: Math.max(70, 98 - index * 4),
-        why: "Recommended based on location, price and rating.",
-        mapLink: hotel.link || "",
-      }));
-    }
-  } catch (error: any) {
-    console.log("google_hotels search failed, trying fallback:", error.message);
-  }
-
-  // 2. Try organic Google search fallback if google_hotels returned nothing
-  if (hotels.length === 0) {
+  // 1. Try google_hotels if SERPAPI_KEY exists
+  if (process.env.SERPAPI_KEY) {
     try {
-      console.log("Trying organic google search fallback for:", normalizedQuery);
       const response = await axios.get("https://serpapi.com/search.json", {
         params: {
-          engine: "google",
+          engine: "google_hotels",
           q: normalizedQuery,
-          location: "India",
+          check_in_date: "2026-06-20",
+          check_out_date: "2026-06-21",
+          adults: 1,
+          currency: "INR",
           gl: "in",
           hl: "en",
           api_key: process.env.SERPAPI_KEY,
@@ -142,136 +140,73 @@ router.post("/hotels", async (req, res) => {
         timeout: 15000,
       });
 
-      const organicResults = response.data.organic_results || [];
-      const placesResults = response.data.local_results || response.data.places_results || [];
-
-      if (placesResults.length > 0) {
-        hotels = placesResults.map((result: any, index: number) => {
-          return {
-            id: index + 1,
-            name: result.title || "Hotel",
-            city: getCityName(query),
-            address: result.address || "Address not available",
-            rating: result.rating || 4.0,
-            price: result.price || "Price not available",
-            image: result.thumbnail || result.image || "",
-            latitude: result.gps_coordinates?.latitude || null,
-            longitude: result.gps_coordinates?.longitude || null,
-            source: "SerpApi Google Places",
-            website: result.website || result.links?.website || "",
-            matchScore: Math.max(70, 96 - index * 3),
-            why: "Recommended based on local search relevance and rating.",
-            mapLink: result.links?.directions || "",
-          };
-        });
+      const properties = response.data.properties || [];
+      if (properties.length > 0) {
+        rawHotels = properties;
       }
     } catch (error: any) {
-      console.log("Organic google search fallback failed:", error.message);
+      console.log("SerpAPI error:", error.message);
+    }
+
+    // 2. Try organic Google search fallback if google_hotels returned nothing
+    if (rawHotels.length === 0) {
+      try {
+        const response = await axios.get("https://serpapi.com/search.json", {
+          params: {
+            engine: "google",
+            q: normalizedQuery,
+            location: "India",
+            gl: "in",
+            hl: "en",
+            api_key: process.env.SERPAPI_KEY,
+          },
+          timeout: 15000,
+        });
+
+        const placesResults = response.data.local_results || response.data.places_results || [];
+        if (placesResults.length > 0) {
+          rawHotels = placesResults;
+        }
+      } catch (error: any) {
+        console.log("SerpAPI error:", error.message);
+      }
     }
   }
 
-  // 3. Try OpenStreetMap Nominatim API as the absolute final fallback
-  if (hotels.length === 0) {
+  // 3. Try OpenStreetMap Nominatim API as fallback
+  if (rawHotels.length === 0) {
     try {
-      console.log("Both SerpApi searches yielded no results, using OpenStreetMap fallback.");
-      const city = getCityName(query);
       const nominatimQuery = encodeURIComponent(`hotels in ${city}`);
-      const osmResponse = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${nominatimQuery}&limit=20&addressdetails=1`);
+      const osmResponse = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${nominatimQuery}&limit=30&addressdetails=1`);
       
       if (osmResponse.data && osmResponse.data.length > 0) {
-        hotels = osmResponse.data.map((result: any, index: number) => {
-          return {
-            id: index + 1,
-            name: result.name || result.display_name.split(',')[0] || "Hotel",
-            city: city,
-            address: result.display_name,
-            rating: 4.0, // OSM doesn't have ratings
-            price: "Price not available",
-            image: "", // OSM doesn't have images
-            latitude: parseFloat(result.lat),
-            longitude: parseFloat(result.lon),
-            source: "OpenStreetMap",
-            website: "",
-            matchScore: Math.max(60, 90 - index * 2),
-            why: "Located securely via OpenStreetMap data.",
-            mapLink: `https://www.openstreetmap.org/?mlat=${result.lat}&mlon=${result.lon}#map=18/${result.lat}/${result.lon}`
-          };
-        });
+        rawHotels = osmResponse.data;
       }
     } catch (error: any) {
       console.log("OpenStreetMap fallback failed:", error.message);
     }
   }
 
-  // Filter out any results that managed to sneak through without a name or containing forbidden keywords
+  // Filter out forbidden keywords
   const forbiddenKeywords = [
     "closest hotels", "budget hotels near", "hotels near", "top hotels", "best hotels",
     "goibibo", "makemytrip", "tripadvisor", "list", "search results", "agoda", "booking.com"
   ];
-  
-  hotels = hotels.filter(h => {
-    if (!h.name || h.name === "Hotel") return false;
-    const nameLower = h.name.toLowerCase();
+
+  let filtered = rawHotels.filter(h => {
+    const name = h.name || h.title || (h.display_name ? h.display_name.split(',')[0] : "");
+    if (!name || name.toLowerCase() === "hotel") return false;
+    const nameLower = name.toLowerCase();
     for (const keyword of forbiddenKeywords) {
       if (nameLower.includes(keyword)) return false;
     }
     return true;
   });
 
-  // Re-index all IDs sequentially starting from 1
-  hotels = hotels.map((hotel, index) => ({
-    ...hotel,
-    id: index + 1,
-  }));
+  // Map to exact required format
+  const hotels = filtered.map((h, index) => mapHotel(h, index, city));
 
-  // ABSOLUTE FINAL FALLBACK: Always ensure 20 hotels are returned
-  if (hotels.length < 20) {
-    const city = getCityName(query);
-    console.log(`External API returned ${hotels.length} hotels. Padding with realistic fallback hotels for: ${city} to reach 20.`);
-    const mockNames = [
-      `${city} Palace Hotel`,
-      `Taj Residency ${city}`,
-      `Grand ${city} Suites`,
-      `Royal Inn ${city}`,
-      `Metro Park Hotel ${city}`,
-      `City View Residency ${city}`,
-      `Premium Stay ${city}`,
-      `Comfort Grand ${city}`,
-      `Elite Inn ${city}`,
-      `Silver Star Hotel ${city}`,
-      `Golden Gateway ${city}`,
-      `Blue Diamond ${city}`,
-      `Heritage Stay ${city}`,
-      `Urban Retreat ${city}`,
-      `Sunset View ${city}`,
-      `Oasis Hotel ${city}`,
-      `Sapphire Suites ${city}`,
-      `Pearl Residency ${city}`,
-      `Emerald Inn ${city}`,
-      `Crystal Palace ${city}`
-    ];
-    
-    const needed = 20 - hotels.length;
-    
-    const additionalHotels = mockNames.slice(0, needed).map((name, index) => ({
-      id: hotels.length + index + 1,
-      name: name,
-      city: city,
-      address: `1${index} Main Road, City Center, ${city}`,
-      rating: parseFloat((4.0 + (index % 10) * 0.1).toFixed(1)),
-      price: `₹${1500 + index * 500}`,
-      image: "",
-      latitude: null,
-      longitude: null,
-      source: "NeuroStay Local Directory",
-      website: "",
-      matchScore: Math.max(70, 98 - index * 2),
-      why: "Selected from local directory for guaranteed availability.",
-      mapLink: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + ', ' + city)}`
-    }));
-    
-    hotels = [...hotels, ...additionalHotels];
-  }
+  console.log("Hotels found:", hotels.length);
 
   res.json({
     success: true,

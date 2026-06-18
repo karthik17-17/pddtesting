@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
-
-const API_URL = "http://10.34.36.17:5000";
+import API_URL from "../services/api";
 
 type Hotel = {
   id: number;
   name: string;
   address: string;
-  city: string;
+  city?: string;
   rating: number;
   price: string;
   image: string;
-  latitude: number | null;
-  longitude: number | null;
-  source: string;
-  website: string;
+  lat: number | null;
+  lng: number | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  source?: string;
+  website?: string;
   matchScore: number;
   why: string;
   mapLink: string;
 };
-
 
 export default function ResultsPage() {
   const [searchParams] = useSearchParams();
@@ -29,18 +29,22 @@ export default function ResultsPage() {
 
   const urlQuery = searchParams.get("query");
   const storedQuery = localStorage.getItem("lastSearchQuery") || "";
-  const rawQuery = urlQuery || storedQuery || "Mumbai"; // Default to Mumbai instead of Chennai if both are empty
+  const rawQuery = urlQuery || storedQuery || "Mumbai";
 
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [retryTrigger, setRetryTrigger] = useState(0);
 
   useEffect(() => {
     const fetchHotels = async () => {
       setLoading(true);
       setHasError(false);
       try {
-        const res = await fetch(`${API_URL}/api/serpapi/hotels`, {
+        const url = `${API_URL}/api/serpapi/hotels`;
+        console.log("Calling hotel API:", url);
+        
+        const res = await fetch(url, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -58,6 +62,7 @@ export default function ResultsPage() {
         const data = await res.json();
 
         if (data.success === true && Array.isArray(data.hotels)) {
+          console.log("Hotels received:", data.hotels.length);
           setHotels(data.hotels);
           localStorage.setItem("lastSearchResults", JSON.stringify(data.hotels));
           if (urlQuery) {
@@ -77,7 +82,7 @@ export default function ResultsPage() {
     };
 
     fetchHotels();
-  }, [rawQuery]);
+  }, [rawQuery, retryTrigger]);
 
   const openDetails = (hotel: Hotel) => {
     localStorage.setItem("selectedHotel", JSON.stringify(hotel));
@@ -149,7 +154,18 @@ export default function ResultsPage() {
         Search: <span className="text-cyan-400">{rawQuery}</span>
       </p>
 
-      {hasError || hotels.length === 0 ? (
+      {hasError ? (
+        <div className="flex flex-col items-center justify-center py-20 text-center bg-slate-800/50 rounded-3xl border border-slate-700">
+          <span className="text-6xl mb-4">⚠️</span>
+          <h2 className="text-2xl font-bold text-slate-300">Unable to fetch hotels.</h2>
+          <button
+            onClick={() => setRetryTrigger(prev => prev + 1)}
+            className="mt-6 bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-2.5 rounded-xl font-bold transition-all duration-200"
+          >
+            Retry
+          </button>
+        </div>
+      ) : hotels.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center bg-slate-800/50 rounded-3xl border border-slate-700">
           <span className="text-6xl mb-4">🏨</span>
           <h2 className="text-2xl font-bold text-slate-300">No hotels found for this search.</h2>
@@ -218,7 +234,7 @@ export default function ResultsPage() {
                       href={hotel.mapLink}
                       target="_blank"
                       rel="noreferrer"
-                      className="border border-cyan-500 px-4 py-2 rounded-lg font-bold"
+                      className="border border-cyan-500 px-4 py-2 rounded-lg font-bold text-center block"
                     >
                       Map
                     </a>

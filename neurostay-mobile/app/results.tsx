@@ -19,8 +19,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
-
-const API_URL = "http://10.34.36.17:5000";
+import { API_URL } from '../constants/Config';
 
 type Hotel = {
   id: number;
@@ -32,23 +31,50 @@ type Hotel = {
   matchScore: number;
   why: string;
   mapLink: string;
+  lat?: number | null;
+  lng?: number | null;
 };
 
 export default function ResultsPage() {
   const router = useRouter();
   const { query: rawQuery } = useLocalSearchParams<{ query?: string }>();
-  const query = rawQuery || "Chennai";
-
+  const [query, setQuery] = useState<string>("");
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
 
+  // Initialize query from rawQuery or AsyncStorage
   useEffect(() => {
+    const initQuery = async () => {
+      if (rawQuery) {
+        setQuery(rawQuery);
+        try {
+          await AsyncStorage.setItem('last_search_query', rawQuery);
+        } catch (e) {
+          console.error('Failed to save query:', e);
+        }
+      } else {
+        try {
+          const savedQuery = await AsyncStorage.getItem('last_search_query');
+          setQuery(savedQuery || "Chennai");
+        } catch (e) {
+          setQuery("Chennai");
+        }
+      }
+    };
+    initQuery();
+  }, [rawQuery]);
+
+  // Fetch hotels when query changes
+  useEffect(() => {
+    if (!query) return; // Wait until query is initialized
+    
     const fetchHotels = async () => {
       setLoading(true);
       try {
-        console.log("Calling:", `${API_URL}/api/serpapi/hotels`);
-        const response = await axios.post(`${API_URL}/api/serpapi/hotels`, { query }, {
+        const url = `${API_URL}/api/serpapi/hotels`;
+        console.log("Calling hotel API:", url);
+        const response = await axios.post(url, { query }, {
           headers: {
             "Content-Type": "application/json",
             "Bypass-Tunnel-Reminder": "true"
@@ -58,12 +84,15 @@ export default function ResultsPage() {
         const data = response.data;
 
         if (data.success === true && Array.isArray(data.hotels)) {
+          console.log("Hotels received:", data.hotels.length);
           setHotels(data.hotels);
         } else {
+          console.log("Hotels received:", 0);
           setHotels([]);
         }
       } catch (error) {
         console.error("ResultsPage fetch error:", error);
+        console.log("Hotels received:", 0);
         setHotels([]);
       } finally {
         setLoading(false);
@@ -119,13 +148,15 @@ export default function ResultsPage() {
   };
 
   const handleMap = (hotel: Hotel) => {
-    if (!hotel.mapLink) {
-      Alert.alert('Error', 'No map link available');
-      return;
-    }
     router.push({
       pathname: '/map',
-      params: { url: hotel.mapLink, name: hotel.name, address: hotel.address }
+      params: { 
+        url: hotel.mapLink || '', 
+        name: hotel.name, 
+        address: hotel.address,
+        lat: hotel.lat !== undefined && hotel.lat !== null ? hotel.lat.toString() : '',
+        lng: hotel.lng !== undefined && hotel.lng !== null ? hotel.lng.toString() : ''
+      }
     });
   };
 

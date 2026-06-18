@@ -18,8 +18,7 @@ import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
-
-const API_URL = "http://10.34.36.17:5000";
+import { API_URL } from '../constants/Config';
 
 export default function ProfilePage() {
   const router = useRouter();
