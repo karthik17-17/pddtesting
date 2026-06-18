@@ -18,7 +18,7 @@ jobs:
         ports:
           - 27017:27017
         options: >-
-          --health-cmd "mongosh --eval 'db.adminCommand(\"ping\")'"
+          --health-cmd "mongosh --eval 'db.adminCommand({ ping: 1 })'"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -46,10 +46,13 @@ jobs:
         run: |
           cd backend
           npm install
-          # Start backend server in the background
-          npm run dev &
+          npm run build
+          npm start &
           echo "Waiting for Backend Server to be ready..."
-          npx wait-on http://localhost:5000 --timeout 60000
+          curl -I http://localhost:5000 || true
+          sleep 5
+          curl -I http://localhost:5000 || true
+          npx wait-on http://localhost:5000 --timeout 120000
         env:
           PORT: 5000
           MONGO_URI: "mongodb://localhost:27017/neurostay"
