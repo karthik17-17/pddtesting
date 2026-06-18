@@ -111,7 +111,16 @@ export default function ResultsPage() {
       }
 
       console.log("Calling:", `${API_URL}/api/saved`);
-      await axios.post(`${API_URL}/api/saved`, hotel, {
+      await axios.post(`${API_URL}/api/saved`, {
+        hotelName: hotel.name,
+        hotelImage: hotel.image,
+        price: hotel.price,
+        address: hotel.address,
+        rating: hotel.rating,
+        matchScore: hotel.matchScore,
+        why: hotel.why,
+        mapLink: hotel.mapLink,
+      }, {
         headers: {
           "Content-Type": "application/json",
           "Bypass-Tunnel-Reminder": "true",

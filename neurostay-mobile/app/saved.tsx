@@ -53,7 +53,19 @@ export default function SavedPage() {
       });
 
       if (response.data.success) {
-        setHotels(response.data.hotels || []);
+        const mapped = (response.data.hotels || []).map((h: any) => ({
+          _id: h._id,
+          id: h._id || h.id,
+          name: h.hotelName || h.name || '',
+          image: h.hotelImage || h.image || '',
+          address: h.address || '',
+          rating: h.rating || 0,
+          price: h.price || '',
+          matchScore: h.matchScore || 0,
+          why: h.why || '',
+          mapLink: h.mapLink || '',
+        }));
+        setHotels(mapped);
       }
     } catch (e) {
       console.error('Failed to load saved hotels:', e);
