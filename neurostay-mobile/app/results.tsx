@@ -20,7 +20,7 @@ import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
 
-const API_URL = "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 type Hotel = {
   id: number;
@@ -47,8 +47,13 @@ export default function ResultsPage() {
     const fetchHotels = async () => {
       setLoading(true);
       try {
+        console.log("Calling:", `${API_URL}/api/serpapi/hotels`);
         const response = await axios.post(`${API_URL}/api/serpapi/hotels`, { query }, {
-          headers: { 'Bypass-Tunnel-Reminder': 'true' }
+          headers: {
+            "Content-Type": "application/json",
+            "Bypass-Tunnel-Reminder": "true"
+          },
+          timeout: 15000,
         });
         const data = response.data;
 
@@ -76,8 +81,14 @@ export default function ResultsPage() {
         return;
       }
 
+      console.log("Calling:", `${API_URL}/api/saved`);
       await axios.post(`${API_URL}/api/saved`, hotel, {
-        headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' }
+        headers: {
+          "Content-Type": "application/json",
+          "Bypass-Tunnel-Reminder": "true",
+          Authorization: `Bearer ${token}`
+        },
+        timeout: 15000,
       });
       
       Alert.alert('Success', 'Hotel saved to cloud successfully');
@@ -186,13 +197,18 @@ export default function ResultsPage() {
           <Text style={styles.emptySubtitle}>Try adjusting your search criteria or query.</Text>
         </View>
       ) : (
-        <FlatList
-          data={hotels}
-          renderItem={renderHotelItem}
-          keyExtractor={(item, index) => `${item.id}-${index}`}
-          contentContainerStyle={styles.listContent}
-          showsVerticalScrollIndicator={false}
-        />
+        <>
+          <Text style={{ color: '#22d3ee', textAlign: 'center', marginVertical: 10, fontSize: 16, fontWeight: 'bold' }}>
+            Showing {hotels.length} hotels
+          </Text>
+          <FlatList
+            data={hotels}
+            renderItem={renderHotelItem}
+            keyExtractor={(item, index) => `${item.id}-${index}`}
+            contentContainerStyle={styles.listContent}
+            showsVerticalScrollIndicator={false}
+          />
+        </>
       )}
 
       {/* Details Modal */}
@@ -234,15 +250,6 @@ export default function ResultsPage() {
                 <Text style={styles.modalSectionTitle}>Why NeuroStay Recommends This</Text>
                 <Text style={styles.modalWhyText}>{selectedHotel.why}</Text>
 
-                <TouchableOpacity 
-                  style={styles.modalBookButton}
-                  onPress={() => {
-                    Alert.alert("Success", "Booking initialized successfully!");
-                    setSelectedHotel(null);
-                  }}
-                >
-                  <Text style={styles.modalBookButtonText}>Book This Room</Text>
-                </TouchableOpacity>
               </ScrollView>
             </View>
           </View>

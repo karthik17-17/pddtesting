@@ -3,14 +3,14 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 export default function ProfilePage() {
   const { user, logoutUser, loginUser } = useAuth();
   const navigate = useNavigate();
   const { success, error } = useToast();
+  const { token } = useAuth();
 
-  const [totalBookings, setTotalBookings] = useState(0);
   const [savedHotels, setSavedHotels] = useState(0);
 
   // Modal states
@@ -33,14 +33,9 @@ export default function ProfilePage() {
   const uniqueSearches = Array.from(new Set(rawSearches)).slice(0, 5);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/bookings`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) setTotalBookings(data.bookings.length);
-      })
-      .catch(() => {});
-
-    fetch(`${API_URL}/api/saved`)
+    fetch(`${API_URL}/api/saved`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setSavedHotels(data.hotels.length);
@@ -165,23 +160,12 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {/* Stats Cards */}
-          <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4 h-full">
-            {/* Total Bookings */}
-            <div className="bg-[#1F2937] border border-white/10 rounded-3xl p-6 flex flex-col justify-between shadow-lg">
-              <div className="text-3xl mb-2">🧾</div>
-              <div>
-                <p className="text-slate-400 text-sm font-medium">Total Bookings</p>
-                <p className="text-5xl font-extrabold text-cyan-400 mt-1">{totalBookings}</p>
-              </div>
-            </div>
-
-            {/* Saved Hotels */}
+          <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
             <div className="bg-[#1F2937] border border-white/10 rounded-3xl p-6 flex flex-col justify-between shadow-lg">
               <div className="text-3xl mb-2">❤️</div>
               <div>
                 <p className="text-slate-400 text-sm font-medium">Saved Hotels</p>
-                <p className="text-5xl font-extrabold text-cyan-400 mt-1">{savedHotels}</p>
+                <p className="text-5xl font-extrabold text-cyan-400 mt-1 pl-1">{savedHotels}</p>
               </div>
             </div>
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useToast } from "../context/ToastContext";
+import { useAuth } from "../context/AuthContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -19,10 +20,13 @@ export default function SavedPage() {
   const [hotels, setHotels] = useState<SavedHotel[]>([]);
   const [loading, setLoading] = useState(true);
   const { success, error } = useToast();
+  const { token } = useAuth();
 
   const fetchSavedHotels = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/saved`);
+      const res = await fetch(`${API_URL}/api/saved`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       const data = await res.json();
 
       if (data.success) {
@@ -44,6 +48,7 @@ export default function SavedPage() {
     try {
       const res = await fetch(`${API_URL}/api/saved/${id}`, {
         method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       const data = await res.json();

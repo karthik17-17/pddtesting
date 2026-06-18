@@ -2,72 +2,44 @@ import express from "express";
 
 const router = express.Router();
 
-const hotels = [
-  {
-    id: "1",
-    name: "Hotel Chennai Comfort",
-    city: "Chennai",
-    area: "T Nagar",
-    price: 1800,
-    rating: 4.4,
-    amenities: ["WiFi", "AC", "Parking", "Breakfast"],
-    image: "/images/hotel1.jpg",
-  },
-  {
-    id: "2",
-    name: "Marina Budget Stay",
-    city: "Chennai",
-    area: "Marina Beach",
-    price: 1200,
-    rating: 4.1,
-    amenities: ["WiFi", "AC"],
-    image: "/images/hotel2.jpg",
-  },
-  {
-    id: "3",
-    name: "Central Railway Inn",
-    city: "Chennai",
-    area: "Chennai Central",
-    price: 1500,
-    rating: 4.2,
-    amenities: ["WiFi", "AC", "Restaurant"],
-    image: "/images/hotel3.jpg",
-  },
-  {
-    id: "4",
-    name: "Luxury Grand Chennai",
-    city: "Chennai",
-    area: "Guindy",
-    price: 3500,
-    rating: 4.7,
-    amenities: ["WiFi", "AC", "Pool", "Gym", "Breakfast"],
-    image: "/images/hotel1.jpg",
-  },
-];
-
-router.post("/search", (req, res) => {
+router.post("/search", async (req, res) => {
   const { query } = req.body;
-
   const q = String(query || "").toLowerCase();
+  
+  if (!q) {
+    return res.json([]);
+  }
 
-  const results = hotels
-    .filter(
-      (hotel) =>
-        hotel.city.toLowerCase().includes(q) ||
-        hotel.area.toLowerCase().includes(q) ||
-        q.includes(hotel.city.toLowerCase())
-    )
-    .map((hotel) => ({
-      ...hotel,
-      price: `₹${hotel.price}`,
-      matchScore:
-        hotel.rating >= 4.5 ? 96 : hotel.rating >= 4.2 ? 90 : 84,
-      why: `${hotel.name} is recommended because it matches your search, has good rating, and useful facilities like ${hotel.amenities.join(
-        ", "
-      )}.`,
-    }));
-
-  res.json(results.length > 0 ? results : hotels);
+  try {
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent('hotels in ' + q)}&limit=5&addressdetails=1`);
+    const data = await response.json();
+    
+    if (data && data.length > 0) {
+      const results = data.map((result: any, index: number) => ({
+        id: index + 1,
+        name: result.name || result.display_name.split(',')[0],
+        city: q,
+        address: result.display_name,
+        price: "Price not available",
+        rating: 4.0,
+        amenities: ["WiFi", "AC"],
+        image: "",
+        latitude: parseFloat(result.lat),
+        longitude: parseFloat(result.lon),
+        source: "OpenStreetMap",
+        website: "",
+        matchScore: Math.max(60, 90 - index * 2),
+        why: `Recommended based on location proximity in ${q}.`,
+        mapLink: `https://www.openstreetmap.org/?mlat=${result.lat}&mlon=${result.lon}#map=18/${result.lat}/${result.lon}`
+      }));
+      return res.json(results);
+    }
+    
+    return res.json([]);
+  } catch (error) {
+    console.error("Recommendation search error:", error);
+    return res.json([]);
+  }
 });
 
 export default router;

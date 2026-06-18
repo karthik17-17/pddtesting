@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const navItems = [
     { path: "/", label: "Home", icon: "🏠" },
-    { path: "/results?query=Chennai", label: "Hotels", icon: "🏨" },
+    { path: "/results", label: "Hotels", icon: "🏨" },
     { path: "/map", label: "Map", icon: "🗺️" },
     { path: "/compare", label: "Compare", icon: "📊" },
     { path: "/saved", label: "Saved", icon: "💾" },

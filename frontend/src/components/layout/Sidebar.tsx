@@ -27,9 +27,12 @@ export default function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-[#070B1D] border-r border-white/10 px-6 py-7 text-white flex flex-col justify-between">
       <div>
-        <h1 className="text-3xl font-extrabold mb-7 tracking-tight">
-          NeuroStay
-        </h1>
+        <div className="flex items-center gap-3 mb-7">
+          <img src="/logo.svg" alt="NeuroStay AI Logo" className="w-10 h-10" />
+          <h1 className="text-3xl font-extrabold tracking-tight">
+            NeuroStay
+          </h1>
+        </div>
 
         <div className="bg-[#1E293B] rounded-2xl px-4 py-4 mb-7">
           <p className="text-sm text-slate-400">👤 Welcome</p>

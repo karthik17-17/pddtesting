@@ -1,13 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
+import { useAuth } from "../context/AuthContext";
 
 interface Hotel {
   id: number;
   name: string;
   address: string;
+  city: string;
   rating: number;
   price: string;
   image: string;
+  latitude: number | null;
+  longitude: number | null;
+  source: string;
+  website: string;
   matchScore: number;
   why: string;
   mapLink: string;
@@ -16,6 +22,7 @@ interface Hotel {
 export default function HotelDetailPage() {
   const navigate = useNavigate();
   const { success, error, warning } = useToast();
+  const { token } = useAuth();
 
   const hotel: Hotel | null = JSON.parse(
     localStorage.getItem("selectedHotel") || "null"
@@ -43,6 +50,7 @@ export default function HotelDetailPage() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         hotelName: hotel.name,
@@ -76,22 +84,12 @@ export default function HotelDetailPage() {
       return;
     }
 
-    if (compareHotels.length >= 3) {
-      warning("Compare Limit", "You can compare a maximum of 3 hotels at a time.");
-      return;
-    }
-
     localStorage.setItem(
       "compareHotels",
       JSON.stringify([...compareHotels, hotel])
     );
 
     success("Added to Compare 📊", `${hotel.name} added. Go to Compare page to view.`);
-  };
-
-  const bookNow = () => {
-    localStorage.setItem("bookingHotel", JSON.stringify(hotel));
-    navigate(`/booking/${hotel.id}`);
   };
 
   return (
@@ -105,29 +103,24 @@ export default function HotelDetailPage() {
 
       <div className="mt-8 grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 bg-slate-800 rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            src={hotel.image}
-            alt={hotel.name}
-            className="w-full h-[430px] object-cover"
-          />
-
-          <div className="grid grid-cols-3 gap-3 p-4">
+          {hotel.image ? (
             <img
               src={hotel.image}
               alt={hotel.name}
-              className="h-28 w-full object-cover rounded-xl"
+              className="w-full h-[430px] object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              }}
             />
-            <img
-              src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461"
-              alt="room"
-              className="h-28 w-full object-cover rounded-xl"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
-              alt="hotel"
-              className="h-28 w-full object-cover rounded-xl"
-            />
+          ) : null}
+          <div className={`w-full h-[430px] bg-slate-800 flex flex-col items-center justify-center text-slate-500 ${hotel.image ? 'hidden' : ''}`}>
+             <span className="text-6xl mb-4">🏨</span>
+             <p className="text-xl font-semibold">Image not available</p>
           </div>
+
+          {/* Removed fake image thumbnail grid here to prevent showing hallucinations */}
 
           <div className="p-8">
             <h1 className="text-5xl font-bold">{hotel.name}</h1>
@@ -213,13 +206,6 @@ export default function HotelDetailPage() {
           </div>
 
           <button
-            onClick={bookNow}
-            className="w-full bg-cyan-500 hover:bg-cyan-400 text-black py-4 rounded-xl font-bold mt-6"
-          >
-            Book Now
-          </button>
-
-          <button
             onClick={saveHotel}
             className="w-full bg-slate-700 hover:bg-slate-600 py-4 rounded-xl font-bold mt-4"
           >
@@ -233,16 +219,31 @@ export default function HotelDetailPage() {
             Add to Compare
           </button>
 
+          {hotel.website && (
+            <a
+              href={hotel.website}
+              target="_blank"
+              rel="noreferrer"
+              className="block text-center border border-cyan-500 py-4 rounded-xl font-bold mt-4"
+            >
+              Visit Website
+            </a>
+          )}
+
           {hotel.mapLink && (
             <a
               href={hotel.mapLink}
               target="_blank"
               rel="noreferrer"
-              className="block text-center border border-cyan-500 py-4 rounded-xl font-bold mt-4"
+              className="block text-center border border-slate-500 py-4 rounded-xl font-bold mt-4"
             >
               Open Map
             </a>
           )}
+
+          <div className="mt-8 text-sm text-slate-500 text-center">
+            Data sourced via: <span className="font-semibold">{hotel.source || "Unknown"}</span>
+          </div>
         </div>
       </div>
     </div>

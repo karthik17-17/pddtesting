@@ -19,7 +19,7 @@ import { useRouter } from 'expo-router';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
 
-const API_URL = "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 type Hotel = {
   id: number;
@@ -43,8 +43,14 @@ export default function SavedPage() {
       const token = await AsyncStorage.getItem('token');
       if (!token) return;
 
+      console.log("Calling:", `${API_URL}/api/saved`);
       const response = await axios.get(`${API_URL}/api/saved`, {
-        headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' }
+        headers: {
+          "Content-Type": "application/json",
+          "Bypass-Tunnel-Reminder": "true",
+          Authorization: `Bearer ${token}`
+        },
+        timeout: 15000,
       });
 
       if (response.data.success) {
@@ -67,8 +73,14 @@ export default function SavedPage() {
       // Ensure we use the MongoDB _id for removal if available, fallback to searching by name
       const hotelId = (hotel as any)._id || hotel.id;
 
-      await axios.delete(`${API_URL}/api/saved/${hotel._id || hotel.id}`, {
-        headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' }
+      console.log("Calling:", `${API_URL}/api/saved/${hotelId}`);
+      await axios.delete(`${API_URL}/api/saved/${hotelId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Bypass-Tunnel-Reminder": "true",
+          Authorization: `Bearer ${token}`
+        },
+        timeout: 15000,
       });
 
       const updated = hotels.filter(item => item.name !== hotel.name);
@@ -217,15 +229,6 @@ export default function SavedPage() {
                 <Text style={styles.modalSectionTitle}>Why NeuroStay Recommends This</Text>
                 <Text style={styles.modalWhyText}>{selectedHotel.why}</Text>
 
-                <TouchableOpacity 
-                  style={styles.modalBookButton}
-                  onPress={() => {
-                    Alert.alert("Success", "Booking initialized successfully!");
-                    setSelectedHotel(null);
-                  }}
-                >
-                  <Text style={styles.modalBookButtonText}>Book This Room</Text>
-                </TouchableOpacity>
               </ScrollView>
             </View>
           </View>

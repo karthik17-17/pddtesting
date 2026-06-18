@@ -7,8 +7,6 @@ import HomePage from "./pages/HomePage";
 import LoadingPage from "./pages/LoadingPage";
 import ResultsPage from "./pages/ResultsPage";
 import HotelDetailPage from "./pages/HotelDetailPage";
-import BookingPage from "./pages/BookingPage";
-import MyBookingsPage from "./pages/MyBookingsPage";
 import SavedPage from "./pages/SavedPage";
 import ProfilePage from "./pages/ProfilePage";
 import ComparePage from "./pages/ComparePage";
@@ -58,25 +56,6 @@ function AppContent() {
             <Route
               path="/forgot-password"
               element={<ForgotPasswordPage />}
-            />
-
-            {/* Booking */}
-            <Route
-              path="/booking/:id"
-              element={
-                <ProtectedRoute>
-                  <BookingPage />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route
-              path="/bookings"
-              element={
-                <ProtectedRoute>
-                  <MyBookingsPage />
-                </ProtectedRoute>
-              }
             />
 
             {/* Saved */}

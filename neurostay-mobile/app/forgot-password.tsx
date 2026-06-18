@@ -14,7 +14,7 @@ import {
 import { useRouter } from 'expo-router';
 import axios from 'axios';
 
-const API_URL = "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
@@ -22,6 +22,13 @@ export default function ForgotPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  // OTP and New Password state
+  const [otp, setOtp] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [resetSuccess, setResetSuccess] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
 
   const handleSubmit = async () => {
     setError('');
@@ -33,9 +40,13 @@ export default function ForgotPasswordPage() {
 
     setLoading(true);
     try {
+      console.log("Calling:", `${API_URL}/api/auth/forgot-password`);
       const response = await axios.post(`${API_URL}/api/auth/forgot-password`, { email }, {
-        headers: { 'Bypass-Tunnel-Reminder': 'true' },
-        timeout: 10000,
+        headers: {
+          "Content-Type": "application/json",
+          "Bypass-Tunnel-Reminder": "true"
+        },
+        timeout: 15000,
       });
 
       if (response.data) {
@@ -53,6 +64,52 @@ export default function ForgotPasswordPage() {
     }
   };
 
+  const handleReset = async () => {
+    setError('');
+
+    if (!otp.trim() || otp.trim().length !== 6) {
+      setError('Please enter a valid 6-digit OTP.');
+      return;
+    }
+    if (!newPassword) {
+      setError('Please enter a new password.');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
+    setResetLoading(true);
+    try {
+      console.log("Calling:", `${API_URL}/api/auth/reset-password`);
+      const response = await axios.post(`${API_URL}/api/auth/reset-password`, {
+        email,
+        otp,
+        newPassword,
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+          "Bypass-Tunnel-Reminder": "true"
+        },
+        timeout: 15000,
+      });
+
+      if (response.data) {
+        setResetSuccess(true);
+      }
+    } catch (err: any) {
+      console.error('ResetPassword error:', err);
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError('Could not reach server. Please check your connection.');
+      }
+    } finally {
+      setResetLoading(false);
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -64,21 +121,81 @@ export default function ForgotPasswordPage() {
           <Text style={styles.title}>NeuroStay AI</Text>
           <Text style={styles.subtitle}>Password Recovery</Text>
 
-          {success ? (
+          {resetSuccess ? (
             <View style={styles.successBox}>
-              <Text style={styles.successEmoji}>📧</Text>
-              <Text style={styles.successTitle}>Check your email!</Text>
+              <Text style={styles.successEmoji}>✅</Text>
+              <Text style={styles.successTitle}>Success!</Text>
               <Text style={styles.successText}>
-                If an account exists for {email}, we've sent a reset link.
+                Your password has been successfully reset.
               </Text>
               <TouchableOpacity style={styles.button} onPress={() => router.replace('/login')}>
                 <Text style={styles.buttonText}>Back to Login</Text>
               </TouchableOpacity>
             </View>
+          ) : success ? (
+            <>
+              <Text style={styles.description}>
+                We've sent a 6-digit OTP to {email}. Enter it below along with your new password to reset it.
+              </Text>
+
+              {error ? (
+                <View style={styles.errorBox}>
+                  <Text style={styles.errorText}>⚠️ {error}</Text>
+                </View>
+              ) : null}
+
+              <Text style={styles.label}>6-Digit OTP</Text>
+              <TextInput
+                style={[styles.input, { textAlign: 'center', fontSize: 18, letterSpacing: 4, fontWeight: 'bold' }]}
+                placeholder="123456"
+                placeholderTextColor="#475569"
+                maxLength={6}
+                value={otp}
+                onChangeText={(t) => { setOtp(t); setError(''); }}
+                keyboardType="number-pad"
+              />
+
+              <Text style={styles.label}>New Password</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="••••••••"
+                placeholderTextColor="#475569"
+                secureTextEntry
+                value={newPassword}
+                onChangeText={(t) => { setNewPassword(t); setError(''); }}
+              />
+
+              <Text style={styles.label}>Confirm New Password</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="••••••••"
+                placeholderTextColor="#475569"
+                secureTextEntry
+                value={confirmPassword}
+                onChangeText={(t) => { setConfirmPassword(t); setError(''); }}
+              />
+
+              <TouchableOpacity
+                style={[styles.button, resetLoading && styles.buttonDisabled]}
+                onPress={handleReset}
+                disabled={resetLoading}
+                activeOpacity={0.8}
+              >
+                {resetLoading ? (
+                  <ActivityIndicator color="#071028" />
+                ) : (
+                  <Text style={styles.buttonText}>Reset Password</Text>
+                )}
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => { setSuccess(false); setError(''); }} style={styles.backLink}>
+                <Text style={styles.linkText}>← Back</Text>
+              </TouchableOpacity>
+            </>
           ) : (
             <>
               <Text style={styles.description}>
-                Enter your email address and we'll send you a password reset link.
+                Enter your email address and we'll send you a password reset OTP.
               </Text>
 
               {error ? (
@@ -109,7 +226,7 @@ export default function ForgotPasswordPage() {
                 {loading ? (
                   <ActivityIndicator color="#071028" />
                 ) : (
-                  <Text style={styles.buttonText}>Send Reset Link</Text>
+                  <Text style={styles.buttonText}>Send Reset OTP</Text>
                 )}
               </TouchableOpacity>
 

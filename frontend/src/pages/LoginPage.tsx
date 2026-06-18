@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 export default function LoginPage() {
   const navigate = useNavigate();

@@ -19,14 +19,13 @@ import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
 
-const API_URL = "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 export default function ProfilePage() {
   const router = useRouter();
   const [name, setName] = useState('Traveler');
   const [email, setEmail] = useState('traveler@example.com');
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
-  const [totalBookings, setTotalBookings] = useState(0);
   const [savedHotels, setSavedHotels] = useState(0);
 
   const [showEditProfile, setShowEditProfile] = useState(false);
@@ -51,8 +50,14 @@ export default function ProfilePage() {
 
       if (token) {
         try {
+          console.log("Calling:", `${API_URL}/api/saved`);
           const res = await axios.get(`${API_URL}/api/saved`, {
-            headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' }
+            headers: {
+              "Content-Type": "application/json",
+              "Bypass-Tunnel-Reminder": "true",
+              Authorization: `Bearer ${token}`
+            },
+            timeout: 15000,
           });
           if (res.data.success && res.data.hotels) {
             setSavedHotels(res.data.hotels.length);
@@ -119,9 +124,17 @@ export default function ProfilePage() {
     try {
       setLoading(true);
       const token = await AsyncStorage.getItem('token');
+      console.log("Calling:", `${API_URL}/api/auth/profile`);
       const res = await axios.put(`${API_URL}/api/auth/profile`, 
         { email, name: editName },
-        { headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' } }
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Bypass-Tunnel-Reminder": "true",
+            Authorization: `Bearer ${token}`
+          },
+          timeout: 15000,
+        }
       );
       if (res.data.success) {
         setName(editName);
@@ -145,9 +158,17 @@ export default function ProfilePage() {
     try {
       setLoading(true);
       const token = await AsyncStorage.getItem('token');
+      console.log("Calling:", `${API_URL}/api/auth/password`);
       const res = await axios.put(`${API_URL}/api/auth/password`, 
         { email, currentPassword, newPassword },
-        { headers: { Authorization: `Bearer ${token}`, 'Bypass-Tunnel-Reminder': 'true' } }
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Bypass-Tunnel-Reminder": "true",
+            Authorization: `Bearer ${token}`
+          },
+          timeout: 15000,
+        }
       );
       if (res.data.success) {
         Alert.alert('Success', 'Password updated successfully');
@@ -198,13 +219,6 @@ export default function ProfilePage() {
 
         {/* Stats Grid */}
         <View style={styles.statsGrid}>
-          <View style={styles.statCard}>
-            <Ionicons name="receipt-outline" size={24} color="#e2e8f0" style={styles.statIcon} />
-            <View style={styles.statBottom}>
-              <Text style={styles.statLabel}>Total Bookings</Text>
-              <Text style={styles.statValue}>{totalBookings}</Text>
-            </View>
-          </View>
           <View style={styles.statCard}>
             <Ionicons name="heart" size={24} color="#f43f5e" style={styles.statIcon} />
             <View style={styles.statBottom}>
@@ -458,6 +472,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: '#22d3ee',
+    paddingLeft: 4,
   },
   statusCard: {
     backgroundColor: '#1e293b',

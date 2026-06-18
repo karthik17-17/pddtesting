@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 export async function apiRequest(path: string, options: RequestInit = {}) {
   const response = await fetch(`${API_URL}${path}`, {

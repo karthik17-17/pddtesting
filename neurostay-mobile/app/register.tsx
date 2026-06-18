@@ -16,7 +16,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter, Link } from 'expo-router';
 import axios from 'axios';
 
-const API_URL = "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -42,13 +42,17 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
+      console.log("Calling:", `${API_URL}/api/auth/register`);
       const response = await axios.post(`${API_URL}/api/auth/register`, {
         name,
         email,
         password,
       }, {
-        headers: { 'Bypass-Tunnel-Reminder': 'true' },
-        timeout: 10000,
+        headers: {
+          "Content-Type": "application/json",
+          "Bypass-Tunnel-Reminder": "true"
+        },
+        timeout: 15000,
       });
 
       const data = response.data;

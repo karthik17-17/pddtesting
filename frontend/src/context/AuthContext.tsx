@@ -16,8 +16,24 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(() => {
+    try {
+      const savedUser = localStorage.getItem("user");
+      if (savedUser) {
+        const parsedUser = JSON.parse(savedUser);
+        if (parsedUser && typeof parsedUser === "object" && parsedUser.name && parsedUser.email) {
+          return parsedUser;
+        }
+      }
+    } catch {
+      // ignore
+    }
+    return null;
+  });
+
+  const [token, setToken] = useState<string | null>(() => {
+    return localStorage.getItem("token") || null;
+  });
 
   useEffect(() => {
     // Clean up old keys automatically
@@ -26,24 +42,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       localStorage.removeItem(key);
     });
 
+    // Auth token and user are now initialized synchronously in useState.
+    // If the token is invalid or missing, we clear the user.
     const savedToken = localStorage.getItem("token");
     const savedUser = localStorage.getItem("user");
-
-    if (savedToken && savedUser) {
-      try {
-        const parsedUser = JSON.parse(savedUser);
-        if (parsedUser && typeof parsedUser === "object" && parsedUser.name && parsedUser.email) {
-          setToken(savedToken);
-          setUser(parsedUser);
-        } else {
-          // If old wrong user data structure exists, clear it automatically
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
-        }
-      } catch (e) {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-      }
+    if (!savedToken || !savedUser) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setToken(null);
+      setUser(null);
     }
   }, []);
 

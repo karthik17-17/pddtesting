@@ -1,5 +1,8 @@
 {
   "appId": "com.neurostay.ai",
   "appName": "NeuroStayAI",
-  "webDir": "dist"
+  "webDir": "dist",
+  "server": {
+    "cleartext": true
+  }
 }

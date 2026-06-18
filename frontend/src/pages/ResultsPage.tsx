@@ -2,15 +2,20 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.com";
+const API_URL = "http://10.34.36.17:5000";
 
 type Hotel = {
   id: number;
   name: string;
   address: string;
+  city: string;
   rating: number;
   price: string;
   image: string;
+  latitude: number | null;
+  longitude: number | null;
+  source: string;
+  website: string;
   matchScore: number;
   why: string;
   mapLink: string;
@@ -22,7 +27,9 @@ export default function ResultsPage() {
   const navigate = useNavigate();
   const { success, error, warning } = useToast();
 
-  const rawQuery = searchParams.get("query") || "";
+  const urlQuery = searchParams.get("query");
+  const storedQuery = localStorage.getItem("lastSearchQuery") || "";
+  const rawQuery = urlQuery || storedQuery || "Mumbai"; // Default to Mumbai instead of Chennai if both are empty
 
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
@@ -53,6 +60,9 @@ export default function ResultsPage() {
         if (data.success === true && Array.isArray(data.hotels)) {
           setHotels(data.hotels);
           localStorage.setItem("lastSearchResults", JSON.stringify(data.hotels));
+          if (urlQuery) {
+            localStorage.setItem("lastSearchQuery", urlQuery);
+          }
         } else {
           setHasError(true);
           setHotels([]);
@@ -139,8 +149,12 @@ export default function ResultsPage() {
         Search: <span className="text-cyan-400">{rawQuery}</span>
       </p>
 
-      {hasError ? (
-        <p className="text-red-400">No hotels found.</p>
+      {hasError || hotels.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-20 text-center bg-slate-800/50 rounded-3xl border border-slate-700">
+          <span className="text-6xl mb-4">🏨</span>
+          <h2 className="text-2xl font-bold text-slate-300">No hotels found for this search.</h2>
+          <p className="text-slate-500 mt-2 max-w-md mx-auto">Try adjusting your search terms, changing the city, or removing filters like "luxury" or "budget" to see more results.</p>
+        </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {hotels.map((hotel) => (
@@ -148,11 +162,22 @@ export default function ResultsPage() {
               key={`${hotel.id}-${hotel.name}`}
               className="bg-slate-800 rounded-2xl overflow-hidden"
             >
-              <img
-                src={hotel.image}
-                alt={hotel.name}
-                className="w-full h-56 object-cover"
-              />
+              {hotel.image ? (
+                <img
+                  src={hotel.image}
+                  alt={hotel.name}
+                  className="w-full h-56 object-cover bg-slate-700"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+              ) : null}
+              <div className={`w-full h-56 bg-slate-800 border-b border-slate-700 flex flex-col items-center justify-center text-slate-500 ${hotel.image ? 'hidden' : ''}`}>
+                <span className="text-4xl mb-2">🏨</span>
+                <p className="text-sm font-semibold">Image not available</p>
+              </div>
 
               <div className="p-5">
                 <h2 className="text-2xl font-bold">{hotel.name}</h2>
