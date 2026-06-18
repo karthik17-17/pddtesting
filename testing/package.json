@@ -4,7 +4,8 @@
   "description": "E2E Selenium testing suite for NeuroStay AI",
   "main": "run-tests.js",
   "scripts": {
-    "test": "node run-tests.js"
+    "test:selenium": "node run-selenium-tests.js",
+    "test:functional": "node run-functional-tests.js"
   },
   "dependencies": {
     "exceljs": "^4.4.0",

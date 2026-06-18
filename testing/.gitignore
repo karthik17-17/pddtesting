@@ -1,3 +1,8 @@
 node_modules/
 test-analysis-report.xlsx
 summary.md
+selenium-test-report.xlsx
+functional-test-report.xlsx
+selenium-summary.md
+functional-summary.md
+

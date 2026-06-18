@@ -72,26 +72,39 @@ jobs:
           cd testing
           npm install
 
-      - name: Run E2E Test Suite
+      - name: Run Selenium E2E Test Suite (300 cases)
         run: |
           cd testing
-          node run-tests.js
+          npm run test:selenium
         env:
           WEB_URL: "http://localhost:5173"
           MOBILE_URL: "http://localhost:8081"
 
-      - name: Upload Test Report (Excel)
+      - name: Run Functionality Test Suite (300 cases)
+        run: |
+          cd testing
+          npm run test:functional
+
+      - name: Upload Selenium Test Report (Excel)
         uses: actions/upload-artifact@v4
         with:
-          name: E2E-Test-Analysis-Report
-          path: testing/test-analysis-report.xlsx
+          name: Selenium-E2E-Test-Report
+          path: testing/selenium-test-report.xlsx
           if-no-files-found: error
 
-      - name: Publish Test Summary
+      - name: Upload Functional Test Report (Excel)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Functional-Test-Report
+          path: testing/functional-test-report.xlsx
+          if-no-files-found: error
+
+      - name: Publish Test Summaries
         if: always()
         run: |
-          if [ -f testing/summary.md ]; then
-            cat testing/summary.md >> $GITHUB_STEP_SUMMARY
-          else
-            echo "Testing summary file not found." >> $GITHUB_STEP_SUMMARY
+          if [ -f testing/selenium-summary.md ]; then
+            cat testing/selenium-summary.md >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -f testing/functional-summary.md ]; then
+            cat testing/functional-summary.md >> $GITHUB_STEP_SUMMARY
           fi
