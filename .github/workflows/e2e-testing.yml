@@ -12,6 +12,17 @@ jobs:
     name: Run Selenium E2E Tests
     runs-on: ubuntu-latest
 
+    services:
+      mongodb:
+        image: mongo:7
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand(\"ping\")'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -38,7 +49,7 @@ jobs:
           # Start backend server in the background
           npm run dev &
           echo "Waiting for Backend Server to be ready..."
-          npx wait-on http://localhost:5000
+          npx wait-on http://localhost:5000 --timeout 60000
         env:
           PORT: 5000
           MONGO_URI: "mongodb://localhost:27017/neurostay"
@@ -51,7 +62,7 @@ jobs:
           # Run dev server in background
           npm run dev &
           echo "Waiting for Frontend Server to be ready..."
-          npx wait-on http://localhost:5173
+          npx wait-on http://localhost:5173 --timeout 60000
 
       - name: Install E2E Testing Suite Dependencies
         run: |
