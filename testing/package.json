@@ -1,0 +1,13 @@
+{
+  "name": "neurostay-testing",
+  "version": "1.0.0",
+  "description": "E2E Selenium testing suite for NeuroStay AI",
+  "main": "run-tests.js",
+  "scripts": {
+    "test": "node run-tests.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "selenium-webdriver": "^4.22.0"
+  }
+}
