@@ -1,0 +1,20 @@
+{
+  "name": "neurostay-appium-automation",
+  "version": "1.0.0",
+  "description": "Enterprise-Grade Android Appium E2E Automation Framework",
+  "main": "dist/runners/testRunner.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node runners/testRunner.ts",
+    "test:simulated": "ts-node runners/testRunner.ts --simulated"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "webdriverio": "^8.39.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
