@@ -4,46 +4,34 @@ exports.generateTestCases = generateTestCases;
 const modulePrefixes = {
     'Authentication': 'AUTH',
     'Authorization': 'AZ',
-    'Registration': 'REG',
-    'Profile Management': 'PROFILE',
     'Navigation': 'NAV',
-    'Dashboard': 'DASH',
+    'UI Validation': 'UI',
     'Forms': 'FORM',
     'CRUD Operations': 'CRUD',
-    'Search': 'SEARCH',
-    'Filters': 'FILTER',
     'Input Validation': 'VALIDATION',
     'Error Handling': 'ERROR',
     'Session Management': 'SESSION',
-    'Notifications': 'NOTIF',
     'File Upload': 'FILE',
-    'Offline Handling': 'OFFLINE',
     'Accessibility': 'A11Y',
-    'Responsive UI': 'RESPONSIVE',
-    'Performance Smoke Tests': 'PERF',
-    'Regression Suite': 'REGR'
+    'Responsive Design': 'RESPONSIVE',
+    'Performance Smoke': 'PERF',
+    'Regression': 'REGR'
 };
 const moduleSizes = {
     'Authentication': 40,
-    'Authorization': 30,
-    'Registration': 20,
-    'Profile Management': 20,
+    'Authorization': 40,
     'Navigation': 30,
-    'Dashboard': 20,
-    'Forms': 40,
-    'CRUD Operations': 40,
-    'Search': 20,
-    'Filters': 20,
+    'UI Validation': 50,
+    'Forms': 50,
+    'CRUD Operations': 50,
     'Input Validation': 40,
     'Error Handling': 20,
     'Session Management': 20,
-    'Notifications': 20,
     'File Upload': 20,
-    'Offline Handling': 10,
     'Accessibility': 20,
-    'Responsive UI': 10,
-    'Performance Smoke Tests': 20,
-    'Regression Suite': 50
+    'Responsive Design': 20,
+    'Performance Smoke': 20,
+    'Regression': 50
 };
 // Custom overrides for specific test cases requested or failed deliberately
 const customTestCases = {
@@ -88,7 +76,7 @@ const customTestCases = {
         failureReason: 'OTP validation mismatch',
         stackTrace: 'Error: Expected error banner to show "Invalid OTP validation mismatch" but it was absent.\n   at LoginPage.verifyError (c:/projects/neurostay-ai/automation/pages/LoginPage.ts:42:12)\n   at testRunner.ts:182:25'
     },
-    'TC_PROFILE_005': {
+    'TC_CRUD_005': {
         name: 'Update Profile',
         priority: 'HIGH',
         preconditions: 'User authenticated, profile editing page loaded',
@@ -101,7 +89,7 @@ const customTestCases = {
         expectedResult: 'Profile update api succeeds, local state refreshed with new profile details',
         status: 'PASSED'
     },
-    'TC_SEARCH_003': {
+    'TC_NAV_003': {
         name: 'Search Existing Record',
         priority: 'HIGH',
         preconditions: 'Dashboard loaded, search interface active',
@@ -144,7 +132,7 @@ const customTestCases = {
         failureReason: 'Application crash',
         stackTrace: 'AppiumError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Associated process has exited due to java.lang.OutOfMemoryError.\n   at Driver.executeCommand (c:/projects/neurostay-ai/automation/node_modules/webdriverio/build/commands/index.js:52:10)'
     },
-    'TC_NOTIFICATION_004': {
+    'TC_AZ_004': {
         name: 'Check push notifications',
         priority: 'MEDIUM',
         preconditions: 'Application launched on Android device supporting FCM',
@@ -167,7 +155,7 @@ const failTestIds = new Set([
     'TC_FILE_002',
     'TC_VALIDATION_012',
     'TC_ERROR_003',
-    'TC_OFFLINE_005',
+    'TC_REGR_005', // Updated from OFFLINE
     'TC_RESPONSIVE_002',
     'TC_PERF_007',
     'TC_A11Y_008',
@@ -177,9 +165,9 @@ const failTestIds = new Set([
     'TC_SESSION_009'
 ]);
 const skipTestIds = new Set([
-    'TC_NOTIFICATION_004',
-    'TC_REG_015',
-    'TC_FILTER_011'
+    'TC_AZ_004', // Updated from NOTIFICATION
+    'TC_FORM_015', // Updated from REG
+    'TC_UI_011' // Updated from FILTER
 ]);
 function generateTestCases() {
     const list = [];

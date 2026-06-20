@@ -3,7 +3,7 @@ import * as path from 'path';
 
 export class Logger {
   private static logDir = path.join(__dirname, '..', 'reports', 'Logs');
-  private static logFilePath = path.join(Logger.logDir, 'appium-execution.log');
+  private static logFilePath = path.join(Logger.logDir, 'selenium-execution.log');
 
   private static initialize() {
     if (!fs.existsSync(Logger.logDir)) {

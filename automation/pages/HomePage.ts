@@ -1,13 +1,13 @@
 import { BasePage } from './BasePage';
 
 export class HomePage extends BasePage {
-  // Selectors
-  private get dashboardHeader() { return '~dashboard-header'; }
-  private get homeTab() { return '~tab-home'; }
-  private get mapTab() { return '~tab-map'; }
-  private get savedTab() { return '~tab-saved'; }
-  private get compareTab() { return '~tab-compare'; }
-  private get profileTab() { return '~tab-profile'; }
+  // Web CSS Selectors using attribute ends-with ($=) matching
+  private get dashboardHeader() { return 'h1=NeuroStay AI'; } // Finds h1 containing NeuroStay AI
+  private get homeTab() { return 'a[href$="/"]'; }
+  private get mapTab() { return 'a[href$="/map"]'; }
+  private get savedTab() { return 'a[href$="/saved"]'; }
+  private get compareTab() { return 'a[href$="/compare"]'; }
+  private get profileTab() { return 'a[href$="/profile"]'; }
 
   public async isDashboardLoaded(): Promise<boolean> {
     return await this.isDisplayed(this.dashboardHeader, 'Dashboard Header');

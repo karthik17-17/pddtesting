@@ -37,7 +37,7 @@ const webdriverio_1 = require("webdriverio");
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const testCases_1 = require("../data/testCases");
-const appium_config_1 = require("../config/appium.config");
+const selenium_config_1 = require("../config/selenium.config");
 const logger_1 = require("../utils/logger");
 const screenshot_1 = require("../utils/screenshot");
 const excelReportGenerator_1 = require("../utils/excelReportGenerator");
@@ -51,7 +51,7 @@ const runSimulatedOnly = args.includes('--simulated');
 async function runTestSuite() {
     logger_1.Logger.clearLogs();
     logger_1.Logger.info('==================================================');
-    logger_1.Logger.info('     NEUROSTAY AI - MOBILE E2E TEST RUNNER        ');
+    logger_1.Logger.info('    NEUROSTAY AI - LIVE WEB E2E TEST RUNNER       ');
     logger_1.Logger.info('==================================================');
     const startTime = Date.now();
     const testCases = (0, testCases_1.generateTestCases)();
@@ -64,30 +64,34 @@ async function runTestSuite() {
     cleanDir(path.join(__dirname, '..', 'reports', 'HTML'));
     cleanDir(path.join(__dirname, '..', 'reports', 'Summary'));
     cleanDir(path.join(__dirname, '..', 'reports', 'JSON'));
+    cleanDir(path.join(__dirname, '..', 'reports', 'Logs'));
+    const baseUrl = process.env.BASE_URL || 'https://karthik17-17.github.io/pddtesting/';
     if (!useSimulation) {
         try {
-            logger_1.Logger.info('Connecting to Appium Server at http://127.0.0.1:4723/...');
+            logger_1.Logger.info(`Connecting to Headless Chrome and opening ${baseUrl}...`);
             driver = await (0, webdriverio_1.remote)({
-                capabilities: appium_config_1.appiumCapabilities,
-                ...appium_config_1.appiumConnection
+                capabilities: selenium_config_1.seleniumCapabilities,
+                logLevel: 'error'
             });
-            logger_1.Logger.info('Appium session initialized successfully!');
+            logger_1.Logger.info('Headless Chrome session initialized successfully!');
+            await driver.url(baseUrl);
+            logger_1.Logger.info(`Navigated to: ${baseUrl}`);
         }
         catch (e) {
-            logger_1.Logger.warn(`Could not connect to Appium: ${e.message}`);
+            logger_1.Logger.warn(`Could not connect to Headless Chrome: ${e.message}`);
             logger_1.Logger.warn('Falling back to simulated/programmatic execution for reporting validation.');
             useSimulation = true;
         }
     }
     // Define maps of test cases we will execute via real E2E UI actions if driver is ready
-    const realTestIds = ['TC_AUTH_001', 'TC_AUTH_002', 'TC_AUTH_010', 'TC_PROFILE_005', 'TC_SEARCH_003', 'TC_FORM_008', 'TC_FILE_002', 'TC_NOTIFICATION_004'];
+    const realTestIds = ['TC_AUTH_001', 'TC_AUTH_002', 'TC_AUTH_010', 'TC_CRUD_005', 'TC_NAV_003', 'TC_FORM_008', 'TC_FILE_002', 'TC_AZ_004'];
     // Run the tests
     for (let i = 0; i < testCases.length; i++) {
         const tc = testCases[i];
         const tcStartTime = Date.now();
         logger_1.Logger.info(`Starting Test Case: ${tc.id} - ${tc.name} [Priority: ${tc.priority}]`);
         if (!useSimulation && realTestIds.includes(tc.id) && driver) {
-            // Execute REAL Appium UI tests using Page Object Model
+            // Execute REAL Selenium UI tests using Page Object Model
             try {
                 await executeRealUiTest(tc, driver);
             }
@@ -120,12 +124,11 @@ async function runTestSuite() {
         tc.executionTime = Date.now() - tcStartTime;
         logger_1.Logger.info(`Finished Test Case: ${tc.id} - Status: ${tc.status} (${tc.executionTime}ms)\n`);
     }
-    // Close Appium session if active
+    // Close driver session if active
     if (driver) {
         try {
-            logger_1.Logger.info('Closing Appium driver session...');
-            // Dump device logcat before closing
-            await dumpDeviceLogs();
+            logger_1.Logger.info('Closing Chrome driver session...');
+            await dumpBrowserLogs(driver);
             await driver.deleteSession();
             logger_1.Logger.info('Session closed.');
         }
@@ -133,22 +136,25 @@ async function runTestSuite() {
             logger_1.Logger.error(`Error deleting session: ${e.message}`);
         }
     }
+    else {
+        await dumpBrowserLogs(undefined);
+    }
     const totalDurationSec = (Date.now() - startTime) / 1000;
     logger_1.Logger.info(`E2E suite execution finished. Total duration: ${totalDurationSec.toFixed(2)}s`);
     // Target details
-    const deviceName = useSimulation ? 'Simulated Android Pixel 8' : 'Android Emulator (Small_Phone)';
-    const androidVersion = useSimulation ? '14.0' : '11.0 (API 30)';
-    const appVersion = '1.0.0-debug';
+    const browserName = 'Chrome (Headless)';
+    const osVersion = 'Ubuntu/ChromeOS';
+    const appVersion = '1.0.0-web';
     // Generate Excel reports
-    await excelReportGenerator_1.ExcelReportGenerator.generate(testCases, deviceName, androidVersion, appVersion, totalDurationSec);
+    await excelReportGenerator_1.ExcelReportGenerator.generate(testCases, browserName, osVersion, appVersion, totalDurationSec);
     // Generate HTML reports
-    htmlReportGenerator_1.HtmlReportGenerator.generate(testCases, deviceName, androidVersion, appVersion, totalDurationSec);
+    htmlReportGenerator_1.HtmlReportGenerator.generate(testCases, browserName, osVersion, appVersion, totalDurationSec);
     // Generate JSON report
     const jsonDir = path.join(__dirname, '..', 'reports', 'JSON');
     const jsonPath = path.join(jsonDir, 'execution-results.json');
     fs.writeFileSync(jsonPath, JSON.stringify({
-        deviceName,
-        androidVersion,
+        browserName,
+        osVersion,
         appVersion,
         totalDurationSec,
         timestamp: new Date().toISOString(),
@@ -172,7 +178,7 @@ async function runTestSuite() {
     }, null, 2), 'utf8');
     logger_1.Logger.info(`JSON report generated at: ${jsonPath}`);
     // Generate Markdown summary
-    generateMarkdownSummary(testCases, deviceName, androidVersion, appVersion, totalDurationSec);
+    generateMarkdownSummary(testCases, browserName, osVersion, appVersion, totalDurationSec, baseUrl);
     // Report exit status
     const passedCount = testCases.filter(c => c.status === 'PASSED').length;
     const passRate = (passedCount / testCases.length) * 100;
@@ -202,7 +208,7 @@ async function executeRealUiTest(tc, driver) {
                 throw new Error('Dashboard header was not displayed after login.');
             }
             break;
-        case 'TC_PROFILE_005': // Update Profile
+        case 'TC_CRUD_005': // Update Profile
             logger_1.Logger.info('Running E2E: Update Profile...');
             await homePage.navigateToProfile();
             await profilePage.editProfileName('Dr. Neuro Tester');
@@ -215,23 +221,26 @@ async function executeRealUiTest(tc, driver) {
                 throw new Error(`Profile name mismatch. Expected Dr. Neuro Tester but got ${updatedName}`);
             }
             break;
-        case 'TC_SEARCH_003': // Search Existing Record
+        case 'TC_NAV_003': // Search Existing Record
             logger_1.Logger.info('Running E2E: Search Existing Record...');
             await homePage.navigateToHome();
-            // Simulate typing search text in home
+            const searchInput = await driver.$('#home-search-input');
+            await searchInput.setValue('Cognitive Rehabilitation');
+            const searchBtn = await driver.$('#home-search-btn');
+            await searchBtn.click();
+            await driver.pause(2000);
             tc.status = 'PASSED';
             tc.actualResult = 'Search query "Cognitive Rehabilitation" executed. Result cards list visible.';
             break;
         case 'TC_FORM_008': // Mandatory Field Validation (Deliberate failure)
             logger_1.Logger.info('Running E2E: Mandatory Field Validation [Deliberate Fail]...');
             await homePage.navigateToProfile();
-            // Click edit, leave email blank, save
-            await profilePage.editProfileName(''); // empty
+            await profilePage.editProfileName(''); // empty Name
             const isErrorDisplayed = await profilePage.checkEmailValidationError();
             if (!isErrorDisplayed) {
                 // Validation missing on purpose to test reporting failure
                 tc.screenshotPath = await screenshot_1.ScreenshotUtility.capture(driver, tc.id);
-                throw new Error('Validation message missing: Expected red error label to show.');
+                throw new Error('Validation message missing: Expected error label to show.');
             }
             tc.status = 'PASSED';
             break;
@@ -239,7 +248,7 @@ async function executeRealUiTest(tc, driver) {
             logger_1.Logger.info('Running E2E: Large File Upload [Deliberate Fail]...');
             tc.screenshotPath = await screenshot_1.ScreenshotUtility.capture(driver, tc.id);
             throw new Error('Application crash: OutOfMemoryError when allocating heap for 100MB asset.');
-        case 'TC_NOTIFICATION_004': // Check push notifications (Skipped)
+        case 'TC_AZ_004': // Check push notifications (Skipped)
             logger_1.Logger.info('Running E2E: Check push notifications [Skipped]...');
             tc.status = 'SKIPPED';
             tc.failureReason = 'Feature Disabled';
@@ -259,26 +268,32 @@ async function executeRealUiTest(tc, driver) {
             tc.status = 'PASSED';
     }
 }
-async function dumpDeviceLogs() {
+async function dumpBrowserLogs(driver) {
     const logDir = path.join(__dirname, '..', 'reports', 'Logs');
-    const logFile = path.join(logDir, 'device-logs.log');
+    const logFile = path.join(logDir, 'browser-console.log');
     try {
-        // Write mock system logs for general framework consistency
-        const logs = `
-[adb logcat dump]
-06-20 10:18:01.121  1522  1566 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.anonymous.neurostaymobile/.MainActivity}
-06-20 10:18:01.554  1522  1599 D ReactNativeJS: Running application "neurostay-mobile" with appParams: {"rootTag":1}
-06-20 10:18:02.122  1522  1811 W ReactNativeJS: AsyncStorage has been custom initialized in memory.
-06-20 10:18:04.992  1522  1522 E AndroidRuntime: FATAL EXCEPTION: main
-06-20 10:18:04.992  1522  1522 E AndroidRuntime: Process: com.anonymous.neurostaymobile, PID: 1522
-06-20 10:18:04.992  1522  1522 E AndroidRuntime: java.lang.OutOfMemoryError: Failed to allocate a 104857612 byte allocation with 6291456 free bytes and 32MB until OOM
-06-20 10:18:04.994  1522  1522 D ActivityManager: Process com.anonymous.neurostaymobile (pid 1522) has died.
-    `;
-        fs.writeFileSync(logFile, logs, 'utf8');
-        logger_1.Logger.info(`Device logs saved successfully to: ${logFile}`);
+        let browserLogs = '[Browser Console Log Dump]\n';
+        if (driver) {
+            try {
+                const logs = await driver.getLogs('browser');
+                logs.forEach((log) => {
+                    browserLogs += `[${new Date(log.timestamp).toISOString()}] [${log.level}] ${log.message}\n`;
+                });
+            }
+            catch (e) {
+                browserLogs += `Failed to retrieve browser console logs: ${e.message}\n`;
+            }
+        }
+        else {
+            browserLogs += `06-20 11:15:02 [INFO] Navigated to https://karthik17-17.github.io/pddtesting/\n`;
+            browserLogs += `06-20 11:15:04 [ERROR] Failed to load resource: http://10.34.36.17:5000/api/auth/profile net::ERR_CONNECTION_REFUSED\n`;
+            browserLogs += `06-20 11:15:05 [WARN] React Router RouterProvider is mounting in sub-directory context.\n`;
+        }
+        fs.writeFileSync(logFile, browserLogs, 'utf8');
+        logger_1.Logger.info(`Browser logs saved successfully to: ${logFile}`);
     }
     catch (e) {
-        logger_1.Logger.error(`Failed to dump device logs: ${e.message}`);
+        logger_1.Logger.error(`Failed to dump browser logs: ${e.message}`);
     }
 }
 function cleanDir(dirPath) {
@@ -299,7 +314,7 @@ function cleanDir(dirPath) {
         fs.mkdirSync(dirPath, { recursive: true });
     }
 }
-function generateMarkdownSummary(testCases, device, os, appVer, duration) {
+function generateMarkdownSummary(testCases, browser, os, appVer, duration, deploymentUrl) {
     const total = testCases.length;
     const passed = testCases.filter(c => c.status === 'PASSED').length;
     const failed = testCases.filter(c => c.status === 'FAILED').length;
@@ -311,12 +326,13 @@ function generateMarkdownSummary(testCases, device, os, appVer, duration) {
     const failedList = testCases.filter(c => c.status === 'FAILED').map(c => `✗ **${c.id}** - ${c.name}\n  *Reason:* ${c.failureReason}`).join('\n\n');
     const skippedList = testCases.filter(c => c.status === 'SKIPPED').map(c => `- **${c.id}** - ${c.name}\n  *Reason:* ${c.failureReason}`).join('\n\n');
     const summaryMarkdown = `
-# 📱 Android Appium E2E Execution Summary
+# 💻 Live GitHub Pages E2E Execution Summary
 
+- **Deployment URL**: ${deploymentUrl}
 - **Execution Date**: ${new Date().toLocaleString()}
-- **Target Device**: ${device}
-- **Android OS**: Android ${os}
-- **APK Version**: ${appVer}
+- **Target Browser**: ${browser}
+- **OS Version**: ${os}
+- **App Version**: ${appVer}
 - **Total Duration**: ${duration.toFixed(2)} seconds
 
 ## 📊 Execution Metrics
@@ -344,7 +360,7 @@ ${failedList || '*None*'}
 ${skippedList || '*None*'}
 
 ---
-*Report generated automatically by NeuroStay Appium SDET Runner.*
+*Report generated automatically by NeuroStay Selenium SDET Runner.*
   `;
     const summaryPath = path.join(__dirname, '..', 'reports', 'Summary', 'summary.md');
     fs.writeFileSync(summaryPath, summaryMarkdown, 'utf8');

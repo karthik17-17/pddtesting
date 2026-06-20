@@ -71,10 +71,10 @@ class ExcelReportGenerator {
         ExcelReportGenerator.buildSingleStatusSheet(failedWorkbook, 'Failed Tests', failed, 'FFE11D48');
         const failedPath = path.join(ExcelReportGenerator.outDir, 'Failed_Test_Cases.xlsx');
         await failedWorkbook.xlsx.writeFile(failedPath);
-        // 4. Generate Execution_Summary.xlsx
+        // 4. Generate Summary_Report.xlsx
         const summaryWorkbook = new ExcelJS.Workbook();
         ExcelReportGenerator.buildSummaryReport(summaryWorkbook, total, passed.length, failed.length, skipped.length, blocked.length, passRate, failRate, deviceName, androidVersion, appVersion, totalDurationSec);
-        const summaryPath = path.join(ExcelReportGenerator.outDir, 'Execution_Summary.xlsx');
+        const summaryPath = path.join(ExcelReportGenerator.outDir, 'Summary_Report.xlsx');
         await summaryWorkbook.xlsx.writeFile(summaryPath);
         logger_1.Logger.info('Excel report generation completed successfully!');
     }

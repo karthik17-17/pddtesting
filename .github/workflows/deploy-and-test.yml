@@ -1,0 +1,162 @@
+name: Deploy and E2E Test Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    name: Build, Deploy and Verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: |
+            frontend/package.json
+            automation/package.json
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Build Frontend Application
+        run: |
+          cd frontend
+          npm run build -- --base=/pddtesting/
+
+      - name: Run Static Analysis
+        run: |
+          cd frontend
+          npm run lint || echo "Static analysis (linting) warnings detected."
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/dist/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Wait for Deployment
+        run: sleep 15
+
+      - name: Verify Live Deployment
+        run: |
+          echo "Verifying deployment at https://karthik17-17.github.io/pddtesting/ ..."
+          RESPONSE=$(curl -s -w "%{http_code}" -o main_page.html https://karthik17-17.github.io/pddtesting/)
+          if [ "$RESPONSE" -ne 200 ]; then
+            echo "Error: Live URL returned HTTP $RESPONSE instead of 200"
+            cat main_page.html || true
+            exit 1
+          fi
+          echo "Main page loaded successfully (HTTP 200)."
+          
+          # Match asset files (e.g. assets/index-hash.js)
+          JS_PATH=$(grep -oE 'assets/index-[0-9a-zA-Z_-]+\.js' main_page.html | head -n 1)
+          CSS_PATH=$(grep -oE 'assets/index-[0-9a-zA-Z_-]+\.css' main_page.html | head -n 1)
+          
+          if [ -n "$JS_PATH" ]; then
+            echo "Found JS asset: $JS_PATH"
+            JS_RESPONSE=$(curl -s -w "%{http_code}" -o /dev/null https://karthik17-17.github.io/pddtesting/$JS_PATH)
+            if [ "$JS_RESPONSE" -ne 200 ]; then
+              echo "Error: JS asset returned HTTP $JS_RESPONSE"
+              exit 1
+            fi
+            echo "JS asset loaded successfully (HTTP 200)."
+          else
+            echo "Warning: JS asset path not found in index.html"
+          fi
+          
+          if [ -n "$CSS_PATH" ]; then
+            echo "Found CSS asset: $CSS_PATH"
+            CSS_RESPONSE=$(curl -s -w "%{http_code}" -o /dev/null https://karthik17-17.github.io/pddtesting/$CSS_PATH)
+            if [ "$CSS_RESPONSE" -ne 200 ]; then
+              echo "Error: CSS asset returned HTTP $CSS_RESPONSE"
+              exit 1
+            fi
+            echo "CSS asset loaded successfully (HTTP 200)."
+          else
+            echo "Warning: CSS asset path not found in index.html"
+          fi
+        shell: bash
+
+  run-e2e-tests:
+    name: Run Selenium E2E Suite
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: automation/package.json
+
+      - name: Install E2E Automation Dependencies
+        run: |
+          cd automation
+          npm install
+
+      - name: Run Selenium E2E Tests
+        run: |
+          cd automation
+          npm run build
+          npm test
+        env:
+          BASE_URL: https://karthik17-17.github.io/pddtesting/
+
+      - name: Consolidate E2E Reports
+        if: always()
+        run: |
+          mkdir -p "Test Results"
+          cp -r automation/reports/Excel "Test Results/"
+          cp -r automation/reports/HTML "Test Results/"
+          cp -r automation/reports/JSON "Test Results/"
+          cp -r automation/reports/Summary "Test Results/"
+          cp -r automation/reports/Screenshots "Test Results/screenshots"
+          cp -r automation/reports/Logs "Test Results/logs"
+        shell: bash
+
+      - name: Upload Automation Test Reports Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Selenium-E2E-Reports
+          path: Test Results/
+          retention-days: 30
+
+      - name: Publish GitHub Action Summary
+        if: always()
+        run: |
+          if [ -f automation/reports/Summary/summary.md ]; then
+            cat automation/reports/Summary/summary.md >> $GITHUB_STEP_SUMMARY
+          fi
+        shell: bash

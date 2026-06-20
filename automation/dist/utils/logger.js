@@ -38,7 +38,7 @@ const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 class Logger {
     static logDir = path.join(__dirname, '..', 'reports', 'Logs');
-    static logFilePath = path.join(Logger.logDir, 'appium-execution.log');
+    static logFilePath = path.join(Logger.logDir, 'selenium-execution.log');
     static initialize() {
         if (!fs.existsSync(Logger.logDir)) {
             fs.mkdirSync(Logger.logDir, { recursive: true });
