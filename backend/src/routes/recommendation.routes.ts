@@ -1,8 +1,9 @@
 import express from "express";
+import { validateSearch } from "../middleware/validation.middleware";
 
 const router = express.Router();
 
-router.post("/search", async (req, res) => {
+router.post("/search", validateSearch, async (req, res) => {
   const { query } = req.body;
   const q = String(query || "").toLowerCase();
   

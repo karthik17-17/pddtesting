@@ -3,10 +3,18 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import User from "../models/User.model";
+import {
+  validateRegister,
+  validateLogin,
+  validateForgotPassword,
+  validateResetPassword,
+  validateProfileUpdate,
+  validatePasswordUpdate
+} from "../middleware/validation.middleware";
 
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
+router.post("/register", validateRegister, async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -52,7 +60,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", validateLogin, async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -102,7 +110,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/forgot-password", async (req, res) => {
+router.post("/forgot-password", validateForgotPassword, async (req, res) => {
   try {
     const { email } = req.body;
 
@@ -147,7 +155,7 @@ router.post("/forgot-password", async (req, res) => {
   }
 });
 
-router.post("/reset-password", async (req, res) => {
+router.post("/reset-password", validateResetPassword, async (req, res) => {
   try {
     const { email, otp, newPassword } = req.body;
 
@@ -173,7 +181,7 @@ router.post("/reset-password", async (req, res) => {
     });
   }
 });
-router.put("/profile", async (req, res) => {
+router.put("/profile", validateProfileUpdate, async (req, res) => {
   try {
     const { email, name } = req.body;
     const user = await User.findOneAndUpdate({ email }, { name }, { new: true });
@@ -197,7 +205,7 @@ router.put("/profile", async (req, res) => {
   }
 });
 
-router.put("/password", async (req, res) => {
+router.put("/password", validatePasswordUpdate, async (req, res) => {
   try {
     const { email, currentPassword, newPassword } = req.body;
     const user = await User.findOne({ email });

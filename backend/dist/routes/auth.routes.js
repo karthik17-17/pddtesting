@@ -17,8 +17,9 @@ const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const User_model_1 = __importDefault(require("../models/User.model"));
+const validation_middleware_1 = require("../middleware/validation.middleware");
 const router = express_1.default.Router();
-router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/register", validation_middleware_1.validateRegister, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { name, email, password } = req.body;
         const existingUser = yield User_model_1.default.findOne({ email });
@@ -54,7 +55,7 @@ router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, functio
         });
     }
 }));
-router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/login", validation_middleware_1.validateLogin, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password } = req.body;
         const user = yield User_model_1.default.findOne({ email });
@@ -91,7 +92,7 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
 }));
-router.post("/forgot-password", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/forgot-password", validation_middleware_1.validateForgotPassword, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email } = req.body;
         const user = yield User_model_1.default.findOne({ email });
@@ -127,7 +128,7 @@ router.post("/forgot-password", (req, res) => __awaiter(void 0, void 0, void 0, 
         });
     }
 }));
-router.post("/reset-password", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/reset-password", validation_middleware_1.validateResetPassword, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, otp, newPassword } = req.body;
         const user = yield User_model_1.default.findOne({ email });
@@ -150,7 +151,7 @@ router.post("/reset-password", (req, res) => __awaiter(void 0, void 0, void 0, f
         });
     }
 }));
-router.put("/profile", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.put("/profile", validation_middleware_1.validateProfileUpdate, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, name } = req.body;
         const user = yield User_model_1.default.findOneAndUpdate({ email }, { name }, { new: true });
@@ -172,7 +173,7 @@ router.put("/profile", (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
 }));
-router.put("/password", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.put("/password", validation_middleware_1.validatePasswordUpdate, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, currentPassword, newPassword } = req.body;
         const user = yield User_model_1.default.findOne({ email });
