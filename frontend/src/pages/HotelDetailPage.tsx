@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
 import { useAuth } from "../context/AuthContext";
@@ -29,6 +30,8 @@ export default function HotelDetailPage() {
   const hotel: Hotel | null = JSON.parse(
     localStorage.getItem("selectedHotel") || "null"
   );
+
+  const [activeImage, setActiveImage] = useState(hotel?.image || "");
 
   if (!hotel) {
     return (
@@ -105,11 +108,11 @@ export default function HotelDetailPage() {
 
       <div className="mt-8 grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 bg-slate-800 rounded-3xl overflow-hidden shadow-2xl">
-          {hotel.image ? (
+          {activeImage ? (
             <img
-              src={hotel.image}
+              src={activeImage}
               alt={hotel.name}
-              className="w-full h-[430px] object-cover"
+              className="w-full h-[430px] object-cover transition-all duration-300"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
@@ -117,12 +120,32 @@ export default function HotelDetailPage() {
               }}
             />
           ) : null}
-          <div className={`w-full h-[430px] bg-slate-800 flex flex-col items-center justify-center text-slate-500 ${hotel.image ? 'hidden' : ''}`}>
+          <div className={`w-full h-[430px] bg-slate-800 flex flex-col items-center justify-center text-slate-500 ${activeImage ? 'hidden' : ''}`}>
              <span className="text-6xl mb-4">🏨</span>
              <p className="text-xl font-semibold">Image not available</p>
           </div>
 
-          {/* Removed fake image thumbnail grid here to prevent showing hallucinations */}
+          {/* Dynamic Image Gallery */}
+          {hotel.images && hotel.images.length > 1 && (
+            <div className="flex gap-3 p-4 bg-slate-900 overflow-x-auto border-t border-slate-700">
+              {hotel.images.map((imgUrl, index) => (
+                <img
+                  key={index}
+                  src={imgUrl}
+                  alt={`Thumbnail ${index + 1}`}
+                  onClick={() => setActiveImage(imgUrl)}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = 'none';
+                  }}
+                  className={`w-24 h-16 object-cover rounded-lg cursor-pointer transition-all duration-200 border-2 ${
+                    activeImage === imgUrl 
+                      ? "border-cyan-400 scale-105 shadow-md shadow-cyan-500/20" 
+                      : "border-transparent opacity-60 hover:opacity-100"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
 
           <div className="p-8">
             <h1 className="text-5xl font-bold">{hotel.name}</h1>

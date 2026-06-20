@@ -49,6 +49,16 @@ const getCityName = (query: string): string => {
   return city || "Chennai";
 };
 
+const cleanImageUrl = (url: string): string => {
+  if (!url) return "";
+  if (url.includes("googleusercontent.com")) {
+    if (url.includes("=s10000")) {
+      return url.replace("=s10000", "=s800");
+    }
+  }
+  return url;
+};
+
 const mapHotel = (hotel: any, index: number, city: string) => {
   const name = hotel.name || hotel.title || "Hotel";
   const address = hotel.address || hotel.display_name || "Address not available";
@@ -72,11 +82,19 @@ const mapHotel = (hotel: any, index: number, city: string) => {
   }
 
   // Handle image
-  let image = "";
+  let image = cleanImageUrl(hotel.image || hotel.thumbnail || "");
+  let images: string[] = [];
+  if (hotel.images && Array.isArray(hotel.images)) {
+    images = hotel.images.map((img: any) => cleanImageUrl(img.thumbnail || img.original_image || "")).filter(Boolean);
+  }
   if (hotel.images && Array.isArray(hotel.images) && hotel.images.length > 0) {
-    image = hotel.images[0]?.thumbnail || hotel.images[0]?.original_image || "";
-  } else {
-    image = hotel.image || hotel.thumbnail || "";
+    const firstImg = hotel.images[0]?.thumbnail || hotel.images[0]?.original_image || "";
+    if (firstImg) {
+      image = cleanImageUrl(firstImg);
+    }
+  }
+  if (images.length === 0 && image) {
+    images = [image];
   }
 
   // Handle coordinates
@@ -105,6 +123,7 @@ const mapHotel = (hotel: any, index: number, city: string) => {
     rating,
     price,
     image,
+    images: images.slice(0, 6),
     matchScore,
     why,
     mapLink,

@@ -19,6 +19,7 @@ data class Hotel(
     val why: String,
     val mapLink: String,
     val image: String,
+    val images: List<String>? = null,
     val latitude: Double?,
     val longitude: Double?
 )
