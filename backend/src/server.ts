@@ -39,14 +39,18 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
   : [
       "http://localhost:3000",
       "http://localhost:5000",
+      "http://localhost:5173",
+      "http://127.0.0.1:5173",
       "http://localhost:8081",
-      "http://localhost:19006"
+      "http://localhost:19006",
+      "https://karthik17-17.github.io"
     ];
 
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.includes("*")) {
+    const isLocal = origin.startsWith("http://localhost:") || origin.startsWith("http://127.0.0.1:");
+    if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.includes("*") || isLocal) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
