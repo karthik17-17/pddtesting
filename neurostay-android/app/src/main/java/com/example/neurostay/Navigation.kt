@@ -55,10 +55,9 @@ fun MainNavigation() {
             onNavigateToMap = { backStack.add(MapView) }
           )
         }
-        entry<Results> { entry ->
-          val query = (entry.key as Results).query
+        entry<Results> { key ->
           ResultsScreen(
-            query = query,
+            query = key.query,
             onBack = { backStack.removeLastOrNull() },
             onNavigateToCompare = { backStack.add(Compare) }
           )

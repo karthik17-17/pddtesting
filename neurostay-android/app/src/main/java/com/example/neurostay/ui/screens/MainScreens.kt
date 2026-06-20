@@ -33,6 +33,7 @@ import com.example.neurostay.data.local.PreferencesManager
 import com.example.neurostay.data.remote.RetrofitClient
 import kotlinx.coroutines.launch
 import java.net.URLEncoder
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 
 // Helper navigation bar for main screens
 @Composable
