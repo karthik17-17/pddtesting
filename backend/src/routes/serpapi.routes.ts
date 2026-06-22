@@ -145,6 +145,41 @@ const localMockHotels: { [key: string]: any[] } = {
       lat: 18.9269,
       lng: 72.8205
     }
+  ],
+  srikalahasti: [
+    {
+      name: "MG Grand Hotel",
+      address: "Sannidhi Street, Srikalahasti, Andhra Pradesh 517644",
+      rating: 4.2,
+      price: "₹2,800",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      matchScore: 94,
+      why: "Very close to the temple, clean rooms, family-friendly atmosphere, and quick room service.",
+      lat: 13.7498,
+      lng: 79.6984
+    },
+    {
+      name: "Hotel Kasa",
+      address: "Panagal Road, Srikalahasti, Andhra Pradesh 517644",
+      rating: 4.0,
+      price: "₹2,200",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
+      matchScore: 88,
+      why: "Affordable rates, spacious parking space, and modern room amenities.",
+      lat: 13.7541,
+      lng: 79.6961
+    },
+    {
+      name: "Hotel MGM Grand",
+      address: "Tirupati Road, Srikalahasti, Andhra Pradesh 517644",
+      rating: 4.1,
+      price: "₹3,000",
+      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+      matchScore: 91,
+      why: "Comfortable beds, highly responsive staff, and an attached vegetarian restaurant.",
+      lat: 13.7432,
+      lng: 79.6895
+    }
   ]
 };
 
@@ -160,7 +195,10 @@ const normalizeQuery = (query: string): string => {
   if (!q) return "hotels in Chennai India";
 
   // Spell fixes
-  q = q.replace(/tirupathi/gi, "Tirupati").replace(/srikalahasthi/gi, "Srikalahasti");
+  q = q.replace(/tirupathi/gi, "Tirupati")
+       .replace(/srikalahasthi/gi, "Srikalahasti")
+       .replace(/srikalashthi/gi, "Srikalahasti")
+       .replace(/srikalhasthi/gi, "Srikalahasti");
 
   const lower = q.toLowerCase();
 
@@ -289,7 +327,7 @@ router.post("/hotels", async (req, res) => {
   console.log("Hotel search API called. Raw Query:", query);
 
   const normalizedQuery = normalizeQuery(query);
-  const city = getCityName(query);
+  const city = getCityName(normalizedQuery);
   console.log(`Normalized Query: "${normalizedQuery}", City Name: "${city}"`);
 
   let rawHotels: any[] = [];
