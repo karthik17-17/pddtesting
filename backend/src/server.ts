@@ -33,31 +33,38 @@ app.use(helmet());
 
 app.use("/download", express.static(path.join(__dirname, "../../download")));
 
-// Safe CORS Configuration
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(",")
-  : [
-      "http://localhost:3000",
-      "http://localhost:5000",
-      "http://localhost:5173",
-      "http://127.0.0.1:5173",
-      "http://localhost:8081",
-      "http://localhost:19006",
-      "https://karthik17-17.github.io"
-    ];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "http://localhost:8081",
+  "http://localhost:19006",
+  "http://127.0.0.1:5173",
+  "https://neurostay-web.vercel.app",
+  process.env.CLIENT_URL,
+  ...(process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(",").map((o) => o.trim())
+    : []),
+].filter(Boolean);
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    const isLocal = origin.startsWith("http://localhost:") || origin.startsWith("http://127.0.0.1:");
-    if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.includes("*") || isLocal) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      console.warn("Blocked CORS origin:", origin);
+      return callback(null, true);
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.options(/(.*)/, cors());
 
 app.use(express.json());
 

@@ -34,12 +34,14 @@ export default function ResultsPage() {
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [retryTrigger, setRetryTrigger] = useState(0);
 
   useEffect(() => {
     const fetchHotels = async () => {
       setLoading(true);
       setHasError(false);
+      setErrorMessage("");
       try {
         console.log("ResultsPage: Initiating hotel search for query:", rawQuery);
         const response = await axiosInstance.post("/api/serpapi/hotels", { query: rawQuery });
@@ -56,11 +58,14 @@ export default function ResultsPage() {
           }
         } else {
           console.error("ResultsPage: API returned success=false or invalid format", data);
+          setErrorMessage(data?.message || "Invalid response format from server.");
           setHasError(true);
           setHotels([]);
         }
-      } catch (error) {
-        console.error("ResultsPage error fetching hotels:", error);
+      } catch (err: any) {
+        console.error("Hotel fetch failed:", err);
+        const msg = err.response?.data?.message || err.message || "Unable to fetch hotels.";
+        setErrorMessage(msg);
         setHasError(true);
         setHotels([]);
       } finally {
@@ -135,6 +140,7 @@ export default function ResultsPage() {
         <div className="flex flex-col items-center justify-center py-20 text-center bg-slate-800/50 rounded-3xl border border-slate-700">
           <span className="text-6xl mb-4">⚠️</span>
           <h2 className="text-2xl font-bold text-slate-300">Unable to fetch hotels.</h2>
+          <p className="text-slate-450 mt-2 max-w-md mx-auto">{errorMessage || "Please try again later."}</p>
           <button
             onClick={() => setRetryTrigger(prev => prev + 1)}
             className="mt-6 bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-2.5 rounded-xl font-bold transition-all duration-200"

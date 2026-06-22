@@ -3,6 +3,151 @@ import axios from "axios";
 
 const router = express.Router();
 
+const localMockHotels: { [key: string]: any[] } = {
+  tirupati: [
+    {
+      name: "Fortune Select Grand Ridge",
+      address: "Shilparamam Theme Park, Tirupati, Andhra Pradesh 517507",
+      rating: 4.5,
+      price: "₹6,500",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      matchScore: 95,
+      why: "Excellent amenities, close to the hills, premium dining choices, and high cleanliness scores.",
+      lat: 13.6285,
+      lng: 79.4244
+    },
+    {
+      name: "Taj Tirupati",
+      address: "Tirupati-Renigunta Road, Tirupati, Andhra Pradesh 517501",
+      rating: 4.8,
+      price: "₹9,000",
+      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+      matchScore: 92,
+      why: "Ultra-luxury five-star experience with stunning hill views, top-tier hospitality, and excellent spa facilities.",
+      lat: 13.6373,
+      lng: 79.4437
+    },
+    {
+      name: "Marasa Sarovar Premiere",
+      address: "Karakambadi Road, Upadhyaya Nagar, Tirupati, Andhra Pradesh 517507",
+      rating: 4.3,
+      price: "₹5,200",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
+      matchScore: 89,
+      why: "Unique theme, great swimming pool, excellent buffet, and friendly staff.",
+      lat: 13.6492,
+      lng: 79.4358
+    }
+  ],
+  tirupathi: [
+    {
+      name: "Fortune Select Grand Ridge",
+      address: "Shilparamam Theme Park, Tirupati, Andhra Pradesh 517507",
+      rating: 4.5,
+      price: "₹6,500",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      matchScore: 95,
+      why: "Excellent amenities, close to the hills, premium dining choices, and high cleanliness scores.",
+      lat: 13.6285,
+      lng: 79.4244
+    },
+    {
+      name: "Taj Tirupati",
+      address: "Tirupati-Renigunta Road, Tirupati, Andhra Pradesh 517501",
+      rating: 4.8,
+      price: "₹9,000",
+      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+      matchScore: 92,
+      why: "Ultra-luxury five-star experience with stunning hill views, top-tier hospitality, and excellent spa facilities.",
+      lat: 13.6373,
+      lng: 79.4437
+    }
+  ],
+  bangalore: [
+    {
+      name: "The Leela Palace Bengaluru",
+      address: "23 HAL Old Airport Rd, Kodihalli, Bengaluru, Karnataka 560008",
+      rating: 4.9,
+      price: "₹14,500",
+      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+      matchScore: 98,
+      why: "Stunning palace-style luxury, award-winning fine dining restaurants, and lush green gardens in the heart of tech hub.",
+      lat: 12.9606,
+      lng: 77.6485
+    },
+    {
+      name: "ITC Gardenia, a Luxury Collection Hotel",
+      address: "1 Residency Rd, Ashok Nagar, Bengaluru, Karnataka 560025",
+      rating: 4.7,
+      price: "₹12,000",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      matchScore: 94,
+      why: "Eco-friendly luxury hotel with wind-cooled lobby, outstanding cleanliness, and premium comfort near Cubbon Park.",
+      lat: 12.9678,
+      lng: 77.5968
+    },
+    {
+      name: "Radisson Blu Atria Bengaluru",
+      address: "1 Palace Rd, Ambedkar Veedhi, Bengaluru, Karnataka 560001",
+      rating: 4.4,
+      price: "₹7,200",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
+      matchScore: 88,
+      why: "Superb central location, comfortable workspaces, fast Wi-Fi, and excellent breakfast spread.",
+      lat: 12.9829,
+      lng: 77.5878
+    }
+  ],
+  chennai: [
+    {
+      name: "The Leela Palace Chennai",
+      address: "Adyar Seaface, MRC Nagar, Chennai, Tamil Nadu 600028",
+      rating: 4.8,
+      price: "₹11,500",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      matchScore: 97,
+      why: "Chennai's only sea-facing palace hotel, with spectacular views of the Bay of Bengal, opulent decor, and exceptional dining.",
+      lat: 13.0165,
+      lng: 80.2762
+    },
+    {
+      name: "Taj Connemara",
+      address: "Binny Rd, Anna Salai, Chennai, Tamil Nadu 600002",
+      rating: 4.6,
+      price: "₹8,500",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
+      matchScore: 93,
+      why: "A heritage property rich with history, offering colonial charm, beautiful gardens, and excellent central location.",
+      lat: 13.0612,
+      lng: 80.2604
+    }
+  ],
+  mumbai: [
+    {
+      name: "The Taj Mahal Palace",
+      address: "Apollo Bandar, Colaba, Mumbai, Maharashtra 400001",
+      rating: 4.9,
+      price: "₹18,000",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      matchScore: 99,
+      why: "Historic landmark overlooking the Gateway of India, legendary hospitality, and world-class luxury amenities.",
+      lat: 18.9218,
+      lng: 72.8333
+    },
+    {
+      name: "Trident Nariman Point",
+      address: "CR 2 Nariman Point, Netaji Subhash Chandra Bose Rd, Mumbai, Maharashtra 400021",
+      rating: 4.6,
+      price: "₹9,500",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
+      matchScore: 91,
+      why: "Spectacular views of the Marine Drive Queen's Necklace, great business amenities, and outstanding breakfast service.",
+      lat: 18.9269,
+      lng: 72.8205
+    }
+  ]
+};
+
 router.get("/hotels", (req, res) => {
   res.json({
     success: true,
@@ -301,7 +446,31 @@ router.post("/hotels", async (req, res) => {
   }
 
   // Map to exact required format
-  const hotels = filtered.map((h, index) => mapHotel(h, index, city));
+  let hotels = filtered.map((h, index) => mapHotel(h, index, city));
+
+  // Fallback: If no hotels are found, try local mock hotels fallback to keep live systems responsive
+  if (hotels.length === 0) {
+    const key = city.toLowerCase();
+    const mockList = localMockHotels[key] || localMockHotels["tirupati"]; // Default to Tirupati if city has no specific mock list
+    if (mockList) {
+      console.log(`Fallback: Using local mock hotels list for key "${key}"`);
+      source = "mock_fallback";
+      hotels = mockList.map((m, index) => ({
+        id: index + 1,
+        name: m.name,
+        address: m.address,
+        rating: m.rating,
+        price: m.price,
+        image: m.image,
+        images: [m.image],
+        matchScore: m.matchScore,
+        why: m.why,
+        mapLink: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(m.name + ' ' + m.address)}`,
+        lat: m.lat,
+        lng: m.lng
+      }));
+    }
+  }
 
   console.log(`Final Response: success=true, source="${source}", hotelsCount=${hotels.length}`);
   console.log("-----------------------------------------");

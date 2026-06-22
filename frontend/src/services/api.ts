@@ -1,14 +1,12 @@
 const getApiUrl = () => {
-  if (typeof window !== "undefined" && window.location) {
-    const hostname = window.location.hostname;
-    if (hostname === "localhost" || hostname === "127.0.0.1") {
-      return "http://localhost:5000";
-    }
-    if (hostname.includes("github.io")) {
-      return "https://neurostay-ai.onrender.com";
-    }
+  let url = import.meta.env.VITE_API_URL || "https://neurostay-ai.onrender.com/api";
+  if (url.includes("localhost") || url.includes("127.0.0.1") || url.includes("10.34.36.17")) {
+    url = "https://neurostay-ai.onrender.com/api";
   }
-  return import.meta.env.VITE_API_URL || "http://10.34.36.17:5000";
+  if (url.endsWith("/api")) {
+    url = url.substring(0, url.length - 4);
+  }
+  return url;
 };
 
 const API_URL = getApiUrl();

@@ -5,8 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Test Suite Configuration
-const WEB_URL = process.env.WEB_URL || 'http://localhost:5173';
-const MOBILE_URL = process.env.MOBILE_URL || 'http://localhost:8081';
+const WEB_URL = process.env.WEB_URL || 'https://karthik17-17.github.io/pddtesting/';
+const MOBILE_URL = process.env.MOBILE_URL || 'https://neurostay-ai.onrender.com';
 const LOGIN_EMAIL = 'munil8215@gmail.com';
 const LOGIN_PASSWORD = 'Muni@1234';
 
@@ -122,6 +122,19 @@ async function runSeleniumSuite() {
         browserWorking = true;
       } catch (e) {
         console.warn('Browser automation check failed, using simulated fallback:', e.message);
+        if (driver) {
+          try {
+            const screenshot = await driver.takeScreenshot();
+            const screenshotDir = path.join(__dirname, 'screenshots');
+            if (!fs.existsSync(screenshotDir)) {
+              fs.mkdirSync(screenshotDir, { recursive: true });
+            }
+            fs.writeFileSync(path.join(screenshotDir, 'failure-setup.png'), screenshot, 'base64');
+            console.log('Saved failure screenshot to testing/screenshots/failure-setup.png');
+          } catch (err) {
+            console.error('Failed to take screenshot:', err.message);
+          }
+        }
       }
     }
 
