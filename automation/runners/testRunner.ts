@@ -160,13 +160,25 @@ async function runTestSuite() {
   // Report exit status
   const passedCount = testCases.filter(c => c.status === 'PASSED').length;
   const passRate = (passedCount / testCases.length) * 100;
-  Logger.info(`Final Metrics -> Total: ${testCases.length}, Passed: ${passedCount}, Pass Rate: ${passRate.toFixed(2)}%`);
 
-  if (passRate < 95) {
-    Logger.error('Execution Failed: Pass rate is below the 95% threshold.');
+  const totalCritical = testCases.filter(c => c.priority === 'CRITICAL').length;
+  const failedCritical = testCases.filter(c => c.priority === 'CRITICAL' && (c.status === 'FAILED' || c.status === 'BLOCKED')).length;
+  const criticalFailRate = totalCritical > 0 ? (failedCritical / totalCritical) * 100 : 0;
+
+  Logger.info(`Final Metrics -> Total: ${testCases.length}, Passed: ${passedCount}, Pass Rate: ${passRate.toFixed(2)}%`);
+  Logger.info(`Critical Tests -> Total: ${totalCritical}, Failed: ${failedCritical}, Critical Fail Rate: ${criticalFailRate.toFixed(2)}%`);
+
+  // Workflow fail/succeed logic:
+  // - Fail if more than 5% critical test cases fail
+  // - Fail if overall pass percentage is below 95%
+  if (criticalFailRate > 5.0) {
+    Logger.error(`Execution Failed: Critical test case failure rate (${criticalFailRate.toFixed(2)}%) is above the 5% threshold.`);
+    process.exit(1);
+  } else if (passRate < 95.0) {
+    Logger.error(`Execution Failed: Overall pass percentage (${passRate.toFixed(2)}%) is below the 95% threshold.`);
     process.exit(1);
   } else {
-    Logger.info('Execution Passed: Criteria met successfully!');
+    Logger.info('Execution Passed: All criteria (Pass Rate >= 95% and Critical Fail Rate <= 5%) met successfully!');
     process.exit(0);
   }
 }

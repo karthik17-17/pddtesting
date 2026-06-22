@@ -95,18 +95,18 @@ class ExcelReportGenerator {
             { header: 'Test ID', key: 'id', width: 15 },
             { header: 'Module', key: 'module', width: 22 },
             { header: 'Test Name', key: 'name', width: 40 },
-            { header: 'Priority', key: 'priority', width: 12 },
             { header: 'Status', key: 'status', width: 12 },
-            { header: 'Execution Time (ms)', key: 'execTime', width: 20 }
+            { header: 'Execution Time', key: 'execTime', width: 20 },
+            { header: 'Priority', key: 'priority', width: 12 }
         ];
         all.forEach(tc => {
             s1.addRow({
                 id: tc.id,
                 module: tc.module,
                 name: tc.name,
-                priority: tc.priority,
                 status: tc.status,
-                execTime: tc.executionTime || 0
+                execTime: tc.executionTime || 0,
+                priority: tc.priority
             });
         });
         ExcelReportGenerator.styleSheetHeadersAndBorders(s1, darkPurpleFill, headerFont, borderStyle);
@@ -114,7 +114,7 @@ class ExcelReportGenerator {
         const s2 = wb.addWorksheet('Passed Tests');
         s2.views = [{ showGridLines: true }];
         s2.columns = s1.columns;
-        passed.forEach(tc => s2.addRow([tc.id, tc.module, tc.name, tc.priority, tc.status, tc.executionTime || 0]));
+        passed.forEach(tc => s2.addRow([tc.id, tc.module, tc.name, tc.status, tc.executionTime || 0, tc.priority]));
         ExcelReportGenerator.styleSheetHeadersAndBorders(s2, { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF10B981' } }, headerFont, borderStyle);
         // --- Sheet 3: Failed Tests ---
         const s3 = wb.addWorksheet('Failed Tests');
@@ -123,12 +123,13 @@ class ExcelReportGenerator {
             { header: 'Test ID', key: 'id', width: 15 },
             { header: 'Module', key: 'module', width: 22 },
             { header: 'Test Name', key: 'name', width: 35 },
-            { header: 'Priority', key: 'priority', width: 12 },
             { header: 'Status', key: 'status', width: 12 },
+            { header: 'Execution Time', key: 'execTime', width: 18 },
+            { header: 'Priority', key: 'priority', width: 12 },
             { header: 'Failure Reason', key: 'reason', width: 35 },
             { header: 'Stack Trace', key: 'stack', width: 50 }
         ];
-        failed.forEach(tc => s3.addRow([tc.id, tc.module, tc.name, tc.priority, tc.status, tc.failureReason || 'N/A', tc.stackTrace || 'N/A']));
+        failed.forEach(tc => s3.addRow([tc.id, tc.module, tc.name, tc.status, tc.executionTime || 0, tc.priority, tc.failureReason || 'N/A', tc.stackTrace || 'N/A']));
         ExcelReportGenerator.styleSheetHeadersAndBorders(s3, { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE11D48' } }, headerFont, borderStyle);
         // --- Sheet 4: Skipped Tests ---
         const s4 = wb.addWorksheet('Skipped Tests');
@@ -137,11 +138,11 @@ class ExcelReportGenerator {
             { header: 'Test ID', key: 'id', width: 15 },
             { header: 'Module', key: 'module', width: 22 },
             { header: 'Test Name', key: 'name', width: 40 },
-            { header: 'Priority', key: 'priority', width: 12 },
             { header: 'Status', key: 'status', width: 12 },
+            { header: 'Priority', key: 'priority', width: 12 },
             { header: 'Skip Reason', key: 'reason', width: 40 }
         ];
-        skipped.forEach(tc => s4.addRow([tc.id, tc.module, tc.name, tc.priority, tc.status, tc.failureReason || 'N/A']));
+        skipped.forEach(tc => s4.addRow([tc.id, tc.module, tc.name, tc.status, tc.priority, tc.failureReason || 'N/A']));
         ExcelReportGenerator.styleSheetHeadersAndBorders(s4, { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF59E0B' } }, headerFont, borderStyle);
         // --- Sheet 5: Execution Metrics ---
         const s5 = wb.addWorksheet('Execution Metrics');
@@ -277,10 +278,11 @@ class ExcelReportGenerator {
             { header: 'Test ID', key: 'id', width: 15 },
             { header: 'Module', key: 'module', width: 25 },
             { header: 'Test Name', key: 'name', width: 45 },
-            { header: 'Priority', key: 'priority', width: 15 },
-            { header: 'Status', key: 'status', width: 15 }
+            { header: 'Status', key: 'status', width: 15 },
+            { header: 'Execution Time', key: 'execTime', width: 18 },
+            { header: 'Priority', key: 'priority', width: 15 }
         ];
-        tests.forEach(tc => ws.addRow([tc.id, tc.module, tc.name, tc.priority, tc.status]));
+        tests.forEach(tc => ws.addRow([tc.id, tc.module, tc.name, tc.status, tc.executionTime || 0, tc.priority]));
         const borderStyle = {
             top: { style: 'thin', color: { argb: 'FFD1D5DB' } },
             bottom: { style: 'thin', color: { argb: 'FFD1D5DB' } },
