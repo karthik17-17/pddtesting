@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
-import API_URL from "../services/api";
+import axiosInstance from "../config/axios";
 
 type Hotel = {
   id: number;
@@ -41,39 +41,26 @@ export default function ResultsPage() {
       setLoading(true);
       setHasError(false);
       try {
-        const url = `${API_URL}/api/serpapi/hotels`;
-        console.log("Calling hotel API:", url);
-        
-        const res = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ query: rawQuery }),
-        });
+        console.log("ResultsPage: Initiating hotel search for query:", rawQuery);
+        const response = await axiosInstance.post("/api/serpapi/hotels", { query: rawQuery });
+        console.log("ResultsPage: API response received. Status:", response.status);
+        const data = response.data;
+        console.log("ResultsPage: API response body:", data);
 
-        if (!res.ok) {
-          setHasError(true);
-          setHotels([]);
-          setLoading(false);
-          return;
-        }
-
-        const data = await res.json();
-
-        if (data.success === true && Array.isArray(data.hotels)) {
-          console.log("Hotels received:", data.hotels.length);
+        if (data && data.success === true && Array.isArray(data.hotels)) {
+          console.log(`ResultsPage: Success! Hotels count: ${data.hotels.length} (source: ${data.source})`);
           setHotels(data.hotels);
           localStorage.setItem("lastSearchResults", JSON.stringify(data.hotels));
           if (urlQuery) {
             localStorage.setItem("lastSearchQuery", urlQuery);
           }
         } else {
+          console.error("ResultsPage: API returned success=false or invalid format", data);
           setHasError(true);
           setHotels([]);
         }
       } catch (error) {
-        console.error("ResultsPage error:", error);
+        console.error("ResultsPage error fetching hotels:", error);
         setHasError(true);
         setHotels([]);
       } finally {
@@ -91,27 +78,17 @@ export default function ResultsPage() {
 
   const saveHotel = async (hotel: Hotel) => {
     try {
-      const res = await fetch(`${API_URL}/api/saved`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          hotelName: hotel.name,
-          hotelImage: hotel.image,
-          price: hotel.price,
-          address: hotel.address,
-          rating: hotel.rating,
-          matchScore: hotel.matchScore,
-          why: hotel.why,
-          mapLink: hotel.mapLink,
-        }),
+      console.log("ResultsPage: Saving hotel:", hotel.name);
+      await axiosInstance.post("/api/saved", {
+        hotelName: hotel.name,
+        hotelImage: hotel.image,
+        price: hotel.price,
+        address: hotel.address,
+        rating: hotel.rating,
+        matchScore: hotel.matchScore,
+        why: hotel.why,
+        mapLink: hotel.mapLink,
       });
-
-      if (!res.ok) {
-        error("Save Failed", "Could not save hotel. Please try again.");
-        return;
-      }
 
       success("Hotel Saved! ❤️", `${hotel.name} has been added to your saved list.`);
     } catch (err) {
