@@ -218,8 +218,10 @@ jobs:
             cp -r gh-pages-reports/reports/latest/* gh-pages-reports/reports/history/build-${{ github.run_number }}/ || true
           fi
           
-          # Copy new reports to latest/ (Excel, HTML, JSON, Screenshots, Logs)
-          cp -r automation/reports/* gh-pages-reports/reports/latest/
+          # Copy new reports to latest/ (Excel, HTML, JSON, Screenshots, Logs) if they exist
+          if [ -d automation/reports ] && [ "$(ls -A automation/reports)" ]; then
+            cp -r automation/reports/* gh-pages-reports/reports/latest/
+          fi
           
           # Push back to gh-pages branch
           cd gh-pages-reports
