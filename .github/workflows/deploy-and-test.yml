@@ -110,14 +110,30 @@ jobs:
       # Stage 7: Deployment Verification
       - name: Stage 7 - Deployment Verification
         run: |
-          echo "Verifying live deployment at https://karthik17-17.github.io/pddtesting/ ..."
-          RESPONSE=$(curl -s -w "%{http_code}" -o main_page.html https://karthik17-17.github.io/pddtesting/)
-          if [ "$RESPONSE" -ne 200 ]; then
-            echo "Error: Live URL returned HTTP $RESPONSE instead of 200"
+          # Poll the deployment URL up to 20 times (5 minutes max)
+          MAX_ATTEMPTS=20
+          ATTEMPT=1
+          SUCCESS=false
+          
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            echo "Attempt $ATTEMPT of $MAX_ATTEMPTS: Fetching main page..."
+            RESPONSE=$(curl -s -w "%{http_code}" -o main_page.html https://karthik17-17.github.io/pddtesting/ || echo "000")
+            if [ "$RESPONSE" -eq 200 ]; then
+              echo "Main page loaded successfully (HTTP 200) on attempt $ATTEMPT."
+              SUCCESS=true
+              break
+            else
+              echo "HTTP $RESPONSE returned. Waiting 15 seconds before retry..."
+              sleep 15
+              ATTEMPT=$((ATTEMPT+1))
+            fi
+          done
+          
+          if [ "$SUCCESS" != "true" ]; then
+            echo "Error: Live URL failed to return HTTP 200 after $MAX_ATTEMPTS attempts."
             cat main_page.html || true
             exit 1
           fi
-          echo "Main page loaded successfully (HTTP 200)."
           
           # Match asset files (e.g. assets/index-hash.js)
           JS_PATH=$(grep -oE 'assets/index-[0-9a-zA-Z_-]+\.js' main_page.html | head -n 1)
