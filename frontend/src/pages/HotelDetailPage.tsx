@@ -11,6 +11,7 @@ interface Hotel {
   rating: number;
   price: string;
   image: string;
+  images?: string[];
   lat: number | null;
   lng: number | null;
   latitude?: number | null;
@@ -128,7 +129,7 @@ export default function HotelDetailPage() {
           {/* Dynamic Image Gallery */}
           {hotel.images && hotel.images.length > 1 && (
             <div className="flex gap-3 p-4 bg-slate-900 overflow-x-auto border-t border-slate-700">
-              {hotel.images.map((imgUrl, index) => (
+              {hotel.images.map((imgUrl: string, index: number) => (
                 <img
                   key={index}
                   src={imgUrl}
