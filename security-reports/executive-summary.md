@@ -1,6 +1,6 @@
 # Executive Summary – NeuroStay AI Security Assessment
 
-**Date:** 2026-06-23 06:14:44 UTC · **Build:** #3
+**Date:** 2026-06-23 10:06:42 UTC · **Build:** #4
 
 ## Total Findings
 
@@ -25,7 +25,7 @@
 
 ## Assessment Methodology
 
-- **Security Rules Checked:** 300 automated signature and pattern rules checked.
+- **Security Rules Checked:** 400 automated signature and pattern rules checked.
 - **SAST:** Semgrep static analysis (javascript, react, secrets, owasp-top-ten, express/mongo rulesets)
 - **Dependency Scan:** npm audit + Trivy filesystem scan
 - **Secret Detection:** Gitleaks full-history scan

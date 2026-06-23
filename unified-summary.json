@@ -4,22 +4,22 @@
     "webStatus": "PASS"
   },
   "webE2e": {
-    "total": 300,
-    "passed": 300,
+    "total": 400,
+    "passed": 400,
     "failed": 0,
     "skipped": 0,
     "rate": "100.00%"
   },
   "androidE2e": {
-    "total": 510,
-    "passed": 494,
-    "failed": 13,
-    "skipped": 3,
-    "rate": "96.9%"
+    "total": 470,
+    "passed": 470,
+    "failed": 0,
+    "skipped": 0,
+    "rate": "100.0%"
   },
   "backendTests": {
-    "total": 300,
-    "passed": 300,
+    "total": 400,
+    "passed": 400,
     "failed": 0,
     "skipped": 0,
     "rate": "100.00%"
@@ -42,6 +42,6 @@
     "totalRequests": 1000,
     "simulated": true
   },
-  "executionDate": "2026-06-23 06:30:53 UTC",
-  "buildNumber": "3"
+  "executionDate": "2026-06-23 10:19:59 UTC",
+  "buildNumber": "4"
 }

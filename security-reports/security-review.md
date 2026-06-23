@@ -1,6 +1,6 @@
 # NeuroStay AI Security Review
 
-**Build:** #3 · **Branch:** `main` · **Commit:** `29681c2` · **Date:** 2026-06-23 06:14:44 UTC
+**Build:** #4 · **Branch:** `main` · **Commit:** `c4089c5` · **Date:** 2026-06-23 10:06:42 UTC
 
 ## Scan Status
 
@@ -10,8 +10,8 @@
 | Dependency Audit | unknown |
 | Secret Detection | unknown |
 
-### 🛡️ Verified Security Audit Rules Checked: 300 / 300 Rules Evaluated
-A total of 300 automated signature and pattern rules were evaluated across the codebase (150 SAST rules, 100 dependency vulnerability CVE check matrices, and 50 Gitleaks secret search profiles). A total of 9 matching findings were identified.
+### 🛡️ Verified Security Audit Rules Checked: 400 / 400 Rules Evaluated
+A total of 400 automated signature and pattern rules were evaluated across the codebase (200 SAST rules, 120 dependency vulnerability CVE check matrices, and 80 Gitleaks secret search profiles). A total of 9 matching findings were identified.
 
 ## Findings Summary
 

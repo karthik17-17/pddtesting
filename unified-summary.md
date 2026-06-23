@@ -1,6 +1,6 @@
 # 🚀 NeuroStay AI Consolidated CI/CD Test Dashboard
 
-**Build Number:** #3 · **Execution Date:** 2026-06-23 06:30:53 UTC · **Branch:** `main`
+**Build Number:** #4 · **Execution Date:** 2026-06-23 10:19:59 UTC · **Branch:** `main`
 
 ---
 
@@ -14,10 +14,10 @@
 
 | Testing Tier | Total Test Cases | Passed | Failed | Skipped | Pass Rate / Score | Status | Report URL |
 |--------------|------------------|--------|--------|---------|-------------------|--------|------------|
-| **🌐 Web Application E2E** | 300 | 300 | 0 | 0 | **100.00%** | ✅ PASS | [Excel Report](https://karthik17-17.github.io/pddtesting/web-reports/selenium-test-report.xlsx) |
-| **📱 Android Mobile E2E** | 510 | 494 | 13 | 3 | **96.9%** | ❌ FAIL | [HTML Report](https://karthik17-17.github.io/pddtesting/android-reports/reports/latest/HTML/dashboard.html) |
-| **⚙️ Backend Service Tests** | 300 | 300 | 0 | 0 | **100.00%** | ✅ PASS | [Excel Report](https://karthik17-17.github.io/pddtesting/backend-reports/functional-test-report.xlsx) |
-| **🛡️ Backend Security Scan** | 300 (Rules Checked) | — | — | — | **100/100** | ✅ SECURE | [Vulnerability MD](https://karthik17-17.github.io/pddtesting/security-reports/security-review.md) |
+| **🌐 Web Application E2E** | 400 | 400 | 0 | 0 | **100.00%** | ✅ PASS | [Excel Report](https://karthik17-17.github.io/pddtesting/web-reports/selenium-test-report.xlsx) |
+| **📱 Android Mobile E2E** | 470 | 470 | 0 | 0 | **100.0%** | ✅ PASS | [HTML Report](https://karthik17-17.github.io/pddtesting/android-reports/reports/latest/HTML/dashboard.html) |
+| **⚙️ Backend Service Tests** | 400 | 400 | 0 | 0 | **100.00%** | ✅ PASS | [Excel Report](https://karthik17-17.github.io/pddtesting/backend-reports/functional-test-report.xlsx) |
+| **🛡️ Backend Security Scan** | 400 (Rules Checked) | — | — | — | **100/100** | ✅ SECURE | [Vulnerability MD](https://karthik17-17.github.io/pddtesting/security-reports/security-review.md) |
 | **📈 Performance Load Test** | 1000 (Reqs) | — | — | — | **100% Success** | ✅ OPTIMAL | [Performance Summary](https://karthik17-17.github.io/pddtesting/security-reports/executive-summary.md) |
 
 ---
