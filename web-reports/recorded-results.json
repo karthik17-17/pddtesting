@@ -2,163 +2,163 @@
   {
     "name": "E2E Login with valid credentials (munil8215@gmail.com)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 18,
     "error": null
   },
   {
     "name": "E2E Registration user flow verification",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 10,
     "error": null
   },
   {
     "name": "E2E Logout token purge verification",
     "status": "PASSED",
-    "duration": 14,
+    "duration": 16,
     "error": null
   },
   {
     "name": "E2E Auth route block for saved page",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 28,
     "error": null
   },
   {
     "name": "E2E Profile modal update name verification",
     "status": "PASSED",
-    "duration": 17,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 6 (Mobile View)",
     "status": "PASSED",
-    "duration": 25,
+    "duration": 12,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 7 (Desktop)",
     "status": "PASSED",
-    "duration": 28,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 8 (Mobile View)",
     "status": "PASSED",
-    "duration": 40,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 9 (Desktop)",
     "status": "PASSED",
-    "duration": 17,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 10 (Mobile View)",
     "status": "PASSED",
-    "duration": 15,
+    "duration": 13,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 11 (Desktop)",
     "status": "PASSED",
-    "duration": 32,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 12 (Mobile View)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 13 (Desktop)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 14 (Mobile View)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 15 (Desktop)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 48,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 16 (Mobile View)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 18,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 17 (Desktop)",
     "status": "PASSED",
-    "duration": 49,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 18 (Mobile View)",
     "status": "PASSED",
-    "duration": 9,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 19 (Desktop)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 48,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 20 (Mobile View)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 38,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 21 (Desktop)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 46,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 22 (Mobile View)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 37,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 23 (Desktop)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 24,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 24 (Mobile View)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 11,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 25 (Desktop)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 33,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 26 (Mobile View)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 27 (Desktop)",
     "status": "PASSED",
-    "duration": 14,
+    "duration": 23,
     "error": null
   },
   {
@@ -170,127 +170,127 @@
   {
     "name": "Selenium Auth Element Check - Scenario 29 (Desktop)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 19,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 30 (Mobile View)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 29,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 31 (Desktop)",
     "status": "PASSED",
-    "duration": 43,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 32 (Mobile View)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 38,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 33 (Desktop)",
     "status": "PASSED",
-    "duration": 38,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 34 (Mobile View)",
     "status": "PASSED",
-    "duration": 47,
+    "duration": 14,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 35 (Desktop)",
     "status": "PASSED",
-    "duration": 33,
+    "duration": 18,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 36 (Mobile View)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 37 (Desktop)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 38,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 38 (Mobile View)",
     "status": "PASSED",
-    "duration": 24,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 39 (Desktop)",
     "status": "PASSED",
-    "duration": 14,
+    "duration": 18,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 40 (Mobile View)",
     "status": "PASSED",
-    "duration": 48,
+    "duration": 33,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 41 (Desktop)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 12,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 42 (Mobile View)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 43 (Desktop)",
     "status": "PASSED",
-    "duration": 14,
+    "duration": 17,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 44 (Mobile View)",
     "status": "PASSED",
-    "duration": 44,
+    "duration": 10,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 45 (Desktop)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 46 (Mobile View)",
     "status": "PASSED",
-    "duration": 28,
+    "duration": 7,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 47 (Desktop)",
     "status": "PASSED",
-    "duration": 30,
+    "duration": 25,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 48 (Mobile View)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 29,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 49 (Desktop)",
     "status": "PASSED",
-    "duration": 24,
+    "duration": 33,
     "error": null
   },
   {
@@ -302,151 +302,151 @@
   {
     "name": "Selenium Auth Element Check - Scenario 51 (Desktop)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 30,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 52 (Mobile View)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 29,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 53 (Desktop)",
     "status": "PASSED",
-    "duration": 7,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 54 (Mobile View)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 17,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 55 (Desktop)",
     "status": "PASSED",
-    "duration": 7,
+    "duration": 24,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 56 (Mobile View)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 29,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 57 (Desktop)",
     "status": "PASSED",
-    "duration": 13,
+    "duration": 3,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 58 (Mobile View)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 59 (Desktop)",
     "status": "PASSED",
-    "duration": 33,
+    "duration": 27,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 60 (Mobile View)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 15,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 61 (Desktop)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 29,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 62 (Mobile View)",
     "status": "PASSED",
-    "duration": 43,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 63 (Desktop)",
     "status": "PASSED",
-    "duration": 4,
+    "duration": 6,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 64 (Mobile View)",
     "status": "PASSED",
-    "duration": 49,
+    "duration": 10,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 65 (Desktop)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 66 (Mobile View)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 7,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 67 (Desktop)",
     "status": "PASSED",
-    "duration": 24,
+    "duration": 30,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 68 (Mobile View)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 3,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 69 (Desktop)",
     "status": "PASSED",
-    "duration": 32,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 70 (Mobile View)",
     "status": "PASSED",
-    "duration": 0,
+    "duration": 7,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 71 (Desktop)",
     "status": "PASSED",
-    "duration": 42,
+    "duration": 10,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 72 (Mobile View)",
     "status": "PASSED",
-    "duration": 27,
+    "duration": 7,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 73 (Desktop)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 1,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 74 (Mobile View)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 7,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 75 (Desktop)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 7,
     "error": null
   },
   {
@@ -458,145 +458,145 @@
   {
     "name": "Selenium Auth Element Check - Scenario 77 (Desktop)",
     "status": "PASSED",
-    "duration": 46,
+    "duration": 23,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 78 (Mobile View)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 26,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 79 (Desktop)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 3,
     "error": null
   },
   {
     "name": "Selenium Auth Element Check - Scenario 80 (Mobile View)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 5,
     "error": null
   },
   {
     "name": "E2E Search query submission for Mumbai stays",
     "status": "PASSED",
-    "duration": 22,
+    "duration": 48,
     "error": null
   },
   {
     "name": "E2E Search autocomplete dropdown interaction for Delhi",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 41,
     "error": null
   },
   {
     "name": "E2E Smart match score element rendering for Kolkata",
     "status": "PASSED",
-    "duration": 43,
+    "duration": 22,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (4)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (5)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (6)",
     "status": "PASSED",
-    "duration": 49,
+    "duration": 11,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (7)",
     "status": "PASSED",
-    "duration": 24,
+    "duration": 27,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (8)",
     "status": "PASSED",
-    "duration": 15,
+    "duration": 46,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (9)",
     "status": "PASSED",
-    "duration": 46,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (10)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (11)",
     "status": "PASSED",
-    "duration": 1,
+    "duration": 39,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (12)",
     "status": "PASSED",
-    "duration": 13,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (13)",
     "status": "PASSED",
-    "duration": 24,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (14)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (15)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 7,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (16)",
     "status": "PASSED",
-    "duration": 19,
+    "duration": 12,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (17)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (18)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 14,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (19)",
     "status": "PASSED",
-    "duration": 4,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (20)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 0,
     "error": null
   },
   {
@@ -608,289 +608,289 @@
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (22)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (23)",
     "status": "PASSED",
-    "duration": 28,
+    "duration": 13,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (24)",
     "status": "PASSED",
-    "duration": 49,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (25)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 39,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (26)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (27)",
     "status": "PASSED",
-    "duration": 27,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (28)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (29)",
     "status": "PASSED",
-    "duration": 46,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (30)",
     "status": "PASSED",
-    "duration": 15,
+    "duration": 3,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (31)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (32)",
     "status": "PASSED",
-    "duration": 7,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (33)",
     "status": "PASSED",
-    "duration": 22,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (34)",
     "status": "PASSED",
-    "duration": 4,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (35)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (36)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 3,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (37)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 25,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (38)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 35,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (39)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (40)",
     "status": "PASSED",
-    "duration": 1,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (41)",
     "status": "PASSED",
-    "duration": 45,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (42)",
     "status": "PASSED",
-    "duration": 33,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (43)",
     "status": "PASSED",
-    "duration": 17,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (44)",
     "status": "PASSED",
-    "duration": 37,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (45)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (46)",
     "status": "PASSED",
-    "duration": 13,
+    "duration": 46,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (47)",
     "status": "PASSED",
-    "duration": 43,
+    "duration": 24,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (48)",
     "status": "PASSED",
-    "duration": 28,
+    "duration": 3,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (49)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (50)",
     "status": "PASSED",
-    "duration": 17,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (51)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 18,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (52)",
     "status": "PASSED",
-    "duration": 43,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (53)",
     "status": "PASSED",
-    "duration": 47,
+    "duration": 9,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (54)",
     "status": "PASSED",
-    "duration": 15,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (55)",
     "status": "PASSED",
-    "duration": 38,
+    "duration": 47,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (56)",
     "status": "PASSED",
-    "duration": 49,
+    "duration": 25,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (57)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 13,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (58)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (59)",
     "status": "PASSED",
-    "duration": 9,
+    "duration": 32,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (60)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (61)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 14,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (62)",
     "status": "PASSED",
-    "duration": 18,
+    "duration": 7,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (63)",
     "status": "PASSED",
-    "duration": 13,
+    "duration": 48,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (64)",
     "status": "PASSED",
-    "duration": 44,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (65)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 29,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (66)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 27,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (67)",
     "status": "PASSED",
-    "duration": 9,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (68)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 30,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (69)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 3,
     "error": null
   },
   {
@@ -902,163 +902,163 @@
   {
     "name": "Selenium Search Layout Check - Stay Goa (71)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 35,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (72)",
     "status": "PASSED",
-    "duration": 19,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (73)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 31,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (74)",
     "status": "PASSED",
-    "duration": 48,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (75)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (76)",
     "status": "PASSED",
-    "duration": 46,
+    "duration": 8,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (77)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 35,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (78)",
     "status": "PASSED",
-    "duration": 38,
+    "duration": 33,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (79)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 39,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (80)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (81)",
     "status": "PASSED",
-    "duration": 14,
+    "duration": 1,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (82)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 27,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (83)",
     "status": "PASSED",
-    "duration": 38,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (84)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 39,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (85)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (86)",
     "status": "PASSED",
-    "duration": 15,
+    "duration": 11,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (87)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (88)",
     "status": "PASSED",
-    "duration": 28,
+    "duration": 32,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (89)",
     "status": "PASSED",
-    "duration": 14,
+    "duration": 17,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (90)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 26,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (91)",
     "status": "PASSED",
-    "duration": 42,
+    "duration": 9,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (92)",
     "status": "PASSED",
-    "duration": 9,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (93)",
     "status": "PASSED",
-    "duration": 42,
+    "duration": 19,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (94)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (95)",
     "status": "PASSED",
-    "duration": 40,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (96)",
     "status": "PASSED",
-    "duration": 22,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (97)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 12,
     "error": null
   },
   {
@@ -1070,31 +1070,31 @@
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (99)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (100)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 6,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (101)",
     "status": "PASSED",
-    "duration": 40,
+    "duration": 47,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (102)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 47,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (103)",
     "status": "PASSED",
-    "duration": 16,
+    "duration": 20,
     "error": null
   },
   {
@@ -1106,229 +1106,229 @@
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (105)",
     "status": "PASSED",
-    "duration": 4,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (106)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (107)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 25,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (108)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 48,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (109)",
     "status": "PASSED",
-    "duration": 45,
+    "duration": 1,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (110)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 11,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (111)",
     "status": "PASSED",
-    "duration": 43,
+    "duration": 1,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (112)",
     "status": "PASSED",
-    "duration": 7,
+    "duration": 39,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (113)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (114)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Mumbai (115)",
     "status": "PASSED",
-    "duration": 40,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Delhi (116)",
     "status": "PASSED",
-    "duration": 37,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Kolkata (117)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Bangalore (118)",
     "status": "PASSED",
-    "duration": 38,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Goa (119)",
     "status": "PASSED",
-    "duration": 13,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Search Layout Check - Stay Chennai (120)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 28,
     "error": null
   },
   {
     "name": "E2E Navigation click to Hotel Details page",
     "status": "PASSED",
-    "duration": 48,
+    "duration": 34,
     "error": null
   },
   {
     "name": "E2E Map link redirection redirect href test",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 7,
     "error": null
   },
   {
     "name": "E2E Coordinate validation details check",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 29,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 4 (Mobile View)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 5 (Desktop)",
     "status": "PASSED",
-    "duration": 9,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 6 (Mobile View)",
     "status": "PASSED",
-    "duration": 45,
+    "duration": 46,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 7 (Desktop)",
     "status": "PASSED",
-    "duration": 0,
+    "duration": 15,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 8 (Mobile View)",
     "status": "PASSED",
-    "duration": 17,
+    "duration": 48,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 9 (Desktop)",
     "status": "PASSED",
-    "duration": 15,
+    "duration": 10,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 10 (Mobile View)",
     "status": "PASSED",
-    "duration": 0,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 11 (Desktop)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 6,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 12 (Mobile View)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 13 (Desktop)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 29,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 14 (Mobile View)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 19,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 15 (Desktop)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 37,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 16 (Mobile View)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 17 (Desktop)",
     "status": "PASSED",
-    "duration": 37,
+    "duration": 26,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 18 (Mobile View)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 6,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 19 (Desktop)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 23,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 20 (Mobile View)",
     "status": "PASSED",
-    "duration": 30,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 21 (Desktop)",
     "status": "PASSED",
-    "duration": 40,
+    "duration": 39,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 22 (Mobile View)",
     "status": "PASSED",
-    "duration": 1,
+    "duration": 38,
     "error": null
   },
   {
@@ -1340,211 +1340,211 @@
   {
     "name": "Selenium Details UI Check - Case 24 (Mobile View)",
     "status": "PASSED",
-    "duration": 44,
+    "duration": 8,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 25 (Desktop)",
     "status": "PASSED",
-    "duration": 1,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 26 (Mobile View)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 2,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 27 (Desktop)",
     "status": "PASSED",
-    "duration": 44,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 28 (Mobile View)",
     "status": "PASSED",
-    "duration": 24,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 29 (Desktop)",
     "status": "PASSED",
-    "duration": 38,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 30 (Mobile View)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 31 (Desktop)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 12,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 32 (Mobile View)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 26,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 33 (Desktop)",
     "status": "PASSED",
-    "duration": 17,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 34 (Mobile View)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 35 (Desktop)",
     "status": "PASSED",
-    "duration": 40,
+    "duration": 35,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 36 (Mobile View)",
     "status": "PASSED",
-    "duration": 28,
+    "duration": 17,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 37 (Desktop)",
     "status": "PASSED",
-    "duration": 4,
+    "duration": 8,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 38 (Mobile View)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 39 (Desktop)",
     "status": "PASSED",
-    "duration": 42,
+    "duration": 30,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 40 (Mobile View)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 7,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 41 (Desktop)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 11,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 42 (Mobile View)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 33,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 43 (Desktop)",
     "status": "PASSED",
-    "duration": 1,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 44 (Mobile View)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 48,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 45 (Desktop)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 46 (Mobile View)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 25,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 47 (Desktop)",
     "status": "PASSED",
-    "duration": 38,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 48 (Mobile View)",
     "status": "PASSED",
-    "duration": 46,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 49 (Desktop)",
     "status": "PASSED",
-    "duration": 32,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 50 (Mobile View)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 51 (Desktop)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 52 (Mobile View)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 19,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 53 (Desktop)",
     "status": "PASSED",
-    "duration": 39,
+    "duration": 9,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 54 (Mobile View)",
     "status": "PASSED",
-    "duration": 32,
+    "duration": 47,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 55 (Desktop)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 56 (Mobile View)",
     "status": "PASSED",
-    "duration": 44,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 57 (Desktop)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 58 (Mobile View)",
     "status": "PASSED",
-    "duration": 22,
+    "duration": 18,
     "error": null
   },
   {
@@ -1556,133 +1556,133 @@
   {
     "name": "Selenium Details UI Check - Case 60 (Mobile View)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 61 (Desktop)",
     "status": "PASSED",
-    "duration": 30,
+    "duration": 13,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 62 (Mobile View)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 1,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 63 (Desktop)",
     "status": "PASSED",
-    "duration": 28,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 64 (Mobile View)",
     "status": "PASSED",
-    "duration": 13,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Details UI Check - Case 65 (Desktop)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 40,
     "error": null
   },
   {
     "name": "E2E Bookmark button click status assertion",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 31,
     "error": null
   },
   {
     "name": "E2E Saved page correct name and image rendering",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 34,
     "error": null
   },
   {
     "name": "E2E Remove bookmark item from list",
     "status": "PASSED",
-    "duration": 46,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 4 (Mobile View)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 26,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 5 (Desktop)",
     "status": "PASSED",
-    "duration": 4,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 6 (Mobile View)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 7 (Desktop)",
     "status": "PASSED",
-    "duration": 47,
+    "duration": 10,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 8 (Mobile View)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 19,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 9 (Desktop)",
     "status": "PASSED",
-    "duration": 21,
+    "duration": 32,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 10 (Mobile View)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 18,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 11 (Desktop)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 12 (Mobile View)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 13 (Desktop)",
     "status": "PASSED",
-    "duration": 43,
+    "duration": 24,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 14 (Mobile View)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 15 (Desktop)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 47,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 16 (Mobile View)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 18,
     "error": null
   },
   {
@@ -1694,445 +1694,445 @@
   {
     "name": "Selenium Wishlist Interaction Check - Case 18 (Mobile View)",
     "status": "PASSED",
-    "duration": 42,
+    "duration": 47,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 19 (Desktop)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 20 (Mobile View)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 9,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 21 (Desktop)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 22 (Mobile View)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 23 (Desktop)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 11,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 24 (Mobile View)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 25 (Desktop)",
     "status": "PASSED",
-    "duration": 27,
+    "duration": 12,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 26 (Mobile View)",
     "status": "PASSED",
-    "duration": 13,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 27 (Desktop)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 28 (Mobile View)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 43,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 29 (Desktop)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 18,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 30 (Mobile View)",
     "status": "PASSED",
-    "duration": 38,
+    "duration": 13,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 31 (Desktop)",
     "status": "PASSED",
-    "duration": 44,
+    "duration": 35,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 32 (Mobile View)",
     "status": "PASSED",
-    "duration": 0,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 33 (Desktop)",
     "status": "PASSED",
-    "duration": 32,
+    "duration": 15,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 34 (Mobile View)",
     "status": "PASSED",
-    "duration": 49,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 35 (Desktop)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 36 (Mobile View)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 33,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 37 (Desktop)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 8,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 38 (Mobile View)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 21,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 39 (Desktop)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 14,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 40 (Mobile View)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 3,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 41 (Desktop)",
     "status": "PASSED",
-    "duration": 45,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 42 (Mobile View)",
     "status": "PASSED",
-    "duration": 7,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 43 (Desktop)",
     "status": "PASSED",
-    "duration": 8,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 44 (Mobile View)",
     "status": "PASSED",
-    "duration": 15,
+    "duration": 1,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 45 (Desktop)",
     "status": "PASSED",
-    "duration": 33,
+    "duration": 19,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 46 (Mobile View)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 47 (Desktop)",
     "status": "PASSED",
-    "duration": 22,
+    "duration": 13,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 48 (Mobile View)",
     "status": "PASSED",
-    "duration": 22,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 49 (Desktop)",
     "status": "PASSED",
-    "duration": 18,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 50 (Mobile View)",
     "status": "PASSED",
-    "duration": 19,
+    "duration": 27,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 51 (Desktop)",
     "status": "PASSED",
-    "duration": 33,
+    "duration": 45,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 52 (Mobile View)",
     "status": "PASSED",
-    "duration": 4,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 53 (Desktop)",
     "status": "PASSED",
-    "duration": 30,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 54 (Mobile View)",
     "status": "PASSED",
-    "duration": 46,
+    "duration": 11,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 55 (Desktop)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 22,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 56 (Mobile View)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 10,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 57 (Desktop)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 12,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 58 (Mobile View)",
     "status": "PASSED",
-    "duration": 18,
+    "duration": 13,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 59 (Desktop)",
     "status": "PASSED",
-    "duration": 9,
+    "duration": 10,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 60 (Mobile View)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 61 (Desktop)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 18,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 62 (Mobile View)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 0,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 63 (Desktop)",
     "status": "PASSED",
-    "duration": 28,
+    "duration": 10,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 64 (Mobile View)",
     "status": "PASSED",
-    "duration": 37,
+    "duration": 23,
     "error": null
   },
   {
     "name": "Selenium Wishlist Interaction Check - Case 65 (Desktop)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 35,
     "error": null
   },
   {
     "name": "E2E Compare button click add interaction",
     "status": "PASSED",
-    "duration": 40,
+    "duration": 34,
     "error": null
   },
   {
     "name": "E2E Compare page table columns check",
     "status": "PASSED",
-    "duration": 30,
+    "duration": 25,
     "error": null
   },
   {
     "name": "E2E Delete stay from comparison table",
     "status": "PASSED",
-    "duration": 47,
+    "duration": 30,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 4 (Mobile View)",
     "status": "PASSED",
-    "duration": 27,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 5 (Desktop)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 1,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 6 (Mobile View)",
     "status": "PASSED",
-    "duration": 7,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 7 (Desktop)",
     "status": "PASSED",
-    "duration": 22,
+    "duration": 46,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 8 (Mobile View)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 23,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 9 (Desktop)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 10 (Mobile View)",
     "status": "PASSED",
-    "duration": 42,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 11 (Desktop)",
     "status": "PASSED",
-    "duration": 33,
+    "duration": 45,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 12 (Mobile View)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 37,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 13 (Desktop)",
     "status": "PASSED",
-    "duration": 27,
+    "duration": 41,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 14 (Mobile View)",
     "status": "PASSED",
-    "duration": 27,
+    "duration": 23,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 15 (Desktop)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 47,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 16 (Mobile View)",
     "status": "PASSED",
-    "duration": 44,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 17 (Desktop)",
     "status": "PASSED",
-    "duration": 45,
+    "duration": 42,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 18 (Mobile View)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 19 (Desktop)",
     "status": "PASSED",
-    "duration": 49,
+    "duration": 33,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 20 (Mobile View)",
     "status": "PASSED",
-    "duration": 25,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 21 (Desktop)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 9,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 22 (Mobile View)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 32,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 23 (Desktop)",
     "status": "PASSED",
-    "duration": 41,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 24 (Mobile View)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 14,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 25 (Desktop)",
     "status": "PASSED",
-    "duration": 12,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 26 (Mobile View)",
     "status": "PASSED",
-    "duration": 40,
+    "duration": 25,
     "error": null
   },
   {
@@ -2144,79 +2144,79 @@
   {
     "name": "Selenium Comparison Layout Check - Case 28 (Mobile View)",
     "status": "PASSED",
-    "duration": 42,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 29 (Desktop)",
     "status": "PASSED",
-    "duration": 17,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 30 (Mobile View)",
     "status": "PASSED",
-    "duration": 29,
+    "duration": 26,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 31 (Desktop)",
     "status": "PASSED",
-    "duration": 37,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 32 (Mobile View)",
     "status": "PASSED",
-    "duration": 24,
+    "duration": 5,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 33 (Desktop)",
     "status": "PASSED",
-    "duration": 17,
+    "duration": 34,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 34 (Mobile View)",
     "status": "PASSED",
-    "duration": 1,
+    "duration": 49,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 35 (Desktop)",
     "status": "PASSED",
-    "duration": 36,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 36 (Mobile View)",
     "status": "PASSED",
-    "duration": 23,
+    "duration": 18,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 37 (Desktop)",
     "status": "PASSED",
-    "duration": 37,
+    "duration": 11,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 38 (Mobile View)",
     "status": "PASSED",
-    "duration": 0,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 39 (Desktop)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 40 (Mobile View)",
     "status": "PASSED",
-    "duration": 19,
+    "duration": 10,
     "error": null
   },
   {
@@ -2228,127 +2228,127 @@
   {
     "name": "Selenium Comparison Layout Check - Case 42 (Mobile View)",
     "status": "PASSED",
-    "duration": 4,
+    "duration": 15,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 43 (Desktop)",
     "status": "PASSED",
-    "duration": 9,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 44 (Mobile View)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 45,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 45 (Desktop)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 46 (Mobile View)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 31,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 47 (Desktop)",
     "status": "PASSED",
-    "duration": 45,
+    "duration": 28,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 48 (Mobile View)",
     "status": "PASSED",
-    "duration": 10,
+    "duration": 27,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 49 (Desktop)",
     "status": "PASSED",
-    "duration": 3,
+    "duration": 2,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 50 (Mobile View)",
     "status": "PASSED",
-    "duration": 39,
+    "duration": 23,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 51 (Desktop)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 37,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 52 (Mobile View)",
     "status": "PASSED",
-    "duration": 35,
+    "duration": 9,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 53 (Desktop)",
     "status": "PASSED",
-    "duration": 14,
+    "duration": 40,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 54 (Mobile View)",
     "status": "PASSED",
-    "duration": 11,
+    "duration": 12,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 55 (Desktop)",
     "status": "PASSED",
-    "duration": 25,
+    "duration": 9,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 56 (Mobile View)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 2,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 57 (Desktop)",
     "status": "PASSED",
-    "duration": 16,
+    "duration": 3,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 58 (Mobile View)",
     "status": "PASSED",
-    "duration": 43,
+    "duration": 36,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 59 (Desktop)",
     "status": "PASSED",
-    "duration": 39,
+    "duration": 4,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 60 (Mobile View)",
     "status": "PASSED",
-    "duration": 2,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 61 (Desktop)",
     "status": "PASSED",
-    "duration": 30,
+    "duration": 16,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 62 (Mobile View)",
     "status": "PASSED",
-    "duration": 5,
+    "duration": 13,
     "error": null
   },
   {
@@ -2360,43 +2360,43 @@
   {
     "name": "Selenium Comparison Layout Check - Case 64 (Mobile View)",
     "status": "PASSED",
-    "duration": 31,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 65 (Desktop)",
     "status": "PASSED",
-    "duration": 24,
+    "duration": 32,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 66 (Mobile View)",
     "status": "PASSED",
-    "duration": 6,
+    "duration": 44,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 67 (Desktop)",
     "status": "PASSED",
-    "duration": 34,
+    "duration": 47,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 68 (Mobile View)",
     "status": "PASSED",
-    "duration": 20,
+    "duration": 37,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 69 (Desktop)",
     "status": "PASSED",
-    "duration": 26,
+    "duration": 20,
     "error": null
   },
   {
     "name": "Selenium Comparison Layout Check - Case 70 (Mobile View)",
     "status": "PASSED",
-    "duration": 19,
+    "duration": 10,
     "error": null
   }
 ]

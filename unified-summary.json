@@ -33,15 +33,15 @@
     "score": 100
   },
   "loadTest": {
-    "rps": 154.5,
-    "avgResponseTime": 85.2,
-    "minResponseTime": 10.1,
-    "maxResponseTime": 320.4,
+    "rps": 120,
+    "avgResponseTime": 250,
+    "minResponseTime": 50,
+    "maxResponseTime": 1500,
     "successRate": 100,
     "errorRate": 0,
-    "totalRequests": 1000,
+    "totalRequests": 7200,
     "simulated": true
   },
-  "executionDate": "2026-06-23 10:19:59 UTC",
-  "buildNumber": "4"
+  "executionDate": "2026-06-23 11:21:37 UTC",
+  "buildNumber": "5"
 }
