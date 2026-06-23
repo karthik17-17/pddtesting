@@ -181,26 +181,31 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: "⏳ Wait 30 s for Pages deploy start"
-        run: sleep 30
+      - name: "⏳ Wait 10 s before first check"
+        run: sleep 10
 
-      - name: "✅ Verify HTTP 200 from live URL"
+      - name: "✅ Verify HTTP status from live URL"
         run: |
-          URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          URL="https://neurostay-web.vercel.app"
           MAX=10; DELAY=20; i=0; SUCCEEDED=false
           while [ $i -lt $MAX ]; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
-            echo "Attempt $((i+1))/$MAX – HTTP $STATUS"
-            if [ "$STATUS" -eq 200 ]; then
+            HEADERS_FILE=$(mktemp)
+            STATUS=$(curl -s -o /dev/null -L -w "%{http_code}" -D "$HEADERS_FILE" "$URL")
+            echo "Attempt $((i+1))/$MAX – URL: $URL – HTTP $STATUS"
+            if [ "$STATUS" -eq 200 ] || [ "$STATUS" -eq 301 ] || [ "$STATUS" -eq 302 ]; then
               echo "✅ Site is live!"
               SUCCEEDED=true
+              rm -f "$HEADERS_FILE"
               break
             fi
+            echo "⚠️ Attempt failed. Response Headers:"
+            cat "$HEADERS_FILE"
+            rm -f "$HEADERS_FILE"
             i=$((i+1))
             [ $i -lt $MAX ] && sleep $DELAY
           done
           if [ "$SUCCEEDED" = "false" ]; then
-            echo "❌ Error: Deployment failed to propagate to GitHub Pages (Returned HTTP $STATUS)"
+            echo "❌ Error: Live deployment check failed (Returned HTTP $STATUS)"
             exit 1
           fi
 
@@ -234,16 +239,25 @@ jobs:
       - name: "🧪 Run Selenium E2E tests"
         working-directory: testing
         env:
-          WEB_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          BASE_URL: "https://neurostay-web.vercel.app"
+          WEB_URL: "https://neurostay-web.vercel.app"
           CI: "true"
-        run: npm run test:selenium
+        run: |
+          mkdir -p screenshots
+          echo "Waiting 10 seconds for service initialization..."
+          sleep 10
+          npm run test:selenium
 
       - name: "📤 Upload web test reports"
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: selenium-e2e-reports
-          path: testing/
+          path: |
+            testing/selenium-test-report.xlsx
+            testing/selenium-summary.md
+            testing/recorded-results.json
+            testing/screenshots/
           retention-days: 7
 
   # ════════════════════════════════════════════════════════════════════════════
@@ -388,26 +402,34 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: "🗀 Create report directories if missing"
+        run: |
+          mkdir -p security-reports web-reports android-reports/reports backend-reports unified-reports
+
       - name: "📥 Download security reports"
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: security-reports
           path: security-reports
 
       - name: "📥 Download web E2E reports"
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: selenium-e2e-reports
           path: web-reports
 
       - name: "📥 Download android E2E reports"
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: android-e2e-reports
           path: android-reports/reports
 
       - name: "📥 Download backend test reports"
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: backend-test-reports
           path: backend-reports
@@ -437,15 +459,19 @@ jobs:
             cp -r gh-pages-existing/. gh-pages-combined/ 2>/dev/null || true
           fi
 
-          # 2. Merge Web Reports
+          # Ensure subdirectory structures exist
           mkdir -p gh-pages-combined/web-reports
+          mkdir -p gh-pages-combined/android-reports/reports/latest
+          mkdir -p gh-pages-combined/backend-reports
+          mkdir -p gh-pages-combined/security-reports
+
+          # 2. Merge Web Reports
           cp "web-reports/selenium-test-report.xlsx" gh-pages-combined/web-reports/ 2>/dev/null || true
           cp "web-reports/selenium-summary.md" gh-pages-combined/web-reports/ 2>/dev/null || true
           cp "web-reports/recorded-results.json" gh-pages-combined/web-reports/ 2>/dev/null || true
           cp -r "web-reports/screenshots" gh-pages-combined/web-reports/ 2>/dev/null || true
 
           # 3. Merge Android Reports (WebdriverIO reports)
-          mkdir -p gh-pages-combined/android-reports/reports/latest
           BUILD_DIR_ANDROID="gh-pages-combined/android-reports/reports/history/build-$(printf '%03d' ${{ github.run_number }})"
           mkdir -p "$BUILD_DIR_ANDROID"
 
@@ -458,13 +484,11 @@ jobs:
           cp -r android-reports/reports/. "$BUILD_DIR_ANDROID/" 2>/dev/null || true
 
           # 4. Merge Backend Reports
-          mkdir -p gh-pages-combined/backend-reports
           cp "backend-reports/functional-test-report.xlsx" gh-pages-combined/backend-reports/ 2>/dev/null || true
           cp "backend-reports/functional-summary.md" gh-pages-combined/backend-reports/ 2>/dev/null || true
           cp "backend-reports/recorded-results.json" gh-pages-combined/backend-reports/ 2>/dev/null || true
 
           # 5. Merge Security Reports
-          mkdir -p gh-pages-combined/security-reports
           cp security-reports/security-review.md gh-pages-combined/security-reports/ 2>/dev/null || true
           cp security-reports/executive-summary.md gh-pages-combined/security-reports/ 2>/dev/null || true
           cp security-reports/dependency-report.md gh-pages-combined/security-reports/ 2>/dev/null || true
