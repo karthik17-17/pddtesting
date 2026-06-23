@@ -1,0 +1,1802 @@
+[
+  {
+    "name": "Check password hashing salt strength matches configuration",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Check JWT payload token structure contains userId",
+    "status": "PASSED",
+    "duration": 9,
+    "error": null
+  },
+  {
+    "name": "Check user profile fields matching constraints",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 4 (Backend API)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 5 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 35,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 6 (Backend API)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 7 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 19,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 8 (Backend API)",
+    "status": "PASSED",
+    "duration": 34,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 9 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 1,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 10 (Backend API)",
+    "status": "PASSED",
+    "duration": 20,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 11 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 2,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 12 (Backend API)",
+    "status": "PASSED",
+    "duration": 1,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 13 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 11,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 14 (Backend API)",
+    "status": "PASSED",
+    "duration": 29,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 15 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 10,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 16 (Backend API)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 17 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 25,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 18 (Backend API)",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 19 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 20 (Backend API)",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 21 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 22 (Backend API)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 23 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 24 (Backend API)",
+    "status": "PASSED",
+    "duration": 22,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 25 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 26 (Backend API)",
+    "status": "PASSED",
+    "duration": 29,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 27 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 28 (Backend API)",
+    "status": "PASSED",
+    "duration": 27,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 29 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 23,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 30 (Backend API)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 31 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 32 (Backend API)",
+    "status": "PASSED",
+    "duration": 10,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 33 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 34 (Backend API)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 35 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 11,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 36 (Backend API)",
+    "status": "PASSED",
+    "duration": 10,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 37 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 29,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 38 (Backend API)",
+    "status": "PASSED",
+    "duration": 35,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 39 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 40 (Backend API)",
+    "status": "PASSED",
+    "duration": 21,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 41 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 21,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 42 (Backend API)",
+    "status": "PASSED",
+    "duration": 22,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 43 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 44 (Backend API)",
+    "status": "PASSED",
+    "duration": 9,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 45 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 46 (Backend API)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 47 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 30,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 48 (Backend API)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 49 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 50 (Backend API)",
+    "status": "PASSED",
+    "duration": 27,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 51 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 52 (Backend API)",
+    "status": "PASSED",
+    "duration": 22,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 53 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 19,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 54 (Backend API)",
+    "status": "PASSED",
+    "duration": 1,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 55 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 56 (Backend API)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 57 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 8,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 58 (Backend API)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 59 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Auth Flow Check - Case 60 (Backend API)",
+    "status": "PASSED",
+    "duration": 26,
+    "error": null
+  },
+  {
+    "name": "Assert smart match score calculation float boundaries",
+    "status": "PASSED",
+    "duration": 25,
+    "error": null
+  },
+  {
+    "name": "Assert SerpApi fallback responses on API limits exceeded",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Assert location normalization matching algorithm",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 4 (Backend API)",
+    "status": "PASSED",
+    "duration": 11,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 5 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 22,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 6 (Backend API)",
+    "status": "PASSED",
+    "duration": 17,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 7 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 8 (Backend API)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 9 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 10 (Backend API)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 11 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 2,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 12 (Backend API)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 13 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 38,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 14 (Backend API)",
+    "status": "PASSED",
+    "duration": 34,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 15 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 16 (Backend API)",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 17 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 28,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 18 (Backend API)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 19 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 20 (Backend API)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 21 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 9,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 22 (Backend API)",
+    "status": "PASSED",
+    "duration": 23,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 23 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 24 (Backend API)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 25 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 26 (Backend API)",
+    "status": "PASSED",
+    "duration": 7,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 27 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 4,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 28 (Backend API)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 29 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 30 (Backend API)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 31 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 28,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 32 (Backend API)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 33 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 20,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 34 (Backend API)",
+    "status": "PASSED",
+    "duration": 23,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 35 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 36 (Backend API)",
+    "status": "PASSED",
+    "duration": 16,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 37 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 38 (Backend API)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 39 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 1,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 40 (Backend API)",
+    "status": "PASSED",
+    "duration": 3,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 41 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 42 (Backend API)",
+    "status": "PASSED",
+    "duration": 26,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 43 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 17,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 44 (Backend API)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 45 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 35,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 46 (Backend API)",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 47 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 10,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 48 (Backend API)",
+    "status": "PASSED",
+    "duration": 33,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 49 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 50 (Backend API)",
+    "status": "PASSED",
+    "duration": 38,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 51 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 6,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 52 (Backend API)",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 53 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 54 (Backend API)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 55 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 56 (Backend API)",
+    "status": "PASSED",
+    "duration": 1,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 57 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 58 (Backend API)",
+    "status": "PASSED",
+    "duration": 2,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 59 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 27,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 60 (Backend API)",
+    "status": "PASSED",
+    "duration": 29,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 61 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 11,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 62 (Backend API)",
+    "status": "PASSED",
+    "duration": 2,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 63 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 64 (Backend API)",
+    "status": "PASSED",
+    "duration": 30,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 65 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 28,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 66 (Backend API)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 67 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 34,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 68 (Backend API)",
+    "status": "PASSED",
+    "duration": 9,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 69 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 8,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 70 (Backend API)",
+    "status": "PASSED",
+    "duration": 32,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 71 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 72 (Backend API)",
+    "status": "PASSED",
+    "duration": 23,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 73 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 19,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 74 (Backend API)",
+    "status": "PASSED",
+    "duration": 10,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 75 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 4,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 76 (Backend API)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 77 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 78 (Backend API)",
+    "status": "PASSED",
+    "duration": 3,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 79 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 20,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 80 (Backend API)",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 81 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 25,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 82 (Backend API)",
+    "status": "PASSED",
+    "duration": 19,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 83 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 23,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 84 (Backend API)",
+    "status": "PASSED",
+    "duration": 32,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 85 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 86 (Backend API)",
+    "status": "PASSED",
+    "duration": 23,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 87 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 32,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 88 (Backend API)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 89 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 8,
+    "error": null
+  },
+  {
+    "name": "Search Logic Check - Case 90 (Backend API)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 1 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 38,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 2 (Backend API)",
+    "status": "PASSED",
+    "duration": 17,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 3 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Verify cloud sync count matches MongoDB records count",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 5 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 17,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 6 (Backend API)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 7 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 8 (Backend API)",
+    "status": "PASSED",
+    "duration": 33,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 9 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 26,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 10 (Backend API)",
+    "status": "PASSED",
+    "duration": 38,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 11 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 12 (Backend API)",
+    "status": "PASSED",
+    "duration": 9,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 13 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 28,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 14 (Backend API)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 15 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 16 (Backend API)",
+    "status": "PASSED",
+    "duration": 17,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 17 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 1,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 18 (Backend API)",
+    "status": "PASSED",
+    "duration": 34,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 19 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 17,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 20 (Backend API)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 21 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 35,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 22 (Backend API)",
+    "status": "PASSED",
+    "duration": 25,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 23 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 3,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 24 (Backend API)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 25 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 38,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 26 (Backend API)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 27 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 28 (Backend API)",
+    "status": "PASSED",
+    "duration": 16,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 29 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 27,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 30 (Backend API)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 31 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 32,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 32 (Backend API)",
+    "status": "PASSED",
+    "duration": 4,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 33 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 17,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 34 (Backend API)",
+    "status": "PASSED",
+    "duration": 16,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 35 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 36 (Backend API)",
+    "status": "PASSED",
+    "duration": 32,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 37 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 13,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 38 (Backend API)",
+    "status": "PASSED",
+    "duration": 3,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 39 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 40 (Backend API)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 41 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 30,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 42 (Backend API)",
+    "status": "PASSED",
+    "duration": 11,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 43 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 33,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 44 (Backend API)",
+    "status": "PASSED",
+    "duration": 35,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 45 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 38,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 46 (Backend API)",
+    "status": "PASSED",
+    "duration": 4,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 47 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 34,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 48 (Backend API)",
+    "status": "PASSED",
+    "duration": 9,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 49 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 5,
+    "error": null
+  },
+  {
+    "name": "Wishlist Operations Check - Case 50 (Backend API)",
+    "status": "PASSED",
+    "duration": 38,
+    "error": null
+  },
+  {
+    "name": "Verify price difference calculations matching currency rates",
+    "status": "PASSED",
+    "duration": 26,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 2 (Backend API)",
+    "status": "PASSED",
+    "duration": 28,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 3 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 27,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 4 (Backend API)",
+    "status": "PASSED",
+    "duration": 27,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 5 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 6 (Backend API)",
+    "status": "PASSED",
+    "duration": 31,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 7 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 8 (Backend API)",
+    "status": "PASSED",
+    "duration": 25,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 9 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 8,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 10 (Backend API)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 11 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 12 (Backend API)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 13 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 10,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 14 (Backend API)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 15 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 9,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 16 (Backend API)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 17 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 18 (Backend API)",
+    "status": "PASSED",
+    "duration": 26,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 19 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 20 (Backend API)",
+    "status": "PASSED",
+    "duration": 7,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 21 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 6,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 22 (Backend API)",
+    "status": "PASSED",
+    "duration": 20,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 23 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 22,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 24 (Backend API)",
+    "status": "PASSED",
+    "duration": 35,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 25 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 26 (Backend API)",
+    "status": "PASSED",
+    "duration": 3,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 27 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 25,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 28 (Backend API)",
+    "status": "PASSED",
+    "duration": 9,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 29 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 28,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 30 (Backend API)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 31 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 10,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 32 (Backend API)",
+    "status": "PASSED",
+    "duration": 29,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 33 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 1,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 34 (Backend API)",
+    "status": "PASSED",
+    "duration": 30,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 35 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 8,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 36 (Backend API)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 37 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 19,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 38 (Backend API)",
+    "status": "PASSED",
+    "duration": 4,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 39 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 25,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 40 (Backend API)",
+    "status": "PASSED",
+    "duration": 2,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 41 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 16,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 42 (Backend API)",
+    "status": "PASSED",
+    "duration": 30,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 43 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 23,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 44 (Backend API)",
+    "status": "PASSED",
+    "duration": 3,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 45 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 1,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 46 (Backend API)",
+    "status": "PASSED",
+    "duration": 16,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 47 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 48 (Backend API)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 49 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Comparison Matrix Check - Case 50 (Backend API)",
+    "status": "PASSED",
+    "duration": 35,
+    "error": null
+  },
+  {
+    "name": "Assert missing required headers returns HTTP 400",
+    "status": "PASSED",
+    "duration": 23,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 2 (Backend API)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 3 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 2,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 4 (Backend API)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 5 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 6 (Backend API)",
+    "status": "PASSED",
+    "duration": 4,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 7 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 8 (Backend API)",
+    "status": "PASSED",
+    "duration": 29,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 9 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 10 (Backend API)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 11 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 12 (Backend API)",
+    "status": "PASSED",
+    "duration": 12,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 13 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 37,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 14 (Backend API)",
+    "status": "PASSED",
+    "duration": 32,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 15 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 32,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 16 (Backend API)",
+    "status": "PASSED",
+    "duration": 35,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 17 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 18 (Backend API)",
+    "status": "PASSED",
+    "duration": 30,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 19 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 33,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 20 (Backend API)",
+    "status": "PASSED",
+    "duration": 16,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 21 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 25,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 22 (Backend API)",
+    "status": "PASSED",
+    "duration": 4,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 23 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 16,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 24 (Backend API)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 25 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 32,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 26 (Backend API)",
+    "status": "PASSED",
+    "duration": 27,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 27 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 21,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 28 (Backend API)",
+    "status": "PASSED",
+    "duration": 20,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 29 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 2,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 30 (Backend API)",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 31 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 4,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 32 (Backend API)",
+    "status": "PASSED",
+    "duration": 17,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 33 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 6,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 34 (Backend API)",
+    "status": "PASSED",
+    "duration": 10,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 35 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 36,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 36 (Backend API)",
+    "status": "PASSED",
+    "duration": 27,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 37 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 14,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 38 (Backend API)",
+    "status": "PASSED",
+    "duration": 11,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 39 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 20,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 40 (Backend API)",
+    "status": "PASSED",
+    "duration": 18,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 41 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 28,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 42 (Backend API)",
+    "status": "PASSED",
+    "duration": 16,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 43 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 26,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 44 (Backend API)",
+    "status": "PASSED",
+    "duration": 2,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 45 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 39,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 46 (Backend API)",
+    "status": "PASSED",
+    "duration": 24,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 47 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 6,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 48 (Backend API)",
+    "status": "PASSED",
+    "duration": 0,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 49 (Frontend Logic)",
+    "status": "PASSED",
+    "duration": 15,
+    "error": null
+  },
+  {
+    "name": "Validation Constraints Check - Case 50 (Backend API)",
+    "status": "PASSED",
+    "duration": 22,
+    "error": null
+  }
+]

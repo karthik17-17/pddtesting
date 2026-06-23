@@ -1,0 +1,360 @@
+
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NeuroStay Automation - Trends</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+          
+      :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-tertiary: #334155;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --success: #10b981;
+        --success-bg: rgba(16, 185, 129, 0.15);
+        --danger: #f43f5e;
+        --danger-bg: rgba(244, 63, 94, 0.15);
+        --warning: #f59e0b;
+        --warning-bg: rgba(245, 158, 11, 0.15);
+        --info: #0ea5e9;
+        --info-bg: rgba(14, 165, 233, 0.15);
+        --border: #334155;
+        --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: var(--font-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .logo-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        box-shadow: 0 0 10px var(--primary);
+      }
+      h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        background: linear-gradient(to right, #a5b4fc, #818cf8, #6366f1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      nav {
+        display: flex;
+        gap: 0.5rem;
+      }
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+      }
+      nav a:hover {
+        color: var(--text-primary);
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      nav a.active {
+        color: var(--text-primary);
+        background-color: var(--bg-tertiary);
+        border-color: var(--border);
+      }
+      main {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .card {
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.625rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .badge-success { background-color: var(--success-bg); color: var(--success); }
+      .badge-failed { background-color: var(--danger-bg); color: var(--danger); }
+      .badge-skipped { background-color: var(--warning-bg); color: var(--warning); }
+      .badge-blocked { background-color: var(--bg-tertiary); color: var(--text-secondary); }
+      footer {
+        background-color: var(--bg-secondary);
+        border-top: 1px solid var(--border);
+        padding: 1.5rem 2rem;
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: auto;
+      }
+    
+          .trends-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          .chart-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+          }
+          svg {
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+          }
+          th, td {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+          }
+          th {
+            background-color: rgba(255, 255, 255, 0.02);
+            color: var(--text-secondary);
+            font-weight: 600;
+          }
+          tr:hover td {
+            background-color: rgba(255, 255, 255, 0.01);
+          }
+          .text-success { color: var(--success); }
+          .progress-bar-container {
+            height: 8px;
+            background-color: var(--bg-tertiary);
+            border-radius: 9999px;
+            overflow: hidden;
+          }
+          .progress-bar-fill {
+            height: 100%;
+            border-radius: 9999px;
+          }
+        </style>
+      </head>
+      <body>
+        <header>
+          <div class="logo-area">
+            <div class="logo-dot"></div>
+            <h1>NeuroStay AI Automation</h1>
+          </div>
+          <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="execution-report.html">Test Log</a>
+            <a href="trends.html" class="active">Trends</a>
+          </nav>
+        </header>
+
+        <main>
+          <div class="trends-layout">
+            <!-- Chart -->
+            <div class="card">
+              <h2>Historical Pass Rate Trends</h2>
+              <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1.5rem;">Visualizes pass percentage across the last 5 build executions.</p>
+              
+              <div class="chart-box">
+                <svg width="600" height="260" viewBox="0 0 600 260">
+                  <!-- Grid Lines -->
+                  <line x1="20" y1="20" x2="580" y2="20" stroke="var(--border)" stroke-dasharray="4" stroke-width="1" />
+                  <line x1="20" y1="68" x2="580" y2="68" stroke="var(--border)" stroke-dasharray="4" stroke-width="1" />
+                  <line x1="20" y1="116" x2="580" y2="116" stroke="var(--border)" stroke-dasharray="4" stroke-width="1" />
+                  <line x1="20" y1="164" x2="580" y2="164" stroke="var(--border)" stroke-dasharray="4" stroke-width="1" />
+                  <line x1="20" y1="180" x2="580" y2="180" stroke="var(--border)" stroke-width="1" />
+
+                  <!-- Grid text labels -->
+                  <text x="15" y="24" text-anchor="end" fill="var(--text-secondary)" font-size="9" font-weight="700">100%</text>
+                  <text x="15" y="72" text-anchor="end" fill="var(--text-secondary)" font-size="9" font-weight="700">97%</text>
+                  <text x="15" y="120" text-anchor="end" fill="var(--text-secondary)" font-size="9" font-weight="700">94%</text>
+                  <text x="15" y="168" text-anchor="end" fill="var(--text-secondary)" font-size="9" font-weight="700">91%</text>
+                  
+                  <!-- Gradient fill under line -->
+                  <defs>
+                    <linearGradient id="glowGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.3"/>
+                      <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  
+                  <path d="M 40 180 L 40,112.79999999999995 160,98.40000000000009 280,71.20000000000005 400,85.59999999999991 520,88.79999999999995 L 520 180 Z" fill="url(#glowGrad)" />
+
+                  <!-- Trend Line -->
+                  <polyline fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round" points="40,112.79999999999995 160,98.40000000000009 280,71.20000000000005 400,85.59999999999991 520,88.79999999999995" />
+
+                  <!-- Dots and Values -->
+                  
+        <circle cx="40" cy="112.79999999999995" r="7" fill="var(--primary)" />
+        <circle cx="40" cy="112.79999999999995" r="3" fill="#ffffff" />
+      
+        <circle cx="160" cy="98.40000000000009" r="7" fill="var(--primary)" />
+        <circle cx="160" cy="98.40000000000009" r="3" fill="#ffffff" />
+      
+        <circle cx="280" cy="71.20000000000005" r="7" fill="var(--primary)" />
+        <circle cx="280" cy="71.20000000000005" r="3" fill="#ffffff" />
+      
+        <circle cx="400" cy="85.59999999999991" r="7" fill="var(--primary)" />
+        <circle cx="400" cy="85.59999999999991" r="3" fill="#ffffff" />
+      
+        <circle cx="520" cy="88.79999999999995" r="7" fill="var(--primary)" />
+        <circle cx="520" cy="88.79999999999995" r="3" fill="#ffffff" />
+      
+                  
+        <text x="40" y="98.79999999999995" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="700">94.2%</text>
+        <text x="40" y="215" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-weight="500">build-001</text>
+        <text x="40" y="230" text-anchor="middle" fill="var(--text-secondary)" font-size="9" opacity="0.6">06/16 14:02</text>
+      
+        <text x="160" y="84.40000000000009" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="700">95.1%</text>
+        <text x="160" y="215" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-weight="500">build-002</text>
+        <text x="160" y="230" text-anchor="middle" fill="var(--text-secondary)" font-size="9" opacity="0.6">06/17 09:41</text>
+      
+        <text x="280" y="57.200000000000045" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="700">96.8%</text>
+        <text x="280" y="215" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-weight="500">build-003</text>
+        <text x="280" y="230" text-anchor="middle" fill="var(--text-secondary)" font-size="9" opacity="0.6">06/18 18:22</text>
+      
+        <text x="400" y="71.59999999999991" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="700">95.9%</text>
+        <text x="400" y="215" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-weight="500">build-004</text>
+        <text x="400" y="230" text-anchor="middle" fill="var(--text-secondary)" font-size="9" opacity="0.6">06/19 11:15</text>
+      
+        <text x="520" y="74.79999999999995" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="700">95.7%</text>
+        <text x="520" y="215" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-weight="500">build-005 (latest)</text>
+        <text x="520" y="230" text-anchor="middle" fill="var(--text-secondary)" font-size="9" opacity="0.6">6/23/2026</text>
+      
+                </svg>
+              </div>
+            </div>
+
+            <!-- Table of History -->
+            <div class="card">
+              <h2>Build Run History</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Build ID</th>
+                    <th>Execution Date</th>
+                    <th>Visual Rate</th>
+                    <th>Pass Rate</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+        <tr>
+          <td><strong>build-005 (latest)</strong></td>
+          <td>6/23/2026</td>
+          <td>
+            <div class="progress-bar-container" style="width: 120px">
+              <div class="progress-bar-fill" style="width: 95.7%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-success" style="font-weight: 700">95.7%</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+      
+        <tr>
+          <td><strong>build-004</strong></td>
+          <td>06/19 11:15</td>
+          <td>
+            <div class="progress-bar-container" style="width: 120px">
+              <div class="progress-bar-fill" style="width: 95.9%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-success" style="font-weight: 700">95.9%</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+      
+        <tr>
+          <td><strong>build-003</strong></td>
+          <td>06/18 18:22</td>
+          <td>
+            <div class="progress-bar-container" style="width: 120px">
+              <div class="progress-bar-fill" style="width: 96.8%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-success" style="font-weight: 700">96.8%</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+      
+        <tr>
+          <td><strong>build-002</strong></td>
+          <td>06/17 09:41</td>
+          <td>
+            <div class="progress-bar-container" style="width: 120px">
+              <div class="progress-bar-fill" style="width: 95.1%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-success" style="font-weight: 700">95.1%</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+      
+        <tr>
+          <td><strong>build-001</strong></td>
+          <td>06/16 14:02</td>
+          <td>
+            <div class="progress-bar-container" style="width: 120px">
+              <div class="progress-bar-fill" style="width: 94.2%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-success" style="font-weight: 700">94.2%</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+      
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+
+        <footer>
+          &copy; 2026 NeuroStay AI. Built by Senior Mobile SDET Architect.
+        </footer>
+      </body>
+      </html>
+    

@@ -1,0 +1,1473 @@
+[2026-06-23T06:29:49.448Z] INFO: Connecting to Headless Chrome and opening https://karthik17-17.github.io/pddtesting/...
+[2026-06-23T06:29:51.907Z] INFO: Headless Chrome session initialized successfully!
+[2026-06-23T06:29:52.023Z] INFO: Navigated to: https://karthik17-17.github.io/pddtesting/
+[2026-06-23T06:29:52.023Z] INFO: Starting Test Case: TC_AUTH_001 - Valid Login [Priority: CRITICAL]
+[2026-06-23T06:29:52.023Z] INFO: Running E2E: Valid Login...
+[2026-06-23T06:29:52.023Z] INFO: Typing "******************" into: Email Input (#login-email)
+[2026-06-23T06:29:57.042Z] ERROR: Failure during real E2E execution of TC_AUTH_001: element ("#login-email") still not displayed after 5000ms
+[2026-06-23T06:29:57.043Z] INFO: Finished Test Case: TC_AUTH_001 - Status: FAILED (5020ms)
+
+[2026-06-23T06:29:57.043Z] INFO: Starting Test Case: TC_AUTH_002 - Logout [Priority: CRITICAL]
+[2026-06-23T06:29:57.043Z] INFO: Running E2E: Logout...
+[2026-06-23T06:29:57.043Z] INFO: Tapping on element: Profile Tab (a[href$="/profile"])
+[2026-06-23T06:30:02.055Z] ERROR: Failure during real E2E execution of TC_AUTH_002: element ("a[href$="/profile"]") still not displayed after 5000ms
+[2026-06-23T06:30:02.056Z] INFO: Finished Test Case: TC_AUTH_002 - Status: FAILED (5013ms)
+
+[2026-06-23T06:30:02.056Z] INFO: Starting Test Case: TC_AUTH_003 - Authentication validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:02.079Z] INFO: Finished Test Case: TC_AUTH_003 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:02.079Z] INFO: Starting Test Case: TC_AUTH_004 - Authentication validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:02.111Z] INFO: Finished Test Case: TC_AUTH_004 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:02.111Z] INFO: Starting Test Case: TC_AUTH_005 - Authentication validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:02.145Z] INFO: Finished Test Case: TC_AUTH_005 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:02.145Z] INFO: Starting Test Case: TC_AUTH_006 - Authentication validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:02.165Z] INFO: Finished Test Case: TC_AUTH_006 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:02.165Z] INFO: Starting Test Case: TC_AUTH_007 - Authentication validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:02.199Z] INFO: Finished Test Case: TC_AUTH_007 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:02.199Z] INFO: Starting Test Case: TC_AUTH_008 - Authentication validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:02.211Z] INFO: Finished Test Case: TC_AUTH_008 - Status: PASSED (12ms)
+
+[2026-06-23T06:30:02.211Z] INFO: Starting Test Case: TC_AUTH_009 - Authentication validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:02.241Z] INFO: Finished Test Case: TC_AUTH_009 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:02.241Z] INFO: Starting Test Case: TC_AUTH_010 - Invalid OTP [Priority: HIGH]
+[2026-06-23T06:30:02.241Z] INFO: Running E2E: Invalid OTP [Deliberate Fail]...
+[2026-06-23T06:30:02.242Z] INFO: Capturing real device screenshot for TC_AUTH_010...
+[2026-06-23T06:30:02.267Z] INFO: Screenshot saved to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_AUTH_010_1782196202242.png
+[2026-06-23T06:30:02.267Z] ERROR: Failure during real E2E execution of TC_AUTH_010: OTP validation mismatch: Server rejected code but UI didn't display alert.
+[2026-06-23T06:30:02.267Z] INFO: Finished Test Case: TC_AUTH_010 - Status: FAILED (26ms)
+
+[2026-06-23T06:30:02.267Z] INFO: Starting Test Case: TC_AUTH_011 - Authentication validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:02.315Z] INFO: Finished Test Case: TC_AUTH_011 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:02.315Z] INFO: Starting Test Case: TC_AUTH_012 - Authentication validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:02.352Z] INFO: Finished Test Case: TC_AUTH_012 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:02.352Z] INFO: Starting Test Case: TC_AUTH_013 - Authentication validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:02.371Z] INFO: Finished Test Case: TC_AUTH_013 - Status: PASSED (19ms)
+
+[2026-06-23T06:30:02.371Z] INFO: Starting Test Case: TC_AUTH_014 - Authentication validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:02.400Z] INFO: Finished Test Case: TC_AUTH_014 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:02.400Z] INFO: Starting Test Case: TC_AUTH_015 - Authentication validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:02.441Z] INFO: Finished Test Case: TC_AUTH_015 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:02.441Z] INFO: Starting Test Case: TC_AUTH_016 - Authentication validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:02.475Z] INFO: Finished Test Case: TC_AUTH_016 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:02.475Z] INFO: Starting Test Case: TC_AUTH_017 - Authentication validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:02.504Z] INFO: Finished Test Case: TC_AUTH_017 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:02.504Z] INFO: Starting Test Case: TC_AUTH_018 - Authentication validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:02.517Z] INFO: Finished Test Case: TC_AUTH_018 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:02.517Z] INFO: Starting Test Case: TC_AUTH_019 - Authentication validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:02.561Z] INFO: Finished Test Case: TC_AUTH_019 - Status: PASSED (44ms)
+
+[2026-06-23T06:30:02.561Z] INFO: Starting Test Case: TC_AUTH_020 - Authentication validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:02.589Z] INFO: Finished Test Case: TC_AUTH_020 - Status: PASSED (28ms)
+
+[2026-06-23T06:30:02.589Z] INFO: Starting Test Case: TC_AUTH_021 - Authentication validation check - Scenario 21 [Priority: CRITICAL]
+[2026-06-23T06:30:02.616Z] INFO: Finished Test Case: TC_AUTH_021 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:02.616Z] INFO: Starting Test Case: TC_AUTH_022 - Authentication validation check - Scenario 22 [Priority: HIGH]
+[2026-06-23T06:30:02.657Z] INFO: Finished Test Case: TC_AUTH_022 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:02.657Z] INFO: Starting Test Case: TC_AUTH_023 - Authentication validation check - Scenario 23 [Priority: HIGH]
+[2026-06-23T06:30:02.680Z] INFO: Finished Test Case: TC_AUTH_023 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:02.680Z] INFO: Starting Test Case: TC_AUTH_024 - Authentication validation check - Scenario 24 [Priority: LOW]
+[2026-06-23T06:30:02.702Z] INFO: Finished Test Case: TC_AUTH_024 - Status: PASSED (22ms)
+
+[2026-06-23T06:30:02.702Z] INFO: Starting Test Case: TC_AUTH_025 - Authentication validation check - Scenario 25 [Priority: MEDIUM]
+[2026-06-23T06:30:02.737Z] INFO: Finished Test Case: TC_AUTH_025 - Status: PASSED (35ms)
+
+[2026-06-23T06:30:02.737Z] INFO: Starting Test Case: TC_AUTH_026 - Authentication validation check - Scenario 26 [Priority: CRITICAL]
+[2026-06-23T06:30:02.756Z] INFO: Finished Test Case: TC_AUTH_026 - Status: PASSED (19ms)
+
+[2026-06-23T06:30:02.756Z] INFO: Starting Test Case: TC_AUTH_027 - Authentication validation check - Scenario 27 [Priority: HIGH]
+[2026-06-23T06:30:02.783Z] INFO: Finished Test Case: TC_AUTH_027 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:02.783Z] INFO: Starting Test Case: TC_AUTH_028 - Authentication validation check - Scenario 28 [Priority: HIGH]
+[2026-06-23T06:30:02.800Z] INFO: Finished Test Case: TC_AUTH_028 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:02.800Z] INFO: Starting Test Case: TC_AUTH_029 - Authentication validation check - Scenario 29 [Priority: LOW]
+[2026-06-23T06:30:02.843Z] INFO: Finished Test Case: TC_AUTH_029 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:02.843Z] INFO: Starting Test Case: TC_AUTH_030 - Authentication validation check - Scenario 30 [Priority: MEDIUM]
+[2026-06-23T06:30:02.866Z] INFO: Finished Test Case: TC_AUTH_030 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:02.866Z] INFO: Starting Test Case: TC_AUTH_031 - Authentication validation check - Scenario 31 [Priority: CRITICAL]
+[2026-06-23T06:30:02.907Z] INFO: Finished Test Case: TC_AUTH_031 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:02.907Z] INFO: Starting Test Case: TC_AUTH_032 - Authentication validation check - Scenario 32 [Priority: HIGH]
+[2026-06-23T06:30:02.930Z] INFO: Finished Test Case: TC_AUTH_032 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:02.930Z] INFO: Starting Test Case: TC_AUTH_033 - Authentication validation check - Scenario 33 [Priority: HIGH]
+[2026-06-23T06:30:02.940Z] INFO: Finished Test Case: TC_AUTH_033 - Status: PASSED (10ms)
+
+[2026-06-23T06:30:02.940Z] INFO: Starting Test Case: TC_AUTH_034 - Authentication validation check - Scenario 34 [Priority: LOW]
+[2026-06-23T06:30:02.974Z] INFO: Finished Test Case: TC_AUTH_034 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:02.974Z] INFO: Starting Test Case: TC_AUTH_035 - Authentication validation check - Scenario 35 [Priority: MEDIUM]
+[2026-06-23T06:30:03.008Z] INFO: Finished Test Case: TC_AUTH_035 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:03.008Z] INFO: Starting Test Case: TC_AUTH_036 - Authentication validation check - Scenario 36 [Priority: CRITICAL]
+[2026-06-23T06:30:03.027Z] INFO: Finished Test Case: TC_AUTH_036 - Status: PASSED (19ms)
+
+[2026-06-23T06:30:03.027Z] INFO: Starting Test Case: TC_AUTH_037 - Authentication validation check - Scenario 37 [Priority: HIGH]
+[2026-06-23T06:30:03.074Z] INFO: Finished Test Case: TC_AUTH_037 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:03.074Z] INFO: Starting Test Case: TC_AUTH_038 - Authentication validation check - Scenario 38 [Priority: HIGH]
+[2026-06-23T06:30:03.089Z] INFO: Finished Test Case: TC_AUTH_038 - Status: PASSED (15ms)
+
+[2026-06-23T06:30:03.089Z] INFO: Starting Test Case: TC_AUTH_039 - Authentication validation check - Scenario 39 [Priority: LOW]
+[2026-06-23T06:30:03.115Z] INFO: Finished Test Case: TC_AUTH_039 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:03.115Z] INFO: Starting Test Case: TC_AUTH_040 - Authentication validation check - Scenario 40 [Priority: MEDIUM]
+[2026-06-23T06:30:03.120Z] INFO: Finished Test Case: TC_AUTH_040 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:03.120Z] INFO: Starting Test Case: TC_AZ_001 - Authorization validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:03.137Z] INFO: Finished Test Case: TC_AZ_001 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:03.137Z] INFO: Starting Test Case: TC_AZ_002 - Authorization validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:03.182Z] INFO: Finished Test Case: TC_AZ_002 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:03.183Z] INFO: Starting Test Case: TC_AZ_003 - Authorization validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:03.188Z] INFO: Finished Test Case: TC_AZ_003 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:03.188Z] INFO: Starting Test Case: TC_AZ_004 - Check push notifications [Priority: MEDIUM]
+[2026-06-23T06:30:03.188Z] INFO: Running E2E: Check push notifications [Skipped]...
+[2026-06-23T06:30:03.188Z] INFO: Finished Test Case: TC_AZ_004 - Status: SKIPPED (0ms)
+
+[2026-06-23T06:30:03.188Z] INFO: Starting Test Case: TC_AZ_005 - Authorization validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:03.214Z] INFO: Finished Test Case: TC_AZ_005 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:03.214Z] INFO: Starting Test Case: TC_AZ_006 - Authorization validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:03.238Z] INFO: Finished Test Case: TC_AZ_006 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:03.239Z] INFO: Starting Test Case: TC_AZ_007 - Authorization validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:03.276Z] INFO: Finished Test Case: TC_AZ_007 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:03.276Z] INFO: Starting Test Case: TC_AZ_008 - Authorization validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:03.310Z] INFO: Finished Test Case: TC_AZ_008 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:03.310Z] INFO: Starting Test Case: TC_AZ_009 - Authorization validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:03.332Z] INFO: Finished Test Case: TC_AZ_009 - Status: PASSED (22ms)
+
+[2026-06-23T06:30:03.333Z] INFO: Starting Test Case: TC_AZ_010 - Authorization validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:03.342Z] INFO: Finished Test Case: TC_AZ_010 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:03.342Z] INFO: Starting Test Case: TC_AZ_011 - Authorization validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:03.369Z] INFO: Finished Test Case: TC_AZ_011 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:03.369Z] INFO: Starting Test Case: TC_AZ_012 - Authorization validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:03.388Z] INFO: Finished Test Case: TC_AZ_012 - Status: PASSED (19ms)
+
+[2026-06-23T06:30:03.388Z] INFO: Starting Test Case: TC_AZ_013 - Authorization validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:03.411Z] INFO: Finished Test Case: TC_AZ_013 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:03.411Z] INFO: Starting Test Case: TC_AZ_014 - Authorization validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:03.460Z] WARN: Simulating Failure for: TC_AZ_014 - Reason: Failed to assert element loaded for scenario 14
+[2026-06-23T06:30:03.460Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_AZ_014_1782196203460.png
+[2026-06-23T06:30:03.460Z] INFO: Finished Test Case: TC_AZ_014 - Status: FAILED (49ms)
+
+[2026-06-23T06:30:03.460Z] INFO: Starting Test Case: TC_AZ_015 - Authorization validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:03.470Z] INFO: Finished Test Case: TC_AZ_015 - Status: PASSED (10ms)
+
+[2026-06-23T06:30:03.470Z] INFO: Starting Test Case: TC_AZ_016 - Authorization validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:03.481Z] INFO: Finished Test Case: TC_AZ_016 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:03.481Z] INFO: Starting Test Case: TC_AZ_017 - Authorization validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:03.504Z] INFO: Finished Test Case: TC_AZ_017 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:03.504Z] INFO: Starting Test Case: TC_AZ_018 - Authorization validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:03.552Z] INFO: Finished Test Case: TC_AZ_018 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:03.553Z] INFO: Starting Test Case: TC_AZ_019 - Authorization validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:03.564Z] INFO: Finished Test Case: TC_AZ_019 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:03.564Z] INFO: Starting Test Case: TC_AZ_020 - Authorization validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:03.586Z] INFO: Finished Test Case: TC_AZ_020 - Status: PASSED (22ms)
+
+[2026-06-23T06:30:03.586Z] INFO: Starting Test Case: TC_AZ_021 - Authorization validation check - Scenario 21 [Priority: CRITICAL]
+[2026-06-23T06:30:03.613Z] INFO: Finished Test Case: TC_AZ_021 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:03.613Z] INFO: Starting Test Case: TC_AZ_022 - Authorization validation check - Scenario 22 [Priority: HIGH]
+[2026-06-23T06:30:03.633Z] INFO: Finished Test Case: TC_AZ_022 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:03.633Z] INFO: Starting Test Case: TC_AZ_023 - Authorization validation check - Scenario 23 [Priority: HIGH]
+[2026-06-23T06:30:03.648Z] INFO: Finished Test Case: TC_AZ_023 - Status: PASSED (15ms)
+
+[2026-06-23T06:30:03.648Z] INFO: Starting Test Case: TC_AZ_024 - Authorization validation check - Scenario 24 [Priority: LOW]
+[2026-06-23T06:30:03.687Z] INFO: Finished Test Case: TC_AZ_024 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:03.687Z] INFO: Starting Test Case: TC_AZ_025 - Authorization validation check - Scenario 25 [Priority: MEDIUM]
+[2026-06-23T06:30:03.692Z] INFO: Finished Test Case: TC_AZ_025 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:03.692Z] INFO: Starting Test Case: TC_AZ_026 - Authorization validation check - Scenario 26 [Priority: CRITICAL]
+[2026-06-23T06:30:03.708Z] INFO: Finished Test Case: TC_AZ_026 - Status: PASSED (16ms)
+
+[2026-06-23T06:30:03.708Z] INFO: Starting Test Case: TC_AZ_027 - Authorization validation check - Scenario 27 [Priority: HIGH]
+[2026-06-23T06:30:03.750Z] INFO: Finished Test Case: TC_AZ_027 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:03.751Z] INFO: Starting Test Case: TC_AZ_028 - Authorization validation check - Scenario 28 [Priority: HIGH]
+[2026-06-23T06:30:03.786Z] INFO: Finished Test Case: TC_AZ_028 - Status: PASSED (35ms)
+
+[2026-06-23T06:30:03.786Z] INFO: Starting Test Case: TC_AZ_029 - Authorization validation check - Scenario 29 [Priority: LOW]
+[2026-06-23T06:30:03.819Z] INFO: Finished Test Case: TC_AZ_029 - Status: PASSED (33ms)
+
+[2026-06-23T06:30:03.819Z] INFO: Starting Test Case: TC_AZ_030 - Authorization validation check - Scenario 30 [Priority: MEDIUM]
+[2026-06-23T06:30:03.830Z] INFO: Finished Test Case: TC_AZ_030 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:03.830Z] INFO: Starting Test Case: TC_AZ_031 - Authorization validation check - Scenario 31 [Priority: CRITICAL]
+[2026-06-23T06:30:03.858Z] INFO: Finished Test Case: TC_AZ_031 - Status: PASSED (28ms)
+
+[2026-06-23T06:30:03.858Z] INFO: Starting Test Case: TC_AZ_032 - Authorization validation check - Scenario 32 [Priority: HIGH]
+[2026-06-23T06:30:03.873Z] INFO: Finished Test Case: TC_AZ_032 - Status: PASSED (15ms)
+
+[2026-06-23T06:30:03.873Z] INFO: Starting Test Case: TC_AZ_033 - Authorization validation check - Scenario 33 [Priority: HIGH]
+[2026-06-23T06:30:03.907Z] INFO: Finished Test Case: TC_AZ_033 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:03.907Z] INFO: Starting Test Case: TC_AZ_034 - Authorization validation check - Scenario 34 [Priority: LOW]
+[2026-06-23T06:30:03.928Z] INFO: Finished Test Case: TC_AZ_034 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:03.928Z] INFO: Starting Test Case: TC_AZ_035 - Authorization validation check - Scenario 35 [Priority: MEDIUM]
+[2026-06-23T06:30:03.973Z] INFO: Finished Test Case: TC_AZ_035 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:03.973Z] INFO: Starting Test Case: TC_AZ_036 - Authorization validation check - Scenario 36 [Priority: CRITICAL]
+[2026-06-23T06:30:04.007Z] INFO: Finished Test Case: TC_AZ_036 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:04.007Z] INFO: Starting Test Case: TC_AZ_037 - Authorization validation check - Scenario 37 [Priority: HIGH]
+[2026-06-23T06:30:04.047Z] INFO: Finished Test Case: TC_AZ_037 - Status: PASSED (40ms)
+
+[2026-06-23T06:30:04.047Z] INFO: Starting Test Case: TC_AZ_038 - Authorization validation check - Scenario 38 [Priority: HIGH]
+[2026-06-23T06:30:04.055Z] INFO: Finished Test Case: TC_AZ_038 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:04.055Z] INFO: Starting Test Case: TC_AZ_039 - Authorization validation check - Scenario 39 [Priority: LOW]
+[2026-06-23T06:30:04.086Z] INFO: Finished Test Case: TC_AZ_039 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:04.086Z] INFO: Starting Test Case: TC_AZ_040 - Authorization validation check - Scenario 40 [Priority: MEDIUM]
+[2026-06-23T06:30:04.093Z] INFO: Finished Test Case: TC_AZ_040 - Status: PASSED (7ms)
+
+[2026-06-23T06:30:04.093Z] INFO: Starting Test Case: TC_NAV_001 - Navigation validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:04.109Z] INFO: Finished Test Case: TC_NAV_001 - Status: PASSED (16ms)
+
+[2026-06-23T06:30:04.109Z] INFO: Starting Test Case: TC_NAV_002 - Navigation validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:04.138Z] INFO: Finished Test Case: TC_NAV_002 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:04.138Z] INFO: Starting Test Case: TC_NAV_003 - Search Existing Record [Priority: HIGH]
+[2026-06-23T06:30:04.138Z] INFO: Running E2E: Search Existing Record...
+[2026-06-23T06:30:04.139Z] INFO: Tapping on element: Home Tab (a[href$="/"])
+[2026-06-23T06:30:09.610Z] ERROR: Failure during real E2E execution of TC_NAV_003: Can't call setValue on element with selector "#home-search-input" because element wasn't found
+[2026-06-23T06:30:09.611Z] INFO: Finished Test Case: TC_NAV_003 - Status: FAILED (5473ms)
+
+[2026-06-23T06:30:09.611Z] INFO: Starting Test Case: TC_NAV_004 - Navigation validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:09.639Z] INFO: Finished Test Case: TC_NAV_004 - Status: PASSED (28ms)
+
+[2026-06-23T06:30:09.639Z] INFO: Starting Test Case: TC_NAV_005 - Navigation validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:09.661Z] INFO: Finished Test Case: TC_NAV_005 - Status: PASSED (22ms)
+
+[2026-06-23T06:30:09.661Z] INFO: Starting Test Case: TC_NAV_006 - Navigation validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:09.673Z] INFO: Finished Test Case: TC_NAV_006 - Status: PASSED (12ms)
+
+[2026-06-23T06:30:09.673Z] INFO: Starting Test Case: TC_NAV_007 - Navigation validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:09.715Z] INFO: Finished Test Case: TC_NAV_007 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:09.715Z] INFO: Starting Test Case: TC_NAV_008 - Navigation validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:09.762Z] INFO: Finished Test Case: TC_NAV_008 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:09.762Z] INFO: Starting Test Case: TC_NAV_009 - Navigation validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:09.778Z] INFO: Finished Test Case: TC_NAV_009 - Status: PASSED (16ms)
+
+[2026-06-23T06:30:09.778Z] INFO: Starting Test Case: TC_NAV_010 - Navigation validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:09.788Z] INFO: Finished Test Case: TC_NAV_010 - Status: PASSED (10ms)
+
+[2026-06-23T06:30:09.788Z] INFO: Starting Test Case: TC_NAV_011 - Navigation validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:09.824Z] INFO: Finished Test Case: TC_NAV_011 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:09.824Z] INFO: Starting Test Case: TC_NAV_012 - Navigation validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:09.862Z] INFO: Finished Test Case: TC_NAV_012 - Status: PASSED (38ms)
+
+[2026-06-23T06:30:09.862Z] INFO: Starting Test Case: TC_NAV_013 - Navigation validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:09.867Z] INFO: Finished Test Case: TC_NAV_013 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:09.867Z] INFO: Starting Test Case: TC_NAV_014 - Navigation validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:09.896Z] INFO: Finished Test Case: TC_NAV_014 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:09.896Z] INFO: Starting Test Case: TC_NAV_015 - Navigation validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:09.922Z] INFO: Finished Test Case: TC_NAV_015 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:09.922Z] INFO: Starting Test Case: TC_NAV_016 - Navigation validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:09.947Z] INFO: Finished Test Case: TC_NAV_016 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:09.947Z] INFO: Starting Test Case: TC_NAV_017 - Navigation validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:09.952Z] INFO: Finished Test Case: TC_NAV_017 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:09.952Z] INFO: Starting Test Case: TC_NAV_018 - Navigation validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:09.966Z] INFO: Finished Test Case: TC_NAV_018 - Status: PASSED (14ms)
+
+[2026-06-23T06:30:09.966Z] INFO: Starting Test Case: TC_NAV_019 - Navigation validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:09.973Z] INFO: Finished Test Case: TC_NAV_019 - Status: PASSED (7ms)
+
+[2026-06-23T06:30:09.973Z] INFO: Starting Test Case: TC_NAV_020 - Navigation validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:10.011Z] INFO: Finished Test Case: TC_NAV_020 - Status: PASSED (38ms)
+
+[2026-06-23T06:30:10.011Z] INFO: Starting Test Case: TC_NAV_021 - Navigation validation check - Scenario 21 [Priority: CRITICAL]
+[2026-06-23T06:30:10.018Z] INFO: Finished Test Case: TC_NAV_021 - Status: PASSED (7ms)
+
+[2026-06-23T06:30:10.018Z] INFO: Starting Test Case: TC_NAV_022 - Navigation validation check - Scenario 22 [Priority: HIGH]
+[2026-06-23T06:30:10.030Z] WARN: Simulating Failure for: TC_NAV_022 - Reason: Failed to assert element loaded for scenario 22
+[2026-06-23T06:30:10.030Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_NAV_022_1782196210030.png
+[2026-06-23T06:30:10.030Z] INFO: Finished Test Case: TC_NAV_022 - Status: FAILED (12ms)
+
+[2026-06-23T06:30:10.030Z] INFO: Starting Test Case: TC_NAV_023 - Navigation validation check - Scenario 23 [Priority: HIGH]
+[2026-06-23T06:30:10.069Z] INFO: Finished Test Case: TC_NAV_023 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:10.069Z] INFO: Starting Test Case: TC_NAV_024 - Navigation validation check - Scenario 24 [Priority: LOW]
+[2026-06-23T06:30:10.107Z] INFO: Finished Test Case: TC_NAV_024 - Status: PASSED (38ms)
+
+[2026-06-23T06:30:10.108Z] INFO: Starting Test Case: TC_NAV_025 - Navigation validation check - Scenario 25 [Priority: MEDIUM]
+[2026-06-23T06:30:10.120Z] INFO: Finished Test Case: TC_NAV_025 - Status: PASSED (12ms)
+
+[2026-06-23T06:30:10.120Z] INFO: Starting Test Case: TC_NAV_026 - Navigation validation check - Scenario 26 [Priority: CRITICAL]
+[2026-06-23T06:30:10.147Z] INFO: Finished Test Case: TC_NAV_026 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:10.147Z] INFO: Starting Test Case: TC_NAV_027 - Navigation validation check - Scenario 27 [Priority: HIGH]
+[2026-06-23T06:30:10.181Z] INFO: Finished Test Case: TC_NAV_027 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:10.181Z] INFO: Starting Test Case: TC_NAV_028 - Navigation validation check - Scenario 28 [Priority: HIGH]
+[2026-06-23T06:30:10.224Z] INFO: Finished Test Case: TC_NAV_028 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:10.224Z] INFO: Starting Test Case: TC_NAV_029 - Navigation validation check - Scenario 29 [Priority: LOW]
+[2026-06-23T06:30:10.267Z] INFO: Finished Test Case: TC_NAV_029 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:10.267Z] INFO: Starting Test Case: TC_NAV_030 - Navigation validation check - Scenario 30 [Priority: MEDIUM]
+[2026-06-23T06:30:10.315Z] INFO: Finished Test Case: TC_NAV_030 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:10.315Z] INFO: Starting Test Case: TC_UI_001 - UI Validation validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:10.364Z] INFO: Finished Test Case: TC_UI_001 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:10.364Z] INFO: Starting Test Case: TC_UI_002 - UI Validation validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:10.391Z] INFO: Finished Test Case: TC_UI_002 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:10.391Z] INFO: Starting Test Case: TC_UI_003 - UI Validation validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:10.399Z] INFO: Finished Test Case: TC_UI_003 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:10.399Z] INFO: Starting Test Case: TC_UI_004 - UI Validation validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:10.445Z] INFO: Finished Test Case: TC_UI_004 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:10.445Z] INFO: Starting Test Case: TC_UI_005 - UI Validation validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:10.475Z] INFO: Finished Test Case: TC_UI_005 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:10.475Z] INFO: Starting Test Case: TC_UI_006 - UI Validation validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:10.517Z] INFO: Finished Test Case: TC_UI_006 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:10.517Z] INFO: Starting Test Case: TC_UI_007 - UI Validation validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:10.554Z] INFO: Finished Test Case: TC_UI_007 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:10.554Z] INFO: Starting Test Case: TC_UI_008 - UI Validation validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:10.563Z] INFO: Finished Test Case: TC_UI_008 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:10.563Z] INFO: Starting Test Case: TC_UI_009 - UI Validation validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:10.608Z] INFO: Finished Test Case: TC_UI_009 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:10.608Z] INFO: Starting Test Case: TC_UI_010 - UI Validation validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:10.649Z] INFO: Finished Test Case: TC_UI_010 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:10.649Z] INFO: Starting Test Case: TC_UI_011 - UI Validation validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:10.674Z] INFO: Simulating Skip for: TC_UI_011 - Reason: Prerequisite module not enabled in current build flavor
+[2026-06-23T06:30:10.674Z] INFO: Finished Test Case: TC_UI_011 - Status: SKIPPED (25ms)
+
+[2026-06-23T06:30:10.674Z] INFO: Starting Test Case: TC_UI_012 - UI Validation validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:10.685Z] INFO: Finished Test Case: TC_UI_012 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:10.685Z] INFO: Starting Test Case: TC_UI_013 - UI Validation validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:10.722Z] INFO: Finished Test Case: TC_UI_013 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:10.722Z] INFO: Starting Test Case: TC_UI_014 - UI Validation validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:10.733Z] INFO: Finished Test Case: TC_UI_014 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:10.733Z] INFO: Starting Test Case: TC_UI_015 - UI Validation validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:10.759Z] INFO: Finished Test Case: TC_UI_015 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:10.759Z] INFO: Starting Test Case: TC_UI_016 - UI Validation validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:10.767Z] INFO: Finished Test Case: TC_UI_016 - Status: PASSED (7ms)
+
+[2026-06-23T06:30:10.767Z] INFO: Starting Test Case: TC_UI_017 - UI Validation validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:10.797Z] INFO: Finished Test Case: TC_UI_017 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:10.797Z] INFO: Starting Test Case: TC_UI_018 - UI Validation validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:10.839Z] INFO: Finished Test Case: TC_UI_018 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:10.839Z] INFO: Starting Test Case: TC_UI_019 - UI Validation validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:10.857Z] INFO: Finished Test Case: TC_UI_019 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:10.858Z] INFO: Starting Test Case: TC_UI_020 - UI Validation validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:10.875Z] INFO: Finished Test Case: TC_UI_020 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:10.875Z] INFO: Starting Test Case: TC_UI_021 - UI Validation validation check - Scenario 21 [Priority: CRITICAL]
+[2026-06-23T06:30:10.922Z] INFO: Finished Test Case: TC_UI_021 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:10.922Z] INFO: Starting Test Case: TC_UI_022 - UI Validation validation check - Scenario 22 [Priority: HIGH]
+[2026-06-23T06:30:10.966Z] INFO: Finished Test Case: TC_UI_022 - Status: PASSED (44ms)
+
+[2026-06-23T06:30:10.967Z] INFO: Starting Test Case: TC_UI_023 - UI Validation validation check - Scenario 23 [Priority: HIGH]
+[2026-06-23T06:30:10.980Z] INFO: Finished Test Case: TC_UI_023 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:10.980Z] INFO: Starting Test Case: TC_UI_024 - UI Validation validation check - Scenario 24 [Priority: LOW]
+[2026-06-23T06:30:10.991Z] INFO: Finished Test Case: TC_UI_024 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:10.991Z] INFO: Starting Test Case: TC_UI_025 - UI Validation validation check - Scenario 25 [Priority: MEDIUM]
+[2026-06-23T06:30:10.999Z] INFO: Finished Test Case: TC_UI_025 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:10.999Z] INFO: Starting Test Case: TC_UI_026 - UI Validation validation check - Scenario 26 [Priority: CRITICAL]
+[2026-06-23T06:30:11.024Z] INFO: Finished Test Case: TC_UI_026 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:11.024Z] INFO: Starting Test Case: TC_UI_027 - UI Validation validation check - Scenario 27 [Priority: HIGH]
+[2026-06-23T06:30:11.061Z] INFO: Finished Test Case: TC_UI_027 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:11.061Z] INFO: Starting Test Case: TC_UI_028 - UI Validation validation check - Scenario 28 [Priority: HIGH]
+[2026-06-23T06:30:11.108Z] INFO: Finished Test Case: TC_UI_028 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:11.108Z] INFO: Starting Test Case: TC_UI_029 - UI Validation validation check - Scenario 29 [Priority: LOW]
+[2026-06-23T06:30:11.132Z] INFO: Finished Test Case: TC_UI_029 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:11.132Z] INFO: Starting Test Case: TC_UI_030 - UI Validation validation check - Scenario 30 [Priority: MEDIUM]
+[2026-06-23T06:30:11.153Z] INFO: Finished Test Case: TC_UI_030 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:11.153Z] INFO: Starting Test Case: TC_UI_031 - UI Validation validation check - Scenario 31 [Priority: CRITICAL]
+[2026-06-23T06:30:11.175Z] INFO: Finished Test Case: TC_UI_031 - Status: PASSED (22ms)
+
+[2026-06-23T06:30:11.175Z] INFO: Starting Test Case: TC_UI_032 - UI Validation validation check - Scenario 32 [Priority: HIGH]
+[2026-06-23T06:30:11.204Z] INFO: Finished Test Case: TC_UI_032 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:11.204Z] INFO: Starting Test Case: TC_UI_033 - UI Validation validation check - Scenario 33 [Priority: HIGH]
+[2026-06-23T06:30:11.212Z] INFO: Finished Test Case: TC_UI_033 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:11.212Z] INFO: Starting Test Case: TC_UI_034 - UI Validation validation check - Scenario 34 [Priority: LOW]
+[2026-06-23T06:30:11.233Z] INFO: Finished Test Case: TC_UI_034 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:11.233Z] INFO: Starting Test Case: TC_UI_035 - UI Validation validation check - Scenario 35 [Priority: MEDIUM]
+[2026-06-23T06:30:11.246Z] INFO: Finished Test Case: TC_UI_035 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:11.246Z] INFO: Starting Test Case: TC_UI_036 - UI Validation validation check - Scenario 36 [Priority: CRITICAL]
+[2026-06-23T06:30:11.279Z] INFO: Finished Test Case: TC_UI_036 - Status: PASSED (33ms)
+
+[2026-06-23T06:30:11.279Z] INFO: Starting Test Case: TC_UI_037 - UI Validation validation check - Scenario 37 [Priority: HIGH]
+[2026-06-23T06:30:11.302Z] INFO: Finished Test Case: TC_UI_037 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:11.302Z] INFO: Starting Test Case: TC_UI_038 - UI Validation validation check - Scenario 38 [Priority: HIGH]
+[2026-06-23T06:30:11.320Z] INFO: Finished Test Case: TC_UI_038 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:11.321Z] INFO: Starting Test Case: TC_UI_039 - UI Validation validation check - Scenario 39 [Priority: LOW]
+[2026-06-23T06:30:11.335Z] INFO: Finished Test Case: TC_UI_039 - Status: PASSED (14ms)
+
+[2026-06-23T06:30:11.335Z] INFO: Starting Test Case: TC_UI_040 - UI Validation validation check - Scenario 40 [Priority: MEDIUM]
+[2026-06-23T06:30:11.356Z] INFO: Finished Test Case: TC_UI_040 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:11.356Z] INFO: Starting Test Case: TC_UI_041 - UI Validation validation check - Scenario 41 [Priority: CRITICAL]
+[2026-06-23T06:30:11.395Z] INFO: Finished Test Case: TC_UI_041 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:11.395Z] INFO: Starting Test Case: TC_UI_042 - UI Validation validation check - Scenario 42 [Priority: HIGH]
+[2026-06-23T06:30:11.424Z] INFO: Finished Test Case: TC_UI_042 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:11.424Z] INFO: Starting Test Case: TC_UI_043 - UI Validation validation check - Scenario 43 [Priority: HIGH]
+[2026-06-23T06:30:11.435Z] INFO: Finished Test Case: TC_UI_043 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:11.435Z] INFO: Starting Test Case: TC_UI_044 - UI Validation validation check - Scenario 44 [Priority: LOW]
+[2026-06-23T06:30:11.475Z] INFO: Finished Test Case: TC_UI_044 - Status: PASSED (40ms)
+
+[2026-06-23T06:30:11.475Z] INFO: Starting Test Case: TC_UI_045 - UI Validation validation check - Scenario 45 [Priority: MEDIUM]
+[2026-06-23T06:30:11.508Z] INFO: Finished Test Case: TC_UI_045 - Status: PASSED (33ms)
+
+[2026-06-23T06:30:11.508Z] INFO: Starting Test Case: TC_UI_046 - UI Validation validation check - Scenario 46 [Priority: CRITICAL]
+[2026-06-23T06:30:11.548Z] INFO: Finished Test Case: TC_UI_046 - Status: PASSED (40ms)
+
+[2026-06-23T06:30:11.548Z] INFO: Starting Test Case: TC_UI_047 - UI Validation validation check - Scenario 47 [Priority: HIGH]
+[2026-06-23T06:30:11.554Z] INFO: Finished Test Case: TC_UI_047 - Status: PASSED (6ms)
+
+[2026-06-23T06:30:11.554Z] INFO: Starting Test Case: TC_UI_048 - UI Validation validation check - Scenario 48 [Priority: HIGH]
+[2026-06-23T06:30:11.601Z] INFO: Finished Test Case: TC_UI_048 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:11.601Z] INFO: Starting Test Case: TC_UI_049 - UI Validation validation check - Scenario 49 [Priority: LOW]
+[2026-06-23T06:30:11.621Z] INFO: Finished Test Case: TC_UI_049 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:11.621Z] INFO: Starting Test Case: TC_UI_050 - UI Validation validation check - Scenario 50 [Priority: MEDIUM]
+[2026-06-23T06:30:11.629Z] INFO: Finished Test Case: TC_UI_050 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:11.629Z] INFO: Starting Test Case: TC_FORM_001 - Forms validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:11.675Z] INFO: Finished Test Case: TC_FORM_001 - Status: PASSED (46ms)
+
+[2026-06-23T06:30:11.675Z] INFO: Starting Test Case: TC_FORM_002 - Forms validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:11.696Z] INFO: Finished Test Case: TC_FORM_002 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:11.696Z] INFO: Starting Test Case: TC_FORM_003 - Forms validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:11.704Z] INFO: Finished Test Case: TC_FORM_003 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:11.704Z] INFO: Starting Test Case: TC_FORM_004 - Forms validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:11.736Z] INFO: Finished Test Case: TC_FORM_004 - Status: PASSED (32ms)
+
+[2026-06-23T06:30:11.736Z] INFO: Starting Test Case: TC_FORM_005 - Forms validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:11.775Z] INFO: Finished Test Case: TC_FORM_005 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:11.775Z] INFO: Starting Test Case: TC_FORM_006 - Forms validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:11.786Z] INFO: Finished Test Case: TC_FORM_006 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:11.790Z] INFO: Starting Test Case: TC_FORM_007 - Forms validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:11.802Z] INFO: Finished Test Case: TC_FORM_007 - Status: PASSED (12ms)
+
+[2026-06-23T06:30:11.802Z] INFO: Starting Test Case: TC_FORM_008 - Mandatory Field Validation [Priority: HIGH]
+[2026-06-23T06:30:11.802Z] INFO: Running E2E: Mandatory Field Validation [Deliberate Fail]...
+[2026-06-23T06:30:11.802Z] INFO: Tapping on element: Profile Tab (a[href$="/profile"])
+[2026-06-23T06:30:16.814Z] ERROR: Failure during real E2E execution of TC_FORM_008: element ("a[href$="/profile"]") still not displayed after 5000ms
+[2026-06-23T06:30:16.814Z] INFO: Finished Test Case: TC_FORM_008 - Status: FAILED (5012ms)
+
+[2026-06-23T06:30:16.814Z] INFO: Starting Test Case: TC_FORM_009 - Forms validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:16.850Z] INFO: Finished Test Case: TC_FORM_009 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:16.851Z] INFO: Starting Test Case: TC_FORM_010 - Forms validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:16.864Z] INFO: Finished Test Case: TC_FORM_010 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:16.864Z] INFO: Starting Test Case: TC_FORM_011 - Forms validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:16.895Z] INFO: Finished Test Case: TC_FORM_011 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:16.895Z] INFO: Starting Test Case: TC_FORM_012 - Forms validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:16.926Z] INFO: Finished Test Case: TC_FORM_012 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:16.926Z] INFO: Starting Test Case: TC_FORM_013 - Forms validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:16.956Z] INFO: Finished Test Case: TC_FORM_013 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:16.956Z] INFO: Starting Test Case: TC_FORM_014 - Forms validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:16.987Z] INFO: Finished Test Case: TC_FORM_014 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:16.987Z] INFO: Starting Test Case: TC_FORM_015 - Forms validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:17.000Z] INFO: Simulating Skip for: TC_FORM_015 - Reason: Prerequisite module not enabled in current build flavor
+[2026-06-23T06:30:17.000Z] INFO: Finished Test Case: TC_FORM_015 - Status: SKIPPED (13ms)
+
+[2026-06-23T06:30:17.000Z] INFO: Starting Test Case: TC_FORM_016 - Forms validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:17.017Z] INFO: Finished Test Case: TC_FORM_016 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:17.017Z] INFO: Starting Test Case: TC_FORM_017 - Forms validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:17.054Z] INFO: Finished Test Case: TC_FORM_017 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:17.054Z] INFO: Starting Test Case: TC_FORM_018 - Forms validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:17.083Z] INFO: Finished Test Case: TC_FORM_018 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:17.083Z] INFO: Starting Test Case: TC_FORM_019 - Forms validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:17.131Z] INFO: Finished Test Case: TC_FORM_019 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:17.131Z] INFO: Starting Test Case: TC_FORM_020 - Forms validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:17.155Z] INFO: Finished Test Case: TC_FORM_020 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:17.155Z] INFO: Starting Test Case: TC_FORM_021 - Forms validation check - Scenario 21 [Priority: CRITICAL]
+[2026-06-23T06:30:17.168Z] INFO: Finished Test Case: TC_FORM_021 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:17.168Z] INFO: Starting Test Case: TC_FORM_022 - Forms validation check - Scenario 22 [Priority: HIGH]
+[2026-06-23T06:30:17.177Z] INFO: Finished Test Case: TC_FORM_022 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:17.178Z] INFO: Starting Test Case: TC_FORM_023 - Forms validation check - Scenario 23 [Priority: HIGH]
+[2026-06-23T06:30:17.212Z] INFO: Finished Test Case: TC_FORM_023 - Status: PASSED (35ms)
+
+[2026-06-23T06:30:17.212Z] INFO: Starting Test Case: TC_FORM_024 - Forms validation check - Scenario 24 [Priority: LOW]
+[2026-06-23T06:30:17.247Z] INFO: Finished Test Case: TC_FORM_024 - Status: PASSED (35ms)
+
+[2026-06-23T06:30:17.247Z] INFO: Starting Test Case: TC_FORM_025 - Forms validation check - Scenario 25 [Priority: MEDIUM]
+[2026-06-23T06:30:17.275Z] INFO: Finished Test Case: TC_FORM_025 - Status: PASSED (28ms)
+
+[2026-06-23T06:30:17.276Z] INFO: Starting Test Case: TC_FORM_026 - Forms validation check - Scenario 26 [Priority: CRITICAL]
+[2026-06-23T06:30:17.289Z] INFO: Finished Test Case: TC_FORM_026 - Status: PASSED (14ms)
+
+[2026-06-23T06:30:17.289Z] INFO: Starting Test Case: TC_FORM_027 - Forms validation check - Scenario 27 [Priority: HIGH]
+[2026-06-23T06:30:17.305Z] INFO: Finished Test Case: TC_FORM_027 - Status: PASSED (16ms)
+
+[2026-06-23T06:30:17.305Z] INFO: Starting Test Case: TC_FORM_028 - Forms validation check - Scenario 28 [Priority: HIGH]
+[2026-06-23T06:30:17.353Z] INFO: Finished Test Case: TC_FORM_028 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:17.353Z] INFO: Starting Test Case: TC_FORM_029 - Forms validation check - Scenario 29 [Priority: LOW]
+[2026-06-23T06:30:17.392Z] INFO: Finished Test Case: TC_FORM_029 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:17.392Z] INFO: Starting Test Case: TC_FORM_030 - Forms validation check - Scenario 30 [Priority: MEDIUM]
+[2026-06-23T06:30:17.423Z] INFO: Finished Test Case: TC_FORM_030 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:17.423Z] INFO: Starting Test Case: TC_FORM_031 - Forms validation check - Scenario 31 [Priority: CRITICAL]
+[2026-06-23T06:30:17.446Z] INFO: Finished Test Case: TC_FORM_031 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:17.447Z] INFO: Starting Test Case: TC_FORM_032 - Forms validation check - Scenario 32 [Priority: HIGH]
+[2026-06-23T06:30:17.453Z] INFO: Finished Test Case: TC_FORM_032 - Status: PASSED (6ms)
+
+[2026-06-23T06:30:17.453Z] INFO: Starting Test Case: TC_FORM_033 - Forms validation check - Scenario 33 [Priority: HIGH]
+[2026-06-23T06:30:17.473Z] INFO: Finished Test Case: TC_FORM_033 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:17.473Z] INFO: Starting Test Case: TC_FORM_034 - Forms validation check - Scenario 34 [Priority: LOW]
+[2026-06-23T06:30:17.511Z] INFO: Finished Test Case: TC_FORM_034 - Status: PASSED (38ms)
+
+[2026-06-23T06:30:17.511Z] INFO: Starting Test Case: TC_FORM_035 - Forms validation check - Scenario 35 [Priority: MEDIUM]
+[2026-06-23T06:30:17.518Z] INFO: Finished Test Case: TC_FORM_035 - Status: PASSED (7ms)
+
+[2026-06-23T06:30:17.518Z] INFO: Starting Test Case: TC_FORM_036 - Forms validation check - Scenario 36 [Priority: CRITICAL]
+[2026-06-23T06:30:17.559Z] INFO: Finished Test Case: TC_FORM_036 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:17.559Z] INFO: Starting Test Case: TC_FORM_037 - Forms validation check - Scenario 37 [Priority: HIGH]
+[2026-06-23T06:30:17.591Z] INFO: Finished Test Case: TC_FORM_037 - Status: PASSED (32ms)
+
+[2026-06-23T06:30:17.591Z] INFO: Starting Test Case: TC_FORM_038 - Forms validation check - Scenario 38 [Priority: HIGH]
+[2026-06-23T06:30:17.631Z] INFO: Finished Test Case: TC_FORM_038 - Status: PASSED (40ms)
+
+[2026-06-23T06:30:17.631Z] INFO: Starting Test Case: TC_FORM_039 - Forms validation check - Scenario 39 [Priority: LOW]
+[2026-06-23T06:30:17.652Z] INFO: Finished Test Case: TC_FORM_039 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:17.652Z] INFO: Starting Test Case: TC_FORM_040 - Forms validation check - Scenario 40 [Priority: MEDIUM]
+[2026-06-23T06:30:17.678Z] INFO: Finished Test Case: TC_FORM_040 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:17.678Z] INFO: Starting Test Case: TC_FORM_041 - Forms validation check - Scenario 41 [Priority: CRITICAL]
+[2026-06-23T06:30:17.688Z] INFO: Finished Test Case: TC_FORM_041 - Status: PASSED (10ms)
+
+[2026-06-23T06:30:17.688Z] INFO: Starting Test Case: TC_FORM_042 - Forms validation check - Scenario 42 [Priority: HIGH]
+[2026-06-23T06:30:17.719Z] INFO: Finished Test Case: TC_FORM_042 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:17.719Z] INFO: Starting Test Case: TC_FORM_043 - Forms validation check - Scenario 43 [Priority: HIGH]
+[2026-06-23T06:30:17.767Z] INFO: Finished Test Case: TC_FORM_043 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:17.767Z] INFO: Starting Test Case: TC_FORM_044 - Forms validation check - Scenario 44 [Priority: LOW]
+[2026-06-23T06:30:17.776Z] INFO: Finished Test Case: TC_FORM_044 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:17.776Z] INFO: Starting Test Case: TC_FORM_045 - Forms validation check - Scenario 45 [Priority: MEDIUM]
+[2026-06-23T06:30:17.812Z] INFO: Finished Test Case: TC_FORM_045 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:17.812Z] INFO: Starting Test Case: TC_FORM_046 - Forms validation check - Scenario 46 [Priority: CRITICAL]
+[2026-06-23T06:30:17.832Z] INFO: Finished Test Case: TC_FORM_046 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:17.832Z] INFO: Starting Test Case: TC_FORM_047 - Forms validation check - Scenario 47 [Priority: HIGH]
+[2026-06-23T06:30:17.852Z] INFO: Finished Test Case: TC_FORM_047 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:17.852Z] INFO: Starting Test Case: TC_FORM_048 - Forms validation check - Scenario 48 [Priority: HIGH]
+[2026-06-23T06:30:17.867Z] INFO: Finished Test Case: TC_FORM_048 - Status: PASSED (15ms)
+
+[2026-06-23T06:30:17.867Z] INFO: Starting Test Case: TC_FORM_049 - Forms validation check - Scenario 49 [Priority: LOW]
+[2026-06-23T06:30:17.888Z] INFO: Finished Test Case: TC_FORM_049 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:17.888Z] INFO: Starting Test Case: TC_FORM_050 - Forms validation check - Scenario 50 [Priority: MEDIUM]
+[2026-06-23T06:30:17.921Z] INFO: Finished Test Case: TC_FORM_050 - Status: PASSED (33ms)
+
+[2026-06-23T06:30:17.921Z] INFO: Starting Test Case: TC_CRUD_001 - CRUD Operations validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:17.930Z] INFO: Finished Test Case: TC_CRUD_001 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:17.930Z] INFO: Starting Test Case: TC_CRUD_002 - CRUD Operations validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:17.971Z] INFO: Finished Test Case: TC_CRUD_002 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:17.971Z] INFO: Starting Test Case: TC_CRUD_003 - CRUD Operations validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:17.979Z] INFO: Finished Test Case: TC_CRUD_003 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:17.979Z] INFO: Starting Test Case: TC_CRUD_004 - CRUD Operations validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:18.004Z] INFO: Finished Test Case: TC_CRUD_004 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:18.004Z] INFO: Starting Test Case: TC_CRUD_005 - Update Profile [Priority: HIGH]
+[2026-06-23T06:30:18.004Z] INFO: Running E2E: Update Profile...
+[2026-06-23T06:30:18.004Z] INFO: Tapping on element: Profile Tab (a[href$="/profile"])
+[2026-06-23T06:30:23.013Z] ERROR: Failure during real E2E execution of TC_CRUD_005: element ("a[href$="/profile"]") still not displayed after 5000ms
+[2026-06-23T06:30:23.014Z] INFO: Finished Test Case: TC_CRUD_005 - Status: FAILED (5010ms)
+
+[2026-06-23T06:30:23.014Z] INFO: Starting Test Case: TC_CRUD_006 - CRUD Operations validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:23.054Z] INFO: Finished Test Case: TC_CRUD_006 - Status: PASSED (40ms)
+
+[2026-06-23T06:30:23.054Z] INFO: Starting Test Case: TC_CRUD_007 - CRUD Operations validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:23.101Z] INFO: Finished Test Case: TC_CRUD_007 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:23.102Z] INFO: Starting Test Case: TC_CRUD_008 - CRUD Operations validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:23.145Z] INFO: Finished Test Case: TC_CRUD_008 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:23.145Z] INFO: Starting Test Case: TC_CRUD_009 - CRUD Operations validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:23.163Z] INFO: Finished Test Case: TC_CRUD_009 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:23.163Z] INFO: Starting Test Case: TC_CRUD_010 - CRUD Operations validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:23.174Z] INFO: Finished Test Case: TC_CRUD_010 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:23.175Z] INFO: Starting Test Case: TC_CRUD_011 - CRUD Operations validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:23.224Z] INFO: Finished Test Case: TC_CRUD_011 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:23.224Z] INFO: Starting Test Case: TC_CRUD_012 - CRUD Operations validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:23.270Z] INFO: Finished Test Case: TC_CRUD_012 - Status: PASSED (46ms)
+
+[2026-06-23T06:30:23.270Z] INFO: Starting Test Case: TC_CRUD_013 - CRUD Operations validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:23.296Z] INFO: Finished Test Case: TC_CRUD_013 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:23.296Z] INFO: Starting Test Case: TC_CRUD_014 - CRUD Operations validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:23.304Z] INFO: Finished Test Case: TC_CRUD_014 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:23.304Z] INFO: Starting Test Case: TC_CRUD_015 - CRUD Operations validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:23.349Z] INFO: Finished Test Case: TC_CRUD_015 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:23.349Z] INFO: Starting Test Case: TC_CRUD_016 - CRUD Operations validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:23.366Z] INFO: Finished Test Case: TC_CRUD_016 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:23.366Z] INFO: Starting Test Case: TC_CRUD_017 - CRUD Operations validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:23.393Z] INFO: Finished Test Case: TC_CRUD_017 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:23.393Z] INFO: Starting Test Case: TC_CRUD_018 - CRUD Operations validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:23.413Z] WARN: Simulating Failure for: TC_CRUD_018 - Reason: Failed to assert element loaded for scenario 18
+[2026-06-23T06:30:23.413Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_CRUD_018_1782196223413.png
+[2026-06-23T06:30:23.414Z] INFO: Finished Test Case: TC_CRUD_018 - Status: FAILED (21ms)
+
+[2026-06-23T06:30:23.414Z] INFO: Starting Test Case: TC_CRUD_019 - CRUD Operations validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:23.427Z] INFO: Finished Test Case: TC_CRUD_019 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:23.427Z] INFO: Starting Test Case: TC_CRUD_020 - CRUD Operations validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:23.461Z] INFO: Finished Test Case: TC_CRUD_020 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:23.461Z] INFO: Starting Test Case: TC_CRUD_021 - CRUD Operations validation check - Scenario 21 [Priority: CRITICAL]
+[2026-06-23T06:30:23.504Z] INFO: Finished Test Case: TC_CRUD_021 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:23.505Z] INFO: Starting Test Case: TC_CRUD_022 - CRUD Operations validation check - Scenario 22 [Priority: HIGH]
+[2026-06-23T06:30:23.524Z] INFO: Finished Test Case: TC_CRUD_022 - Status: PASSED (19ms)
+
+[2026-06-23T06:30:23.524Z] INFO: Starting Test Case: TC_CRUD_023 - CRUD Operations validation check - Scenario 23 [Priority: HIGH]
+[2026-06-23T06:30:23.572Z] INFO: Finished Test Case: TC_CRUD_023 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:23.572Z] INFO: Starting Test Case: TC_CRUD_024 - CRUD Operations validation check - Scenario 24 [Priority: LOW]
+[2026-06-23T06:30:23.583Z] INFO: Finished Test Case: TC_CRUD_024 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:23.584Z] INFO: Starting Test Case: TC_CRUD_025 - CRUD Operations validation check - Scenario 25 [Priority: MEDIUM]
+[2026-06-23T06:30:23.593Z] INFO: Finished Test Case: TC_CRUD_025 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:23.593Z] INFO: Starting Test Case: TC_CRUD_026 - CRUD Operations validation check - Scenario 26 [Priority: CRITICAL]
+[2026-06-23T06:30:23.628Z] INFO: Finished Test Case: TC_CRUD_026 - Status: PASSED (35ms)
+
+[2026-06-23T06:30:23.628Z] INFO: Starting Test Case: TC_CRUD_027 - CRUD Operations validation check - Scenario 27 [Priority: HIGH]
+[2026-06-23T06:30:23.664Z] INFO: Finished Test Case: TC_CRUD_027 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:23.665Z] INFO: Starting Test Case: TC_CRUD_028 - CRUD Operations validation check - Scenario 28 [Priority: HIGH]
+[2026-06-23T06:30:23.673Z] INFO: Finished Test Case: TC_CRUD_028 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:23.673Z] INFO: Starting Test Case: TC_CRUD_029 - CRUD Operations validation check - Scenario 29 [Priority: LOW]
+[2026-06-23T06:30:23.711Z] INFO: Finished Test Case: TC_CRUD_029 - Status: PASSED (38ms)
+
+[2026-06-23T06:30:23.711Z] INFO: Starting Test Case: TC_CRUD_030 - CRUD Operations validation check - Scenario 30 [Priority: MEDIUM]
+[2026-06-23T06:30:23.736Z] INFO: Finished Test Case: TC_CRUD_030 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:23.736Z] INFO: Starting Test Case: TC_CRUD_031 - CRUD Operations validation check - Scenario 31 [Priority: CRITICAL]
+[2026-06-23T06:30:23.744Z] INFO: Finished Test Case: TC_CRUD_031 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:23.744Z] INFO: Starting Test Case: TC_CRUD_032 - CRUD Operations validation check - Scenario 32 [Priority: HIGH]
+[2026-06-23T06:30:23.790Z] INFO: Finished Test Case: TC_CRUD_032 - Status: PASSED (46ms)
+
+[2026-06-23T06:30:23.790Z] INFO: Starting Test Case: TC_CRUD_033 - CRUD Operations validation check - Scenario 33 [Priority: HIGH]
+[2026-06-23T06:30:23.801Z] INFO: Finished Test Case: TC_CRUD_033 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:23.801Z] INFO: Starting Test Case: TC_CRUD_034 - CRUD Operations validation check - Scenario 34 [Priority: LOW]
+[2026-06-23T06:30:23.831Z] INFO: Finished Test Case: TC_CRUD_034 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:23.831Z] INFO: Starting Test Case: TC_CRUD_035 - CRUD Operations validation check - Scenario 35 [Priority: MEDIUM]
+[2026-06-23T06:30:23.857Z] INFO: Finished Test Case: TC_CRUD_035 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:23.857Z] INFO: Starting Test Case: TC_CRUD_036 - CRUD Operations validation check - Scenario 36 [Priority: CRITICAL]
+[2026-06-23T06:30:23.872Z] INFO: Finished Test Case: TC_CRUD_036 - Status: PASSED (15ms)
+
+[2026-06-23T06:30:23.872Z] INFO: Starting Test Case: TC_CRUD_037 - CRUD Operations validation check - Scenario 37 [Priority: HIGH]
+[2026-06-23T06:30:23.905Z] INFO: Finished Test Case: TC_CRUD_037 - Status: PASSED (33ms)
+
+[2026-06-23T06:30:23.905Z] INFO: Starting Test Case: TC_CRUD_038 - CRUD Operations validation check - Scenario 38 [Priority: HIGH]
+[2026-06-23T06:30:23.949Z] INFO: Finished Test Case: TC_CRUD_038 - Status: PASSED (44ms)
+
+[2026-06-23T06:30:23.949Z] INFO: Starting Test Case: TC_CRUD_039 - CRUD Operations validation check - Scenario 39 [Priority: LOW]
+[2026-06-23T06:30:23.977Z] INFO: Finished Test Case: TC_CRUD_039 - Status: PASSED (28ms)
+
+[2026-06-23T06:30:23.978Z] INFO: Starting Test Case: TC_CRUD_040 - CRUD Operations validation check - Scenario 40 [Priority: MEDIUM]
+[2026-06-23T06:30:24.026Z] INFO: Finished Test Case: TC_CRUD_040 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:24.026Z] INFO: Starting Test Case: TC_CRUD_041 - CRUD Operations validation check - Scenario 41 [Priority: CRITICAL]
+[2026-06-23T06:30:24.063Z] INFO: Finished Test Case: TC_CRUD_041 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:24.063Z] INFO: Starting Test Case: TC_CRUD_042 - CRUD Operations validation check - Scenario 42 [Priority: HIGH]
+[2026-06-23T06:30:24.105Z] INFO: Finished Test Case: TC_CRUD_042 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:24.105Z] INFO: Starting Test Case: TC_CRUD_043 - CRUD Operations validation check - Scenario 43 [Priority: HIGH]
+[2026-06-23T06:30:24.150Z] INFO: Finished Test Case: TC_CRUD_043 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:24.150Z] INFO: Starting Test Case: TC_CRUD_044 - CRUD Operations validation check - Scenario 44 [Priority: LOW]
+[2026-06-23T06:30:24.193Z] INFO: Finished Test Case: TC_CRUD_044 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:24.193Z] INFO: Starting Test Case: TC_CRUD_045 - CRUD Operations validation check - Scenario 45 [Priority: MEDIUM]
+[2026-06-23T06:30:24.212Z] INFO: Finished Test Case: TC_CRUD_045 - Status: PASSED (19ms)
+
+[2026-06-23T06:30:24.212Z] INFO: Starting Test Case: TC_CRUD_046 - CRUD Operations validation check - Scenario 46 [Priority: CRITICAL]
+[2026-06-23T06:30:24.250Z] INFO: Finished Test Case: TC_CRUD_046 - Status: PASSED (38ms)
+
+[2026-06-23T06:30:24.250Z] INFO: Starting Test Case: TC_CRUD_047 - CRUD Operations validation check - Scenario 47 [Priority: HIGH]
+[2026-06-23T06:30:24.285Z] INFO: Finished Test Case: TC_CRUD_047 - Status: PASSED (35ms)
+
+[2026-06-23T06:30:24.286Z] INFO: Starting Test Case: TC_CRUD_048 - CRUD Operations validation check - Scenario 48 [Priority: HIGH]
+[2026-06-23T06:30:24.305Z] INFO: Finished Test Case: TC_CRUD_048 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:24.305Z] INFO: Starting Test Case: TC_CRUD_049 - CRUD Operations validation check - Scenario 49 [Priority: LOW]
+[2026-06-23T06:30:24.323Z] INFO: Finished Test Case: TC_CRUD_049 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:24.323Z] INFO: Starting Test Case: TC_CRUD_050 - CRUD Operations validation check - Scenario 50 [Priority: MEDIUM]
+[2026-06-23T06:30:24.347Z] INFO: Finished Test Case: TC_CRUD_050 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:24.347Z] INFO: Starting Test Case: TC_VALIDATION_001 - Input Validation validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:24.363Z] INFO: Finished Test Case: TC_VALIDATION_001 - Status: PASSED (16ms)
+
+[2026-06-23T06:30:24.363Z] INFO: Starting Test Case: TC_VALIDATION_002 - Input Validation validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:24.394Z] INFO: Finished Test Case: TC_VALIDATION_002 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:24.394Z] INFO: Starting Test Case: TC_VALIDATION_003 - Input Validation validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:24.408Z] INFO: Finished Test Case: TC_VALIDATION_003 - Status: PASSED (14ms)
+
+[2026-06-23T06:30:24.408Z] INFO: Starting Test Case: TC_VALIDATION_004 - Input Validation validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:24.431Z] INFO: Finished Test Case: TC_VALIDATION_004 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:24.432Z] INFO: Starting Test Case: TC_VALIDATION_005 - Input Validation validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:24.465Z] INFO: Finished Test Case: TC_VALIDATION_005 - Status: PASSED (33ms)
+
+[2026-06-23T06:30:24.465Z] INFO: Starting Test Case: TC_VALIDATION_006 - Input Validation validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:24.471Z] INFO: Finished Test Case: TC_VALIDATION_006 - Status: PASSED (6ms)
+
+[2026-06-23T06:30:24.471Z] INFO: Starting Test Case: TC_VALIDATION_007 - Input Validation validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:24.490Z] INFO: Finished Test Case: TC_VALIDATION_007 - Status: PASSED (19ms)
+
+[2026-06-23T06:30:24.491Z] INFO: Starting Test Case: TC_VALIDATION_008 - Input Validation validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:24.515Z] INFO: Finished Test Case: TC_VALIDATION_008 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:24.515Z] INFO: Starting Test Case: TC_VALIDATION_009 - Input Validation validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:24.561Z] INFO: Finished Test Case: TC_VALIDATION_009 - Status: PASSED (46ms)
+
+[2026-06-23T06:30:24.561Z] INFO: Starting Test Case: TC_VALIDATION_010 - Input Validation validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:24.597Z] INFO: Finished Test Case: TC_VALIDATION_010 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:24.597Z] INFO: Starting Test Case: TC_VALIDATION_011 - Input Validation validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:24.640Z] INFO: Finished Test Case: TC_VALIDATION_011 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:24.640Z] INFO: Starting Test Case: TC_VALIDATION_012 - Input Validation validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:24.647Z] WARN: Simulating Failure for: TC_VALIDATION_012 - Reason: Failed to assert element loaded for scenario 12
+[2026-06-23T06:30:24.647Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_VALIDATION_012_1782196224647.png
+[2026-06-23T06:30:24.647Z] INFO: Finished Test Case: TC_VALIDATION_012 - Status: FAILED (7ms)
+
+[2026-06-23T06:30:24.647Z] INFO: Starting Test Case: TC_VALIDATION_013 - Input Validation validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:24.683Z] INFO: Finished Test Case: TC_VALIDATION_013 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:24.683Z] INFO: Starting Test Case: TC_VALIDATION_014 - Input Validation validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:24.713Z] INFO: Finished Test Case: TC_VALIDATION_014 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:24.713Z] INFO: Starting Test Case: TC_VALIDATION_015 - Input Validation validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:24.747Z] INFO: Finished Test Case: TC_VALIDATION_015 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:24.747Z] INFO: Starting Test Case: TC_VALIDATION_016 - Input Validation validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:24.767Z] INFO: Finished Test Case: TC_VALIDATION_016 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:24.767Z] INFO: Starting Test Case: TC_VALIDATION_017 - Input Validation validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:24.816Z] INFO: Finished Test Case: TC_VALIDATION_017 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:24.816Z] INFO: Starting Test Case: TC_VALIDATION_018 - Input Validation validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:24.841Z] INFO: Finished Test Case: TC_VALIDATION_018 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:24.841Z] INFO: Starting Test Case: TC_VALIDATION_019 - Input Validation validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:24.864Z] INFO: Finished Test Case: TC_VALIDATION_019 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:24.864Z] INFO: Starting Test Case: TC_VALIDATION_020 - Input Validation validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:24.882Z] INFO: Finished Test Case: TC_VALIDATION_020 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:24.882Z] INFO: Starting Test Case: TC_VALIDATION_021 - Input Validation validation check - Scenario 21 [Priority: CRITICAL]
+[2026-06-23T06:30:24.895Z] INFO: Finished Test Case: TC_VALIDATION_021 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:24.895Z] INFO: Starting Test Case: TC_VALIDATION_022 - Input Validation validation check - Scenario 22 [Priority: HIGH]
+[2026-06-23T06:30:24.937Z] INFO: Finished Test Case: TC_VALIDATION_022 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:24.937Z] INFO: Starting Test Case: TC_VALIDATION_023 - Input Validation validation check - Scenario 23 [Priority: HIGH]
+[2026-06-23T06:30:24.957Z] INFO: Finished Test Case: TC_VALIDATION_023 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:24.957Z] INFO: Starting Test Case: TC_VALIDATION_024 - Input Validation validation check - Scenario 24 [Priority: LOW]
+[2026-06-23T06:30:24.987Z] INFO: Finished Test Case: TC_VALIDATION_024 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:24.987Z] INFO: Starting Test Case: TC_VALIDATION_025 - Input Validation validation check - Scenario 25 [Priority: MEDIUM]
+[2026-06-23T06:30:25.003Z] INFO: Finished Test Case: TC_VALIDATION_025 - Status: PASSED (16ms)
+
+[2026-06-23T06:30:25.003Z] INFO: Starting Test Case: TC_VALIDATION_026 - Input Validation validation check - Scenario 26 [Priority: CRITICAL]
+[2026-06-23T06:30:25.050Z] INFO: Finished Test Case: TC_VALIDATION_026 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:25.050Z] INFO: Starting Test Case: TC_VALIDATION_027 - Input Validation validation check - Scenario 27 [Priority: HIGH]
+[2026-06-23T06:30:25.091Z] INFO: Finished Test Case: TC_VALIDATION_027 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:25.091Z] INFO: Starting Test Case: TC_VALIDATION_028 - Input Validation validation check - Scenario 28 [Priority: HIGH]
+[2026-06-23T06:30:25.127Z] INFO: Finished Test Case: TC_VALIDATION_028 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:25.127Z] INFO: Starting Test Case: TC_VALIDATION_029 - Input Validation validation check - Scenario 29 [Priority: LOW]
+[2026-06-23T06:30:25.173Z] INFO: Finished Test Case: TC_VALIDATION_029 - Status: PASSED (46ms)
+
+[2026-06-23T06:30:25.173Z] INFO: Starting Test Case: TC_VALIDATION_030 - Input Validation validation check - Scenario 30 [Priority: MEDIUM]
+[2026-06-23T06:30:25.182Z] INFO: Finished Test Case: TC_VALIDATION_030 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:25.182Z] INFO: Starting Test Case: TC_VALIDATION_031 - Input Validation validation check - Scenario 31 [Priority: CRITICAL]
+[2026-06-23T06:30:25.191Z] INFO: Finished Test Case: TC_VALIDATION_031 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:25.191Z] INFO: Starting Test Case: TC_VALIDATION_032 - Input Validation validation check - Scenario 32 [Priority: HIGH]
+[2026-06-23T06:30:25.211Z] INFO: Finished Test Case: TC_VALIDATION_032 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:25.211Z] INFO: Starting Test Case: TC_VALIDATION_033 - Input Validation validation check - Scenario 33 [Priority: HIGH]
+[2026-06-23T06:30:25.247Z] INFO: Finished Test Case: TC_VALIDATION_033 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:25.247Z] INFO: Starting Test Case: TC_VALIDATION_034 - Input Validation validation check - Scenario 34 [Priority: LOW]
+[2026-06-23T06:30:25.275Z] INFO: Finished Test Case: TC_VALIDATION_034 - Status: PASSED (28ms)
+
+[2026-06-23T06:30:25.275Z] INFO: Starting Test Case: TC_VALIDATION_035 - Input Validation validation check - Scenario 35 [Priority: MEDIUM]
+[2026-06-23T06:30:25.324Z] INFO: Finished Test Case: TC_VALIDATION_035 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:25.324Z] INFO: Starting Test Case: TC_VALIDATION_036 - Input Validation validation check - Scenario 36 [Priority: CRITICAL]
+[2026-06-23T06:30:25.344Z] INFO: Finished Test Case: TC_VALIDATION_036 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:25.344Z] INFO: Starting Test Case: TC_VALIDATION_037 - Input Validation validation check - Scenario 37 [Priority: HIGH]
+[2026-06-23T06:30:25.369Z] INFO: Finished Test Case: TC_VALIDATION_037 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:25.369Z] INFO: Starting Test Case: TC_VALIDATION_038 - Input Validation validation check - Scenario 38 [Priority: HIGH]
+[2026-06-23T06:30:25.408Z] INFO: Finished Test Case: TC_VALIDATION_038 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:25.408Z] INFO: Starting Test Case: TC_VALIDATION_039 - Input Validation validation check - Scenario 39 [Priority: LOW]
+[2026-06-23T06:30:25.424Z] INFO: Finished Test Case: TC_VALIDATION_039 - Status: PASSED (16ms)
+
+[2026-06-23T06:30:25.424Z] INFO: Starting Test Case: TC_VALIDATION_040 - Input Validation validation check - Scenario 40 [Priority: MEDIUM]
+[2026-06-23T06:30:25.460Z] INFO: Finished Test Case: TC_VALIDATION_040 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:25.460Z] INFO: Starting Test Case: TC_ERROR_001 - Error Handling validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:25.490Z] INFO: Finished Test Case: TC_ERROR_001 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:25.490Z] INFO: Starting Test Case: TC_ERROR_002 - Error Handling validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:25.514Z] INFO: Finished Test Case: TC_ERROR_002 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:25.514Z] INFO: Starting Test Case: TC_ERROR_003 - Error Handling validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:25.557Z] WARN: Simulating Failure for: TC_ERROR_003 - Reason: Failed to assert element loaded for scenario 3
+[2026-06-23T06:30:25.557Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_ERROR_003_1782196225557.png
+[2026-06-23T06:30:25.557Z] INFO: Finished Test Case: TC_ERROR_003 - Status: FAILED (43ms)
+
+[2026-06-23T06:30:25.557Z] INFO: Starting Test Case: TC_ERROR_004 - Error Handling validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:25.584Z] INFO: Finished Test Case: TC_ERROR_004 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:25.584Z] INFO: Starting Test Case: TC_ERROR_005 - Error Handling validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:25.629Z] INFO: Finished Test Case: TC_ERROR_005 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:25.629Z] INFO: Starting Test Case: TC_ERROR_006 - Error Handling validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:25.672Z] INFO: Finished Test Case: TC_ERROR_006 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:25.672Z] INFO: Starting Test Case: TC_ERROR_007 - Error Handling validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:25.689Z] INFO: Finished Test Case: TC_ERROR_007 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:25.689Z] INFO: Starting Test Case: TC_ERROR_008 - Error Handling validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:25.712Z] INFO: Finished Test Case: TC_ERROR_008 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:25.712Z] INFO: Starting Test Case: TC_ERROR_009 - Error Handling validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:25.757Z] INFO: Finished Test Case: TC_ERROR_009 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:25.757Z] INFO: Starting Test Case: TC_ERROR_010 - Error Handling validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:25.775Z] INFO: Finished Test Case: TC_ERROR_010 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:25.775Z] INFO: Starting Test Case: TC_ERROR_011 - Error Handling validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:25.822Z] INFO: Finished Test Case: TC_ERROR_011 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:25.822Z] INFO: Starting Test Case: TC_ERROR_012 - Error Handling validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:25.864Z] INFO: Finished Test Case: TC_ERROR_012 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:25.864Z] INFO: Starting Test Case: TC_ERROR_013 - Error Handling validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:25.902Z] INFO: Finished Test Case: TC_ERROR_013 - Status: PASSED (38ms)
+
+[2026-06-23T06:30:25.902Z] INFO: Starting Test Case: TC_ERROR_014 - Error Handling validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:25.951Z] INFO: Finished Test Case: TC_ERROR_014 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:25.951Z] INFO: Starting Test Case: TC_ERROR_015 - Error Handling validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:25.967Z] INFO: Finished Test Case: TC_ERROR_015 - Status: PASSED (16ms)
+
+[2026-06-23T06:30:25.967Z] INFO: Starting Test Case: TC_ERROR_016 - Error Handling validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:25.975Z] INFO: Finished Test Case: TC_ERROR_016 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:25.975Z] INFO: Starting Test Case: TC_ERROR_017 - Error Handling validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:26.002Z] INFO: Finished Test Case: TC_ERROR_017 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:26.002Z] INFO: Starting Test Case: TC_ERROR_018 - Error Handling validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:26.019Z] INFO: Finished Test Case: TC_ERROR_018 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:26.019Z] INFO: Starting Test Case: TC_ERROR_019 - Error Handling validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:26.037Z] INFO: Finished Test Case: TC_ERROR_019 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:26.037Z] INFO: Starting Test Case: TC_ERROR_020 - Error Handling validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:26.085Z] INFO: Finished Test Case: TC_ERROR_020 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:26.085Z] INFO: Starting Test Case: TC_SESSION_001 - Session Management validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:26.130Z] INFO: Finished Test Case: TC_SESSION_001 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:26.130Z] INFO: Starting Test Case: TC_SESSION_002 - Session Management validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:26.155Z] INFO: Finished Test Case: TC_SESSION_002 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:26.155Z] INFO: Starting Test Case: TC_SESSION_003 - Session Management validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:26.198Z] INFO: Finished Test Case: TC_SESSION_003 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:26.198Z] INFO: Starting Test Case: TC_SESSION_004 - Session Management validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:26.234Z] INFO: Finished Test Case: TC_SESSION_004 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:26.234Z] INFO: Starting Test Case: TC_SESSION_005 - Session Management validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:26.252Z] INFO: Finished Test Case: TC_SESSION_005 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:26.252Z] INFO: Starting Test Case: TC_SESSION_006 - Session Management validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:26.294Z] INFO: Finished Test Case: TC_SESSION_006 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:26.294Z] INFO: Starting Test Case: TC_SESSION_007 - Session Management validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:26.300Z] INFO: Finished Test Case: TC_SESSION_007 - Status: PASSED (6ms)
+
+[2026-06-23T06:30:26.300Z] INFO: Starting Test Case: TC_SESSION_008 - Session Management validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:26.348Z] INFO: Finished Test Case: TC_SESSION_008 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:26.348Z] INFO: Starting Test Case: TC_SESSION_009 - Session Management validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:26.388Z] WARN: Simulating Failure for: TC_SESSION_009 - Reason: Failed to assert element loaded for scenario 9
+[2026-06-23T06:30:26.388Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_SESSION_009_1782196226388.png
+[2026-06-23T06:30:26.388Z] INFO: Finished Test Case: TC_SESSION_009 - Status: FAILED (40ms)
+
+[2026-06-23T06:30:26.388Z] INFO: Starting Test Case: TC_SESSION_010 - Session Management validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:26.421Z] INFO: Finished Test Case: TC_SESSION_010 - Status: PASSED (33ms)
+
+[2026-06-23T06:30:26.421Z] INFO: Starting Test Case: TC_SESSION_011 - Session Management validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:26.444Z] INFO: Finished Test Case: TC_SESSION_011 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:26.444Z] INFO: Starting Test Case: TC_SESSION_012 - Session Management validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:26.486Z] INFO: Finished Test Case: TC_SESSION_012 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:26.486Z] INFO: Starting Test Case: TC_SESSION_013 - Session Management validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:26.516Z] INFO: Finished Test Case: TC_SESSION_013 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:26.516Z] INFO: Starting Test Case: TC_SESSION_014 - Session Management validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:26.552Z] INFO: Finished Test Case: TC_SESSION_014 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:26.552Z] INFO: Starting Test Case: TC_SESSION_015 - Session Management validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:26.575Z] INFO: Finished Test Case: TC_SESSION_015 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:26.575Z] INFO: Starting Test Case: TC_SESSION_016 - Session Management validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:26.580Z] INFO: Finished Test Case: TC_SESSION_016 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:26.580Z] INFO: Starting Test Case: TC_SESSION_017 - Session Management validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:26.621Z] INFO: Finished Test Case: TC_SESSION_017 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:26.621Z] INFO: Starting Test Case: TC_SESSION_018 - Session Management validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:26.664Z] INFO: Finished Test Case: TC_SESSION_018 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:26.664Z] INFO: Starting Test Case: TC_SESSION_019 - Session Management validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:26.708Z] INFO: Finished Test Case: TC_SESSION_019 - Status: PASSED (44ms)
+
+[2026-06-23T06:30:26.708Z] INFO: Starting Test Case: TC_SESSION_020 - Session Management validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:26.740Z] INFO: Finished Test Case: TC_SESSION_020 - Status: PASSED (32ms)
+
+[2026-06-23T06:30:26.740Z] INFO: Starting Test Case: TC_FILE_001 - File Upload validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:26.774Z] INFO: Finished Test Case: TC_FILE_001 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:26.774Z] INFO: Starting Test Case: TC_FILE_002 - Large File Upload [Priority: MEDIUM]
+[2026-06-23T06:30:26.774Z] INFO: Running E2E: Large File Upload [Deliberate Fail]...
+[2026-06-23T06:30:26.774Z] INFO: Capturing real device screenshot for TC_FILE_002...
+[2026-06-23T06:30:26.833Z] INFO: Screenshot saved to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_FILE_002_1782196226774.png
+[2026-06-23T06:30:26.834Z] ERROR: Failure during real E2E execution of TC_FILE_002: Application crash: OutOfMemoryError when allocating heap for 100MB asset.
+[2026-06-23T06:30:26.834Z] INFO: Finished Test Case: TC_FILE_002 - Status: FAILED (60ms)
+
+[2026-06-23T06:30:26.834Z] INFO: Starting Test Case: TC_FILE_003 - File Upload validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:26.839Z] INFO: Finished Test Case: TC_FILE_003 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:26.839Z] INFO: Starting Test Case: TC_FILE_004 - File Upload validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:26.884Z] INFO: Finished Test Case: TC_FILE_004 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:26.884Z] INFO: Starting Test Case: TC_FILE_005 - File Upload validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:26.891Z] INFO: Finished Test Case: TC_FILE_005 - Status: PASSED (6ms)
+
+[2026-06-23T06:30:26.891Z] INFO: Starting Test Case: TC_FILE_006 - File Upload validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:26.911Z] INFO: Finished Test Case: TC_FILE_006 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:26.911Z] INFO: Starting Test Case: TC_FILE_007 - File Upload validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:26.938Z] INFO: Finished Test Case: TC_FILE_007 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:26.938Z] INFO: Starting Test Case: TC_FILE_008 - File Upload validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:26.971Z] INFO: Finished Test Case: TC_FILE_008 - Status: PASSED (33ms)
+
+[2026-06-23T06:30:26.972Z] INFO: Starting Test Case: TC_FILE_009 - File Upload validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:26.988Z] INFO: Finished Test Case: TC_FILE_009 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:26.988Z] INFO: Starting Test Case: TC_FILE_010 - File Upload validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:27.006Z] INFO: Finished Test Case: TC_FILE_010 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:27.006Z] INFO: Starting Test Case: TC_FILE_011 - File Upload validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:27.020Z] INFO: Finished Test Case: TC_FILE_011 - Status: PASSED (14ms)
+
+[2026-06-23T06:30:27.020Z] INFO: Starting Test Case: TC_FILE_012 - File Upload validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:27.065Z] INFO: Finished Test Case: TC_FILE_012 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:27.065Z] INFO: Starting Test Case: TC_FILE_013 - File Upload validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:27.114Z] INFO: Finished Test Case: TC_FILE_013 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:27.114Z] INFO: Starting Test Case: TC_FILE_014 - File Upload validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:27.153Z] INFO: Finished Test Case: TC_FILE_014 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:27.153Z] INFO: Starting Test Case: TC_FILE_015 - File Upload validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:27.173Z] INFO: Finished Test Case: TC_FILE_015 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:27.173Z] INFO: Starting Test Case: TC_FILE_016 - File Upload validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:27.219Z] INFO: Finished Test Case: TC_FILE_016 - Status: PASSED (46ms)
+
+[2026-06-23T06:30:27.219Z] INFO: Starting Test Case: TC_FILE_017 - File Upload validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:27.258Z] INFO: Finished Test Case: TC_FILE_017 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:27.259Z] INFO: Starting Test Case: TC_FILE_018 - File Upload validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:27.299Z] INFO: Finished Test Case: TC_FILE_018 - Status: PASSED (40ms)
+
+[2026-06-23T06:30:27.299Z] INFO: Starting Test Case: TC_FILE_019 - File Upload validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:27.346Z] INFO: Finished Test Case: TC_FILE_019 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:27.346Z] INFO: Starting Test Case: TC_FILE_020 - File Upload validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:27.394Z] INFO: Finished Test Case: TC_FILE_020 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:27.395Z] INFO: Starting Test Case: TC_A11Y_001 - Accessibility validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:27.422Z] INFO: Finished Test Case: TC_A11Y_001 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:27.422Z] INFO: Starting Test Case: TC_A11Y_002 - Accessibility validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:27.456Z] INFO: Finished Test Case: TC_A11Y_002 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:27.456Z] INFO: Starting Test Case: TC_A11Y_003 - Accessibility validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:27.507Z] INFO: Finished Test Case: TC_A11Y_003 - Status: PASSED (51ms)
+
+[2026-06-23T06:30:27.507Z] INFO: Starting Test Case: TC_A11Y_004 - Accessibility validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:27.541Z] INFO: Finished Test Case: TC_A11Y_004 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:27.541Z] INFO: Starting Test Case: TC_A11Y_005 - Accessibility validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:27.572Z] INFO: Finished Test Case: TC_A11Y_005 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:27.572Z] INFO: Starting Test Case: TC_A11Y_006 - Accessibility validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:27.582Z] INFO: Finished Test Case: TC_A11Y_006 - Status: PASSED (10ms)
+
+[2026-06-23T06:30:27.582Z] INFO: Starting Test Case: TC_A11Y_007 - Accessibility validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:27.603Z] INFO: Finished Test Case: TC_A11Y_007 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:27.603Z] INFO: Starting Test Case: TC_A11Y_008 - Accessibility validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:27.652Z] WARN: Simulating Failure for: TC_A11Y_008 - Reason: Failed to assert element loaded for scenario 8
+[2026-06-23T06:30:27.653Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_A11Y_008_1782196227652.png
+[2026-06-23T06:30:27.653Z] INFO: Finished Test Case: TC_A11Y_008 - Status: FAILED (50ms)
+
+[2026-06-23T06:30:27.653Z] INFO: Starting Test Case: TC_A11Y_009 - Accessibility validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:27.697Z] INFO: Finished Test Case: TC_A11Y_009 - Status: PASSED (44ms)
+
+[2026-06-23T06:30:27.697Z] INFO: Starting Test Case: TC_A11Y_010 - Accessibility validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:27.708Z] INFO: Finished Test Case: TC_A11Y_010 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:27.708Z] INFO: Starting Test Case: TC_A11Y_011 - Accessibility validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:27.719Z] INFO: Finished Test Case: TC_A11Y_011 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:27.720Z] INFO: Starting Test Case: TC_A11Y_012 - Accessibility validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:27.752Z] INFO: Finished Test Case: TC_A11Y_012 - Status: PASSED (32ms)
+
+[2026-06-23T06:30:27.752Z] INFO: Starting Test Case: TC_A11Y_013 - Accessibility validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:27.800Z] INFO: Finished Test Case: TC_A11Y_013 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:27.800Z] INFO: Starting Test Case: TC_A11Y_014 - Accessibility validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:27.840Z] INFO: Finished Test Case: TC_A11Y_014 - Status: PASSED (40ms)
+
+[2026-06-23T06:30:27.840Z] INFO: Starting Test Case: TC_A11Y_015 - Accessibility validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:27.855Z] INFO: Finished Test Case: TC_A11Y_015 - Status: PASSED (15ms)
+
+[2026-06-23T06:30:27.855Z] INFO: Starting Test Case: TC_A11Y_016 - Accessibility validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:27.883Z] INFO: Finished Test Case: TC_A11Y_016 - Status: PASSED (28ms)
+
+[2026-06-23T06:30:27.883Z] INFO: Starting Test Case: TC_A11Y_017 - Accessibility validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:27.929Z] INFO: Finished Test Case: TC_A11Y_017 - Status: PASSED (46ms)
+
+[2026-06-23T06:30:27.929Z] INFO: Starting Test Case: TC_A11Y_018 - Accessibility validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:27.960Z] INFO: Finished Test Case: TC_A11Y_018 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:27.960Z] INFO: Starting Test Case: TC_A11Y_019 - Accessibility validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:27.989Z] INFO: Finished Test Case: TC_A11Y_019 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:27.990Z] INFO: Starting Test Case: TC_A11Y_020 - Accessibility validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:28.036Z] INFO: Finished Test Case: TC_A11Y_020 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:28.036Z] INFO: Starting Test Case: TC_RESPONSIVE_001 - Responsive Design validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:28.085Z] INFO: Finished Test Case: TC_RESPONSIVE_001 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:28.085Z] INFO: Starting Test Case: TC_RESPONSIVE_002 - Responsive Design validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:28.116Z] WARN: Simulating Failure for: TC_RESPONSIVE_002 - Reason: Failed to assert element loaded for scenario 2
+[2026-06-23T06:30:28.116Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_RESPONSIVE_002_1782196228116.png
+[2026-06-23T06:30:28.116Z] INFO: Finished Test Case: TC_RESPONSIVE_002 - Status: FAILED (31ms)
+
+[2026-06-23T06:30:28.116Z] INFO: Starting Test Case: TC_RESPONSIVE_003 - Responsive Design validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:28.122Z] INFO: Finished Test Case: TC_RESPONSIVE_003 - Status: PASSED (6ms)
+
+[2026-06-23T06:30:28.122Z] INFO: Starting Test Case: TC_RESPONSIVE_004 - Responsive Design validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:28.128Z] INFO: Finished Test Case: TC_RESPONSIVE_004 - Status: PASSED (6ms)
+
+[2026-06-23T06:30:28.128Z] INFO: Starting Test Case: TC_RESPONSIVE_005 - Responsive Design validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:28.153Z] INFO: Finished Test Case: TC_RESPONSIVE_005 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:28.153Z] INFO: Starting Test Case: TC_RESPONSIVE_006 - Responsive Design validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:28.170Z] INFO: Finished Test Case: TC_RESPONSIVE_006 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:28.170Z] INFO: Starting Test Case: TC_RESPONSIVE_007 - Responsive Design validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:28.194Z] INFO: Finished Test Case: TC_RESPONSIVE_007 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:28.194Z] INFO: Starting Test Case: TC_RESPONSIVE_008 - Responsive Design validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:28.242Z] INFO: Finished Test Case: TC_RESPONSIVE_008 - Status: PASSED (48ms)
+
+[2026-06-23T06:30:28.242Z] INFO: Starting Test Case: TC_RESPONSIVE_009 - Responsive Design validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:28.250Z] INFO: Finished Test Case: TC_RESPONSIVE_009 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:28.250Z] INFO: Starting Test Case: TC_RESPONSIVE_010 - Responsive Design validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:28.273Z] INFO: Finished Test Case: TC_RESPONSIVE_010 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:28.273Z] INFO: Starting Test Case: TC_RESPONSIVE_011 - Responsive Design validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:28.299Z] INFO: Finished Test Case: TC_RESPONSIVE_011 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:28.300Z] INFO: Starting Test Case: TC_RESPONSIVE_012 - Responsive Design validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:28.329Z] INFO: Finished Test Case: TC_RESPONSIVE_012 - Status: PASSED (29ms)
+
+[2026-06-23T06:30:28.329Z] INFO: Starting Test Case: TC_RESPONSIVE_013 - Responsive Design validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:28.373Z] INFO: Finished Test Case: TC_RESPONSIVE_013 - Status: PASSED (44ms)
+
+[2026-06-23T06:30:28.373Z] INFO: Starting Test Case: TC_RESPONSIVE_014 - Responsive Design validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:28.387Z] INFO: Finished Test Case: TC_RESPONSIVE_014 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:28.387Z] INFO: Starting Test Case: TC_RESPONSIVE_015 - Responsive Design validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:28.410Z] INFO: Finished Test Case: TC_RESPONSIVE_015 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:28.410Z] INFO: Starting Test Case: TC_RESPONSIVE_016 - Responsive Design validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:28.427Z] INFO: Finished Test Case: TC_RESPONSIVE_016 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:28.427Z] INFO: Starting Test Case: TC_RESPONSIVE_017 - Responsive Design validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:28.464Z] INFO: Finished Test Case: TC_RESPONSIVE_017 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:28.465Z] INFO: Starting Test Case: TC_RESPONSIVE_018 - Responsive Design validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:28.470Z] INFO: Finished Test Case: TC_RESPONSIVE_018 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:28.470Z] INFO: Starting Test Case: TC_RESPONSIVE_019 - Responsive Design validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:28.477Z] INFO: Finished Test Case: TC_RESPONSIVE_019 - Status: PASSED (7ms)
+
+[2026-06-23T06:30:28.477Z] INFO: Starting Test Case: TC_RESPONSIVE_020 - Responsive Design validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:28.526Z] INFO: Finished Test Case: TC_RESPONSIVE_020 - Status: PASSED (49ms)
+
+[2026-06-23T06:30:28.526Z] INFO: Starting Test Case: TC_PERF_001 - Performance Smoke validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:28.543Z] INFO: Finished Test Case: TC_PERF_001 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:28.543Z] INFO: Starting Test Case: TC_PERF_002 - Performance Smoke validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:28.585Z] INFO: Finished Test Case: TC_PERF_002 - Status: PASSED (42ms)
+
+[2026-06-23T06:30:28.585Z] INFO: Starting Test Case: TC_PERF_003 - Performance Smoke validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:28.632Z] INFO: Finished Test Case: TC_PERF_003 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:28.632Z] INFO: Starting Test Case: TC_PERF_004 - Performance Smoke validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:28.678Z] INFO: Finished Test Case: TC_PERF_004 - Status: PASSED (46ms)
+
+[2026-06-23T06:30:28.678Z] INFO: Starting Test Case: TC_PERF_005 - Performance Smoke validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:28.715Z] INFO: Finished Test Case: TC_PERF_005 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:28.715Z] INFO: Starting Test Case: TC_PERF_006 - Performance Smoke validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:28.740Z] INFO: Finished Test Case: TC_PERF_006 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:28.741Z] INFO: Starting Test Case: TC_PERF_007 - Performance Smoke validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:28.781Z] WARN: Simulating Failure for: TC_PERF_007 - Reason: Failed to assert element loaded for scenario 7
+[2026-06-23T06:30:28.781Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_PERF_007_1782196228781.png
+[2026-06-23T06:30:28.781Z] INFO: Finished Test Case: TC_PERF_007 - Status: FAILED (41ms)
+
+[2026-06-23T06:30:28.781Z] INFO: Starting Test Case: TC_PERF_008 - Performance Smoke validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:28.824Z] INFO: Finished Test Case: TC_PERF_008 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:28.824Z] INFO: Starting Test Case: TC_PERF_009 - Performance Smoke validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:28.837Z] INFO: Finished Test Case: TC_PERF_009 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:28.837Z] INFO: Starting Test Case: TC_PERF_010 - Performance Smoke validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:28.868Z] INFO: Finished Test Case: TC_PERF_010 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:28.868Z] INFO: Starting Test Case: TC_PERF_011 - Performance Smoke validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:28.898Z] INFO: Finished Test Case: TC_PERF_011 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:28.898Z] INFO: Starting Test Case: TC_PERF_012 - Performance Smoke validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:28.933Z] INFO: Finished Test Case: TC_PERF_012 - Status: PASSED (35ms)
+
+[2026-06-23T06:30:28.933Z] INFO: Starting Test Case: TC_PERF_013 - Performance Smoke validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:28.941Z] INFO: Finished Test Case: TC_PERF_013 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:28.941Z] INFO: Starting Test Case: TC_PERF_014 - Performance Smoke validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:28.960Z] INFO: Finished Test Case: TC_PERF_014 - Status: PASSED (19ms)
+
+[2026-06-23T06:30:28.960Z] INFO: Starting Test Case: TC_PERF_015 - Performance Smoke validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:28.988Z] INFO: Finished Test Case: TC_PERF_015 - Status: PASSED (28ms)
+
+[2026-06-23T06:30:28.989Z] INFO: Starting Test Case: TC_PERF_016 - Performance Smoke validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:29.013Z] INFO: Finished Test Case: TC_PERF_016 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:29.013Z] INFO: Starting Test Case: TC_PERF_017 - Performance Smoke validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:29.036Z] INFO: Finished Test Case: TC_PERF_017 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:29.036Z] INFO: Starting Test Case: TC_PERF_018 - Performance Smoke validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:29.068Z] INFO: Finished Test Case: TC_PERF_018 - Status: PASSED (32ms)
+
+[2026-06-23T06:30:29.068Z] INFO: Starting Test Case: TC_PERF_019 - Performance Smoke validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:29.115Z] INFO: Finished Test Case: TC_PERF_019 - Status: PASSED (47ms)
+
+[2026-06-23T06:30:29.115Z] INFO: Starting Test Case: TC_PERF_020 - Performance Smoke validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:29.135Z] INFO: Finished Test Case: TC_PERF_020 - Status: PASSED (20ms)
+
+[2026-06-23T06:30:29.135Z] INFO: Starting Test Case: TC_REGR_001 - Regression validation check - Scenario 1 [Priority: CRITICAL]
+[2026-06-23T06:30:29.144Z] INFO: Finished Test Case: TC_REGR_001 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:29.144Z] INFO: Starting Test Case: TC_REGR_002 - Regression validation check - Scenario 2 [Priority: HIGH]
+[2026-06-23T06:30:29.185Z] INFO: Finished Test Case: TC_REGR_002 - Status: PASSED (41ms)
+
+[2026-06-23T06:30:29.185Z] INFO: Starting Test Case: TC_REGR_003 - Regression validation check - Scenario 3 [Priority: HIGH]
+[2026-06-23T06:30:29.223Z] INFO: Finished Test Case: TC_REGR_003 - Status: PASSED (38ms)
+
+[2026-06-23T06:30:29.223Z] INFO: Starting Test Case: TC_REGR_004 - Regression validation check - Scenario 4 [Priority: LOW]
+[2026-06-23T06:30:29.262Z] INFO: Finished Test Case: TC_REGR_004 - Status: PASSED (39ms)
+
+[2026-06-23T06:30:29.263Z] INFO: Starting Test Case: TC_REGR_005 - Regression validation check - Scenario 5 [Priority: MEDIUM]
+[2026-06-23T06:30:29.307Z] WARN: Simulating Failure for: TC_REGR_005 - Reason: Failed to assert element loaded for scenario 5
+[2026-06-23T06:30:29.307Z] INFO: Mock screenshot written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Screenshots/TC_REGR_005_1782196229307.png
+[2026-06-23T06:30:29.307Z] INFO: Finished Test Case: TC_REGR_005 - Status: FAILED (44ms)
+
+[2026-06-23T06:30:29.307Z] INFO: Starting Test Case: TC_REGR_006 - Regression validation check - Scenario 6 [Priority: CRITICAL]
+[2026-06-23T06:30:29.350Z] INFO: Finished Test Case: TC_REGR_006 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:29.350Z] INFO: Starting Test Case: TC_REGR_007 - Regression validation check - Scenario 7 [Priority: HIGH]
+[2026-06-23T06:30:29.374Z] INFO: Finished Test Case: TC_REGR_007 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:29.374Z] INFO: Starting Test Case: TC_REGR_008 - Regression validation check - Scenario 8 [Priority: HIGH]
+[2026-06-23T06:30:29.392Z] INFO: Finished Test Case: TC_REGR_008 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:29.392Z] INFO: Starting Test Case: TC_REGR_009 - Regression validation check - Scenario 9 [Priority: LOW]
+[2026-06-23T06:30:29.416Z] INFO: Finished Test Case: TC_REGR_009 - Status: PASSED (24ms)
+
+[2026-06-23T06:30:29.416Z] INFO: Starting Test Case: TC_REGR_010 - Regression validation check - Scenario 10 [Priority: MEDIUM]
+[2026-06-23T06:30:29.441Z] INFO: Finished Test Case: TC_REGR_010 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:29.441Z] INFO: Starting Test Case: TC_REGR_011 - Regression validation check - Scenario 11 [Priority: CRITICAL]
+[2026-06-23T06:30:29.463Z] INFO: Finished Test Case: TC_REGR_011 - Status: PASSED (22ms)
+
+[2026-06-23T06:30:29.463Z] INFO: Starting Test Case: TC_REGR_012 - Regression validation check - Scenario 12 [Priority: HIGH]
+[2026-06-23T06:30:29.495Z] INFO: Finished Test Case: TC_REGR_012 - Status: PASSED (32ms)
+
+[2026-06-23T06:30:29.495Z] INFO: Starting Test Case: TC_REGR_013 - Regression validation check - Scenario 13 [Priority: HIGH]
+[2026-06-23T06:30:29.533Z] INFO: Finished Test Case: TC_REGR_013 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:29.533Z] INFO: Starting Test Case: TC_REGR_014 - Regression validation check - Scenario 14 [Priority: LOW]
+[2026-06-23T06:30:29.570Z] INFO: Finished Test Case: TC_REGR_014 - Status: PASSED (37ms)
+
+[2026-06-23T06:30:29.570Z] INFO: Starting Test Case: TC_REGR_015 - Regression validation check - Scenario 15 [Priority: MEDIUM]
+[2026-06-23T06:30:29.615Z] INFO: Finished Test Case: TC_REGR_015 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:29.615Z] INFO: Starting Test Case: TC_REGR_016 - Regression validation check - Scenario 16 [Priority: CRITICAL]
+[2026-06-23T06:30:29.650Z] INFO: Finished Test Case: TC_REGR_016 - Status: PASSED (35ms)
+
+[2026-06-23T06:30:29.650Z] INFO: Starting Test Case: TC_REGR_017 - Regression validation check - Scenario 17 [Priority: HIGH]
+[2026-06-23T06:30:29.660Z] INFO: Finished Test Case: TC_REGR_017 - Status: PASSED (10ms)
+
+[2026-06-23T06:30:29.660Z] INFO: Starting Test Case: TC_REGR_018 - Regression validation check - Scenario 18 [Priority: HIGH]
+[2026-06-23T06:30:29.685Z] INFO: Finished Test Case: TC_REGR_018 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:29.685Z] INFO: Starting Test Case: TC_REGR_019 - Regression validation check - Scenario 19 [Priority: LOW]
+[2026-06-23T06:30:29.694Z] INFO: Finished Test Case: TC_REGR_019 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:29.695Z] INFO: Starting Test Case: TC_REGR_020 - Regression validation check - Scenario 20 [Priority: MEDIUM]
+[2026-06-23T06:30:29.708Z] INFO: Finished Test Case: TC_REGR_020 - Status: PASSED (14ms)
+
+[2026-06-23T06:30:29.708Z] INFO: Starting Test Case: TC_REGR_021 - Regression validation check - Scenario 21 [Priority: CRITICAL]
+[2026-06-23T06:30:29.725Z] INFO: Finished Test Case: TC_REGR_021 - Status: PASSED (17ms)
+
+[2026-06-23T06:30:29.725Z] INFO: Starting Test Case: TC_REGR_022 - Regression validation check - Scenario 22 [Priority: HIGH]
+[2026-06-23T06:30:29.768Z] INFO: Finished Test Case: TC_REGR_022 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:29.768Z] INFO: Starting Test Case: TC_REGR_023 - Regression validation check - Scenario 23 [Priority: HIGH]
+[2026-06-23T06:30:29.811Z] INFO: Finished Test Case: TC_REGR_023 - Status: PASSED (43ms)
+
+[2026-06-23T06:30:29.811Z] INFO: Starting Test Case: TC_REGR_024 - Regression validation check - Scenario 24 [Priority: LOW]
+[2026-06-23T06:30:29.832Z] INFO: Finished Test Case: TC_REGR_024 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:29.832Z] INFO: Starting Test Case: TC_REGR_025 - Regression validation check - Scenario 25 [Priority: MEDIUM]
+[2026-06-23T06:30:29.853Z] INFO: Finished Test Case: TC_REGR_025 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:29.853Z] INFO: Starting Test Case: TC_REGR_026 - Regression validation check - Scenario 26 [Priority: CRITICAL]
+[2026-06-23T06:30:29.859Z] INFO: Finished Test Case: TC_REGR_026 - Status: PASSED (6ms)
+
+[2026-06-23T06:30:29.859Z] INFO: Starting Test Case: TC_REGR_027 - Regression validation check - Scenario 27 [Priority: HIGH]
+[2026-06-23T06:30:29.874Z] INFO: Finished Test Case: TC_REGR_027 - Status: PASSED (15ms)
+
+[2026-06-23T06:30:29.874Z] INFO: Starting Test Case: TC_REGR_028 - Regression validation check - Scenario 28 [Priority: HIGH]
+[2026-06-23T06:30:29.908Z] INFO: Finished Test Case: TC_REGR_028 - Status: PASSED (34ms)
+
+[2026-06-23T06:30:29.908Z] INFO: Starting Test Case: TC_REGR_029 - Regression validation check - Scenario 29 [Priority: LOW]
+[2026-06-23T06:30:29.926Z] INFO: Finished Test Case: TC_REGR_029 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:29.927Z] INFO: Starting Test Case: TC_REGR_030 - Regression validation check - Scenario 30 [Priority: MEDIUM]
+[2026-06-23T06:30:29.939Z] INFO: Finished Test Case: TC_REGR_030 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:29.939Z] INFO: Starting Test Case: TC_REGR_031 - Regression validation check - Scenario 31 [Priority: CRITICAL]
+[2026-06-23T06:30:29.952Z] INFO: Finished Test Case: TC_REGR_031 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:29.952Z] INFO: Starting Test Case: TC_REGR_032 - Regression validation check - Scenario 32 [Priority: HIGH]
+[2026-06-23T06:30:29.961Z] INFO: Finished Test Case: TC_REGR_032 - Status: PASSED (9ms)
+
+[2026-06-23T06:30:29.961Z] INFO: Starting Test Case: TC_REGR_033 - Regression validation check - Scenario 33 [Priority: HIGH]
+[2026-06-23T06:30:29.982Z] INFO: Finished Test Case: TC_REGR_033 - Status: PASSED (21ms)
+
+[2026-06-23T06:30:29.983Z] INFO: Starting Test Case: TC_REGR_034 - Regression validation check - Scenario 34 [Priority: LOW]
+[2026-06-23T06:30:30.027Z] INFO: Finished Test Case: TC_REGR_034 - Status: PASSED (44ms)
+
+[2026-06-23T06:30:30.027Z] INFO: Starting Test Case: TC_REGR_035 - Regression validation check - Scenario 35 [Priority: MEDIUM]
+[2026-06-23T06:30:30.045Z] INFO: Finished Test Case: TC_REGR_035 - Status: PASSED (18ms)
+
+[2026-06-23T06:30:30.045Z] INFO: Starting Test Case: TC_REGR_036 - Regression validation check - Scenario 36 [Priority: CRITICAL]
+[2026-06-23T06:30:30.069Z] INFO: Finished Test Case: TC_REGR_036 - Status: PASSED (23ms)
+
+[2026-06-23T06:30:30.069Z] INFO: Starting Test Case: TC_REGR_037 - Regression validation check - Scenario 37 [Priority: HIGH]
+[2026-06-23T06:30:30.114Z] INFO: Finished Test Case: TC_REGR_037 - Status: PASSED (45ms)
+
+[2026-06-23T06:30:30.114Z] INFO: Starting Test Case: TC_REGR_038 - Regression validation check - Scenario 38 [Priority: HIGH]
+[2026-06-23T06:30:30.125Z] INFO: Finished Test Case: TC_REGR_038 - Status: PASSED (11ms)
+
+[2026-06-23T06:30:30.125Z] INFO: Starting Test Case: TC_REGR_039 - Regression validation check - Scenario 39 [Priority: LOW]
+[2026-06-23T06:30:30.132Z] INFO: Finished Test Case: TC_REGR_039 - Status: PASSED (7ms)
+
+[2026-06-23T06:30:30.132Z] INFO: Starting Test Case: TC_REGR_040 - Regression validation check - Scenario 40 [Priority: MEDIUM]
+[2026-06-23T06:30:30.145Z] INFO: Finished Test Case: TC_REGR_040 - Status: PASSED (13ms)
+
+[2026-06-23T06:30:30.145Z] INFO: Starting Test Case: TC_REGR_041 - Regression validation check - Scenario 41 [Priority: CRITICAL]
+[2026-06-23T06:30:30.170Z] INFO: Finished Test Case: TC_REGR_041 - Status: PASSED (25ms)
+
+[2026-06-23T06:30:30.170Z] INFO: Starting Test Case: TC_REGR_042 - Regression validation check - Scenario 42 [Priority: HIGH]
+[2026-06-23T06:30:30.175Z] INFO: Finished Test Case: TC_REGR_042 - Status: PASSED (5ms)
+
+[2026-06-23T06:30:30.175Z] INFO: Starting Test Case: TC_REGR_043 - Regression validation check - Scenario 43 [Priority: HIGH]
+[2026-06-23T06:30:30.183Z] INFO: Finished Test Case: TC_REGR_043 - Status: PASSED (8ms)
+
+[2026-06-23T06:30:30.184Z] INFO: Starting Test Case: TC_REGR_044 - Regression validation check - Scenario 44 [Priority: LOW]
+[2026-06-23T06:30:30.214Z] INFO: Finished Test Case: TC_REGR_044 - Status: PASSED (31ms)
+
+[2026-06-23T06:30:30.214Z] INFO: Starting Test Case: TC_REGR_045 - Regression validation check - Scenario 45 [Priority: MEDIUM]
+[2026-06-23T06:30:30.244Z] INFO: Finished Test Case: TC_REGR_045 - Status: PASSED (30ms)
+
+[2026-06-23T06:30:30.244Z] INFO: Starting Test Case: TC_REGR_046 - Regression validation check - Scenario 46 [Priority: CRITICAL]
+[2026-06-23T06:30:30.280Z] INFO: Finished Test Case: TC_REGR_046 - Status: PASSED (36ms)
+
+[2026-06-23T06:30:30.280Z] INFO: Starting Test Case: TC_REGR_047 - Regression validation check - Scenario 47 [Priority: HIGH]
+[2026-06-23T06:30:30.312Z] INFO: Finished Test Case: TC_REGR_047 - Status: PASSED (32ms)
+
+[2026-06-23T06:30:30.312Z] INFO: Starting Test Case: TC_REGR_048 - Regression validation check - Scenario 48 [Priority: HIGH]
+[2026-06-23T06:30:30.338Z] INFO: Finished Test Case: TC_REGR_048 - Status: PASSED (26ms)
+
+[2026-06-23T06:30:30.338Z] INFO: Starting Test Case: TC_REGR_049 - Regression validation check - Scenario 49 [Priority: LOW]
+[2026-06-23T06:30:30.352Z] INFO: Finished Test Case: TC_REGR_049 - Status: PASSED (14ms)
+
+[2026-06-23T06:30:30.352Z] INFO: Starting Test Case: TC_REGR_050 - Regression validation check - Scenario 50 [Priority: MEDIUM]
+[2026-06-23T06:30:30.379Z] INFO: Finished Test Case: TC_REGR_050 - Status: PASSED (27ms)
+
+[2026-06-23T06:30:30.380Z] INFO: Closing Chrome driver session...
+[2026-06-23T06:30:30.382Z] INFO: Browser logs saved successfully to: /home/runner/work/pddtesting/pddtesting/automation/reports/Logs/browser-console.log
+[2026-06-23T06:30:30.434Z] INFO: Session closed.
+[2026-06-23T06:30:30.434Z] INFO: E2E suite execution finished. Total duration: 40.99s
+[2026-06-23T06:30:30.434Z] INFO: Generating Excel automation reports...
+[2026-06-23T06:30:30.659Z] INFO: Master Excel report written to: /home/runner/work/pddtesting/pddtesting/automation/reports/Excel/Automation_Test_Report.xlsx
+[2026-06-23T06:30:30.721Z] INFO: Excel report generation completed successfully!
+[2026-06-23T06:30:30.721Z] INFO: Generating HTML automation reports...
+[2026-06-23T06:30:30.724Z] INFO: HTML Reports successfully written to: /home/runner/work/pddtesting/pddtesting/automation/reports/HTML
+[2026-06-23T06:30:30.725Z] INFO: JSON report generated at: /home/runner/work/pddtesting/pddtesting/automation/reports/JSON/execution-results.json
+[2026-06-23T06:30:30.726Z] INFO: Markdown step summary generated at: /home/runner/work/pddtesting/pddtesting/automation/reports/Summary/summary.md
+[2026-06-23T06:30:30.726Z] INFO: Final Metrics -> Total: 470, Passed: 450, Pass Rate: 95.74%
+[2026-06-23T06:30:30.726Z] INFO: Critical Tests -> Total: 95, Failed: 2, Critical Fail Rate: 2.11%
+[2026-06-23T06:30:30.726Z] INFO: Execution Passed: All criteria (Pass Rate >= 95% and Critical Fail Rate <= 5%) met successfully!

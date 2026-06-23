@@ -1,0 +1,563 @@
+
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NeuroStay Automation - Dashboard</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+          
+      :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-tertiary: #334155;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --success: #10b981;
+        --success-bg: rgba(16, 185, 129, 0.15);
+        --danger: #f43f5e;
+        --danger-bg: rgba(244, 63, 94, 0.15);
+        --warning: #f59e0b;
+        --warning-bg: rgba(245, 158, 11, 0.15);
+        --info: #0ea5e9;
+        --info-bg: rgba(14, 165, 233, 0.15);
+        --border: #334155;
+        --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: var(--font-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .logo-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        box-shadow: 0 0 10px var(--primary);
+      }
+      h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        background: linear-gradient(to right, #a5b4fc, #818cf8, #6366f1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      nav {
+        display: flex;
+        gap: 0.5rem;
+      }
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+      }
+      nav a:hover {
+        color: var(--text-primary);
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      nav a.active {
+        color: var(--text-primary);
+        background-color: var(--bg-tertiary);
+        border-color: var(--border);
+      }
+      main {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .card {
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.625rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .badge-success { background-color: var(--success-bg); color: var(--success); }
+      .badge-failed { background-color: var(--danger-bg); color: var(--danger); }
+      .badge-skipped { background-color: var(--warning-bg); color: var(--warning); }
+      .badge-blocked { background-color: var(--bg-tertiary); color: var(--text-secondary); }
+      footer {
+        background-color: var(--bg-secondary);
+        border-top: 1px solid var(--border);
+        padding: 1.5rem 2rem;
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: auto;
+      }
+    
+          .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+          }
+          .stat-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .stat-value {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-top: 0.25rem;
+            letter-spacing: -0.05em;
+          }
+          .stat-title {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+          }
+          .dashboard-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+          }
+          .chart-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+          .chart-ring {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 1.5rem 0;
+          }
+          .chart-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+          }
+          .chart-rate {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--text-primary);
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+          }
+          th, td {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+          }
+          th {
+            background-color: rgba(255, 255, 255, 0.02);
+            color: var(--text-secondary);
+            font-weight: 600;
+          }
+          tr:hover td {
+            background-color: rgba(255, 255, 255, 0.01);
+          }
+          .text-center { text-align: center; }
+          .text-right { text-align: right; }
+          .text-success { color: var(--success); }
+          .text-danger { color: var(--danger); }
+          .text-warning { color: var(--warning); }
+          
+          .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background-color: var(--bg-tertiary);
+            border-radius: 9999px;
+            overflow: hidden;
+          }
+          .progress-bar-fill {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          
+          .env-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+          }
+          .env-item {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+          }
+          .env-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+          }
+          .env-val {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin-top: 0.125rem;
+            color: var(--text-primary);
+          }
+        </style>
+      </head>
+      <body>
+        <header>
+          <div class="logo-area">
+            <div class="logo-dot"></div>
+            <h1>NeuroStay AI Automation</h1>
+          </div>
+          <nav>
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="execution-report.html">Test Log</a>
+            <a href="trends.html">Trends</a>
+          </nav>
+        </header>
+
+        <main>
+          <!-- Metric Blocks -->
+          <div class="grid-4">
+            <div class="card stat-card" style="border-left: 4px solid var(--primary)">
+              <div>
+                <div class="stat-title">Total Execution</div>
+                <div class="stat-value">470</div>
+              </div>
+            </div>
+            <div class="card stat-card" style="border-left: 4px solid var(--success)">
+              <div>
+                <div class="stat-title">Passed Cases</div>
+                <div class="stat-value text-success">450</div>
+              </div>
+            </div>
+            <div class="card stat-card" style="border-left: 4px solid var(--danger)">
+              <div>
+                <div class="stat-title">Failed Cases</div>
+                <div class="stat-value text-danger">17</div>
+              </div>
+            </div>
+            <div class="card stat-card" style="border-left: 4px solid var(--warning)">
+              <div>
+                <div class="stat-title">Skipped / Blocked</div>
+                <div class="stat-value text-warning">3</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Layout -->
+          <div class="dashboard-content">
+            <!-- Left Side: Table of Modules -->
+            <div class="card">
+              <h2>Module Summary Metrics</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Module Category</th>
+                    <th class="text-center">Total</th>
+                    <th class="text-center">Passed</th>
+                    <th class="text-center">Failed</th>
+                    <th class="text-center">Skipped</th>
+                    <th style="width: 25%">Distribution</th>
+                    <th class="text-right">Pass Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+        <tr>
+          <td><strong>Authentication</strong></td>
+          <td class="text-center">40</td>
+          <td class="text-center text-success">37</td>
+          <td class="text-center text-danger">3</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 93%; background-color: var(--warning)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>93%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Authorization</strong></td>
+          <td class="text-center">40</td>
+          <td class="text-center text-success">38</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">1</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 95%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>95%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Navigation</strong></td>
+          <td class="text-center">30</td>
+          <td class="text-center text-success">28</td>
+          <td class="text-center text-danger">2</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 93%; background-color: var(--warning)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>93%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>UI Validation</strong></td>
+          <td class="text-center">50</td>
+          <td class="text-center text-success">49</td>
+          <td class="text-center text-danger">0</td>
+          <td class="text-center text-warning">1</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 98%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>98%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Forms</strong></td>
+          <td class="text-center">50</td>
+          <td class="text-center text-success">48</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">1</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 96%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>96%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>CRUD Operations</strong></td>
+          <td class="text-center">50</td>
+          <td class="text-center text-success">48</td>
+          <td class="text-center text-danger">2</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 96%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>96%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Input Validation</strong></td>
+          <td class="text-center">40</td>
+          <td class="text-center text-success">39</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 98%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>98%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Error Handling</strong></td>
+          <td class="text-center">20</td>
+          <td class="text-center text-success">19</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 95%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>95%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Session Management</strong></td>
+          <td class="text-center">20</td>
+          <td class="text-center text-success">19</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 95%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>95%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>File Upload</strong></td>
+          <td class="text-center">20</td>
+          <td class="text-center text-success">19</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 95%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>95%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Accessibility</strong></td>
+          <td class="text-center">20</td>
+          <td class="text-center text-success">19</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 95%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>95%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Responsive Design</strong></td>
+          <td class="text-center">20</td>
+          <td class="text-center text-success">19</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 95%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>95%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Performance Smoke</strong></td>
+          <td class="text-center">20</td>
+          <td class="text-center text-success">19</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 95%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>95%</strong></td>
+        </tr>
+      
+        <tr>
+          <td><strong>Regression</strong></td>
+          <td class="text-center">50</td>
+          <td class="text-center text-success">49</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-warning">0</td>
+          <td>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 98%; background-color: var(--success)"></div>
+            </div>
+          </td>
+          <td class="text-right"><strong>98%</strong></td>
+        </tr>
+      
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Right Side: SVG Chart and Environment Details -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem">
+              <!-- Pass Rate Ring -->
+              <div class="card chart-card">
+                <h2>Total Pass Rate</h2>
+                <div class="chart-ring">
+                  <svg width="200" height="200" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="var(--bg-tertiary)" stroke-width="16" />
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="var(--success)" stroke-width="16"
+                            stroke-dasharray="534" stroke-dashoffset="22.96199999999999"
+                            stroke-linecap="round" transform="rotate(-90 100 100)" />
+                  </svg>
+                  <div class="chart-center">
+                    <div class="chart-rate">95.7%</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em">Passing</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Environment Info -->
+              <div class="card">
+                <h2>Execution Metadata</h2>
+                <div class="env-grid">
+                  <div class="env-item" style="grid-column: span 2">
+                    <div class="env-label">Execution Date</div>
+                    <div class="env-val">6/23/2026, 6:30:30 AM</div>
+                  </div>
+                  <div class="env-item">
+                    <div class="env-label">Target Device</div>
+                    <div class="env-val">Chrome (Headless)</div>
+                  </div>
+                  <div class="env-item">
+                    <div class="env-label">Android OS</div>
+                    <div class="env-val">Android Ubuntu/ChromeOS</div>
+                  </div>
+                  <div class="env-item">
+                    <div class="env-label">App version</div>
+                    <div class="env-val">1.0.0-web</div>
+                  </div>
+                  <div class="env-item">
+                    <div class="env-label">Duration</div>
+                    <div class="env-val">41.0 seconds</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer>
+          &copy; 2026 NeuroStay AI. Built by Senior Mobile SDET Architect.
+        </footer>
+      </body>
+      </html>
+    
