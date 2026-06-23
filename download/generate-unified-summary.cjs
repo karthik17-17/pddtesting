@@ -16,7 +16,7 @@ let webStats     = { total: 400, passed: 400, failed: 0, skipped: 0, rate: '100.
 let androidStats = { total: 400, passed: 400, failed: 0, skipped: 0, rate: '100.0%' };
 let backendStats = { total: 400, passed: 400, failed: 0, skipped: 0, rate: '100.0%' };
 let securityStats = { critical: 0, high: 3, medium: 5, low: 3, total: 11, score: 62, e2eTotal: 6, e2ePassed: 6, e2eFailed: 0 };
-let loadStats = { rps: 97.07, avgResponseTime: 145.28, minResponseTime: 12.04, maxResponseTime: 845.52, successRate: 99.85, errorRate: 0.15, totalRequests: 5824, simulated: true };
+let loadStats = { rps: 120, avgResponseTime: 250, minResponseTime: 50, maxResponseTime: 1500, successRate: 100, errorRate: 0, totalRequests: 7200, simulated: true };
 let buildStats = { apkStatus: 'PASS', webStatus: 'PASS' };
 
 // 1. Parse Web E2E Summary
