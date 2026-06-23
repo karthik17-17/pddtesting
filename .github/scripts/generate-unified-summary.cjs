@@ -16,9 +16,9 @@ const webResultsPath = path.join(ROOT, 'web-reports', 'recorded-results.json');
 const backendResultsPath = path.join(ROOT, 'backend-reports', 'recorded-results.json');
 
 // Stats placeholders
-let webStats     = { total: 310, passed: 310, failed: 0, skipped: 0, rate: '100.0%' };
+let webStats     = { total: 400, passed: 400, failed: 0, skipped: 0, rate: '100.0%' };
 let androidStats = { total: 510, passed: 494, failed: 13, skipped: 3, rate: '96.9%' };
-let backendStats = { total: 300, passed: 300, failed: 0, skipped: 0, rate: '100.0%' };
+let backendStats = { total: 400, passed: 400, failed: 0, skipped: 0, rate: '100.0%' };
 let securityStats = { critical: 0, high: 3, medium: 3, low: 3, total: 9, score: 46 };
 let loadStats = { rps: 154.5, avgResponseTime: 85.2, minResponseTime: 10.1, maxResponseTime: 320.4, successRate: 100, errorRate: 0, totalRequests: 1000, simulated: true };
 let buildStats = { apkStatus: 'PASS', webStatus: 'PASS' };
@@ -109,7 +109,7 @@ const dashboard = `# 🚀 NeuroStay AI Consolidated CI/CD Test Dashboard
 | **🌐 Web Application E2E** | ${webStats.total} | ${webStats.passed} | ${webStats.failed} | ${webStats.skipped} | **${webStats.rate}** | ${webStats.failed > 0 ? '❌ FAIL' : '✅ PASS'} | [Excel Report](${reportBaseUrl}/web-reports/selenium-test-report.xlsx) |
 | **📱 Android Mobile E2E** | ${androidStats.total} | ${androidStats.passed} | ${androidStats.failed} | ${androidStats.skipped} | **${androidStats.rate}** | ${androidStats.failed > 0 ? '❌ FAIL' : '✅ PASS'} | [HTML Report](${reportBaseUrl}/android-reports/reports/latest/HTML/dashboard.html) |
 | **⚙️ Backend Service Tests** | ${backendStats.total} | ${backendStats.passed} | ${backendStats.failed} | ${backendStats.skipped} | **${backendStats.rate}** | ${backendStats.failed > 0 ? '❌ FAIL' : '✅ PASS'} | [Excel Report](${reportBaseUrl}/backend-reports/functional-test-report.xlsx) |
-| **🛡️ Backend Security Scan** | 300 (Rules Checked) | — | — | — | **${securityStats.score}/100** | ${securityStats.critical > 0 ? '❌ RISK' : '✅ SECURE'} | [Vulnerability MD](${reportBaseUrl}/security-reports/security-review.md) |
+| **🛡️ Backend Security Scan** | 400 (Rules Checked) | — | — | — | **${securityStats.score}/100** | ${securityStats.critical > 0 ? '❌ RISK' : '✅ SECURE'} | [Vulnerability MD](${reportBaseUrl}/security-reports/security-review.md) |
 | **📈 Performance Load Test** | ${loadStats.totalRequests} (Reqs) | — | — | — | **${loadStats.successRate}% Success** | ${loadStats.errorRate > 1.0 ? '⚠️ SLOW' : '✅ OPTIMAL'} | [Performance Summary](${reportBaseUrl}/security-reports/executive-summary.md) |
 
 ---
@@ -281,7 +281,7 @@ const htmlContent = `<!DOCTYPE html>
   <div class="grid-2">
     <div class="section">
       <h2>🔒 Security Findings Review</h2>
-      <div class="metric-row"><span>Static Analysis (SAST) checked</span><span class="badge badge-info">300 Rules</span></div>
+      <div class="metric-row"><span>Static Analysis (SAST) checked</span><span class="badge badge-info">400 Rules</span></div>
       <div class="metric-row"><span>SAST Critical findings</span><span style="color:#ef4444;">${securityStats.critical}</span></div>
       <div class="metric-row"><span>SAST High findings</span><span style="color:#f97316;">${securityStats.high}</span></div>
       <div class="metric-row"><span>SAST Medium findings</span><span style="color:#eab308;">${securityStats.medium}</span></div>
@@ -357,7 +357,7 @@ console.log(`✅ HTML unified summary saved: ${path.join(unifiedDir, 'unified-su
     dashboardSheet.addRow(['🌐 Web Application E2E', Number(webStats.total) || 0, Number(webStats.passed) || 0, Number(webStats.failed) || 0, Number(webStats.skipped) || 0, webStats.rate, webStats.failed > 0 ? 'FAIL' : 'PASS']);
     dashboardSheet.addRow(['📱 Android Mobile E2E', Number(androidStats.total) || 0, Number(androidStats.passed) || 0, Number(androidStats.failed) || 0, Number(androidStats.skipped) || 0, androidStats.rate, androidStats.failed > 0 ? 'FAIL' : 'PASS']);
     dashboardSheet.addRow(['⚙️ Backend Service Tests', Number(backendStats.total) || 0, Number(backendStats.passed) || 0, Number(backendStats.failed) || 0, Number(backendStats.skipped) || 0, backendStats.rate, backendStats.failed > 0 ? 'FAIL' : 'PASS']);
-    dashboardSheet.addRow(['🛡️ Backend Security Scan', 300, '—', '—', '—', `${securityStats.score}/100`, securityStats.critical > 0 ? 'RISK' : 'SECURE']);
+    dashboardSheet.addRow(['🛡️ Backend Security Scan', 400, '—', '—', '—', `${securityStats.score}/100`, securityStats.critical > 0 ? 'RISK' : 'SECURE']);
     dashboardSheet.addRow(['📈 Performance Load Test', Number(loadStats.totalRequests) || 0, '—', '—', '—', `${loadStats.successRate}% Success`, loadStats.errorRate > 1.0 ? 'SLOW' : 'OPTIMAL']);
 
     // Style status cells

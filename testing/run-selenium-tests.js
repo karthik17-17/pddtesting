@@ -25,11 +25,11 @@ async function runSeleniumSuite() {
   const startTime = Date.now();
 
   const categories = [
-    { name: 'Authentication', size: 60 },
-    { name: 'Hotel Search & Results', size: 90 },
-    { name: 'Details & Maps', size: 50 },
-    { name: 'Saved Stays', size: 50 },
-    { name: 'Comparison', size: 50 }
+    { name: 'Authentication', size: 80 },
+    { name: 'Hotel Search & Results', size: 120 },
+    { name: 'Details & Maps', size: 65 },
+    { name: 'Saved Stays', size: 65 },
+    { name: 'Comparison', size: 70 }
   ];
 
   try {

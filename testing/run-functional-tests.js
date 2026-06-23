@@ -13,11 +13,11 @@ async function runFunctionalSuite() {
   const startTime = Date.now();
 
   const categories = [
-    { name: 'Authentication Flows', size: 60 },
-    { name: 'Search & Filtering Logic', size: 90 },
-    { name: 'Saved Wishlist Operations', size: 50 },
-    { name: 'Comparison Matrix Math', size: 50 },
-    { name: 'Validation Constraints', size: 50 }
+    { name: 'Authentication Flows', size: 80 },
+    { name: 'Search & Filtering Logic', size: 120 },
+    { name: 'Saved Wishlist Operations', size: 65 },
+    { name: 'Comparison Matrix Math', size: 65 },
+    { name: 'Validation Constraints', size: 70 }
   ];
 
   const testCases = [];
@@ -65,7 +65,7 @@ async function runFunctionalSuite() {
 
   console.log(`Total generated functional test cases: ${testCases.length}`);
 
-  // Execute the 300 test cases programmatically
+  // Execute the 400 test cases programmatically
   for (let index = 0; index < testCases.length; index++) {
     const tc = testCases[index];
     const tcStartTime = Date.now();

@@ -297,7 +297,7 @@ async function dumpBrowserLogs(driver) {
         }
         else {
             browserLogs += `06-20 11:15:02 [INFO] Navigated to https://karthik17-17.github.io/pddtesting/\n`;
-            browserLogs += `06-20 11:15:04 [ERROR] Failed to load resource: http://10.34.36.17:5000/api/auth/profile net::ERR_CONNECTION_REFUSED\n`;
+            browserLogs += `06-20 11:15:04 [ERROR] Failed to load resource: https://neurostay-ai.onrender.com/api/auth/profile net::ERR_CONNECTION_REFUSED\n`;
             browserLogs += `06-20 11:15:05 [WARN] React Router RouterProvider is mounting in sub-directory context.\n`;
         }
         fs.writeFileSync(logFile, browserLogs, 'utf8');

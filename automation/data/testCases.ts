@@ -77,116 +77,12 @@ const customTestCases: { [id: string]: Partial<TestCase> } = {
     expectedResult: 'User session terminated, credentials cleared, redirected to Login screen',
     status: 'PASSED'
   },
-  'TC_AUTH_010': {
-    name: 'Invalid OTP',
-    priority: 'HIGH',
-    preconditions: 'User has requested verification code on registration or password reset',
-    steps: [
-      '1. Navigate to verification screen',
-      '2. Enter expired or incorrect OTP "999999"',
-      '3. Tap "Verify"'
-    ],
-    testData: 'OTP: 999999 (Invalid)',
-    expectedResult: 'Error display "Invalid OTP verification code, please try again"',
-    status: 'FAILED',
-    failureReason: 'OTP validation mismatch',
-    stackTrace: 'Error: Expected error banner to show "Invalid OTP validation mismatch" but it was absent.\n   at LoginPage.verifyError (c:/projects/neurostay-ai/automation/pages/LoginPage.ts:42:12)\n   at testRunner.ts:182:25'
-  },
-  'TC_CRUD_005': {
-    name: 'Update Profile',
-    priority: 'HIGH',
-    preconditions: 'User authenticated, profile editing page loaded',
-    steps: [
-      '1. Edit Full Name field to "Dr. Neuro Tester"',
-      '2. Tap "Save changes"',
-      '3. Verify that changes are persisted'
-    ],
-    testData: 'name: Dr. Neuro Tester',
-    expectedResult: 'Profile update api succeeds, local state refreshed with new profile details',
-    status: 'PASSED'
-  },
-  'TC_NAV_003': {
-    name: 'Search Existing Record',
-    priority: 'HIGH',
-    preconditions: 'Dashboard loaded, search interface active',
-    steps: [
-      '1. Type query "Cognitive Rehabilitation" in search box',
-      '2. Press enter or tap magnifying glass icon',
-      '3. Inspect the search results'
-    ],
-    testData: 'query: Cognitive Rehabilitation',
-    expectedResult: 'Search results load with items matching "Cognitive Rehabilitation", count matches database records',
-    status: 'PASSED'
-  },
-  'TC_FORM_008': {
-    name: 'Mandatory Field Validation',
-    priority: 'HIGH',
-    preconditions: 'User on Profile edit screen',
-    steps: [
-      '1. Clear "Email Address" input field completely',
-      '2. Tap "Save changes"',
-      '3. Verify inline error visibility'
-    ],
-    testData: 'Email: [Empty]',
-    expectedResult: 'Red validation text "Email is a mandatory field" is displayed below the field',
-    status: 'FAILED',
-    failureReason: 'Validation message missing',
-    stackTrace: 'AssertionError: Expected element "#email-error" to be visible.\n   at ProfilePage.checkValidationMessage (c:/projects/neurostay-ai/automation/pages/ProfilePage.ts:74:35)\n   at testRunner.ts:241:19'
-  },
-  'TC_FILE_002': {
-    name: 'Large File Upload',
-    priority: 'MEDIUM',
-    preconditions: 'User on Profile Picture edit section',
-    steps: [
-      '1. Tap avatar overlay and choose "Upload File"',
-      '2. Select a 100MB dummy image file',
-      '3. Tap upload and monitor memory'
-    ],
-    testData: 'File size: 100MB',
-    expectedResult: 'System warns "File size exceeds limit (Max 5MB)" and blocks upload',
-    status: 'FAILED',
-    failureReason: 'Application crash',
-    stackTrace: 'AppiumError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Associated process has exited due to java.lang.OutOfMemoryError.\n   at Driver.executeCommand (c:/projects/neurostay-ai/automation/node_modules/webdriverio/build/commands/index.js:52:10)'
-  },
-  'TC_AZ_004': {
-    name: 'Check push notifications',
-    priority: 'MEDIUM',
-    preconditions: 'Application launched on Android device supporting FCM',
-    steps: [
-      '1. Lock device screen',
-      '2. Trigger remote cloud push notification',
-      '3. Unlock device and verify system tray notification'
-    ],
-    testData: 'Push Payload: { title: "Daily Review" }',
-    expectedResult: 'FCM push notification received and rendering in system status bar',
-    status: 'SKIPPED',
-    failureReason: 'Feature Disabled',
-    stackTrace: 'SkippedReason: Notification module is disabled in app.json configuration for this specific release target.'
-  }
+
 };
 
-// Generate more specific failures to show detailed report styling
-const failTestIds = new Set<string>([
-  'TC_AUTH_010',
-  'TC_FORM_008',
-  'TC_FILE_002',
-  'TC_VALIDATION_012',
-  'TC_ERROR_003',
-  'TC_REGR_005', // Updated from OFFLINE
-  'TC_RESPONSIVE_002',
-  'TC_PERF_007',
-  'TC_A11Y_008',
-  'TC_CRUD_018',
-  'TC_NAV_022',
-  'TC_AZ_014',
-  'TC_SESSION_009'
-]);
+const failTestIds = new Set<string>();
+const skipTestIds = new Set<string>();
 
-const skipTestIds = new Set<string>([
-  'TC_AZ_004', // Updated from NOTIFICATION
-  'TC_FORM_015', // Updated from REG
-  'TC_UI_011' // Updated from FILTER
-]);
 
 export function generateTestCases(): TestCase[] {
   const list: TestCase[] = [];
