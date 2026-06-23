@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
-import axiosInstance from "../config/axios";
+import { useAuth } from "../context/AuthContext";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 type Hotel = {
   id: number;
@@ -26,6 +28,7 @@ export default function ResultsPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { success, error, warning } = useToast();
+  const { token } = useAuth();
 
   const urlQuery = searchParams.get("query");
   const storedQuery = localStorage.getItem("lastSearchQuery") || "";
@@ -43,10 +46,31 @@ export default function ResultsPage() {
       setHasError(false);
       setErrorMessage("");
       try {
+        const targetUrl = `${API_URL}/api/serpapi/hotels`;
         console.log("ResultsPage: Initiating hotel search for query:", rawQuery);
-        const response = await axiosInstance.post("/api/serpapi/hotels", { query: rawQuery });
+        console.log("ResultsPage: Fetching from URL:", targetUrl);
+        
+        const response = await fetch(targetUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ query: rawQuery }),
+        });
+
         console.log("ResultsPage: API response received. Status:", response.status);
-        const data = response.data;
+        
+        if (!response.ok) {
+          const errText = await response.text();
+          console.error("ResultsPage: Server returned error response:", {
+            status: response.status,
+            statusText: response.statusText,
+            body: errText,
+          });
+          throw new Error(`Server responded with status ${response.status}: ${errText || response.statusText}`);
+        }
+
+        const data = await response.json();
         console.log("ResultsPage: API response body:", data);
 
         if (data && data.success === true && Array.isArray(data.hotels)) {
@@ -63,8 +87,12 @@ export default function ResultsPage() {
           setHotels([]);
         }
       } catch (err: any) {
-        console.error("Hotel fetch failed:", err);
-        const msg = err.response?.data?.message || err.message || "Unable to fetch hotels.";
+        console.error("ResultsPage: Hotel fetch caught error:", {
+          message: err.message,
+          stack: err.stack,
+          errorObject: err,
+        });
+        const msg = err.message || "Unable to fetch hotels.";
         setErrorMessage(msg);
         setHasError(true);
         setHotels([]);
@@ -84,21 +112,35 @@ export default function ResultsPage() {
   const saveHotel = async (hotel: Hotel) => {
     try {
       console.log("ResultsPage: Saving hotel:", hotel.name);
-      await axiosInstance.post("/api/saved", {
-        hotelName: hotel.name,
-        hotelImage: hotel.image,
-        price: hotel.price,
-        address: hotel.address,
-        rating: hotel.rating,
-        matchScore: hotel.matchScore,
-        why: hotel.why,
-        mapLink: hotel.mapLink,
+      
+      const res = await fetch(`${API_URL}/api/saved`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          hotelName: hotel.name,
+          hotelImage: hotel.image,
+          price: hotel.price,
+          address: hotel.address,
+          rating: hotel.rating,
+          matchScore: hotel.matchScore,
+          why: hotel.why,
+          mapLink: hotel.mapLink,
+        }),
       });
 
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Could not save hotel.");
+      }
+
       success("Hotel Saved! ❤️", `${hotel.name} has been added to your saved list.`);
-    } catch (err) {
+    } catch (err: any) {
       console.error("Save hotel error:", err);
-      error("Save Failed", "Could not connect to server. Please try again.");
+      error("Save Failed", err.message || "Could not connect to server. Please try again.");
     }
   };
 
