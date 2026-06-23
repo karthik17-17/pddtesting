@@ -466,10 +466,10 @@ jobs:
           mkdir -p gh-pages-combined/security-reports
 
           # 2. Merge Web Reports
-          cp "web-reports/selenium-test-report.xlsx" gh-pages-combined/web-reports/ 2>/dev/null || true
-          cp "web-reports/selenium-summary.md" gh-pages-combined/web-reports/ 2>/dev/null || true
-          cp "web-reports/recorded-results.json" gh-pages-combined/web-reports/ 2>/dev/null || true
-          cp -r "web-reports/screenshots" gh-pages-combined/web-reports/ 2>/dev/null || true
+          cp "web-reports/testing/selenium-test-report.xlsx" gh-pages-combined/web-reports/ 2>/dev/null || cp "web-reports/selenium-test-report.xlsx" gh-pages-combined/web-reports/ 2>/dev/null || true
+          cp "web-reports/testing/selenium-summary.md" gh-pages-combined/web-reports/ 2>/dev/null || cp "web-reports/selenium-summary.md" gh-pages-combined/web-reports/ 2>/dev/null || true
+          cp "web-reports/testing/recorded-results.json" gh-pages-combined/web-reports/ 2>/dev/null || cp "web-reports/recorded-results.json" gh-pages-combined/web-reports/ 2>/dev/null || true
+          cp -r "web-reports/testing/screenshots" gh-pages-combined/web-reports/ 2>/dev/null || cp -r "web-reports/screenshots" gh-pages-combined/web-reports/ 2>/dev/null || true
 
           # 3. Merge Android Reports (WebdriverIO reports)
           BUILD_DIR_ANDROID="gh-pages-combined/android-reports/reports/history/build-$(printf '%03d' ${{ github.run_number }})"
@@ -484,9 +484,9 @@ jobs:
           cp -r android-reports/reports/. "$BUILD_DIR_ANDROID/" 2>/dev/null || true
 
           # 4. Merge Backend Reports
-          cp "backend-reports/functional-test-report.xlsx" gh-pages-combined/backend-reports/ 2>/dev/null || true
-          cp "backend-reports/functional-summary.md" gh-pages-combined/backend-reports/ 2>/dev/null || true
-          cp "backend-reports/recorded-results.json" gh-pages-combined/backend-reports/ 2>/dev/null || true
+          cp "backend-reports/testing/functional-test-report.xlsx" gh-pages-combined/backend-reports/ 2>/dev/null || cp "backend-reports/functional-test-report.xlsx" gh-pages-combined/backend-reports/ 2>/dev/null || true
+          cp "backend-reports/testing/functional-summary.md" gh-pages-combined/backend-reports/ 2>/dev/null || cp "backend-reports/functional-summary.md" gh-pages-combined/backend-reports/ 2>/dev/null || true
+          cp "backend-reports/testing/recorded-results.json" gh-pages-combined/backend-reports/ 2>/dev/null || cp "backend-reports/recorded-results.json" gh-pages-combined/backend-reports/ 2>/dev/null || true
 
           # 5. Merge Security Reports
           cp security-reports/security-review.md gh-pages-combined/security-reports/ 2>/dev/null || true

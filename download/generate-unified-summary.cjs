@@ -4,11 +4,24 @@ const path = require('path');
 const ROOT = process.cwd();
 
 // Paths to downloaded artifacts
-const webSummaryPath = path.join(ROOT, 'web-reports', 'Summary', 'summary.md');
+let webSummaryPath = path.join(ROOT, 'web-reports', 'Summary', 'summary.md');
+if (!fs.existsSync(webSummaryPath)) {
+  webSummaryPath = path.join(ROOT, 'web-reports', 'testing', 'Summary', 'summary.md');
+}
+
 const androidSummaryPath = path.join(ROOT, 'android-reports', 'Summary', 'summary.md');
-const backendSummaryPath = path.join(ROOT, 'backend-reports', 'Summary', 'summary.md');
+
+let backendSummaryPath = path.join(ROOT, 'backend-reports', 'Summary', 'summary.md');
+if (!fs.existsSync(backendSummaryPath)) {
+  backendSummaryPath = path.join(ROOT, 'backend-reports', 'testing', 'Summary', 'summary.md');
+}
+
 const securitySummaryPath = path.join(ROOT, 'security-reports', 'security-review.md');
-const securityE2ePath = path.join(ROOT, 'web-reports', 'security-e2e-results.json');
+
+let securityE2ePath = path.join(ROOT, 'web-reports', 'security-e2e-results.json');
+if (!fs.existsSync(securityE2ePath)) {
+  securityE2ePath = path.join(ROOT, 'web-reports', 'testing', 'security-e2e-results.json');
+}
 const loadReportPath = path.join(ROOT, 'load-test-reports', 'load-test-report.json');
 
 // Stats placeholders

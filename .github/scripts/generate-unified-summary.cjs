@@ -7,13 +7,30 @@ try { ExcelJS = require('exceljs'); } catch { ExcelJS = null; }
 const ROOT = process.cwd();
 
 // Paths to downloaded artifacts
-const webSummaryPath = path.join(ROOT, 'web-reports', 'selenium-summary.md');
+let webSummaryPath = path.join(ROOT, 'web-reports', 'selenium-summary.md');
+if (!fs.existsSync(webSummaryPath)) {
+  webSummaryPath = path.join(ROOT, 'web-reports', 'testing', 'selenium-summary.md');
+}
+
 const androidSummaryPath = path.join(ROOT, 'android-reports', 'Summary', 'summary.md');
-const backendSummaryPath = path.join(ROOT, 'backend-reports', 'functional-summary.md');
+
+let backendSummaryPath = path.join(ROOT, 'backend-reports', 'functional-summary.md');
+if (!fs.existsSync(backendSummaryPath)) {
+  backendSummaryPath = path.join(ROOT, 'backend-reports', 'testing', 'functional-summary.md');
+}
+
 const securitySummaryPath = path.join(ROOT, 'security-reports', 'security-review.md');
 const androidResultsPath = path.join(ROOT, 'android-reports', 'JSON', 'execution-results.json');
-const webResultsPath = path.join(ROOT, 'web-reports', 'recorded-results.json');
-const backendResultsPath = path.join(ROOT, 'backend-reports', 'recorded-results.json');
+
+let webResultsPath = path.join(ROOT, 'web-reports', 'recorded-results.json');
+if (!fs.existsSync(webResultsPath)) {
+  webResultsPath = path.join(ROOT, 'web-reports', 'testing', 'recorded-results.json');
+}
+
+let backendResultsPath = path.join(ROOT, 'backend-reports', 'recorded-results.json');
+if (!fs.existsSync(backendResultsPath)) {
+  backendResultsPath = path.join(ROOT, 'backend-reports', 'testing', 'recorded-results.json');
+}
 
 // Stats placeholders
 let webStats     = { total: 400, passed: 400, failed: 0, skipped: 0, rate: '100.0%' };
