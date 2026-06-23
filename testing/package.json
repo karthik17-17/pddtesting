@@ -5,7 +5,8 @@
   "main": "run-tests.js",
   "scripts": {
     "test:selenium": "node run-selenium-tests.js",
-    "test:functional": "node run-functional-tests.js"
+    "test:functional": "node run-functional-tests.js",
+    "generate-reports": "node generate-reports.js"
   },
   "dependencies": {
     "exceljs": "^4.4.0",

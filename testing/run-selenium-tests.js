@@ -316,6 +316,16 @@ async function runSeleniumSuite() {
   await workbook.xlsx.writeFile(outPath);
   console.log(`Selenium E2E report saved successfully to: ${outPath}`);
 
+  // Save recorded-results.json for unified dashboard
+  const jsonPath = path.join(__dirname, 'recorded-results.json');
+  fs.writeFileSync(jsonPath, JSON.stringify(testResults.map(r => ({
+    name: r.name,
+    status: r.status,
+    duration: r.duration,
+    error: r.error || null
+  })), null, 2), 'utf8');
+  console.log(`JSON test results saved successfully to: ${jsonPath}`);
+
   // Markdown Summary
   const totalDuration = ((Date.now() - startTime) / 1000).toFixed(2);
   const summaryMarkdown = `
