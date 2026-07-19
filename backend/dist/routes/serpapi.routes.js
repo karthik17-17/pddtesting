@@ -266,6 +266,32 @@ const cleanImageUrl = (url) => {
     }
     return url;
 };
+const getFallbackHotelImage = (name) => {
+    const fallbackImages = [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800", // Exterior pool
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800", // Deluxe bed
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", // Cozy room
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800", // Elegant lobby/hall
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800", // Boutique pool side
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800", // Sunlit pool resort
+        "https://images.unsplash.com/photo-1568495248636-6432b97bd949?w=800", // Modern suite
+        "https://images.unsplash.com/photo-1517840901100-8179e982acb7?w=800", // Classic double bedroom
+        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800", // Deluxe double room
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800", // Luxury hotel facade
+        "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800", // Historic estate exterior
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800", // Bed and pillows close up
+        "https://images.unsplash.com/photo-1529290130-4ca3753253ae?w=800", // Boutique hotel lobby lounge
+        "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800" // Premium bathroom/spa room
+    ];
+    if (!name)
+        return fallbackImages[0];
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const index = Math.abs(hash) % fallbackImages.length;
+    return fallbackImages[index];
+};
 const mapHotel = (hotel, index, city) => {
     var _a, _b, _c, _d;
     const name = hotel.name || hotel.title || (hotel.display_name ? hotel.display_name.split(',')[0] : "Hotel");
@@ -308,7 +334,6 @@ const mapHotel = (hotel, index, city) => {
         }
     }
     // Handle image
-    const defaultImage = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800";
     let image = cleanImageUrl(hotel.image || hotel.thumbnail || "");
     let images = [];
     if (hotel.images && Array.isArray(hotel.images)) {
@@ -321,7 +346,7 @@ const mapHotel = (hotel, index, city) => {
         }
     }
     if (!image) {
-        image = defaultImage;
+        image = getFallbackHotelImage(name);
     }
     if (images.length === 0 && image) {
         images = [image];
@@ -530,20 +555,23 @@ router.post("/hotels", (req, res) => __awaiter(void 0, void 0, void 0, function*
         if (mockList) {
             console.log(`Fallback: Using local mock hotels list for key "${key}"`);
             source = "mock_fallback";
-            hotels = mockList.map((m, index) => ({
-                id: index + 1,
-                name: m.name,
-                address: m.address,
-                rating: m.rating,
-                price: m.price,
-                image: m.image,
-                images: [m.image],
-                matchScore: m.matchScore,
-                why: m.why,
-                mapLink: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(m.name + ' ' + m.address)}`,
-                lat: m.lat,
-                lng: m.lng
-            }));
+            hotels = mockList.map((m, index) => {
+                const img = getFallbackHotelImage(m.name);
+                return {
+                    id: index + 1,
+                    name: m.name,
+                    address: m.address,
+                    rating: m.rating,
+                    price: m.price,
+                    image: img,
+                    images: [img],
+                    matchScore: m.matchScore,
+                    why: m.why,
+                    mapLink: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(m.name + ' ' + m.address)}`,
+                    lat: m.lat,
+                    lng: m.lng
+                };
+            });
         }
     }
     console.log(`Final Response: success=true, source="${source}", hotelsCount=${hotels.length}`);
