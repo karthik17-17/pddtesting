@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useToast } from "../context/ToastContext";
 import { useAuth } from "../context/AuthContext";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_URL from "../services/api";
 
 interface SavedHotel {
   _id: string;

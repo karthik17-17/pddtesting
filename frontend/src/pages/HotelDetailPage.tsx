@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
 import { useAuth } from "../context/AuthContext";
+import API_URL from "../services/api";
 
 interface Hotel {
   id: number;
@@ -50,8 +51,6 @@ export default function HotelDetailPage() {
   }
 
   const saveHotel = async () => {
-    const API_URL = import.meta.env.VITE_API_URL;
-
     const res = await fetch(`${API_URL}/api/saved`, {
       method: "POST",
       headers: {

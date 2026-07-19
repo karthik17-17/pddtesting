@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
 import { useAuth } from "../context/AuthContext";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_URL from "../services/api";
 
 type Hotel = {
   id: number;
