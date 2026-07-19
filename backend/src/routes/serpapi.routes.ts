@@ -221,14 +221,32 @@ const normalizeQuery = (query: string): string => {
 
 const getCityName = (query: string): string => {
   if (!query) return "Chennai";
+  const lowerQuery = query.toLowerCase();
+
+  const knownCities = [
+    "chennai", "bangalore", "bengaluru", "mumbai", "tirupati", "tirupathi",
+    "srikalahasti", "srikalahasthi", "delhi", "kolkata", "hyderabad", "pune",
+    "jaipur", "goa", "kochi", "coimbatore", "mysore", "pondicherry"
+  ];
+
+  for (const city of knownCities) {
+    if (lowerQuery.includes(city)) {
+      if (city === "tirupathi") return "Tirupati";
+      if (city === "srikalahasthi") return "Srikalahasti";
+      if (city === "bengaluru") return "Bangalore";
+      return city.charAt(0).toUpperCase() + city.slice(1);
+    }
+  }
+
+  // Fallback to regex parsing if no known city matches
   let city = query
-    .replace(/(budget|luxury|family|cheap)?\s*hotels?\s+(in|near)\s+/gi, "")
+    .replace(/(budget|luxury|family|cheap)?\s*hotels?\s+(in|near)\s+/gi, " ")
     .replace(/\b(india)\b/gi, "")
     .replace(/,/g, "")
     .trim();
   
   city = city.split(/\s+(with|under|for)\s+/i)[0].trim();
-  city = city.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
+  city = city.split(/\s+/).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
   return city || "Chennai";
 };
 
@@ -244,7 +262,25 @@ const cleanImageUrl = (url: string): string => {
 
 const mapHotel = (hotel: any, index: number, city: string) => {
   const name = hotel.name || hotel.title || (hotel.display_name ? hotel.display_name.split(',')[0] : "Hotel");
-  const address = hotel.address || hotel.display_name || "Address not available";
+  
+  let address = "Address not available";
+  if (typeof hotel.address === "string") {
+    address = hotel.address;
+  } else if (hotel.display_name) {
+    address = hotel.display_name;
+  } else if (hotel.address && typeof hotel.address === "object") {
+    const addr = hotel.address;
+    const parts = [
+      addr.road,
+      addr.suburb || addr.neighbourhood,
+      addr.city || addr.town || addr.village,
+      addr.state,
+      addr.postcode,
+      addr.country
+    ].filter(Boolean);
+    address = parts.join(", ");
+  }
+
   const rating = parseFloat(String(hotel.overall_rating || hotel.rating || (4.0 + (index % 10) * 0.1)));
   
   // Format price
@@ -428,12 +464,27 @@ router.post("/hotels", async (req, res) => {
   if (rawHotels.length === 0) {
     source = "osm_fallback";
     let osmData = [];
-    const queries = [
-      `hotels in ${city}`,
-      `lodging in ${city}`,
-      `guest houses in ${city}`,
-      `lodges in ${city}`
-    ];
+    
+    const queries: string[] = [];
+    const lowerNorm = normalizedQuery.toLowerCase();
+    const nearIdx = lowerNorm.indexOf("near ");
+    const inIdx = lowerNorm.indexOf("in ");
+
+    if (nearIdx !== -1) {
+      const landmark = normalizedQuery.slice(nearIdx + 5).replace(/\b(india)\b/gi, "").trim();
+      queries.push(`hotels near ${landmark}`);
+      queries.push(`lodging near ${landmark}`);
+    } else if (inIdx !== -1) {
+      const location = normalizedQuery.slice(inIdx + 3).replace(/\b(india)\b/gi, "").trim();
+      queries.push(`hotels in ${location}`);
+      queries.push(`lodging in ${location}`);
+    }
+
+    // General fallbacks
+    queries.push(`hotels in ${city}`);
+    queries.push(`lodging in ${city}`);
+    queries.push(`guest houses in ${city}`);
+    queries.push(`lodges in ${city}`);
     
     for (const q of queries) {
       try {
