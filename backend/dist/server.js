@@ -85,6 +85,9 @@ app.use("/api/admin", admin_routes_1.default);
 app.use("/api/recommendations", recommendation_routes_1.default);
 app.use("/api/serpapi", serpapi_routes_1.default);
 app.use("/api/saved", saved_routes_1.default);
+app.get("/api/health", (req, res) => {
+    res.status(200).json({ status: "ok" });
+});
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "ok" });
 });

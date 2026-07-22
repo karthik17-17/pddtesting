@@ -99,6 +99,10 @@ app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/serpapi", serpapiRoutes);
 app.use("/api/saved", savedRoutes);
 
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });

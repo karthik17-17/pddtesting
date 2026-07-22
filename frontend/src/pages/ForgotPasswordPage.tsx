@@ -14,28 +14,68 @@ export default function ForgotPasswordPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [resetSuccess, setResetSuccess] = useState(false);
   const [resetLoading, setResetLoading] = useState(false);
-  const [serverStatus, setServerStatus] = useState<"idle" | "warming" | "ready">("idle");
+  const [serverStatus, setServerStatus] = useState<"idle" | "warming" | "ready" | "offline">("idle");
 
-  // Ping backend /health endpoint on mount to wake up sleeping Render cloud instances
+  // Ping backend /api/health and /health on mount to wake up cloud backend (Render cold-start)
   useEffect(() => {
     let isMounted = true;
     const warmUpBackend = async () => {
       setServerStatus("warming");
       try {
-        console.log(`[WARM-UP] Pinging backend at ${API_URL}/health...`);
-        const res = await fetch(`${API_URL}/health`, { method: "GET" });
-        if (res.ok && isMounted) {
-          console.log("[WARM-UP] Backend server is awake and ready!");
+        console.log(`[HEALTH-CHECK] Testing backend health at ${API_URL}/api/health...`);
+        let res = await fetch(`${API_URL}/api/health`, { method: "GET" }).catch(() => null);
+        
+        if (!res || !res.ok) {
+          console.log(`[HEALTH-CHECK] Testing fallback health at ${API_URL}/health...`);
+          res = await fetch(`${API_URL}/health`, { method: "GET" }).catch(() => null);
+        }
+
+        if (res && res.ok && isMounted) {
+          console.log("[HEALTH-CHECK] Backend cloud server is awake and ready!");
           setServerStatus("ready");
+        } else if (isMounted) {
+          setServerStatus("offline");
         }
       } catch (err) {
-        console.warn("[WARM-UP] Backend ping notice:", err);
+        console.warn("[HEALTH-CHECK] Backend health notice:", err);
+        if (isMounted) setServerStatus("offline");
       }
     };
 
     warmUpBackend();
     return () => { isMounted = false; };
   }, []);
+
+  // Helper fetch function with automatic 1-retry mechanism for cloud cold-starts
+  const sendForgotPasswordRequest = async (targetEmail: string, retryCount = 0): Promise<any> => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 45000); // 45-second timeout for cloud cold starts
+
+    try {
+      console.log(`[FORGOT-PASSWORD] Sending POST request (Attempt ${retryCount + 1})...`);
+      const res = await fetch(`${API_URL}/api/auth/forgot-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Bypass-Tunnel-Reminder": "true"
+        },
+        body: JSON.stringify({ email: targetEmail }),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+      const data = await res.json();
+      return { ok: res.ok, status: res.status, data };
+    } catch (err: any) {
+      clearTimeout(timeoutId);
+      if (retryCount < 1) {
+        console.warn("[FORGOT-PASSWORD] Initial request failed/timed out. Retrying in 2 seconds...");
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        return sendForgotPasswordRequest(targetEmail, retryCount + 1);
+      }
+      throw err;
+    }
+  };
 
   const handleForgotPassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,35 +89,24 @@ export default function ForgotPasswordPage() {
     }
 
     setLoading(true);
-    console.log("[FORGOT-PASSWORD] Initiating request to:", `${API_URL}/api/auth/forgot-password`);
-    console.log("[FORGOT-PASSWORD] Email:", cleanEmail);
+    console.log("[FORGOT-PASSWORD] Initiating password reset for:", cleanEmail);
 
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 45000); // 45s timeout for Render cold-starts
+      const { ok, data } = await sendForgotPasswordRequest(cleanEmail);
+      console.log("[FORGOT-PASSWORD] Final Response Data:", data);
 
-      const res = await fetch(`${API_URL}/api/auth/forgot-password`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: cleanEmail }),
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-      const data = await res.json();
-      console.log("[FORGOT-PASSWORD] Server Response:", data);
-
-      if (res.ok && data.success) {
+      if (ok && data.success) {
         setSuccess(true);
+        setServerStatus("ready");
       } else {
         setError(data.message || data.error || "Failed to send OTP code. Please check your email.");
       }
     } catch (err: any) {
-      console.error("[FORGOT-PASSWORD] Error:", err);
+      console.error("[FORGOT-PASSWORD] Request Exception:", err);
       if (err.name === "AbortError") {
         setError("Connection timed out while waking up cloud backend. Please click Send again.");
       } else {
-        setError("Could not reach backend server. Please verify your internet connection.");
+        setError("Could not connect to backend API server. Please check your internet connection.");
       }
     } finally {
       setLoading(false);
@@ -140,7 +169,7 @@ export default function ForgotPasswordPage() {
       </div>
 
       <div className="relative w-full max-w-md">
-        {/* Logo */}
+        {/* Logo & Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
             NeuroStay AI
@@ -149,6 +178,11 @@ export default function ForgotPasswordPage() {
           {serverStatus === "warming" && (
             <p className="text-xs text-amber-400/80 mt-1 animate-pulse">
               ⚡ Connecting to cloud backend...
+            </p>
+          )}
+          {serverStatus === "ready" && (
+            <p className="text-xs text-emerald-400 mt-1">
+              🟢 Backend Online & Connected
             </p>
           )}
         </div>
