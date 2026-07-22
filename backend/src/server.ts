@@ -121,11 +121,14 @@ const authRateLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+import hotelRoutes from "./routes/hotel.routes";
+
 app.use("/api/otp", authRateLimiter, otpRoutes);
 app.use("/api/auth", authRateLimiter, authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/serpapi", serpapiRoutes);
+app.use("/api/hotels", hotelRoutes);
 app.use("/api/saved", savedRoutes);
 
 app.get("/api/health", (req, res) => {

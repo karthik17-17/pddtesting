@@ -62,11 +62,13 @@ app.get(["/download/NeuroStayAI.apk", "/download/neurostay-ai.apk"], (req, res) 
     console.warn("[APK-DOWNLOAD] File not found in candidate paths.");
     return res.status(404).send("APK file not found on server.");
 });
+const hotel_routes_1 = __importDefault(require("./routes/hotel.routes"));
 app.use("/api/auth", auth_routes_1.default);
 app.use("/api/admin", admin_routes_1.default);
 app.use("/api/recommendations", recommendation_routes_1.default);
 app.use("/api/saved", saved_routes_1.default);
 app.use("/api/serpapi", serpapi_routes_1.default);
+app.use("/api/hotels", hotel_routes_1.default);
 app.get("/api/health", (req, res) => {
     const isDbConnected = mongoose_1.default.connection.readyState === 1;
     res.status(200).json({

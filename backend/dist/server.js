@@ -107,11 +107,13 @@ const authRateLimiter = (0, express_rate_limit_1.default)({
     standardHeaders: true,
     legacyHeaders: false,
 });
+const hotel_routes_1 = __importDefault(require("./routes/hotel.routes"));
 app.use("/api/otp", authRateLimiter, otp_routes_1.default);
 app.use("/api/auth", authRateLimiter, auth_routes_1.default);
 app.use("/api/admin", admin_routes_1.default);
 app.use("/api/recommendations", recommendation_routes_1.default);
 app.use("/api/serpapi", serpapi_routes_1.default);
+app.use("/api/hotels", hotel_routes_1.default);
 app.use("/api/saved", saved_routes_1.default);
 app.get("/api/health", (req, res) => {
     const isDbConnected = mongoose_1.default.connection.readyState === 1;
