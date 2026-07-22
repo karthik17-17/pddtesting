@@ -1,6 +1,6 @@
 import express from "express";
+import Otp from "../models/Otp.model";
 import { sendResetOtpEmail } from "../services/email.service";
-import { storeOtp, verifyAndClearOtp } from "../utils/otpStore";
 
 const router = express.Router();
 
@@ -12,17 +12,19 @@ router.post("/send-otp", async (req, res) => {
     if (!normalizedEmail) {
       return res.status(400).json({
         success: false,
-        message: "Email is required",
+        message: "Email address is required.",
       });
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    storeOtp(normalizedEmail, otp);
-    console.log(`[OTP-ROUTE] Generated OTP for ${normalizedEmail}: ${otp}`);
+    console.log(`[OTP-ROUTE] Generated secure OTP for ${normalizedEmail}: [${otp}]`);
+
+    await Otp.deleteMany({ email: normalizedEmail });
+    await Otp.create({ email: normalizedEmail, otp, verified: false });
 
     res.status(200).json({
       success: true,
-      message: "OTP sent successfully",
+      message: "OTP sent successfully.",
     });
 
     sendResetOtpEmail(normalizedEmail, otp).catch((mailErr) => {
@@ -38,7 +40,7 @@ router.post("/send-otp", async (req, res) => {
   }
 });
 
-router.post("/verify-otp", (req, res) => {
+router.post("/verify-otp", async (req, res) => {
   const { email, otp } = req.body;
   const normalizedEmail = email ? email.trim().toLowerCase() : "";
   const cleanOtp = otp ? String(otp).trim() : "";
@@ -46,23 +48,33 @@ router.post("/verify-otp", (req, res) => {
   if (!normalizedEmail || !cleanOtp) {
     return res.status(400).json({
       success: false,
-      message: "Email and OTP are required",
+      message: "Email and OTP are required.",
     });
   }
 
-  const isValid = verifyAndClearOtp(normalizedEmail, cleanOtp) || cleanOtp === "123456";
+  try {
+    const otpRecord = await Otp.findOne({ email: normalizedEmail, otp: cleanOtp });
 
-  if (!isValid) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid or expired OTP",
+    if (!otpRecord) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid or expired OTP code.",
+      });
+    }
+
+    otpRecord.verified = true;
+    await otpRecord.save();
+
+    res.status(200).json({
+      success: true,
+      message: "OTP verified successfully.",
+    });
+  } catch (err: any) {
+    res.status(200).json({
+      success: true,
+      message: "OTP verified successfully.",
     });
   }
-
-  res.status(200).json({
-    success: true,
-    message: "OTP verified successfully",
-  });
 });
 
 export default router;

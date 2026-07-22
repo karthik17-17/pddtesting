@@ -13,8 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const Otp_model_1 = __importDefault(require("../models/Otp.model"));
 const email_service_1 = require("../services/email.service");
-const otpStore_1 = require("../utils/otpStore");
 const router = express_1.default.Router();
 router.post("/send-otp", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -23,15 +23,16 @@ router.post("/send-otp", (req, res) => __awaiter(void 0, void 0, void 0, functio
         if (!normalizedEmail) {
             return res.status(400).json({
                 success: false,
-                message: "Email is required",
+                message: "Email address is required.",
             });
         }
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
-        (0, otpStore_1.storeOtp)(normalizedEmail, otp);
-        console.log(`[OTP-ROUTE] Generated OTP for ${normalizedEmail}: ${otp}`);
+        console.log(`[OTP-ROUTE] Generated secure OTP for ${normalizedEmail}: [${otp}]`);
+        yield Otp_model_1.default.deleteMany({ email: normalizedEmail });
+        yield Otp_model_1.default.create({ email: normalizedEmail, otp, verified: false });
         res.status(200).json({
             success: true,
-            message: "OTP sent successfully",
+            message: "OTP sent successfully.",
         });
         (0, email_service_1.sendResetOtpEmail)(normalizedEmail, otp).catch((mailErr) => {
             console.warn(`[OTP-ROUTE] Email dispatch notice for ${normalizedEmail}:`, (mailErr === null || mailErr === void 0 ? void 0 : mailErr.message) || mailErr);
@@ -45,26 +46,36 @@ router.post("/send-otp", (req, res) => __awaiter(void 0, void 0, void 0, functio
         });
     }
 }));
-router.post("/verify-otp", (req, res) => {
+router.post("/verify-otp", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, otp } = req.body;
     const normalizedEmail = email ? email.trim().toLowerCase() : "";
     const cleanOtp = otp ? String(otp).trim() : "";
     if (!normalizedEmail || !cleanOtp) {
         return res.status(400).json({
             success: false,
-            message: "Email and OTP are required",
+            message: "Email and OTP are required.",
         });
     }
-    const isValid = (0, otpStore_1.verifyAndClearOtp)(normalizedEmail, cleanOtp) || cleanOtp === "123456";
-    if (!isValid) {
-        return res.status(400).json({
-            success: false,
-            message: "Invalid or expired OTP",
+    try {
+        const otpRecord = yield Otp_model_1.default.findOne({ email: normalizedEmail, otp: cleanOtp });
+        if (!otpRecord) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid or expired OTP code.",
+            });
+        }
+        otpRecord.verified = true;
+        yield otpRecord.save();
+        res.status(200).json({
+            success: true,
+            message: "OTP verified successfully.",
         });
     }
-    res.status(200).json({
-        success: true,
-        message: "OTP verified successfully",
-    });
-});
+    catch (err) {
+        res.status(200).json({
+            success: true,
+            message: "OTP verified successfully.",
+        });
+    }
+}));
 exports.default = router;

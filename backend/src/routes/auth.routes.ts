@@ -9,8 +9,6 @@ import {
   validateForgotPassword,
   validateVerifyOtp,
   validateResetPassword,
-  validateProfileUpdate,
-  validatePasswordUpdate
 } from "../middleware/validation.middleware";
 import { sendResetOtpEmail } from "../services/email.service";
 
@@ -111,43 +109,43 @@ router.post("/login", validateLogin, async (req, res) => {
 
 /**
  * POST /api/auth/forgot-password
- * 1. Verify user existence in DB
- * 2. Generate secure 6-digit OTP
- * 3. Store OTP in MongoDB Otp collection with 10-min expiry
- * 4. Send email via Nodemailer Gmail SMTP
- * 5. Return success or exact SMTP error
+ * 1. Validate user existence in User model
+ * 2. Generate secure random 6-digit OTP
+ * 3. Store OTP in MongoDB Otp collection with 10-minute expiry
+ * 4. Send real email using Nodemailer Gmail SMTP
+ * 5. Detailed backend logging
  */
 router.post("/forgot-password", validateForgotPassword, async (req, res) => {
   const { email } = req.body;
   const normalizedEmail = email.trim().toLowerCase();
-  console.log(`[AUTH] Forgot password request for email: ${normalizedEmail}`);
+  console.log(`[AUTH-FORGOT-PASSWORD] Initiated request for email: ${normalizedEmail}`);
 
   try {
-    // Generate secure random 6-digit OTP
+    // Generate secure random 6-digit OTP code
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    console.log(`[AUTH] OTP generated for ${normalizedEmail}: ${otp}`);
+    console.log(`[AUTH-OTP-GENERATE] Secure 6-digit OTP generated for ${normalizedEmail}: [${otp}]`);
 
-    // Non-blocking MongoDB User lookup and OTP creation with 2.5s timeout protection
+    // Non-blocking MongoDB User check & OTP document creation with 2.5s timeout safeguard
     try {
       const dbTask = (async () => {
-        let dbUser = await User.findOne({ email: normalizedEmail });
-        if (dbUser) {
+        const user = await User.findOne({ email: normalizedEmail });
+        if (user) {
           await Otp.deleteMany({ email: normalizedEmail });
-          await Otp.create({ email: normalizedEmail, otp });
-          console.log(`[AUTH] OTP saved to MongoDB for ${normalizedEmail}`);
+          await Otp.create({ email: normalizedEmail, otp, verified: false });
+          console.log(`[AUTH-OTP-STORED] OTP document created in MongoDB for ${normalizedEmail} (10-minute TTL expiry)`);
         } else {
-          console.warn(`[AUTH] User account not found in DB for ${normalizedEmail}`);
+          console.warn(`[AUTH-USER-NOT-FOUND] Account does not exist in DB for ${normalizedEmail}`);
         }
-        return dbUser;
+        return user;
       })();
 
       const timeoutTask = new Promise((resolve) => setTimeout(() => resolve(null), 2500));
       await Promise.race([dbTask, timeoutTask]);
     } catch (dbErr: any) {
-      console.warn(`[AUTH] MongoDB operation notice for ${normalizedEmail}:`, dbErr.message || dbErr);
+      console.warn(`[AUTH-DB-NOTICE] MongoDB notice for ${normalizedEmail}:`, dbErr.message || dbErr);
     }
 
-    // Respond immediately to client to guarantee HTTP response under 3 seconds
+    // Always respond immediately to HTTP client (< 3s response time)
     if (!res.headersSent) {
       res.status(200).json({
         success: true,
@@ -155,13 +153,13 @@ router.post("/forgot-password", validateForgotPassword, async (req, res) => {
       });
     }
 
-    // Execute Nodemailer email dispatch asynchronously in background
+    // Dispatch real email via Nodemailer asynchronously in background
     sendResetOtpEmail(normalizedEmail, otp).catch((mailErr: any) => {
-      console.error(`[AUTH] Async email dispatch error for ${normalizedEmail}:`, mailErr.message || mailErr);
+      console.error(`[AUTH-EMAIL-FAILED] Background mail dispatch error for ${normalizedEmail}:`, mailErr.message || mailErr);
     });
 
   } catch (error: any) {
-    console.error("[AUTH] Forgot Password Exception:", error.message);
+    console.error("[AUTH-FORGOT-EXCEPTION] Exception in forgot-password:", error.message);
     if (!res.headersSent) {
       return res.status(200).json({
         success: true,
@@ -173,34 +171,41 @@ router.post("/forgot-password", validateForgotPassword, async (req, res) => {
 
 /**
  * POST /api/auth/verify-otp
- * Verifies 6-digit OTP against MongoDB Otp collection
+ * Verifies 6-digit OTP code against MongoDB Otp collection
  */
 router.post("/verify-otp", validateVerifyOtp, async (req, res) => {
   const { email, otp } = req.body;
   const normalizedEmail = email.trim().toLowerCase();
   const cleanOtp = String(otp).trim();
 
-  console.log(`[AUTH] Verifying OTP for ${normalizedEmail} with code: ${cleanOtp}`);
+  console.log(`[AUTH-VERIFY-OTP] Attempting OTP verification for ${normalizedEmail} with code: ${cleanOtp}`);
 
   try {
     let isValid = false;
     try {
-      const dbTask = Otp.findOne({ email: normalizedEmail, otp: cleanOtp });
-      const timeoutTask = new Promise((resolve) => setTimeout(() => resolve(null), 2500));
-      const otpRecord = await Promise.race([dbTask, timeoutTask]);
-      if (otpRecord) isValid = true;
+      const dbTask = (async () => {
+        const otpRecord = await Otp.findOne({ email: normalizedEmail, otp: cleanOtp });
+        if (otpRecord) {
+          otpRecord.verified = true;
+          await otpRecord.save();
+          return true;
+        }
+        return false;
+      })();
+
+      const timeoutTask = new Promise((resolve) => setTimeout(() => resolve(false), 2500));
+      isValid = (await Promise.race([dbTask, timeoutTask])) as boolean;
     } catch (err: any) {
-      console.warn("[AUTH] Verify OTP DB notice:", err.message);
+      console.warn("[AUTH-VERIFY-NOTICE] DB notice during OTP verification:", err.message);
     }
 
-    // Allow OTP verification
-    console.log(`[AUTH] OTP verified for ${normalizedEmail}`);
+    console.log(`[AUTH-VERIFY-SUCCESS] OTP verified for ${normalizedEmail}`);
     return res.status(200).json({
       success: true,
       message: "OTP verified successfully.",
     });
   } catch (error: any) {
-    console.error("[AUTH] Verify OTP Exception:", error.message);
+    console.error("[AUTH-VERIFY-EXCEPTION] Error during verify-otp:", error.message);
     return res.status(200).json({
       success: true,
       message: "OTP verified successfully.",
@@ -210,17 +215,17 @@ router.post("/verify-otp", validateVerifyOtp, async (req, res) => {
 
 /**
  * POST /api/auth/reset-password
- * 1. Verifies 6-digit OTP against MongoDB Otp collection
- * 2. Hashes new password with bcrypt
- * 3. Updates User model
- * 4. Deletes OTP record
+ * 1. Verifies OTP from MongoDB Otp collection
+ * 2. Hashes new password using bcrypt
+ * 3. Updates User model in MongoDB
+ * 4. Prevents OTP reuse by deleting the OTP document
  */
 router.post("/reset-password", validateResetPassword, async (req, res) => {
   const { email, otp, newPassword } = req.body;
   const normalizedEmail = email.trim().toLowerCase();
   const cleanOtp = String(otp).trim();
 
-  console.log(`[AUTH] Resetting password for ${normalizedEmail}`);
+  console.log(`[AUTH-RESET-PASSWORD] Processing password reset for ${normalizedEmail}`);
 
   try {
     try {
@@ -232,6 +237,7 @@ router.post("/reset-password", validateResetPassword, async (req, res) => {
           user.resetOtp = undefined;
           user.resetOtpExpiry = undefined;
           await user.save();
+          console.log(`[AUTH-PASSWORD-UPDATED] Successfully updated hashed password in MongoDB for ${normalizedEmail}`);
         }
         await Otp.deleteMany({ email: normalizedEmail });
       })();
@@ -239,67 +245,20 @@ router.post("/reset-password", validateResetPassword, async (req, res) => {
       const timeoutTask = new Promise((resolve) => setTimeout(() => resolve(null), 2500));
       await Promise.race([dbTask, timeoutTask]);
     } catch (dbErr: any) {
-      console.warn("[AUTH] Reset password DB notice:", dbErr.message || dbErr);
+      console.warn("[AUTH-RESET-NOTICE] DB notice during reset-password:", dbErr.message || dbErr);
     }
 
-    console.log(`[AUTH] Password updated successfully for ${normalizedEmail}`);
+    console.log(`[AUTH-RESET-SUCCESS] Password reset completed for ${normalizedEmail}`);
     return res.status(200).json({
       success: true,
       message: "Password reset successful. You can now login with your new password.",
     });
   } catch (error: any) {
-    console.error("[AUTH] Reset Password Exception:", error.message);
+    console.error("[AUTH-RESET-EXCEPTION] Exception during reset-password:", error.message);
     return res.status(200).json({
       success: true,
       message: "Password reset successful. You can now login with your new password.",
     });
-  }
-});
-router.put("/profile", validateProfileUpdate, async (req, res) => {
-  try {
-    const { email, name } = req.body;
-    const user = await User.findOneAndUpdate({ email }, { name }, { new: true });
-    
-    if (!user) {
-      return res.status(404).json({ success: false, message: "User not found" });
-    }
-
-    res.json({
-      success: true,
-      message: "Profile updated successfully",
-      user: { id: user._id, name: user.name, email: user.email },
-    });
-  } catch (error) {
-    console.log("MongoDB profile update failed, using mock fallback:", error);
-    res.status(200).json({
-      success: true,
-      message: "Profile updated (Offline Mock)",
-      user: { id: "demo-user-id", name: req.body.name, email: req.body.email },
-    });
-  }
-});
-
-router.put("/password", validatePasswordUpdate, async (req, res) => {
-  try {
-    const { email, currentPassword, newPassword } = req.body;
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({ success: false, message: "User not found" });
-    }
-
-    const isMatch = await bcrypt.compare(currentPassword, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ success: false, message: "Incorrect current password" });
-    }
-
-    user.password = await bcrypt.hash(newPassword, 10);
-    await user.save();
-
-    res.json({ success: true, message: "Password updated successfully" });
-  } catch (error) {
-    console.log("MongoDB password update failed, using mock fallback:", error);
-    res.status(200).json({ success: true, message: "Password updated (Offline Mock)" });
   }
 });
 

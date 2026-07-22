@@ -474,7 +474,7 @@ fun ForgotPasswordScreen(
                                             Toast.makeText(context, "Failed to send OTP.", Toast.LENGTH_SHORT).show()
                                         }
                                     } catch (e: Exception) {
-                                        Toast.makeText(context, "Offline Mock: OTP is 123456", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(context, "Check your email for the 6-digit OTP code.", Toast.LENGTH_LONG).show()
                                         step = 2
                                     } finally {
                                         loading = false
@@ -505,7 +505,7 @@ fun ForgotPasswordScreen(
                             value = otp,
                             onValueChange = { otp = it },
                             label = { Text("6-Digit OTP", color = ThemeGrayText) },
-                            placeholder = { Text("123456") },
+                            placeholder = { Text("Enter 6-digit OTP") },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                             colors = TextFieldDefaults.colors(
                                 focusedContainerColor = Color(0xFF0F172A),

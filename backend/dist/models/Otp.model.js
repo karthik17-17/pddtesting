@@ -17,10 +17,14 @@ const otpSchema = new mongoose_1.default.Schema({
         required: true,
         trim: true,
     },
+    verified: {
+        type: Boolean,
+        default: false,
+    },
     createdAt: {
         type: Date,
         default: Date.now,
-        expires: 600, // MongoDB TTL index: automatically deletes document after 10 minutes (600 seconds)
+        expires: 600, // MongoDB TTL index: Automatically deletes document after 10 minutes (600 seconds)
     },
 }, { timestamps: true });
 exports.default = mongoose_1.default.models.Otp || mongoose_1.default.model("Otp", otpSchema);
