@@ -33,6 +33,30 @@ app.use((0, cors_1.default)({
     credentials: true,
 }));
 app.use(express_1.default.json());
+const path_1 = __importDefault(require("path"));
+const fs_1 = __importDefault(require("fs"));
+app.use("/download", express_1.default.static(path_1.default.join(process.cwd(), "download")));
+app.use("/download", express_1.default.static(path_1.default.join(process.cwd(), "backend/download")));
+app.use("/download", express_1.default.static(path_1.default.join(__dirname, "../../download")));
+app.use("/download", express_1.default.static(path_1.default.join(__dirname, "../download")));
+app.use("/download", express_1.default.static(path_1.default.join(__dirname, "download")));
+app.get("/download/neurostay-ai.apk", (req, res) => {
+    const possiblePaths = [
+        path_1.default.join(process.cwd(), "download/neurostay-ai.apk"),
+        path_1.default.join(process.cwd(), "backend/download/neurostay-ai.apk"),
+        path_1.default.join(__dirname, "../../download/neurostay-ai.apk"),
+        path_1.default.join(__dirname, "../download/neurostay-ai.apk"),
+        path_1.default.join(__dirname, "download/neurostay-ai.apk"),
+    ];
+    for (const p of possiblePaths) {
+        if (fs_1.default.existsSync(p)) {
+            console.log(`[APK-DOWNLOAD] Serving APK from path: ${p}`);
+            return res.download(p, "neurostay-ai.apk");
+        }
+    }
+    console.warn("[APK-DOWNLOAD] File not found in candidate paths.");
+    return res.status(404).send("APK file not found on server.");
+});
 app.use("/api/auth", auth_routes_1.default);
 app.use("/api/admin", admin_routes_1.default);
 app.use("/api/recommendations", recommendation_routes_1.default);

@@ -43,7 +43,32 @@ app.use(compression());
 // Secure application by setting various HTTP headers
 app.use(helmet());
 
+import fs from "fs";
+
+app.use("/download", express.static(path.join(process.cwd(), "download")));
+app.use("/download", express.static(path.join(process.cwd(), "backend/download")));
 app.use("/download", express.static(path.join(__dirname, "../../download")));
+app.use("/download", express.static(path.join(__dirname, "../download")));
+app.use("/download", express.static(path.join(__dirname, "download")));
+
+app.get("/download/neurostay-ai.apk", (req, res) => {
+  const possiblePaths = [
+    path.join(process.cwd(), "download/neurostay-ai.apk"),
+    path.join(process.cwd(), "backend/download/neurostay-ai.apk"),
+    path.join(__dirname, "../../download/neurostay-ai.apk"),
+    path.join(__dirname, "../download/neurostay-ai.apk"),
+    path.join(__dirname, "download/neurostay-ai.apk"),
+  ];
+
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      console.log(`[APK-DOWNLOAD] Serving APK from path: ${p}`);
+      return res.download(p, "neurostay-ai.apk");
+    }
+  }
+  console.warn("[APK-DOWNLOAD] File not found in candidate paths.");
+  return res.status(404).send("APK file not found on server.");
+});
 
 const allowedOrigins = [
   "http://localhost:5173",
