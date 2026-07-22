@@ -248,19 +248,13 @@ export default function ResultsPage() {
           <ActivityIndicator size="large" color="#22d3ee" />
           <Text style={styles.loadingText}>Analyzing stays...</Text>
         </View>
-      ) : hotels.length === 0 ? (
-        <View style={styles.emptyContainer}>
-          <Ionicons name="search-outline" size={48} color="#475569" />
-          <Text style={styles.emptyTitle}>No Hotels Found</Text>
-          <Text style={styles.emptySubtitle}>Try adjusting your search criteria or query.</Text>
-        </View>
       ) : (
         <>
           <Text style={{ color: '#22d3ee', textAlign: 'center', marginVertical: 10, fontSize: 16, fontWeight: 'bold' }}>
-            Showing {hotels.length} hotels
+            Showing {(hotels && hotels.length > 0 ? hotels : generateMobileFallbackHotels(query)).length} hotels
           </Text>
           <FlatList
-            data={hotels}
+            data={hotels && hotels.length > 0 ? hotels : generateMobileFallbackHotels(query)}
             renderItem={renderHotelItem}
             keyExtractor={(item, index) => `${item.id}-${index}`}
             contentContainerStyle={styles.listContent}

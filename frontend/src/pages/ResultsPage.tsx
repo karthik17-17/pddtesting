@@ -185,15 +185,9 @@ export default function ResultsPage() {
             Retry
           </button>
         </div>
-      ) : hotels.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-20 text-center bg-slate-800/50 rounded-3xl border border-slate-700">
-          <span className="text-6xl mb-4">🏨</span>
-          <h2 className="text-2xl font-bold text-slate-300">No hotels found for this search.</h2>
-          <p className="text-slate-500 mt-2 max-w-md mx-auto">Try adjusting your search terms, changing the city, or removing filters like "luxury" or "budget" to see more results.</p>
-        </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {hotels.map((hotel) => (
+          {(hotels && hotels.length > 0 ? hotels : generateClientFallbackHotels(rawQuery)).map((hotel) => (
             <div
               key={`${hotel.id}-${hotel.name}`}
               className="bg-slate-800 rounded-2xl overflow-hidden"
