@@ -51,28 +51,29 @@ app.use("/download", express.static(path.join(__dirname, "../../download")));
 app.use("/download", express.static(path.join(__dirname, "../download")));
 app.use("/download", express.static(path.join(__dirname, "download")));
 
-app.get(["/download/NeuroStayAI.apk", "/download/neurostay-ai.apk"], (req, res) => {
-  const possiblePaths = [
-    path.join(process.cwd(), "download/NeuroStayAI.apk"),
-    path.join(process.cwd(), "download/neurostay-ai.apk"),
-    path.join(process.cwd(), "backend/download/NeuroStayAI.apk"),
-    path.join(process.cwd(), "backend/download/neurostay-ai.apk"),
-    path.join(__dirname, "../../download/NeuroStayAI.apk"),
-    path.join(__dirname, "../../download/neurostay-ai.apk"),
-    path.join(__dirname, "../download/NeuroStayAI.apk"),
-    path.join(__dirname, "../download/neurostay-ai.apk"),
-    path.join(__dirname, "download/NeuroStayAI.apk"),
-    path.join(__dirname, "download/neurostay-ai.apk"),
-  ];
+app.get("/download*", (req, res, next) => {
+  if (req.originalUrl.includes(".apk") || req.path.includes(".apk") || req.path === "/download" || req.path === "/download/") {
+    const possiblePaths = [
+      path.join(process.cwd(), "download/NeuroStayAI.apk"),
+      path.join(process.cwd(), "download/neurostay-ai.apk"),
+      path.join(process.cwd(), "backend/download/NeuroStayAI.apk"),
+      path.join(process.cwd(), "backend/download/neurostay-ai.apk"),
+      path.join(__dirname, "../../download/NeuroStayAI.apk"),
+      path.join(__dirname, "../../download/neurostay-ai.apk"),
+      path.join(__dirname, "../download/NeuroStayAI.apk"),
+      path.join(__dirname, "../download/neurostay-ai.apk"),
+      path.join(__dirname, "download/NeuroStayAI.apk"),
+      path.join(__dirname, "download/neurostay-ai.apk"),
+    ];
 
-  for (const p of possiblePaths) {
-    if (fs.existsSync(p)) {
-      console.log(`[APK-DOWNLOAD] Serving APK from path: ${p}`);
-      return res.download(p, "NeuroStayAI.apk");
+    for (const p of possiblePaths) {
+      if (fs.existsSync(p)) {
+        console.log(`[APK-DOWNLOAD-WILDCARD] Serving APK from path: ${p} for requested URL: ${req.originalUrl}`);
+        return res.download(p, "NeuroStayAI.apk");
+      }
     }
   }
-  console.warn("[APK-DOWNLOAD] File not found in candidate paths.");
-  return res.status(404).send("APK file not found on server.");
+  next();
 });
 
 const allowedOrigins = [
