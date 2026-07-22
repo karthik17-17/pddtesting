@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import mongoose from "mongoose";
 
 import authRoutes from "./routes/auth.routes";
 import adminRoutes from "./routes/admin.routes";
@@ -19,16 +20,18 @@ const allowedOrigins = [
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+        return callback(null, true);
+      }
       return callback(null, true);
-    }
-    return callback(null, true);
-  },
-  credentials: true
-}));
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -38,15 +41,25 @@ app.use("/api/saved", savedRoutes);
 app.use("/api/serpapi", serpapiRoutes);
 
 app.get("/api/health", (req, res) => {
-  res.status(200).json({ status: "ok" });
+  const isDbConnected = mongoose.connection.readyState === 1;
+  res.status(200).json({
+    status: "ok",
+    database: isDbConnected ? "connected" : "connecting",
+    server: "running",
+  });
 });
 
 app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok" });
+  const isDbConnected = mongoose.connection.readyState === 1;
+  res.status(200).json({
+    status: "ok",
+    database: isDbConnected ? "connected" : "connecting",
+    server: "running",
+  });
 });
 
 app.get("/", (req, res) => {
   res.send("NeuroStay AI Backend Running");
 });
 
-export default app;                
+export default app;

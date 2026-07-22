@@ -17,6 +17,7 @@ const admin_routes_1 = __importDefault(require("./routes/admin.routes"));
 const recommendation_routes_1 = __importDefault(require("./routes/recommendation.routes"));
 const serpapi_routes_1 = __importDefault(require("./routes/serpapi.routes"));
 const saved_routes_1 = __importDefault(require("./routes/saved.routes"));
+const email_service_1 = require("./services/email.service");
 // Ensure critical environment variables are loaded
 if (!process.env.MONGO_URI) {
     console.error("FATAL ERROR: MONGO_URI is not defined in environment variables. Application requires a database connection to start.");
@@ -27,11 +28,11 @@ if (!process.env.JWT_SECRET) {
     process.exit(1);
 }
 const app = (0, express_1.default)();
-// Performance timing middleware
+// Request logging middleware
 app.use((req, res, next) => {
     const start = Date.now();
     res.on("finish", () => {
-        console.log(`Route took ${Date.now() - start}ms`);
+        console.log(`[HTTP] ${req.method} ${req.originalUrl} ${res.statusCode} - ${Date.now() - start}ms`);
     });
     next();
 });
@@ -56,16 +57,16 @@ app.use((0, cors_1.default)({
     origin: (origin, callback) => {
         if (!origin)
             return callback(null, true);
-        if (allowedOrigins.includes(origin)) {
+        if (allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
             return callback(null, true);
         }
-        console.warn("Blocked CORS origin:", origin);
         return callback(null, true);
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
+console.log("CORS enabled for allowed origins:", allowedOrigins);
 app.options(/(.*)/, (0, cors_1.default)());
 app.use(express_1.default.json());
 // Rate Limiting for Auth & OTP routes
@@ -86,14 +87,25 @@ app.use("/api/recommendations", recommendation_routes_1.default);
 app.use("/api/serpapi", serpapi_routes_1.default);
 app.use("/api/saved", saved_routes_1.default);
 app.get("/api/health", (req, res) => {
-    res.status(200).json({ status: "ok" });
+    const isDbConnected = mongoose_1.default.connection.readyState === 1;
+    res.status(200).json({
+        status: "ok",
+        database: isDbConnected ? "connected" : "connecting",
+        server: "running",
+    });
 });
 app.get("/health", (req, res) => {
-    res.status(200).json({ status: "ok" });
+    const isDbConnected = mongoose_1.default.connection.readyState === 1;
+    res.status(200).json({
+        status: "ok",
+        database: isDbConnected ? "connected" : "connecting",
+        server: "running",
+    });
 });
 app.get("/", (req, res) => {
     res.send("NeuroStay AI Backend Running");
 });
+// Connect to MongoDB
 mongoose_1.default
     .connect(process.env.MONGO_URI)
     .then(() => {
@@ -102,7 +114,19 @@ mongoose_1.default
     .catch((error) => {
     console.log("MongoDB connection failed:", error.message);
 });
+// Verify SMTP connection on startup
+try {
+    const transporter = (0, email_service_1.createTransporter)();
+    transporter.verify().then(() => {
+        console.log("SMTP connected");
+    }).catch((err) => {
+        console.warn("SMTP connection notice:", err.message || err);
+    });
+}
+catch (err) {
+    console.warn("SMTP initialization notice:", err.message || err);
+}
 const PORT = process.env.PORT || 5000;
 app.listen(Number(PORT), "0.0.0.0", () => {
-    console.log(`Server running on 0.0.0.0:${PORT}`);
+    console.log(`Server started on 0.0.0.0:${PORT}`);
 });

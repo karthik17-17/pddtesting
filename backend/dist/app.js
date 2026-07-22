@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const admin_routes_1 = __importDefault(require("./routes/admin.routes"));
 const recommendation_routes_1 = __importDefault(require("./routes/recommendation.routes"));
@@ -29,7 +30,7 @@ app.use((0, cors_1.default)({
         }
         return callback(null, true);
     },
-    credentials: true
+    credentials: true,
 }));
 app.use(express_1.default.json());
 app.use("/api/auth", auth_routes_1.default);
@@ -38,10 +39,20 @@ app.use("/api/recommendations", recommendation_routes_1.default);
 app.use("/api/saved", saved_routes_1.default);
 app.use("/api/serpapi", serpapi_routes_1.default);
 app.get("/api/health", (req, res) => {
-    res.status(200).json({ status: "ok" });
+    const isDbConnected = mongoose_1.default.connection.readyState === 1;
+    res.status(200).json({
+        status: "ok",
+        database: isDbConnected ? "connected" : "connecting",
+        server: "running",
+    });
 });
 app.get("/health", (req, res) => {
-    res.status(200).json({ status: "ok" });
+    const isDbConnected = mongoose_1.default.connection.readyState === 1;
+    res.status(200).json({
+        status: "ok",
+        database: isDbConnected ? "connected" : "connecting",
+        server: "running",
+    });
 });
 app.get("/", (req, res) => {
     res.send("NeuroStay AI Backend Running");
