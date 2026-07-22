@@ -3,20 +3,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("./loadEnv");
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const path_1 = __importDefault(require("path"));
 const helmet_1 = __importDefault(require("helmet"));
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
+const compression_1 = __importDefault(require("compression"));
 const otp_routes_1 = __importDefault(require("./routes/otp.routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const admin_routes_1 = __importDefault(require("./routes/admin.routes"));
 const recommendation_routes_1 = __importDefault(require("./routes/recommendation.routes"));
 const serpapi_routes_1 = __importDefault(require("./routes/serpapi.routes"));
 const saved_routes_1 = __importDefault(require("./routes/saved.routes"));
-dotenv_1.default.config();
 // Ensure critical environment variables are loaded
 if (!process.env.MONGO_URI) {
     console.error("FATAL ERROR: MONGO_URI is not defined in environment variables. Application requires a database connection to start.");
@@ -27,6 +27,16 @@ if (!process.env.JWT_SECRET) {
     process.exit(1);
 }
 const app = (0, express_1.default)();
+// Performance timing middleware
+app.use((req, res, next) => {
+    const start = Date.now();
+    res.on("finish", () => {
+        console.log(`Route took ${Date.now() - start}ms`);
+    });
+    next();
+});
+// Enable GZIP compression
+app.use((0, compression_1.default)());
 // Secure application by setting various HTTP headers
 app.use((0, helmet_1.default)());
 app.use("/download", express_1.default.static(path_1.default.join(__dirname, "../../download")));
@@ -75,6 +85,9 @@ app.use("/api/admin", admin_routes_1.default);
 app.use("/api/recommendations", recommendation_routes_1.default);
 app.use("/api/serpapi", serpapi_routes_1.default);
 app.use("/api/saved", saved_routes_1.default);
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "ok" });
+});
 app.get("/", (req, res) => {
     res.send("NeuroStay AI Backend Running");
 });

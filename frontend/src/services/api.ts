@@ -1,9 +1,11 @@
 const getApiUrl = (): string => {
-  const envUrl = import.meta.env.VITE_API_URL;
-  if (typeof window !== "undefined" && (window.location.hostname.includes("vercel.app") || window.location.hostname.includes("neurostay-web"))) {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  if (typeof window !== "undefined" && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
     return "https://neurostay-ai.onrender.com";
   }
-  return envUrl || "http://localhost:5000";
+  return "http://localhost:5000";
 };
 
 const API_URL = getApiUrl();

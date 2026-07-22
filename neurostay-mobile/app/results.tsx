@@ -46,10 +46,18 @@ export default function ResultsPage() {
   // Initialize query from rawQuery or AsyncStorage
   useEffect(() => {
     const initQuery = async () => {
-      if (rawQuery) {
-        setQuery(rawQuery);
+      let q = "";
+      if (Array.isArray(rawQuery)) {
+        q = rawQuery[0];
+      } else if (typeof rawQuery === 'string') {
+        q = rawQuery;
+      }
+      
+      if (q && q.trim()) {
+        const decoded = decodeURIComponent(q);
+        setQuery(decoded);
         try {
-          await AsyncStorage.setItem('last_search_query', rawQuery);
+          await AsyncStorage.setItem('last_search_query', decoded);
         } catch (e) {
           console.error('Failed to save query:', e);
         }
@@ -74,25 +82,40 @@ export default function ResultsPage() {
       try {
         const url = `${API_URL}/api/serpapi/hotels`;
         console.log("Calling hotel API:", url);
+        console.log("Request Payload:", { query });
+        
+        const token = await AsyncStorage.getItem('token');
+        const headers: Record<string, string> = {
+          "Content-Type": "application/json",
+          "Bypass-Tunnel-Reminder": "true"
+        };
+        if (token) {
+          headers["Authorization"] = `Bearer ${token}`;
+        }
+
         const response = await axios.post(url, { query }, {
-          headers: {
-            "Content-Type": "application/json",
-            "Bypass-Tunnel-Reminder": "true"
-          },
+          headers,
           timeout: 15000,
         });
-        const data = response.data;
 
-        if (data.success === true && Array.isArray(data.hotels)) {
-          console.log("Hotels received:", data.hotels.length);
-          setHotels(data.hotels);
+        console.log("Hotels Response:", response.data);
+        const data = response.data;
+        const hotelList = data?.hotels || data?.results || data?.data || (Array.isArray(data) ? data : []);
+
+        if (Array.isArray(hotelList) && hotelList.length > 0) {
+          console.log("Hotels received:", hotelList.length);
+          setHotels(hotelList);
         } else {
-          console.log("Hotels received:", 0);
+          console.log("Hotels received: 0");
           setHotels([]);
         }
-      } catch (error) {
-        console.error("ResultsPage fetch error:", error);
-        console.log("Hotels received:", 0);
+      } catch (error: any) {
+        console.error("ResultsPage fetch error:", error?.message || error);
+        if (error?.response) {
+          console.log("Response Status:", error.response.status);
+          console.log("Response Body:", error.response.data);
+        }
+        console.log("Hotels received: 0");
         setHotels([]);
       } finally {
         setLoading(false);

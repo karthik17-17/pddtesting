@@ -1,10 +1,12 @@
+import "./loadEnv";
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
+
 import mongoose from "mongoose";
 import path from "path";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import compression from "compression";
 
 import otpRoutes from "./routes/otp.routes";
 import authRoutes from "./routes/auth.routes";
@@ -12,8 +14,6 @@ import adminRoutes from "./routes/admin.routes";
 import recommendationRoutes from "./routes/recommendation.routes";
 import serpapiRoutes from "./routes/serpapi.routes";
 import savedRoutes from "./routes/saved.routes";
-
-dotenv.config();
 
 // Ensure critical environment variables are loaded
 if (!process.env.MONGO_URI) {
@@ -27,6 +27,18 @@ if (!process.env.JWT_SECRET) {
 }
 
 const app = express();
+
+// Performance timing middleware
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on("finish", () => {
+    console.log(`Route took ${Date.now() - start}ms`);
+  });
+  next();
+});
+
+// Enable GZIP compression
+app.use(compression());
 
 // Secure application by setting various HTTP headers
 app.use(helmet());
@@ -86,6 +98,10 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/serpapi", serpapiRoutes);
 app.use("/api/saved", savedRoutes);
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 app.get("/", (req, res) => {
   res.send("NeuroStay AI Backend Running");

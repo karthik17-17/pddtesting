@@ -36,7 +36,7 @@ export async function searchHotelsFromSerpApi(query: string) {
       name: hotel.name || "Hotel Name Not Available",
       image:
         hotel.images?.[0]?.thumbnail ||
-        "/images/hotel1.jpg",
+        `/images/hotel${(index % 3) + 1}.jpg`,
       rating,
       price: priceNumber,
       location: hotel.neighborhood || query,

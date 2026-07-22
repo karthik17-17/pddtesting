@@ -16,11 +16,19 @@ const express_1 = __importDefault(require("express"));
 const validation_middleware_1 = require("../middleware/validation.middleware");
 const axios_1 = __importDefault(require("axios"));
 const router = express_1.default.Router();
+const recommendationsCache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes cache
 router.post("/search", validation_middleware_1.validateSearch, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { query } = req.body;
     const q = String(query || "").trim();
     if (!q) {
         return res.json([]);
+    }
+    const cacheKey = q.toLowerCase();
+    const cached = recommendationsCache.get(cacheKey);
+    if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+        console.log(`CACHE HIT: Returning cached recommendations for "${cacheKey}"`);
+        return res.json(cached.data);
     }
     const defaultImage = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800";
     const headers = {
@@ -49,8 +57,10 @@ router.post("/search", validation_middleware_1.validateSearch, (req, res) => __a
                 why: `Recommended based on location proximity in ${q}.`,
                 mapLink: `https://www.openstreetmap.org/?mlat=${result.lat}&mlon=${result.lon}#map=18/${result.lat}/${result.lon}`
             }));
+            recommendationsCache.set(cacheKey, { timestamp: Date.now(), data: results });
             return res.json(results);
         }
+        recommendationsCache.set(cacheKey, { timestamp: Date.now(), data: [] });
         return res.json([]);
     }
     catch (error) {

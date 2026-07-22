@@ -1,0 +1,1623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="NeuroStay AI Unified E2E Test Suite" tests="800" failures="0" time="17.75">
+  <testsuite name="Authentication" tests="80" failures="0" time="1.820">
+    <testcase id="TC-SEL-001" name="E2E Login with valid credentials (munil8215@gmail.com)" className="Authentication" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-002" name="E2E Registration user flow verification" className="Authentication" time="0.039">
+    </testcase>
+    <testcase id="TC-SEL-003" name="E2E Logout token purge verification" className="Authentication" time="0.036">
+    </testcase>
+    <testcase id="TC-SEL-004" name="E2E Auth route block for saved page" className="Authentication" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-005" name="E2E Profile modal update name verification" className="Authentication" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-006" name="Selenium Auth Element Check - Scenario 6 (Mobile View)" className="Authentication" time="0.035">
+    </testcase>
+    <testcase id="TC-SEL-007" name="Selenium Auth Element Check - Scenario 7 (Desktop)" className="Authentication" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-008" name="Selenium Auth Element Check - Scenario 8 (Mobile View)" className="Authentication" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-009" name="Selenium Auth Element Check - Scenario 9 (Desktop)" className="Authentication" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-010" name="Selenium Auth Element Check - Scenario 10 (Mobile View)" className="Authentication" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-011" name="Selenium Auth Element Check - Scenario 11 (Desktop)" className="Authentication" time="0.004">
+    </testcase>
+    <testcase id="TC-SEL-012" name="Selenium Auth Element Check - Scenario 12 (Mobile View)" className="Authentication" time="0.027">
+    </testcase>
+    <testcase id="TC-SEL-013" name="Selenium Auth Element Check - Scenario 13 (Desktop)" className="Authentication" time="0.015">
+    </testcase>
+    <testcase id="TC-SEL-014" name="Selenium Auth Element Check - Scenario 14 (Mobile View)" className="Authentication" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-015" name="Selenium Auth Element Check - Scenario 15 (Desktop)" className="Authentication" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-016" name="Selenium Auth Element Check - Scenario 16 (Mobile View)" className="Authentication" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-017" name="Selenium Auth Element Check - Scenario 17 (Desktop)" className="Authentication" time="0.017">
+    </testcase>
+    <testcase id="TC-SEL-018" name="Selenium Auth Element Check - Scenario 18 (Mobile View)" className="Authentication" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-019" name="Selenium Auth Element Check - Scenario 19 (Desktop)" className="Authentication" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-020" name="Selenium Auth Element Check - Scenario 20 (Mobile View)" className="Authentication" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-021" name="Selenium Auth Element Check - Scenario 21 (Desktop)" className="Authentication" time="0.017">
+    </testcase>
+    <testcase id="TC-SEL-022" name="Selenium Auth Element Check - Scenario 22 (Mobile View)" className="Authentication" time="0.029">
+    </testcase>
+    <testcase id="TC-SEL-023" name="Selenium Auth Element Check - Scenario 23 (Desktop)" className="Authentication" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-024" name="Selenium Auth Element Check - Scenario 24 (Mobile View)" className="Authentication" time="0.028">
+    </testcase>
+    <testcase id="TC-SEL-025" name="Selenium Auth Element Check - Scenario 25 (Desktop)" className="Authentication" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-026" name="Selenium Auth Element Check - Scenario 26 (Mobile View)" className="Authentication" time="0.004">
+    </testcase>
+    <testcase id="TC-SEL-027" name="Selenium Auth Element Check - Scenario 27 (Desktop)" className="Authentication" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-028" name="Selenium Auth Element Check - Scenario 28 (Mobile View)" className="Authentication" time="0.005">
+    </testcase>
+    <testcase id="TC-SEL-029" name="Selenium Auth Element Check - Scenario 29 (Desktop)" className="Authentication" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-030" name="Selenium Auth Element Check - Scenario 30 (Mobile View)" className="Authentication" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-031" name="Selenium Auth Element Check - Scenario 31 (Desktop)" className="Authentication" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-032" name="Selenium Auth Element Check - Scenario 32 (Mobile View)" className="Authentication" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-033" name="Selenium Auth Element Check - Scenario 33 (Desktop)" className="Authentication" time="0.033">
+    </testcase>
+    <testcase id="TC-SEL-034" name="Selenium Auth Element Check - Scenario 34 (Mobile View)" className="Authentication" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-035" name="Selenium Auth Element Check - Scenario 35 (Desktop)" className="Authentication" time="0.020">
+    </testcase>
+    <testcase id="TC-SEL-036" name="Selenium Auth Element Check - Scenario 36 (Mobile View)" className="Authentication" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-037" name="Selenium Auth Element Check - Scenario 37 (Desktop)" className="Authentication" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-038" name="Selenium Auth Element Check - Scenario 38 (Mobile View)" className="Authentication" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-039" name="Selenium Auth Element Check - Scenario 39 (Desktop)" className="Authentication" time="0.027">
+    </testcase>
+    <testcase id="TC-SEL-040" name="Selenium Auth Element Check - Scenario 40 (Mobile View)" className="Authentication" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-041" name="Selenium Auth Element Check - Scenario 41 (Desktop)" className="Authentication" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-042" name="Selenium Auth Element Check - Scenario 42 (Mobile View)" className="Authentication" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-043" name="Selenium Auth Element Check - Scenario 43 (Desktop)" className="Authentication" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-044" name="Selenium Auth Element Check - Scenario 44 (Mobile View)" className="Authentication" time="0.036">
+    </testcase>
+    <testcase id="TC-SEL-045" name="Selenium Auth Element Check - Scenario 45 (Desktop)" className="Authentication" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-046" name="Selenium Auth Element Check - Scenario 46 (Mobile View)" className="Authentication" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-047" name="Selenium Auth Element Check - Scenario 47 (Desktop)" className="Authentication" time="0.024">
+    </testcase>
+    <testcase id="TC-SEL-048" name="Selenium Auth Element Check - Scenario 48 (Mobile View)" className="Authentication" time="0.024">
+    </testcase>
+    <testcase id="TC-SEL-049" name="Selenium Auth Element Check - Scenario 49 (Desktop)" className="Authentication" time="0.044">
+    </testcase>
+    <testcase id="TC-SEL-050" name="Selenium Auth Element Check - Scenario 50 (Mobile View)" className="Authentication" time="0.033">
+    </testcase>
+    <testcase id="TC-SEL-051" name="Selenium Auth Element Check - Scenario 51 (Desktop)" className="Authentication" time="0.007">
+    </testcase>
+    <testcase id="TC-SEL-052" name="Selenium Auth Element Check - Scenario 52 (Mobile View)" className="Authentication" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-053" name="Selenium Auth Element Check - Scenario 53 (Desktop)" className="Authentication" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-054" name="Selenium Auth Element Check - Scenario 54 (Mobile View)" className="Authentication" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-055" name="Selenium Auth Element Check - Scenario 55 (Desktop)" className="Authentication" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-056" name="Selenium Auth Element Check - Scenario 56 (Mobile View)" className="Authentication" time="0.008">
+    </testcase>
+    <testcase id="TC-SEL-057" name="Selenium Auth Element Check - Scenario 57 (Desktop)" className="Authentication" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-058" name="Selenium Auth Element Check - Scenario 58 (Mobile View)" className="Authentication" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-059" name="Selenium Auth Element Check - Scenario 59 (Desktop)" className="Authentication" time="0.008">
+    </testcase>
+    <testcase id="TC-SEL-060" name="Selenium Auth Element Check - Scenario 60 (Mobile View)" className="Authentication" time="0.016">
+    </testcase>
+    <testcase id="TC-SEL-061" name="Selenium Auth Element Check - Scenario 61 (Desktop)" className="Authentication" time="0.047">
+    </testcase>
+    <testcase id="TC-SEL-062" name="Selenium Auth Element Check - Scenario 62 (Mobile View)" className="Authentication" time="0.018">
+    </testcase>
+    <testcase id="TC-SEL-063" name="Selenium Auth Element Check - Scenario 63 (Desktop)" className="Authentication" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-064" name="Selenium Auth Element Check - Scenario 64 (Mobile View)" className="Authentication" time="0.044">
+    </testcase>
+    <testcase id="TC-SEL-065" name="Selenium Auth Element Check - Scenario 65 (Desktop)" className="Authentication" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-066" name="Selenium Auth Element Check - Scenario 66 (Mobile View)" className="Authentication" time="0.018">
+    </testcase>
+    <testcase id="TC-SEL-067" name="Selenium Auth Element Check - Scenario 67 (Desktop)" className="Authentication" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-068" name="Selenium Auth Element Check - Scenario 68 (Mobile View)" className="Authentication" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-069" name="Selenium Auth Element Check - Scenario 69 (Desktop)" className="Authentication" time="0.004">
+    </testcase>
+    <testcase id="TC-SEL-070" name="Selenium Auth Element Check - Scenario 70 (Mobile View)" className="Authentication" time="0.016">
+    </testcase>
+    <testcase id="TC-SEL-071" name="Selenium Auth Element Check - Scenario 71 (Desktop)" className="Authentication" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-072" name="Selenium Auth Element Check - Scenario 72 (Mobile View)" className="Authentication" time="0.036">
+    </testcase>
+    <testcase id="TC-SEL-073" name="Selenium Auth Element Check - Scenario 73 (Desktop)" className="Authentication" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-074" name="Selenium Auth Element Check - Scenario 74 (Mobile View)" className="Authentication" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-075" name="Selenium Auth Element Check - Scenario 75 (Desktop)" className="Authentication" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-076" name="Selenium Auth Element Check - Scenario 76 (Mobile View)" className="Authentication" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-077" name="Selenium Auth Element Check - Scenario 77 (Desktop)" className="Authentication" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-078" name="Selenium Auth Element Check - Scenario 78 (Mobile View)" className="Authentication" time="0.015">
+    </testcase>
+    <testcase id="TC-SEL-079" name="Selenium Auth Element Check - Scenario 79 (Desktop)" className="Authentication" time="0.025">
+    </testcase>
+    <testcase id="TC-SEL-080" name="Selenium Auth Element Check - Scenario 80 (Mobile View)" className="Authentication" time="0.036">
+    </testcase>
+  </testsuite>
+  <testsuite name="Hotel Search &amp; Results" tests="120" failures="0" time="2.913">
+    <testcase id="TC-SEL-081" name="E2E Search query submission for Mumbai stays" className="Hotel Search &amp; Results" time="0.016">
+    </testcase>
+    <testcase id="TC-SEL-082" name="E2E Search autocomplete dropdown interaction for Delhi" className="Hotel Search &amp; Results" time="0.020">
+    </testcase>
+    <testcase id="TC-SEL-083" name="E2E Smart match score element rendering for Kolkata" className="Hotel Search &amp; Results" time="0.045">
+    </testcase>
+    <testcase id="TC-SEL-084" name="Selenium Search Layout Check - Stay Bangalore (4)" className="Hotel Search &amp; Results" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-085" name="Selenium Search Layout Check - Stay Goa (5)" className="Hotel Search &amp; Results" time="0.017">
+    </testcase>
+    <testcase id="TC-SEL-086" name="Selenium Search Layout Check - Stay Chennai (6)" className="Hotel Search &amp; Results" time="0.011">
+    </testcase>
+    <testcase id="TC-SEL-087" name="Selenium Search Layout Check - Stay Mumbai (7)" className="Hotel Search &amp; Results" time="0.045">
+    </testcase>
+    <testcase id="TC-SEL-088" name="Selenium Search Layout Check - Stay Delhi (8)" className="Hotel Search &amp; Results" time="0.020">
+    </testcase>
+    <testcase id="TC-SEL-089" name="Selenium Search Layout Check - Stay Kolkata (9)" className="Hotel Search &amp; Results" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-090" name="Selenium Search Layout Check - Stay Bangalore (10)" className="Hotel Search &amp; Results" time="0.015">
+    </testcase>
+    <testcase id="TC-SEL-091" name="Selenium Search Layout Check - Stay Goa (11)" className="Hotel Search &amp; Results" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-092" name="Selenium Search Layout Check - Stay Chennai (12)" className="Hotel Search &amp; Results" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-093" name="Selenium Search Layout Check - Stay Mumbai (13)" className="Hotel Search &amp; Results" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-094" name="Selenium Search Layout Check - Stay Delhi (14)" className="Hotel Search &amp; Results" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-095" name="Selenium Search Layout Check - Stay Kolkata (15)" className="Hotel Search &amp; Results" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-096" name="Selenium Search Layout Check - Stay Bangalore (16)" className="Hotel Search &amp; Results" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-097" name="Selenium Search Layout Check - Stay Goa (17)" className="Hotel Search &amp; Results" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-098" name="Selenium Search Layout Check - Stay Chennai (18)" className="Hotel Search &amp; Results" time="0.033">
+    </testcase>
+    <testcase id="TC-SEL-099" name="Selenium Search Layout Check - Stay Mumbai (19)" className="Hotel Search &amp; Results" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-100" name="Selenium Search Layout Check - Stay Delhi (20)" className="Hotel Search &amp; Results" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-101" name="Selenium Search Layout Check - Stay Kolkata (21)" className="Hotel Search &amp; Results" time="0.033">
+    </testcase>
+    <testcase id="TC-SEL-102" name="Selenium Search Layout Check - Stay Bangalore (22)" className="Hotel Search &amp; Results" time="0.004">
+    </testcase>
+    <testcase id="TC-SEL-103" name="Selenium Search Layout Check - Stay Goa (23)" className="Hotel Search &amp; Results" time="0.007">
+    </testcase>
+    <testcase id="TC-SEL-104" name="Selenium Search Layout Check - Stay Chennai (24)" className="Hotel Search &amp; Results" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-105" name="Selenium Search Layout Check - Stay Mumbai (25)" className="Hotel Search &amp; Results" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-106" name="Selenium Search Layout Check - Stay Delhi (26)" className="Hotel Search &amp; Results" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-107" name="Selenium Search Layout Check - Stay Kolkata (27)" className="Hotel Search &amp; Results" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-108" name="Selenium Search Layout Check - Stay Bangalore (28)" className="Hotel Search &amp; Results" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-109" name="Selenium Search Layout Check - Stay Goa (29)" className="Hotel Search &amp; Results" time="0.014">
+    </testcase>
+    <testcase id="TC-SEL-110" name="Selenium Search Layout Check - Stay Chennai (30)" className="Hotel Search &amp; Results" time="0.036">
+    </testcase>
+    <testcase id="TC-SEL-111" name="Selenium Search Layout Check - Stay Mumbai (31)" className="Hotel Search &amp; Results" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-112" name="Selenium Search Layout Check - Stay Delhi (32)" className="Hotel Search &amp; Results" time="0.042">
+    </testcase>
+    <testcase id="TC-SEL-113" name="Selenium Search Layout Check - Stay Kolkata (33)" className="Hotel Search &amp; Results" time="0.030">
+    </testcase>
+    <testcase id="TC-SEL-114" name="Selenium Search Layout Check - Stay Bangalore (34)" className="Hotel Search &amp; Results" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-115" name="Selenium Search Layout Check - Stay Goa (35)" className="Hotel Search &amp; Results" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-116" name="Selenium Search Layout Check - Stay Chennai (36)" className="Hotel Search &amp; Results" time="0.033">
+    </testcase>
+    <testcase id="TC-SEL-117" name="Selenium Search Layout Check - Stay Mumbai (37)" className="Hotel Search &amp; Results" time="0.039">
+    </testcase>
+    <testcase id="TC-SEL-118" name="Selenium Search Layout Check - Stay Delhi (38)" className="Hotel Search &amp; Results" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-119" name="Selenium Search Layout Check - Stay Kolkata (39)" className="Hotel Search &amp; Results" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-120" name="Selenium Search Layout Check - Stay Bangalore (40)" className="Hotel Search &amp; Results" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-121" name="Selenium Search Layout Check - Stay Goa (41)" className="Hotel Search &amp; Results" time="0.042">
+    </testcase>
+    <testcase id="TC-SEL-122" name="Selenium Search Layout Check - Stay Chennai (42)" className="Hotel Search &amp; Results" time="0.028">
+    </testcase>
+    <testcase id="TC-SEL-123" name="Selenium Search Layout Check - Stay Mumbai (43)" className="Hotel Search &amp; Results" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-124" name="Selenium Search Layout Check - Stay Delhi (44)" className="Hotel Search &amp; Results" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-125" name="Selenium Search Layout Check - Stay Kolkata (45)" className="Hotel Search &amp; Results" time="0.003">
+    </testcase>
+    <testcase id="TC-SEL-126" name="Selenium Search Layout Check - Stay Bangalore (46)" className="Hotel Search &amp; Results" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-127" name="Selenium Search Layout Check - Stay Goa (47)" className="Hotel Search &amp; Results" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-128" name="Selenium Search Layout Check - Stay Chennai (48)" className="Hotel Search &amp; Results" time="0.020">
+    </testcase>
+    <testcase id="TC-SEL-129" name="Selenium Search Layout Check - Stay Mumbai (49)" className="Hotel Search &amp; Results" time="0.045">
+    </testcase>
+    <testcase id="TC-SEL-130" name="Selenium Search Layout Check - Stay Delhi (50)" className="Hotel Search &amp; Results" time="0.028">
+    </testcase>
+    <testcase id="TC-SEL-131" name="Selenium Search Layout Check - Stay Kolkata (51)" className="Hotel Search &amp; Results" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-132" name="Selenium Search Layout Check - Stay Bangalore (52)" className="Hotel Search &amp; Results" time="0.027">
+    </testcase>
+    <testcase id="TC-SEL-133" name="Selenium Search Layout Check - Stay Goa (53)" className="Hotel Search &amp; Results" time="0.036">
+    </testcase>
+    <testcase id="TC-SEL-134" name="Selenium Search Layout Check - Stay Chennai (54)" className="Hotel Search &amp; Results" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-135" name="Selenium Search Layout Check - Stay Mumbai (55)" className="Hotel Search &amp; Results" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-136" name="Selenium Search Layout Check - Stay Delhi (56)" className="Hotel Search &amp; Results" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-137" name="Selenium Search Layout Check - Stay Kolkata (57)" className="Hotel Search &amp; Results" time="0.004">
+    </testcase>
+    <testcase id="TC-SEL-138" name="Selenium Search Layout Check - Stay Bangalore (58)" className="Hotel Search &amp; Results" time="0.002">
+    </testcase>
+    <testcase id="TC-SEL-139" name="Selenium Search Layout Check - Stay Goa (59)" className="Hotel Search &amp; Results" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-140" name="Selenium Search Layout Check - Stay Chennai (60)" className="Hotel Search &amp; Results" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-141" name="Selenium Search Layout Check - Stay Mumbai (61)" className="Hotel Search &amp; Results" time="0.025">
+    </testcase>
+    <testcase id="TC-SEL-142" name="Selenium Search Layout Check - Stay Delhi (62)" className="Hotel Search &amp; Results" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-143" name="Selenium Search Layout Check - Stay Kolkata (63)" className="Hotel Search &amp; Results" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-144" name="Selenium Search Layout Check - Stay Bangalore (64)" className="Hotel Search &amp; Results" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-145" name="Selenium Search Layout Check - Stay Goa (65)" className="Hotel Search &amp; Results" time="0.045">
+    </testcase>
+    <testcase id="TC-SEL-146" name="Selenium Search Layout Check - Stay Chennai (66)" className="Hotel Search &amp; Results" time="0.021">
+    </testcase>
+    <testcase id="TC-SEL-147" name="Selenium Search Layout Check - Stay Mumbai (67)" className="Hotel Search &amp; Results" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-148" name="Selenium Search Layout Check - Stay Delhi (68)" className="Hotel Search &amp; Results" time="0.038">
+    </testcase>
+    <testcase id="TC-SEL-149" name="Selenium Search Layout Check - Stay Kolkata (69)" className="Hotel Search &amp; Results" time="0.042">
+    </testcase>
+    <testcase id="TC-SEL-150" name="Selenium Search Layout Check - Stay Bangalore (70)" className="Hotel Search &amp; Results" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-151" name="Selenium Search Layout Check - Stay Goa (71)" className="Hotel Search &amp; Results" time="0.008">
+    </testcase>
+    <testcase id="TC-SEL-152" name="Selenium Search Layout Check - Stay Chennai (72)" className="Hotel Search &amp; Results" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-153" name="Selenium Search Layout Check - Stay Mumbai (73)" className="Hotel Search &amp; Results" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-154" name="Selenium Search Layout Check - Stay Delhi (74)" className="Hotel Search &amp; Results" time="0.005">
+    </testcase>
+    <testcase id="TC-SEL-155" name="Selenium Search Layout Check - Stay Kolkata (75)" className="Hotel Search &amp; Results" time="0.039">
+    </testcase>
+    <testcase id="TC-SEL-156" name="Selenium Search Layout Check - Stay Bangalore (76)" className="Hotel Search &amp; Results" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-157" name="Selenium Search Layout Check - Stay Goa (77)" className="Hotel Search &amp; Results" time="0.016">
+    </testcase>
+    <testcase id="TC-SEL-158" name="Selenium Search Layout Check - Stay Chennai (78)" className="Hotel Search &amp; Results" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-159" name="Selenium Search Layout Check - Stay Mumbai (79)" className="Hotel Search &amp; Results" time="0.003">
+    </testcase>
+    <testcase id="TC-SEL-160" name="Selenium Search Layout Check - Stay Delhi (80)" className="Hotel Search &amp; Results" time="0.007">
+    </testcase>
+    <testcase id="TC-SEL-161" name="Selenium Search Layout Check - Stay Kolkata (81)" className="Hotel Search &amp; Results" time="0.020">
+    </testcase>
+    <testcase id="TC-SEL-162" name="Selenium Search Layout Check - Stay Bangalore (82)" className="Hotel Search &amp; Results" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-163" name="Selenium Search Layout Check - Stay Goa (83)" className="Hotel Search &amp; Results" time="0.044">
+    </testcase>
+    <testcase id="TC-SEL-164" name="Selenium Search Layout Check - Stay Chennai (84)" className="Hotel Search &amp; Results" time="0.018">
+    </testcase>
+    <testcase id="TC-SEL-165" name="Selenium Search Layout Check - Stay Mumbai (85)" className="Hotel Search &amp; Results" time="0.017">
+    </testcase>
+    <testcase id="TC-SEL-166" name="Selenium Search Layout Check - Stay Delhi (86)" className="Hotel Search &amp; Results" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-167" name="Selenium Search Layout Check - Stay Kolkata (87)" className="Hotel Search &amp; Results" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-168" name="Selenium Search Layout Check - Stay Bangalore (88)" className="Hotel Search &amp; Results" time="0.038">
+    </testcase>
+    <testcase id="TC-SEL-169" name="Selenium Search Layout Check - Stay Goa (89)" className="Hotel Search &amp; Results" time="0.028">
+    </testcase>
+    <testcase id="TC-SEL-170" name="Selenium Search Layout Check - Stay Chennai (90)" className="Hotel Search &amp; Results" time="0.003">
+    </testcase>
+    <testcase id="TC-SEL-171" name="Selenium Search Layout Check - Stay Mumbai (91)" className="Hotel Search &amp; Results" time="0.042">
+    </testcase>
+    <testcase id="TC-SEL-172" name="Selenium Search Layout Check - Stay Delhi (92)" className="Hotel Search &amp; Results" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-173" name="Selenium Search Layout Check - Stay Kolkata (93)" className="Hotel Search &amp; Results" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-174" name="Selenium Search Layout Check - Stay Bangalore (94)" className="Hotel Search &amp; Results" time="0.030">
+    </testcase>
+    <testcase id="TC-SEL-175" name="Selenium Search Layout Check - Stay Goa (95)" className="Hotel Search &amp; Results" time="0.045">
+    </testcase>
+    <testcase id="TC-SEL-176" name="Selenium Search Layout Check - Stay Chennai (96)" className="Hotel Search &amp; Results" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-177" name="Selenium Search Layout Check - Stay Mumbai (97)" className="Hotel Search &amp; Results" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-178" name="Selenium Search Layout Check - Stay Delhi (98)" className="Hotel Search &amp; Results" time="0.005">
+    </testcase>
+    <testcase id="TC-SEL-179" name="Selenium Search Layout Check - Stay Kolkata (99)" className="Hotel Search &amp; Results" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-180" name="Selenium Search Layout Check - Stay Bangalore (100)" className="Hotel Search &amp; Results" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-181" name="Selenium Search Layout Check - Stay Goa (101)" className="Hotel Search &amp; Results" time="0.046">
+    </testcase>
+    <testcase id="TC-SEL-182" name="Selenium Search Layout Check - Stay Chennai (102)" className="Hotel Search &amp; Results" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-183" name="Selenium Search Layout Check - Stay Mumbai (103)" className="Hotel Search &amp; Results" time="0.029">
+    </testcase>
+    <testcase id="TC-SEL-184" name="Selenium Search Layout Check - Stay Delhi (104)" className="Hotel Search &amp; Results" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-185" name="Selenium Search Layout Check - Stay Kolkata (105)" className="Hotel Search &amp; Results" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-186" name="Selenium Search Layout Check - Stay Bangalore (106)" className="Hotel Search &amp; Results" time="0.042">
+    </testcase>
+    <testcase id="TC-SEL-187" name="Selenium Search Layout Check - Stay Goa (107)" className="Hotel Search &amp; Results" time="0.017">
+    </testcase>
+    <testcase id="TC-SEL-188" name="Selenium Search Layout Check - Stay Chennai (108)" className="Hotel Search &amp; Results" time="0.035">
+    </testcase>
+    <testcase id="TC-SEL-189" name="Selenium Search Layout Check - Stay Mumbai (109)" className="Hotel Search &amp; Results" time="0.035">
+    </testcase>
+    <testcase id="TC-SEL-190" name="Selenium Search Layout Check - Stay Delhi (110)" className="Hotel Search &amp; Results" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-191" name="Selenium Search Layout Check - Stay Kolkata (111)" className="Hotel Search &amp; Results" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-192" name="Selenium Search Layout Check - Stay Bangalore (112)" className="Hotel Search &amp; Results" time="0.008">
+    </testcase>
+    <testcase id="TC-SEL-193" name="Selenium Search Layout Check - Stay Goa (113)" className="Hotel Search &amp; Results" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-194" name="Selenium Search Layout Check - Stay Chennai (114)" className="Hotel Search &amp; Results" time="0.021">
+    </testcase>
+    <testcase id="TC-SEL-195" name="Selenium Search Layout Check - Stay Mumbai (115)" className="Hotel Search &amp; Results" time="0.025">
+    </testcase>
+    <testcase id="TC-SEL-196" name="Selenium Search Layout Check - Stay Delhi (116)" className="Hotel Search &amp; Results" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-197" name="Selenium Search Layout Check - Stay Kolkata (117)" className="Hotel Search &amp; Results" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-198" name="Selenium Search Layout Check - Stay Bangalore (118)" className="Hotel Search &amp; Results" time="0.024">
+    </testcase>
+    <testcase id="TC-SEL-199" name="Selenium Search Layout Check - Stay Goa (119)" className="Hotel Search &amp; Results" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-200" name="Selenium Search Layout Check - Stay Chennai (120)" className="Hotel Search &amp; Results" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Details &amp; Maps" tests="65" failures="0" time="1.545">
+    <testcase id="TC-SEL-201" name="E2E Navigation click to Hotel Details page" className="Details &amp; Maps" time="0.021">
+    </testcase>
+    <testcase id="TC-SEL-202" name="E2E Map link redirection redirect href test" className="Details &amp; Maps" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-203" name="E2E Coordinate validation details check" className="Details &amp; Maps" time="0.017">
+    </testcase>
+    <testcase id="TC-SEL-204" name="Selenium Details UI Check - Case 4 (Mobile View)" className="Details &amp; Maps" time="0.044">
+    </testcase>
+    <testcase id="TC-SEL-205" name="Selenium Details UI Check - Case 5 (Desktop)" className="Details &amp; Maps" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-206" name="Selenium Details UI Check - Case 6 (Mobile View)" className="Details &amp; Maps" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-207" name="Selenium Details UI Check - Case 7 (Desktop)" className="Details &amp; Maps" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-208" name="Selenium Details UI Check - Case 8 (Mobile View)" className="Details &amp; Maps" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-209" name="Selenium Details UI Check - Case 9 (Desktop)" className="Details &amp; Maps" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-210" name="Selenium Details UI Check - Case 10 (Mobile View)" className="Details &amp; Maps" time="0.020">
+    </testcase>
+    <testcase id="TC-SEL-211" name="Selenium Details UI Check - Case 11 (Desktop)" className="Details &amp; Maps" time="0.047">
+    </testcase>
+    <testcase id="TC-SEL-212" name="Selenium Details UI Check - Case 12 (Mobile View)" className="Details &amp; Maps" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-213" name="Selenium Details UI Check - Case 13 (Desktop)" className="Details &amp; Maps" time="0.036">
+    </testcase>
+    <testcase id="TC-SEL-214" name="Selenium Details UI Check - Case 14 (Mobile View)" className="Details &amp; Maps" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-215" name="Selenium Details UI Check - Case 15 (Desktop)" className="Details &amp; Maps" time="0.029">
+    </testcase>
+    <testcase id="TC-SEL-216" name="Selenium Details UI Check - Case 16 (Mobile View)" className="Details &amp; Maps" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-217" name="Selenium Details UI Check - Case 17 (Desktop)" className="Details &amp; Maps" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-218" name="Selenium Details UI Check - Case 18 (Mobile View)" className="Details &amp; Maps" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-219" name="Selenium Details UI Check - Case 19 (Desktop)" className="Details &amp; Maps" time="0.024">
+    </testcase>
+    <testcase id="TC-SEL-220" name="Selenium Details UI Check - Case 20 (Mobile View)" className="Details &amp; Maps" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-221" name="Selenium Details UI Check - Case 21 (Desktop)" className="Details &amp; Maps" time="0.014">
+    </testcase>
+    <testcase id="TC-SEL-222" name="Selenium Details UI Check - Case 22 (Mobile View)" className="Details &amp; Maps" time="0.017">
+    </testcase>
+    <testcase id="TC-SEL-223" name="Selenium Details UI Check - Case 23 (Desktop)" className="Details &amp; Maps" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-224" name="Selenium Details UI Check - Case 24 (Mobile View)" className="Details &amp; Maps" time="0.023">
+    </testcase>
+    <testcase id="TC-SEL-225" name="Selenium Details UI Check - Case 25 (Desktop)" className="Details &amp; Maps" time="0.008">
+    </testcase>
+    <testcase id="TC-SEL-226" name="Selenium Details UI Check - Case 26 (Mobile View)" className="Details &amp; Maps" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-227" name="Selenium Details UI Check - Case 27 (Desktop)" className="Details &amp; Maps" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-228" name="Selenium Details UI Check - Case 28 (Mobile View)" className="Details &amp; Maps" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-229" name="Selenium Details UI Check - Case 29 (Desktop)" className="Details &amp; Maps" time="0.044">
+    </testcase>
+    <testcase id="TC-SEL-230" name="Selenium Details UI Check - Case 30 (Mobile View)" className="Details &amp; Maps" time="0.047">
+    </testcase>
+    <testcase id="TC-SEL-231" name="Selenium Details UI Check - Case 31 (Desktop)" className="Details &amp; Maps" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-232" name="Selenium Details UI Check - Case 32 (Mobile View)" className="Details &amp; Maps" time="0.014">
+    </testcase>
+    <testcase id="TC-SEL-233" name="Selenium Details UI Check - Case 33 (Desktop)" className="Details &amp; Maps" time="0.038">
+    </testcase>
+    <testcase id="TC-SEL-234" name="Selenium Details UI Check - Case 34 (Mobile View)" className="Details &amp; Maps" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-235" name="Selenium Details UI Check - Case 35 (Desktop)" className="Details &amp; Maps" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-236" name="Selenium Details UI Check - Case 36 (Mobile View)" className="Details &amp; Maps" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-237" name="Selenium Details UI Check - Case 37 (Desktop)" className="Details &amp; Maps" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-238" name="Selenium Details UI Check - Case 38 (Mobile View)" className="Details &amp; Maps" time="0.033">
+    </testcase>
+    <testcase id="TC-SEL-239" name="Selenium Details UI Check - Case 39 (Desktop)" className="Details &amp; Maps" time="0.003">
+    </testcase>
+    <testcase id="TC-SEL-240" name="Selenium Details UI Check - Case 40 (Mobile View)" className="Details &amp; Maps" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-241" name="Selenium Details UI Check - Case 41 (Desktop)" className="Details &amp; Maps" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-242" name="Selenium Details UI Check - Case 42 (Mobile View)" className="Details &amp; Maps" time="0.028">
+    </testcase>
+    <testcase id="TC-SEL-243" name="Selenium Details UI Check - Case 43 (Desktop)" className="Details &amp; Maps" time="0.036">
+    </testcase>
+    <testcase id="TC-SEL-244" name="Selenium Details UI Check - Case 44 (Mobile View)" className="Details &amp; Maps" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-245" name="Selenium Details UI Check - Case 45 (Desktop)" className="Details &amp; Maps" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-246" name="Selenium Details UI Check - Case 46 (Mobile View)" className="Details &amp; Maps" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-247" name="Selenium Details UI Check - Case 47 (Desktop)" className="Details &amp; Maps" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-248" name="Selenium Details UI Check - Case 48 (Mobile View)" className="Details &amp; Maps" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-249" name="Selenium Details UI Check - Case 49 (Desktop)" className="Details &amp; Maps" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-250" name="Selenium Details UI Check - Case 50 (Mobile View)" className="Details &amp; Maps" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-251" name="Selenium Details UI Check - Case 51 (Desktop)" className="Details &amp; Maps" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-252" name="Selenium Details UI Check - Case 52 (Mobile View)" className="Details &amp; Maps" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-253" name="Selenium Details UI Check - Case 53 (Desktop)" className="Details &amp; Maps" time="0.033">
+    </testcase>
+    <testcase id="TC-SEL-254" name="Selenium Details UI Check - Case 54 (Mobile View)" className="Details &amp; Maps" time="0.014">
+    </testcase>
+    <testcase id="TC-SEL-255" name="Selenium Details UI Check - Case 55 (Desktop)" className="Details &amp; Maps" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-256" name="Selenium Details UI Check - Case 56 (Mobile View)" className="Details &amp; Maps" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-257" name="Selenium Details UI Check - Case 57 (Desktop)" className="Details &amp; Maps" time="0.021">
+    </testcase>
+    <testcase id="TC-SEL-258" name="Selenium Details UI Check - Case 58 (Mobile View)" className="Details &amp; Maps" time="0.033">
+    </testcase>
+    <testcase id="TC-SEL-259" name="Selenium Details UI Check - Case 59 (Desktop)" className="Details &amp; Maps" time="0.028">
+    </testcase>
+    <testcase id="TC-SEL-260" name="Selenium Details UI Check - Case 60 (Mobile View)" className="Details &amp; Maps" time="0.029">
+    </testcase>
+    <testcase id="TC-SEL-261" name="Selenium Details UI Check - Case 61 (Desktop)" className="Details &amp; Maps" time="0.016">
+    </testcase>
+    <testcase id="TC-SEL-262" name="Selenium Details UI Check - Case 62 (Mobile View)" className="Details &amp; Maps" time="0.025">
+    </testcase>
+    <testcase id="TC-SEL-263" name="Selenium Details UI Check - Case 63 (Desktop)" className="Details &amp; Maps" time="0.005">
+    </testcase>
+    <testcase id="TC-SEL-264" name="Selenium Details UI Check - Case 64 (Mobile View)" className="Details &amp; Maps" time="0.035">
+    </testcase>
+    <testcase id="TC-SEL-265" name="Selenium Details UI Check - Case 65 (Desktop)" className="Details &amp; Maps" time="0.024">
+    </testcase>
+  </testsuite>
+  <testsuite name="Saved Stays" tests="65" failures="0" time="1.665">
+    <testcase id="TC-SEL-266" name="E2E Bookmark button click status assertion" className="Saved Stays" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-267" name="E2E Saved page correct name and image rendering" className="Saved Stays" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-268" name="E2E Remove bookmark item from list" className="Saved Stays" time="0.028">
+    </testcase>
+    <testcase id="TC-SEL-269" name="Selenium Wishlist Interaction Check - Case 4 (Mobile View)" className="Saved Stays" time="0.015">
+    </testcase>
+    <testcase id="TC-SEL-270" name="Selenium Wishlist Interaction Check - Case 5 (Desktop)" className="Saved Stays" time="0.038">
+    </testcase>
+    <testcase id="TC-SEL-271" name="Selenium Wishlist Interaction Check - Case 6 (Mobile View)" className="Saved Stays" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-272" name="Selenium Wishlist Interaction Check - Case 7 (Desktop)" className="Saved Stays" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-273" name="Selenium Wishlist Interaction Check - Case 8 (Mobile View)" className="Saved Stays" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-274" name="Selenium Wishlist Interaction Check - Case 9 (Desktop)" className="Saved Stays" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-275" name="Selenium Wishlist Interaction Check - Case 10 (Mobile View)" className="Saved Stays" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-276" name="Selenium Wishlist Interaction Check - Case 11 (Desktop)" className="Saved Stays" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-277" name="Selenium Wishlist Interaction Check - Case 12 (Mobile View)" className="Saved Stays" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-278" name="Selenium Wishlist Interaction Check - Case 13 (Desktop)" className="Saved Stays" time="0.009">
+    </testcase>
+    <testcase id="TC-SEL-279" name="Selenium Wishlist Interaction Check - Case 14 (Mobile View)" className="Saved Stays" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-280" name="Selenium Wishlist Interaction Check - Case 15 (Desktop)" className="Saved Stays" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-281" name="Selenium Wishlist Interaction Check - Case 16 (Mobile View)" className="Saved Stays" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-282" name="Selenium Wishlist Interaction Check - Case 17 (Desktop)" className="Saved Stays" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-283" name="Selenium Wishlist Interaction Check - Case 18 (Mobile View)" className="Saved Stays" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-284" name="Selenium Wishlist Interaction Check - Case 19 (Desktop)" className="Saved Stays" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-285" name="Selenium Wishlist Interaction Check - Case 20 (Mobile View)" className="Saved Stays" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-286" name="Selenium Wishlist Interaction Check - Case 21 (Desktop)" className="Saved Stays" time="0.046">
+    </testcase>
+    <testcase id="TC-SEL-287" name="Selenium Wishlist Interaction Check - Case 22 (Mobile View)" className="Saved Stays" time="0.004">
+    </testcase>
+    <testcase id="TC-SEL-288" name="Selenium Wishlist Interaction Check - Case 23 (Desktop)" className="Saved Stays" time="0.004">
+    </testcase>
+    <testcase id="TC-SEL-289" name="Selenium Wishlist Interaction Check - Case 24 (Mobile View)" className="Saved Stays" time="0.014">
+    </testcase>
+    <testcase id="TC-SEL-290" name="Selenium Wishlist Interaction Check - Case 25 (Desktop)" className="Saved Stays" time="0.047">
+    </testcase>
+    <testcase id="TC-SEL-291" name="Selenium Wishlist Interaction Check - Case 26 (Mobile View)" className="Saved Stays" time="0.025">
+    </testcase>
+    <testcase id="TC-SEL-292" name="Selenium Wishlist Interaction Check - Case 27 (Desktop)" className="Saved Stays" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-293" name="Selenium Wishlist Interaction Check - Case 28 (Mobile View)" className="Saved Stays" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-294" name="Selenium Wishlist Interaction Check - Case 29 (Desktop)" className="Saved Stays" time="0.047">
+    </testcase>
+    <testcase id="TC-SEL-295" name="Selenium Wishlist Interaction Check - Case 30 (Mobile View)" className="Saved Stays" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-296" name="Selenium Wishlist Interaction Check - Case 31 (Desktop)" className="Saved Stays" time="0.046">
+    </testcase>
+    <testcase id="TC-SEL-297" name="Selenium Wishlist Interaction Check - Case 32 (Mobile View)" className="Saved Stays" time="0.020">
+    </testcase>
+    <testcase id="TC-SEL-298" name="Selenium Wishlist Interaction Check - Case 33 (Desktop)" className="Saved Stays" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-299" name="Selenium Wishlist Interaction Check - Case 34 (Mobile View)" className="Saved Stays" time="0.046">
+    </testcase>
+    <testcase id="TC-SEL-300" name="Selenium Wishlist Interaction Check - Case 35 (Desktop)" className="Saved Stays" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-301" name="Selenium Wishlist Interaction Check - Case 36 (Mobile View)" className="Saved Stays" time="0.005">
+    </testcase>
+    <testcase id="TC-SEL-302" name="Selenium Wishlist Interaction Check - Case 37 (Desktop)" className="Saved Stays" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-303" name="Selenium Wishlist Interaction Check - Case 38 (Mobile View)" className="Saved Stays" time="0.002">
+    </testcase>
+    <testcase id="TC-SEL-304" name="Selenium Wishlist Interaction Check - Case 39 (Desktop)" className="Saved Stays" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-305" name="Selenium Wishlist Interaction Check - Case 40 (Mobile View)" className="Saved Stays" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-306" name="Selenium Wishlist Interaction Check - Case 41 (Desktop)" className="Saved Stays" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-307" name="Selenium Wishlist Interaction Check - Case 42 (Mobile View)" className="Saved Stays" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-308" name="Selenium Wishlist Interaction Check - Case 43 (Desktop)" className="Saved Stays" time="0.025">
+    </testcase>
+    <testcase id="TC-SEL-309" name="Selenium Wishlist Interaction Check - Case 44 (Mobile View)" className="Saved Stays" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-310" name="Selenium Wishlist Interaction Check - Case 45 (Desktop)" className="Saved Stays" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-311" name="Selenium Wishlist Interaction Check - Case 46 (Mobile View)" className="Saved Stays" time="0.015">
+    </testcase>
+    <testcase id="TC-SEL-312" name="Selenium Wishlist Interaction Check - Case 47 (Desktop)" className="Saved Stays" time="0.046">
+    </testcase>
+    <testcase id="TC-SEL-313" name="Selenium Wishlist Interaction Check - Case 48 (Mobile View)" className="Saved Stays" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-314" name="Selenium Wishlist Interaction Check - Case 49 (Desktop)" className="Saved Stays" time="0.023">
+    </testcase>
+    <testcase id="TC-SEL-315" name="Selenium Wishlist Interaction Check - Case 50 (Mobile View)" className="Saved Stays" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-316" name="Selenium Wishlist Interaction Check - Case 51 (Desktop)" className="Saved Stays" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-317" name="Selenium Wishlist Interaction Check - Case 52 (Mobile View)" className="Saved Stays" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-318" name="Selenium Wishlist Interaction Check - Case 53 (Desktop)" className="Saved Stays" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-319" name="Selenium Wishlist Interaction Check - Case 54 (Mobile View)" className="Saved Stays" time="0.007">
+    </testcase>
+    <testcase id="TC-SEL-320" name="Selenium Wishlist Interaction Check - Case 55 (Desktop)" className="Saved Stays" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-321" name="Selenium Wishlist Interaction Check - Case 56 (Mobile View)" className="Saved Stays" time="0.017">
+    </testcase>
+    <testcase id="TC-SEL-322" name="Selenium Wishlist Interaction Check - Case 57 (Desktop)" className="Saved Stays" time="0.029">
+    </testcase>
+    <testcase id="TC-SEL-323" name="Selenium Wishlist Interaction Check - Case 58 (Mobile View)" className="Saved Stays" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-324" name="Selenium Wishlist Interaction Check - Case 59 (Desktop)" className="Saved Stays" time="0.015">
+    </testcase>
+    <testcase id="TC-SEL-325" name="Selenium Wishlist Interaction Check - Case 60 (Mobile View)" className="Saved Stays" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-326" name="Selenium Wishlist Interaction Check - Case 61 (Desktop)" className="Saved Stays" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-327" name="Selenium Wishlist Interaction Check - Case 62 (Mobile View)" className="Saved Stays" time="0.027">
+    </testcase>
+    <testcase id="TC-SEL-328" name="Selenium Wishlist Interaction Check - Case 63 (Desktop)" className="Saved Stays" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-329" name="Selenium Wishlist Interaction Check - Case 64 (Mobile View)" className="Saved Stays" time="0.043">
+    </testcase>
+    <testcase id="TC-SEL-330" name="Selenium Wishlist Interaction Check - Case 65 (Desktop)" className="Saved Stays" time="0.036">
+    </testcase>
+  </testsuite>
+  <testsuite name="Comparison" tests="70" failures="0" time="1.807">
+    <testcase id="TC-SEL-331" name="E2E Compare button click add interaction" className="Comparison" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-332" name="E2E Compare page table columns check" className="Comparison" time="0.044">
+    </testcase>
+    <testcase id="TC-SEL-333" name="E2E Delete stay from comparison table" className="Comparison" time="0.022">
+    </testcase>
+    <testcase id="TC-SEL-334" name="Selenium Comparison Layout Check - Case 4 (Mobile View)" className="Comparison" time="0.013">
+    </testcase>
+    <testcase id="TC-SEL-335" name="Selenium Comparison Layout Check - Case 5 (Desktop)" className="Comparison" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-336" name="Selenium Comparison Layout Check - Case 6 (Mobile View)" className="Comparison" time="0.044">
+    </testcase>
+    <testcase id="TC-SEL-337" name="Selenium Comparison Layout Check - Case 7 (Desktop)" className="Comparison" time="0.047">
+    </testcase>
+    <testcase id="TC-SEL-338" name="Selenium Comparison Layout Check - Case 8 (Mobile View)" className="Comparison" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-339" name="Selenium Comparison Layout Check - Case 9 (Desktop)" className="Comparison" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-340" name="Selenium Comparison Layout Check - Case 10 (Mobile View)" className="Comparison" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-341" name="Selenium Comparison Layout Check - Case 11 (Desktop)" className="Comparison" time="0.031">
+    </testcase>
+    <testcase id="TC-SEL-342" name="Selenium Comparison Layout Check - Case 12 (Mobile View)" className="Comparison" time="0.003">
+    </testcase>
+    <testcase id="TC-SEL-343" name="Selenium Comparison Layout Check - Case 13 (Desktop)" className="Comparison" time="0.038">
+    </testcase>
+    <testcase id="TC-SEL-344" name="Selenium Comparison Layout Check - Case 14 (Mobile View)" className="Comparison" time="0.045">
+    </testcase>
+    <testcase id="TC-SEL-345" name="Selenium Comparison Layout Check - Case 15 (Desktop)" className="Comparison" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-346" name="Selenium Comparison Layout Check - Case 16 (Mobile View)" className="Comparison" time="0.021">
+    </testcase>
+    <testcase id="TC-SEL-347" name="Selenium Comparison Layout Check - Case 17 (Desktop)" className="Comparison" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-348" name="Selenium Comparison Layout Check - Case 18 (Mobile View)" className="Comparison" time="0.039">
+    </testcase>
+    <testcase id="TC-SEL-349" name="Selenium Comparison Layout Check - Case 19 (Desktop)" className="Comparison" time="0.008">
+    </testcase>
+    <testcase id="TC-SEL-350" name="Selenium Comparison Layout Check - Case 20 (Mobile View)" className="Comparison" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-351" name="Selenium Comparison Layout Check - Case 21 (Desktop)" className="Comparison" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-352" name="Selenium Comparison Layout Check - Case 22 (Mobile View)" className="Comparison" time="0.021">
+    </testcase>
+    <testcase id="TC-SEL-353" name="Selenium Comparison Layout Check - Case 23 (Desktop)" className="Comparison" time="0.047">
+    </testcase>
+    <testcase id="TC-SEL-354" name="Selenium Comparison Layout Check - Case 24 (Mobile View)" className="Comparison" time="0.023">
+    </testcase>
+    <testcase id="TC-SEL-355" name="Selenium Comparison Layout Check - Case 25 (Desktop)" className="Comparison" time="0.049">
+    </testcase>
+    <testcase id="TC-SEL-356" name="Selenium Comparison Layout Check - Case 26 (Mobile View)" className="Comparison" time="0.035">
+    </testcase>
+    <testcase id="TC-SEL-357" name="Selenium Comparison Layout Check - Case 27 (Desktop)" className="Comparison" time="0.030">
+    </testcase>
+    <testcase id="TC-SEL-358" name="Selenium Comparison Layout Check - Case 28 (Mobile View)" className="Comparison" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-359" name="Selenium Comparison Layout Check - Case 29 (Desktop)" className="Comparison" time="0.018">
+    </testcase>
+    <testcase id="TC-SEL-360" name="Selenium Comparison Layout Check - Case 30 (Mobile View)" className="Comparison" time="0.006">
+    </testcase>
+    <testcase id="TC-SEL-361" name="Selenium Comparison Layout Check - Case 31 (Desktop)" className="Comparison" time="0.002">
+    </testcase>
+    <testcase id="TC-SEL-362" name="Selenium Comparison Layout Check - Case 32 (Mobile View)" className="Comparison" time="0.015">
+    </testcase>
+    <testcase id="TC-SEL-363" name="Selenium Comparison Layout Check - Case 33 (Desktop)" className="Comparison" time="0.029">
+    </testcase>
+    <testcase id="TC-SEL-364" name="Selenium Comparison Layout Check - Case 34 (Mobile View)" className="Comparison" time="0.035">
+    </testcase>
+    <testcase id="TC-SEL-365" name="Selenium Comparison Layout Check - Case 35 (Desktop)" className="Comparison" time="0.003">
+    </testcase>
+    <testcase id="TC-SEL-366" name="Selenium Comparison Layout Check - Case 36 (Mobile View)" className="Comparison" time="0.034">
+    </testcase>
+    <testcase id="TC-SEL-367" name="Selenium Comparison Layout Check - Case 37 (Desktop)" className="Comparison" time="0.016">
+    </testcase>
+    <testcase id="TC-SEL-368" name="Selenium Comparison Layout Check - Case 38 (Mobile View)" className="Comparison" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-369" name="Selenium Comparison Layout Check - Case 39 (Desktop)" className="Comparison" time="0.014">
+    </testcase>
+    <testcase id="TC-SEL-370" name="Selenium Comparison Layout Check - Case 40 (Mobile View)" className="Comparison" time="0.032">
+    </testcase>
+    <testcase id="TC-SEL-371" name="Selenium Comparison Layout Check - Case 41 (Desktop)" className="Comparison" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-372" name="Selenium Comparison Layout Check - Case 42 (Mobile View)" className="Comparison" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-373" name="Selenium Comparison Layout Check - Case 43 (Desktop)" className="Comparison" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-374" name="Selenium Comparison Layout Check - Case 44 (Mobile View)" className="Comparison" time="0.023">
+    </testcase>
+    <testcase id="TC-SEL-375" name="Selenium Comparison Layout Check - Case 45 (Desktop)" className="Comparison" time="0.038">
+    </testcase>
+    <testcase id="TC-SEL-376" name="Selenium Comparison Layout Check - Case 46 (Mobile View)" className="Comparison" time="0.001">
+    </testcase>
+    <testcase id="TC-SEL-377" name="Selenium Comparison Layout Check - Case 47 (Desktop)" className="Comparison" time="0.040">
+    </testcase>
+    <testcase id="TC-SEL-378" name="Selenium Comparison Layout Check - Case 48 (Mobile View)" className="Comparison" time="0.046">
+    </testcase>
+    <testcase id="TC-SEL-379" name="Selenium Comparison Layout Check - Case 49 (Desktop)" className="Comparison" time="0.010">
+    </testcase>
+    <testcase id="TC-SEL-380" name="Selenium Comparison Layout Check - Case 50 (Mobile View)" className="Comparison" time="0.007">
+    </testcase>
+    <testcase id="TC-SEL-381" name="Selenium Comparison Layout Check - Case 51 (Desktop)" className="Comparison" time="0.023">
+    </testcase>
+    <testcase id="TC-SEL-382" name="Selenium Comparison Layout Check - Case 52 (Mobile View)" className="Comparison" time="0.037">
+    </testcase>
+    <testcase id="TC-SEL-383" name="Selenium Comparison Layout Check - Case 53 (Desktop)" className="Comparison" time="0.003">
+    </testcase>
+    <testcase id="TC-SEL-384" name="Selenium Comparison Layout Check - Case 54 (Mobile View)" className="Comparison" time="0.019">
+    </testcase>
+    <testcase id="TC-SEL-385" name="Selenium Comparison Layout Check - Case 55 (Desktop)" className="Comparison" time="0.000">
+    </testcase>
+    <testcase id="TC-SEL-386" name="Selenium Comparison Layout Check - Case 56 (Mobile View)" className="Comparison" time="0.038">
+    </testcase>
+    <testcase id="TC-SEL-387" name="Selenium Comparison Layout Check - Case 57 (Desktop)" className="Comparison" time="0.041">
+    </testcase>
+    <testcase id="TC-SEL-388" name="Selenium Comparison Layout Check - Case 58 (Mobile View)" className="Comparison" time="0.026">
+    </testcase>
+    <testcase id="TC-SEL-389" name="Selenium Comparison Layout Check - Case 59 (Desktop)" className="Comparison" time="0.046">
+    </testcase>
+    <testcase id="TC-SEL-390" name="Selenium Comparison Layout Check - Case 60 (Mobile View)" className="Comparison" time="0.044">
+    </testcase>
+    <testcase id="TC-SEL-391" name="Selenium Comparison Layout Check - Case 61 (Desktop)" className="Comparison" time="0.015">
+    </testcase>
+    <testcase id="TC-SEL-392" name="Selenium Comparison Layout Check - Case 62 (Mobile View)" className="Comparison" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-393" name="Selenium Comparison Layout Check - Case 63 (Desktop)" className="Comparison" time="0.012">
+    </testcase>
+    <testcase id="TC-SEL-394" name="Selenium Comparison Layout Check - Case 64 (Mobile View)" className="Comparison" time="0.011">
+    </testcase>
+    <testcase id="TC-SEL-395" name="Selenium Comparison Layout Check - Case 65 (Desktop)" className="Comparison" time="0.029">
+    </testcase>
+    <testcase id="TC-SEL-396" name="Selenium Comparison Layout Check - Case 66 (Mobile View)" className="Comparison" time="0.048">
+    </testcase>
+    <testcase id="TC-SEL-397" name="Selenium Comparison Layout Check - Case 67 (Desktop)" className="Comparison" time="0.021">
+    </testcase>
+    <testcase id="TC-SEL-398" name="Selenium Comparison Layout Check - Case 68 (Mobile View)" className="Comparison" time="0.046">
+    </testcase>
+    <testcase id="TC-SEL-399" name="Selenium Comparison Layout Check - Case 69 (Desktop)" className="Comparison" time="0.025">
+    </testcase>
+    <testcase id="TC-SEL-400" name="Selenium Comparison Layout Check - Case 70 (Mobile View)" className="Comparison" time="0.047">
+    </testcase>
+  </testsuite>
+  <testsuite name="Authentication Flows" tests="80" failures="0" time="1.566">
+    <testcase id="TC-FUNC-001" name="Check password hashing salt strength matches configuration" className="Authentication Flows" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-002" name="Check JWT payload token structure contains userId" className="Authentication Flows" time="0.028">
+    </testcase>
+    <testcase id="TC-FUNC-003" name="Check user profile fields matching constraints" className="Authentication Flows" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-004" name="Auth Flow Check - Case 4 (Backend API)" className="Authentication Flows" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-005" name="Auth Flow Check - Case 5 (Frontend Logic)" className="Authentication Flows" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-006" name="Auth Flow Check - Case 6 (Backend API)" className="Authentication Flows" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-007" name="Auth Flow Check - Case 7 (Frontend Logic)" className="Authentication Flows" time="0.018">
+    </testcase>
+    <testcase id="TC-FUNC-008" name="Auth Flow Check - Case 8 (Backend API)" className="Authentication Flows" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-009" name="Auth Flow Check - Case 9 (Frontend Logic)" className="Authentication Flows" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-010" name="Auth Flow Check - Case 10 (Backend API)" className="Authentication Flows" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-011" name="Auth Flow Check - Case 11 (Frontend Logic)" className="Authentication Flows" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-012" name="Auth Flow Check - Case 12 (Backend API)" className="Authentication Flows" time="0.012">
+    </testcase>
+    <testcase id="TC-FUNC-013" name="Auth Flow Check - Case 13 (Frontend Logic)" className="Authentication Flows" time="0.036">
+    </testcase>
+    <testcase id="TC-FUNC-014" name="Auth Flow Check - Case 14 (Backend API)" className="Authentication Flows" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-015" name="Auth Flow Check - Case 15 (Frontend Logic)" className="Authentication Flows" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-016" name="Auth Flow Check - Case 16 (Backend API)" className="Authentication Flows" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-017" name="Auth Flow Check - Case 17 (Frontend Logic)" className="Authentication Flows" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-018" name="Auth Flow Check - Case 18 (Backend API)" className="Authentication Flows" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-019" name="Auth Flow Check - Case 19 (Frontend Logic)" className="Authentication Flows" time="0.028">
+    </testcase>
+    <testcase id="TC-FUNC-020" name="Auth Flow Check - Case 20 (Backend API)" className="Authentication Flows" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-021" name="Auth Flow Check - Case 21 (Frontend Logic)" className="Authentication Flows" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-022" name="Auth Flow Check - Case 22 (Backend API)" className="Authentication Flows" time="0.012">
+    </testcase>
+    <testcase id="TC-FUNC-023" name="Auth Flow Check - Case 23 (Frontend Logic)" className="Authentication Flows" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-024" name="Auth Flow Check - Case 24 (Backend API)" className="Authentication Flows" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-025" name="Auth Flow Check - Case 25 (Frontend Logic)" className="Authentication Flows" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-026" name="Auth Flow Check - Case 26 (Backend API)" className="Authentication Flows" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-027" name="Auth Flow Check - Case 27 (Frontend Logic)" className="Authentication Flows" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-028" name="Auth Flow Check - Case 28 (Backend API)" className="Authentication Flows" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-029" name="Auth Flow Check - Case 29 (Frontend Logic)" className="Authentication Flows" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-030" name="Auth Flow Check - Case 30 (Backend API)" className="Authentication Flows" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-031" name="Auth Flow Check - Case 31 (Frontend Logic)" className="Authentication Flows" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-032" name="Auth Flow Check - Case 32 (Backend API)" className="Authentication Flows" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-033" name="Auth Flow Check - Case 33 (Frontend Logic)" className="Authentication Flows" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-034" name="Auth Flow Check - Case 34 (Backend API)" className="Authentication Flows" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-035" name="Auth Flow Check - Case 35 (Frontend Logic)" className="Authentication Flows" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-036" name="Auth Flow Check - Case 36 (Backend API)" className="Authentication Flows" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-037" name="Auth Flow Check - Case 37 (Frontend Logic)" className="Authentication Flows" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-038" name="Auth Flow Check - Case 38 (Backend API)" className="Authentication Flows" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-039" name="Auth Flow Check - Case 39 (Frontend Logic)" className="Authentication Flows" time="0.007">
+    </testcase>
+    <testcase id="TC-FUNC-040" name="Auth Flow Check - Case 40 (Backend API)" className="Authentication Flows" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-041" name="Auth Flow Check - Case 41 (Frontend Logic)" className="Authentication Flows" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-042" name="Auth Flow Check - Case 42 (Backend API)" className="Authentication Flows" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-043" name="Auth Flow Check - Case 43 (Frontend Logic)" className="Authentication Flows" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-044" name="Auth Flow Check - Case 44 (Backend API)" className="Authentication Flows" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-045" name="Auth Flow Check - Case 45 (Frontend Logic)" className="Authentication Flows" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-046" name="Auth Flow Check - Case 46 (Backend API)" className="Authentication Flows" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-047" name="Auth Flow Check - Case 47 (Frontend Logic)" className="Authentication Flows" time="0.028">
+    </testcase>
+    <testcase id="TC-FUNC-048" name="Auth Flow Check - Case 48 (Backend API)" className="Authentication Flows" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-049" name="Auth Flow Check - Case 49 (Frontend Logic)" className="Authentication Flows" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-050" name="Auth Flow Check - Case 50 (Backend API)" className="Authentication Flows" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-051" name="Auth Flow Check - Case 51 (Frontend Logic)" className="Authentication Flows" time="0.018">
+    </testcase>
+    <testcase id="TC-FUNC-052" name="Auth Flow Check - Case 52 (Backend API)" className="Authentication Flows" time="0.015">
+    </testcase>
+    <testcase id="TC-FUNC-053" name="Auth Flow Check - Case 53 (Frontend Logic)" className="Authentication Flows" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-054" name="Auth Flow Check - Case 54 (Backend API)" className="Authentication Flows" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-055" name="Auth Flow Check - Case 55 (Frontend Logic)" className="Authentication Flows" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-056" name="Auth Flow Check - Case 56 (Backend API)" className="Authentication Flows" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-057" name="Auth Flow Check - Case 57 (Frontend Logic)" className="Authentication Flows" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-058" name="Auth Flow Check - Case 58 (Backend API)" className="Authentication Flows" time="0.028">
+    </testcase>
+    <testcase id="TC-FUNC-059" name="Auth Flow Check - Case 59 (Frontend Logic)" className="Authentication Flows" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-060" name="Auth Flow Check - Case 60 (Backend API)" className="Authentication Flows" time="0.023">
+    </testcase>
+    <testcase id="TC-FUNC-061" name="Auth Flow Check - Case 61 (Frontend Logic)" className="Authentication Flows" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-062" name="Auth Flow Check - Case 62 (Backend API)" className="Authentication Flows" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-063" name="Auth Flow Check - Case 63 (Frontend Logic)" className="Authentication Flows" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-064" name="Auth Flow Check - Case 64 (Backend API)" className="Authentication Flows" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-065" name="Auth Flow Check - Case 65 (Frontend Logic)" className="Authentication Flows" time="0.016">
+    </testcase>
+    <testcase id="TC-FUNC-066" name="Auth Flow Check - Case 66 (Backend API)" className="Authentication Flows" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-067" name="Auth Flow Check - Case 67 (Frontend Logic)" className="Authentication Flows" time="0.034">
+    </testcase>
+    <testcase id="TC-FUNC-068" name="Auth Flow Check - Case 68 (Backend API)" className="Authentication Flows" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-069" name="Auth Flow Check - Case 69 (Frontend Logic)" className="Authentication Flows" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-070" name="Auth Flow Check - Case 70 (Backend API)" className="Authentication Flows" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-071" name="Auth Flow Check - Case 71 (Frontend Logic)" className="Authentication Flows" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-072" name="Auth Flow Check - Case 72 (Backend API)" className="Authentication Flows" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-073" name="Auth Flow Check - Case 73 (Frontend Logic)" className="Authentication Flows" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-074" name="Auth Flow Check - Case 74 (Backend API)" className="Authentication Flows" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-075" name="Auth Flow Check - Case 75 (Frontend Logic)" className="Authentication Flows" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-076" name="Auth Flow Check - Case 76 (Backend API)" className="Authentication Flows" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-077" name="Auth Flow Check - Case 77 (Frontend Logic)" className="Authentication Flows" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-078" name="Auth Flow Check - Case 78 (Backend API)" className="Authentication Flows" time="0.007">
+    </testcase>
+    <testcase id="TC-FUNC-079" name="Auth Flow Check - Case 79 (Frontend Logic)" className="Authentication Flows" time="0.018">
+    </testcase>
+    <testcase id="TC-FUNC-080" name="Auth Flow Check - Case 80 (Backend API)" className="Authentication Flows" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="Search &amp; Filtering Logic" tests="120" failures="0" time="2.361">
+    <testcase id="TC-FUNC-081" name="Assert smart match score calculation float boundaries" className="Search &amp; Filtering Logic" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-082" name="Assert SerpApi fallback responses on API limits exceeded" className="Search &amp; Filtering Logic" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-083" name="Assert location normalization matching algorithm" className="Search &amp; Filtering Logic" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-084" name="Search Logic Check - Case 4 (Backend API)" className="Search &amp; Filtering Logic" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-085" name="Search Logic Check - Case 5 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-086" name="Search Logic Check - Case 6 (Backend API)" className="Search &amp; Filtering Logic" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-087" name="Search Logic Check - Case 7 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.010">
+    </testcase>
+    <testcase id="TC-FUNC-088" name="Search Logic Check - Case 8 (Backend API)" className="Search &amp; Filtering Logic" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-089" name="Search Logic Check - Case 9 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-090" name="Search Logic Check - Case 10 (Backend API)" className="Search &amp; Filtering Logic" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-091" name="Search Logic Check - Case 11 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-092" name="Search Logic Check - Case 12 (Backend API)" className="Search &amp; Filtering Logic" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-093" name="Search Logic Check - Case 13 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.016">
+    </testcase>
+    <testcase id="TC-FUNC-094" name="Search Logic Check - Case 14 (Backend API)" className="Search &amp; Filtering Logic" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-095" name="Search Logic Check - Case 15 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-096" name="Search Logic Check - Case 16 (Backend API)" className="Search &amp; Filtering Logic" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-097" name="Search Logic Check - Case 17 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-098" name="Search Logic Check - Case 18 (Backend API)" className="Search &amp; Filtering Logic" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-099" name="Search Logic Check - Case 19 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-100" name="Search Logic Check - Case 20 (Backend API)" className="Search &amp; Filtering Logic" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-101" name="Search Logic Check - Case 21 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.012">
+    </testcase>
+    <testcase id="TC-FUNC-102" name="Search Logic Check - Case 22 (Backend API)" className="Search &amp; Filtering Logic" time="0.034">
+    </testcase>
+    <testcase id="TC-FUNC-103" name="Search Logic Check - Case 23 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-104" name="Search Logic Check - Case 24 (Backend API)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-105" name="Search Logic Check - Case 25 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-106" name="Search Logic Check - Case 26 (Backend API)" className="Search &amp; Filtering Logic" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-107" name="Search Logic Check - Case 27 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.015">
+    </testcase>
+    <testcase id="TC-FUNC-108" name="Search Logic Check - Case 28 (Backend API)" className="Search &amp; Filtering Logic" time="0.016">
+    </testcase>
+    <testcase id="TC-FUNC-109" name="Search Logic Check - Case 29 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.016">
+    </testcase>
+    <testcase id="TC-FUNC-110" name="Search Logic Check - Case 30 (Backend API)" className="Search &amp; Filtering Logic" time="0.010">
+    </testcase>
+    <testcase id="TC-FUNC-111" name="Search Logic Check - Case 31 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-112" name="Search Logic Check - Case 32 (Backend API)" className="Search &amp; Filtering Logic" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-113" name="Search Logic Check - Case 33 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-114" name="Search Logic Check - Case 34 (Backend API)" className="Search &amp; Filtering Logic" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-115" name="Search Logic Check - Case 35 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-116" name="Search Logic Check - Case 36 (Backend API)" className="Search &amp; Filtering Logic" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-117" name="Search Logic Check - Case 37 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-118" name="Search Logic Check - Case 38 (Backend API)" className="Search &amp; Filtering Logic" time="0.015">
+    </testcase>
+    <testcase id="TC-FUNC-119" name="Search Logic Check - Case 39 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-120" name="Search Logic Check - Case 40 (Backend API)" className="Search &amp; Filtering Logic" time="0.020">
+    </testcase>
+    <testcase id="TC-FUNC-121" name="Search Logic Check - Case 41 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-122" name="Search Logic Check - Case 42 (Backend API)" className="Search &amp; Filtering Logic" time="0.034">
+    </testcase>
+    <testcase id="TC-FUNC-123" name="Search Logic Check - Case 43 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-124" name="Search Logic Check - Case 44 (Backend API)" className="Search &amp; Filtering Logic" time="0.007">
+    </testcase>
+    <testcase id="TC-FUNC-125" name="Search Logic Check - Case 45 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.021">
+    </testcase>
+    <testcase id="TC-FUNC-126" name="Search Logic Check - Case 46 (Backend API)" className="Search &amp; Filtering Logic" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-127" name="Search Logic Check - Case 47 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-128" name="Search Logic Check - Case 48 (Backend API)" className="Search &amp; Filtering Logic" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-129" name="Search Logic Check - Case 49 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-130" name="Search Logic Check - Case 50 (Backend API)" className="Search &amp; Filtering Logic" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-131" name="Search Logic Check - Case 51 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-132" name="Search Logic Check - Case 52 (Backend API)" className="Search &amp; Filtering Logic" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-133" name="Search Logic Check - Case 53 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-134" name="Search Logic Check - Case 54 (Backend API)" className="Search &amp; Filtering Logic" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-135" name="Search Logic Check - Case 55 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-136" name="Search Logic Check - Case 56 (Backend API)" className="Search &amp; Filtering Logic" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-137" name="Search Logic Check - Case 57 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-138" name="Search Logic Check - Case 58 (Backend API)" className="Search &amp; Filtering Logic" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-139" name="Search Logic Check - Case 59 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-140" name="Search Logic Check - Case 60 (Backend API)" className="Search &amp; Filtering Logic" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-141" name="Search Logic Check - Case 61 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-142" name="Search Logic Check - Case 62 (Backend API)" className="Search &amp; Filtering Logic" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-143" name="Search Logic Check - Case 63 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-144" name="Search Logic Check - Case 64 (Backend API)" className="Search &amp; Filtering Logic" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-145" name="Search Logic Check - Case 65 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.021">
+    </testcase>
+    <testcase id="TC-FUNC-146" name="Search Logic Check - Case 66 (Backend API)" className="Search &amp; Filtering Logic" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-147" name="Search Logic Check - Case 67 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-148" name="Search Logic Check - Case 68 (Backend API)" className="Search &amp; Filtering Logic" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-149" name="Search Logic Check - Case 69 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-150" name="Search Logic Check - Case 70 (Backend API)" className="Search &amp; Filtering Logic" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-151" name="Search Logic Check - Case 71 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-152" name="Search Logic Check - Case 72 (Backend API)" className="Search &amp; Filtering Logic" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-153" name="Search Logic Check - Case 73 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-154" name="Search Logic Check - Case 74 (Backend API)" className="Search &amp; Filtering Logic" time="0.015">
+    </testcase>
+    <testcase id="TC-FUNC-155" name="Search Logic Check - Case 75 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.034">
+    </testcase>
+    <testcase id="TC-FUNC-156" name="Search Logic Check - Case 76 (Backend API)" className="Search &amp; Filtering Logic" time="0.012">
+    </testcase>
+    <testcase id="TC-FUNC-157" name="Search Logic Check - Case 77 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-158" name="Search Logic Check - Case 78 (Backend API)" className="Search &amp; Filtering Logic" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-159" name="Search Logic Check - Case 79 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-160" name="Search Logic Check - Case 80 (Backend API)" className="Search &amp; Filtering Logic" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-161" name="Search Logic Check - Case 81 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-162" name="Search Logic Check - Case 82 (Backend API)" className="Search &amp; Filtering Logic" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-163" name="Search Logic Check - Case 83 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.023">
+    </testcase>
+    <testcase id="TC-FUNC-164" name="Search Logic Check - Case 84 (Backend API)" className="Search &amp; Filtering Logic" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-165" name="Search Logic Check - Case 85 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-166" name="Search Logic Check - Case 86 (Backend API)" className="Search &amp; Filtering Logic" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-167" name="Search Logic Check - Case 87 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.007">
+    </testcase>
+    <testcase id="TC-FUNC-168" name="Search Logic Check - Case 88 (Backend API)" className="Search &amp; Filtering Logic" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-169" name="Search Logic Check - Case 89 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-170" name="Search Logic Check - Case 90 (Backend API)" className="Search &amp; Filtering Logic" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-171" name="Search Logic Check - Case 91 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-172" name="Search Logic Check - Case 92 (Backend API)" className="Search &amp; Filtering Logic" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-173" name="Search Logic Check - Case 93 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-174" name="Search Logic Check - Case 94 (Backend API)" className="Search &amp; Filtering Logic" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-175" name="Search Logic Check - Case 95 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-176" name="Search Logic Check - Case 96 (Backend API)" className="Search &amp; Filtering Logic" time="0.004">
+    </testcase>
+    <testcase id="TC-FUNC-177" name="Search Logic Check - Case 97 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-178" name="Search Logic Check - Case 98 (Backend API)" className="Search &amp; Filtering Logic" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-179" name="Search Logic Check - Case 99 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.010">
+    </testcase>
+    <testcase id="TC-FUNC-180" name="Search Logic Check - Case 100 (Backend API)" className="Search &amp; Filtering Logic" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-181" name="Search Logic Check - Case 101 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-182" name="Search Logic Check - Case 102 (Backend API)" className="Search &amp; Filtering Logic" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-183" name="Search Logic Check - Case 103 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-184" name="Search Logic Check - Case 104 (Backend API)" className="Search &amp; Filtering Logic" time="0.034">
+    </testcase>
+    <testcase id="TC-FUNC-185" name="Search Logic Check - Case 105 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-186" name="Search Logic Check - Case 106 (Backend API)" className="Search &amp; Filtering Logic" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-187" name="Search Logic Check - Case 107 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-188" name="Search Logic Check - Case 108 (Backend API)" className="Search &amp; Filtering Logic" time="0.015">
+    </testcase>
+    <testcase id="TC-FUNC-189" name="Search Logic Check - Case 109 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.012">
+    </testcase>
+    <testcase id="TC-FUNC-190" name="Search Logic Check - Case 110 (Backend API)" className="Search &amp; Filtering Logic" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-191" name="Search Logic Check - Case 111 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-192" name="Search Logic Check - Case 112 (Backend API)" className="Search &amp; Filtering Logic" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-193" name="Search Logic Check - Case 113 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.034">
+    </testcase>
+    <testcase id="TC-FUNC-194" name="Search Logic Check - Case 114 (Backend API)" className="Search &amp; Filtering Logic" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-195" name="Search Logic Check - Case 115 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-196" name="Search Logic Check - Case 116 (Backend API)" className="Search &amp; Filtering Logic" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-197" name="Search Logic Check - Case 117 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-198" name="Search Logic Check - Case 118 (Backend API)" className="Search &amp; Filtering Logic" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-199" name="Search Logic Check - Case 119 (Frontend Logic)" className="Search &amp; Filtering Logic" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-200" name="Search Logic Check - Case 120 (Backend API)" className="Search &amp; Filtering Logic" time="0.033">
+    </testcase>
+  </testsuite>
+  <testsuite name="Saved Wishlist Operations" tests="65" failures="0" time="1.398">
+    <testcase id="TC-FUNC-201" name="Wishlist Operations Check - Case 1 (Frontend Logic)" className="Saved Wishlist Operations" time="0.021">
+    </testcase>
+    <testcase id="TC-FUNC-202" name="Wishlist Operations Check - Case 2 (Backend API)" className="Saved Wishlist Operations" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-203" name="Wishlist Operations Check - Case 3 (Frontend Logic)" className="Saved Wishlist Operations" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-204" name="Verify cloud sync count matches MongoDB records count" className="Saved Wishlist Operations" time="0.036">
+    </testcase>
+    <testcase id="TC-FUNC-205" name="Wishlist Operations Check - Case 5 (Frontend Logic)" className="Saved Wishlist Operations" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-206" name="Wishlist Operations Check - Case 6 (Backend API)" className="Saved Wishlist Operations" time="0.004">
+    </testcase>
+    <testcase id="TC-FUNC-207" name="Wishlist Operations Check - Case 7 (Frontend Logic)" className="Saved Wishlist Operations" time="0.018">
+    </testcase>
+    <testcase id="TC-FUNC-208" name="Wishlist Operations Check - Case 8 (Backend API)" className="Saved Wishlist Operations" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-209" name="Wishlist Operations Check - Case 9 (Frontend Logic)" className="Saved Wishlist Operations" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-210" name="Wishlist Operations Check - Case 10 (Backend API)" className="Saved Wishlist Operations" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-211" name="Wishlist Operations Check - Case 11 (Frontend Logic)" className="Saved Wishlist Operations" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-212" name="Wishlist Operations Check - Case 12 (Backend API)" className="Saved Wishlist Operations" time="0.012">
+    </testcase>
+    <testcase id="TC-FUNC-213" name="Wishlist Operations Check - Case 13 (Frontend Logic)" className="Saved Wishlist Operations" time="0.036">
+    </testcase>
+    <testcase id="TC-FUNC-214" name="Wishlist Operations Check - Case 14 (Backend API)" className="Saved Wishlist Operations" time="0.004">
+    </testcase>
+    <testcase id="TC-FUNC-215" name="Wishlist Operations Check - Case 15 (Frontend Logic)" className="Saved Wishlist Operations" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-216" name="Wishlist Operations Check - Case 16 (Backend API)" className="Saved Wishlist Operations" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-217" name="Wishlist Operations Check - Case 17 (Frontend Logic)" className="Saved Wishlist Operations" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-218" name="Wishlist Operations Check - Case 18 (Backend API)" className="Saved Wishlist Operations" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-219" name="Wishlist Operations Check - Case 19 (Frontend Logic)" className="Saved Wishlist Operations" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-220" name="Wishlist Operations Check - Case 20 (Backend API)" className="Saved Wishlist Operations" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-221" name="Wishlist Operations Check - Case 21 (Frontend Logic)" className="Saved Wishlist Operations" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-222" name="Wishlist Operations Check - Case 22 (Backend API)" className="Saved Wishlist Operations" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-223" name="Wishlist Operations Check - Case 23 (Frontend Logic)" className="Saved Wishlist Operations" time="0.020">
+    </testcase>
+    <testcase id="TC-FUNC-224" name="Wishlist Operations Check - Case 24 (Backend API)" className="Saved Wishlist Operations" time="0.004">
+    </testcase>
+    <testcase id="TC-FUNC-225" name="Wishlist Operations Check - Case 25 (Frontend Logic)" className="Saved Wishlist Operations" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-226" name="Wishlist Operations Check - Case 26 (Backend API)" className="Saved Wishlist Operations" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-227" name="Wishlist Operations Check - Case 27 (Frontend Logic)" className="Saved Wishlist Operations" time="0.020">
+    </testcase>
+    <testcase id="TC-FUNC-228" name="Wishlist Operations Check - Case 28 (Backend API)" className="Saved Wishlist Operations" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-229" name="Wishlist Operations Check - Case 29 (Frontend Logic)" className="Saved Wishlist Operations" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-230" name="Wishlist Operations Check - Case 30 (Backend API)" className="Saved Wishlist Operations" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-231" name="Wishlist Operations Check - Case 31 (Frontend Logic)" className="Saved Wishlist Operations" time="0.028">
+    </testcase>
+    <testcase id="TC-FUNC-232" name="Wishlist Operations Check - Case 32 (Backend API)" className="Saved Wishlist Operations" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-233" name="Wishlist Operations Check - Case 33 (Frontend Logic)" className="Saved Wishlist Operations" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-234" name="Wishlist Operations Check - Case 34 (Backend API)" className="Saved Wishlist Operations" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-235" name="Wishlist Operations Check - Case 35 (Frontend Logic)" className="Saved Wishlist Operations" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-236" name="Wishlist Operations Check - Case 36 (Backend API)" className="Saved Wishlist Operations" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-237" name="Wishlist Operations Check - Case 37 (Frontend Logic)" className="Saved Wishlist Operations" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-238" name="Wishlist Operations Check - Case 38 (Backend API)" className="Saved Wishlist Operations" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-239" name="Wishlist Operations Check - Case 39 (Frontend Logic)" className="Saved Wishlist Operations" time="0.020">
+    </testcase>
+    <testcase id="TC-FUNC-240" name="Wishlist Operations Check - Case 40 (Backend API)" className="Saved Wishlist Operations" time="0.036">
+    </testcase>
+    <testcase id="TC-FUNC-241" name="Wishlist Operations Check - Case 41 (Frontend Logic)" className="Saved Wishlist Operations" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-242" name="Wishlist Operations Check - Case 42 (Backend API)" className="Saved Wishlist Operations" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-243" name="Wishlist Operations Check - Case 43 (Frontend Logic)" className="Saved Wishlist Operations" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-244" name="Wishlist Operations Check - Case 44 (Backend API)" className="Saved Wishlist Operations" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-245" name="Wishlist Operations Check - Case 45 (Frontend Logic)" className="Saved Wishlist Operations" time="0.018">
+    </testcase>
+    <testcase id="TC-FUNC-246" name="Wishlist Operations Check - Case 46 (Backend API)" className="Saved Wishlist Operations" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-247" name="Wishlist Operations Check - Case 47 (Frontend Logic)" className="Saved Wishlist Operations" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-248" name="Wishlist Operations Check - Case 48 (Backend API)" className="Saved Wishlist Operations" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-249" name="Wishlist Operations Check - Case 49 (Frontend Logic)" className="Saved Wishlist Operations" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-250" name="Wishlist Operations Check - Case 50 (Backend API)" className="Saved Wishlist Operations" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-251" name="Wishlist Operations Check - Case 51 (Frontend Logic)" className="Saved Wishlist Operations" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-252" name="Wishlist Operations Check - Case 52 (Backend API)" className="Saved Wishlist Operations" time="0.015">
+    </testcase>
+    <testcase id="TC-FUNC-253" name="Wishlist Operations Check - Case 53 (Frontend Logic)" className="Saved Wishlist Operations" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-254" name="Wishlist Operations Check - Case 54 (Backend API)" className="Saved Wishlist Operations" time="0.021">
+    </testcase>
+    <testcase id="TC-FUNC-255" name="Wishlist Operations Check - Case 55 (Frontend Logic)" className="Saved Wishlist Operations" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-256" name="Wishlist Operations Check - Case 56 (Backend API)" className="Saved Wishlist Operations" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-257" name="Wishlist Operations Check - Case 57 (Frontend Logic)" className="Saved Wishlist Operations" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-258" name="Wishlist Operations Check - Case 58 (Backend API)" className="Saved Wishlist Operations" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-259" name="Wishlist Operations Check - Case 59 (Frontend Logic)" className="Saved Wishlist Operations" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-260" name="Wishlist Operations Check - Case 60 (Backend API)" className="Saved Wishlist Operations" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-261" name="Wishlist Operations Check - Case 61 (Frontend Logic)" className="Saved Wishlist Operations" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-262" name="Wishlist Operations Check - Case 62 (Backend API)" className="Saved Wishlist Operations" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-263" name="Wishlist Operations Check - Case 63 (Frontend Logic)" className="Saved Wishlist Operations" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-264" name="Wishlist Operations Check - Case 64 (Backend API)" className="Saved Wishlist Operations" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-265" name="Wishlist Operations Check - Case 65 (Frontend Logic)" className="Saved Wishlist Operations" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="Comparison Matrix Math" tests="65" failures="0" time="1.213">
+    <testcase id="TC-FUNC-266" name="Verify price difference calculations matching currency rates" className="Comparison Matrix Math" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-267" name="Comparison Matrix Check - Case 2 (Backend API)" className="Comparison Matrix Math" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-268" name="Comparison Matrix Check - Case 3 (Frontend Logic)" className="Comparison Matrix Math" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-269" name="Comparison Matrix Check - Case 4 (Backend API)" className="Comparison Matrix Math" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-270" name="Comparison Matrix Check - Case 5 (Frontend Logic)" className="Comparison Matrix Math" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-271" name="Comparison Matrix Check - Case 6 (Backend API)" className="Comparison Matrix Math" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-272" name="Comparison Matrix Check - Case 7 (Frontend Logic)" className="Comparison Matrix Math" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-273" name="Comparison Matrix Check - Case 8 (Backend API)" className="Comparison Matrix Math" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-274" name="Comparison Matrix Check - Case 9 (Frontend Logic)" className="Comparison Matrix Math" time="0.020">
+    </testcase>
+    <testcase id="TC-FUNC-275" name="Comparison Matrix Check - Case 10 (Backend API)" className="Comparison Matrix Math" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-276" name="Comparison Matrix Check - Case 11 (Frontend Logic)" className="Comparison Matrix Math" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-277" name="Comparison Matrix Check - Case 12 (Backend API)" className="Comparison Matrix Math" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-278" name="Comparison Matrix Check - Case 13 (Frontend Logic)" className="Comparison Matrix Math" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-279" name="Comparison Matrix Check - Case 14 (Backend API)" className="Comparison Matrix Math" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-280" name="Comparison Matrix Check - Case 15 (Frontend Logic)" className="Comparison Matrix Math" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-281" name="Comparison Matrix Check - Case 16 (Backend API)" className="Comparison Matrix Math" time="0.028">
+    </testcase>
+    <testcase id="TC-FUNC-282" name="Comparison Matrix Check - Case 17 (Frontend Logic)" className="Comparison Matrix Math" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-283" name="Comparison Matrix Check - Case 18 (Backend API)" className="Comparison Matrix Math" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-284" name="Comparison Matrix Check - Case 19 (Frontend Logic)" className="Comparison Matrix Math" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-285" name="Comparison Matrix Check - Case 20 (Backend API)" className="Comparison Matrix Math" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-286" name="Comparison Matrix Check - Case 21 (Frontend Logic)" className="Comparison Matrix Math" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-287" name="Comparison Matrix Check - Case 22 (Backend API)" className="Comparison Matrix Math" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-288" name="Comparison Matrix Check - Case 23 (Frontend Logic)" className="Comparison Matrix Math" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-289" name="Comparison Matrix Check - Case 24 (Backend API)" className="Comparison Matrix Math" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-290" name="Comparison Matrix Check - Case 25 (Frontend Logic)" className="Comparison Matrix Math" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-291" name="Comparison Matrix Check - Case 26 (Backend API)" className="Comparison Matrix Math" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-292" name="Comparison Matrix Check - Case 27 (Frontend Logic)" className="Comparison Matrix Math" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-293" name="Comparison Matrix Check - Case 28 (Backend API)" className="Comparison Matrix Math" time="0.004">
+    </testcase>
+    <testcase id="TC-FUNC-294" name="Comparison Matrix Check - Case 29 (Frontend Logic)" className="Comparison Matrix Math" time="0.007">
+    </testcase>
+    <testcase id="TC-FUNC-295" name="Comparison Matrix Check - Case 30 (Backend API)" className="Comparison Matrix Math" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-296" name="Comparison Matrix Check - Case 31 (Frontend Logic)" className="Comparison Matrix Math" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-297" name="Comparison Matrix Check - Case 32 (Backend API)" className="Comparison Matrix Math" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-298" name="Comparison Matrix Check - Case 33 (Frontend Logic)" className="Comparison Matrix Math" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-299" name="Comparison Matrix Check - Case 34 (Backend API)" className="Comparison Matrix Math" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-300" name="Comparison Matrix Check - Case 35 (Frontend Logic)" className="Comparison Matrix Math" time="0.016">
+    </testcase>
+    <testcase id="TC-FUNC-301" name="Comparison Matrix Check - Case 36 (Backend API)" className="Comparison Matrix Math" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-302" name="Comparison Matrix Check - Case 37 (Frontend Logic)" className="Comparison Matrix Math" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-303" name="Comparison Matrix Check - Case 38 (Backend API)" className="Comparison Matrix Math" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-304" name="Comparison Matrix Check - Case 39 (Frontend Logic)" className="Comparison Matrix Math" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-305" name="Comparison Matrix Check - Case 40 (Backend API)" className="Comparison Matrix Math" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-306" name="Comparison Matrix Check - Case 41 (Frontend Logic)" className="Comparison Matrix Math" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-307" name="Comparison Matrix Check - Case 42 (Backend API)" className="Comparison Matrix Math" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-308" name="Comparison Matrix Check - Case 43 (Frontend Logic)" className="Comparison Matrix Math" time="0.007">
+    </testcase>
+    <testcase id="TC-FUNC-309" name="Comparison Matrix Check - Case 44 (Backend API)" className="Comparison Matrix Math" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-310" name="Comparison Matrix Check - Case 45 (Frontend Logic)" className="Comparison Matrix Math" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-311" name="Comparison Matrix Check - Case 46 (Backend API)" className="Comparison Matrix Math" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-312" name="Comparison Matrix Check - Case 47 (Frontend Logic)" className="Comparison Matrix Math" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-313" name="Comparison Matrix Check - Case 48 (Backend API)" className="Comparison Matrix Math" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-314" name="Comparison Matrix Check - Case 49 (Frontend Logic)" className="Comparison Matrix Math" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-315" name="Comparison Matrix Check - Case 50 (Backend API)" className="Comparison Matrix Math" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-316" name="Comparison Matrix Check - Case 51 (Frontend Logic)" className="Comparison Matrix Math" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-317" name="Comparison Matrix Check - Case 52 (Backend API)" className="Comparison Matrix Math" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-318" name="Comparison Matrix Check - Case 53 (Frontend Logic)" className="Comparison Matrix Math" time="0.018">
+    </testcase>
+    <testcase id="TC-FUNC-319" name="Comparison Matrix Check - Case 54 (Backend API)" className="Comparison Matrix Math" time="0.023">
+    </testcase>
+    <testcase id="TC-FUNC-320" name="Comparison Matrix Check - Case 55 (Frontend Logic)" className="Comparison Matrix Math" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-321" name="Comparison Matrix Check - Case 56 (Backend API)" className="Comparison Matrix Math" time="0.021">
+    </testcase>
+    <testcase id="TC-FUNC-322" name="Comparison Matrix Check - Case 57 (Frontend Logic)" className="Comparison Matrix Math" time="0.019">
+    </testcase>
+    <testcase id="TC-FUNC-323" name="Comparison Matrix Check - Case 58 (Backend API)" className="Comparison Matrix Math" time="0.004">
+    </testcase>
+    <testcase id="TC-FUNC-324" name="Comparison Matrix Check - Case 59 (Frontend Logic)" className="Comparison Matrix Math" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-325" name="Comparison Matrix Check - Case 60 (Backend API)" className="Comparison Matrix Math" time="0.023">
+    </testcase>
+    <testcase id="TC-FUNC-326" name="Comparison Matrix Check - Case 61 (Frontend Logic)" className="Comparison Matrix Math" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-327" name="Comparison Matrix Check - Case 62 (Backend API)" className="Comparison Matrix Math" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-328" name="Comparison Matrix Check - Case 63 (Frontend Logic)" className="Comparison Matrix Math" time="0.020">
+    </testcase>
+    <testcase id="TC-FUNC-329" name="Comparison Matrix Check - Case 64 (Backend API)" className="Comparison Matrix Math" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-330" name="Comparison Matrix Check - Case 65 (Frontend Logic)" className="Comparison Matrix Math" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="Validation Constraints" tests="70" failures="0" time="1.460">
+    <testcase id="TC-FUNC-331" name="Assert missing required headers returns HTTP 400" className="Validation Constraints" time="0.010">
+    </testcase>
+    <testcase id="TC-FUNC-332" name="Validation Constraints Check - Case 2 (Backend API)" className="Validation Constraints" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-333" name="Validation Constraints Check - Case 3 (Frontend Logic)" className="Validation Constraints" time="0.010">
+    </testcase>
+    <testcase id="TC-FUNC-334" name="Validation Constraints Check - Case 4 (Backend API)" className="Validation Constraints" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-335" name="Validation Constraints Check - Case 5 (Frontend Logic)" className="Validation Constraints" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-336" name="Validation Constraints Check - Case 6 (Backend API)" className="Validation Constraints" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-337" name="Validation Constraints Check - Case 7 (Frontend Logic)" className="Validation Constraints" time="0.014">
+    </testcase>
+    <testcase id="TC-FUNC-338" name="Validation Constraints Check - Case 8 (Backend API)" className="Validation Constraints" time="0.018">
+    </testcase>
+    <testcase id="TC-FUNC-339" name="Validation Constraints Check - Case 9 (Frontend Logic)" className="Validation Constraints" time="0.001">
+    </testcase>
+    <testcase id="TC-FUNC-340" name="Validation Constraints Check - Case 10 (Backend API)" className="Validation Constraints" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-341" name="Validation Constraints Check - Case 11 (Frontend Logic)" className="Validation Constraints" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-342" name="Validation Constraints Check - Case 12 (Backend API)" className="Validation Constraints" time="0.010">
+    </testcase>
+    <testcase id="TC-FUNC-343" name="Validation Constraints Check - Case 13 (Frontend Logic)" className="Validation Constraints" time="0.007">
+    </testcase>
+    <testcase id="TC-FUNC-344" name="Validation Constraints Check - Case 14 (Backend API)" className="Validation Constraints" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-345" name="Validation Constraints Check - Case 15 (Frontend Logic)" className="Validation Constraints" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-346" name="Validation Constraints Check - Case 16 (Backend API)" className="Validation Constraints" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-347" name="Validation Constraints Check - Case 17 (Frontend Logic)" className="Validation Constraints" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-348" name="Validation Constraints Check - Case 18 (Backend API)" className="Validation Constraints" time="0.023">
+    </testcase>
+    <testcase id="TC-FUNC-349" name="Validation Constraints Check - Case 19 (Frontend Logic)" className="Validation Constraints" time="0.023">
+    </testcase>
+    <testcase id="TC-FUNC-350" name="Validation Constraints Check - Case 20 (Backend API)" className="Validation Constraints" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-351" name="Validation Constraints Check - Case 21 (Frontend Logic)" className="Validation Constraints" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-352" name="Validation Constraints Check - Case 22 (Backend API)" className="Validation Constraints" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-353" name="Validation Constraints Check - Case 23 (Frontend Logic)" className="Validation Constraints" time="0.003">
+    </testcase>
+    <testcase id="TC-FUNC-354" name="Validation Constraints Check - Case 24 (Backend API)" className="Validation Constraints" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-355" name="Validation Constraints Check - Case 25 (Frontend Logic)" className="Validation Constraints" time="0.021">
+    </testcase>
+    <testcase id="TC-FUNC-356" name="Validation Constraints Check - Case 26 (Backend API)" className="Validation Constraints" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-357" name="Validation Constraints Check - Case 27 (Frontend Logic)" className="Validation Constraints" time="0.020">
+    </testcase>
+    <testcase id="TC-FUNC-358" name="Validation Constraints Check - Case 28 (Backend API)" className="Validation Constraints" time="0.008">
+    </testcase>
+    <testcase id="TC-FUNC-359" name="Validation Constraints Check - Case 29 (Frontend Logic)" className="Validation Constraints" time="0.035">
+    </testcase>
+    <testcase id="TC-FUNC-360" name="Validation Constraints Check - Case 30 (Backend API)" className="Validation Constraints" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-361" name="Validation Constraints Check - Case 31 (Frontend Logic)" className="Validation Constraints" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-362" name="Validation Constraints Check - Case 32 (Backend API)" className="Validation Constraints" time="0.018">
+    </testcase>
+    <testcase id="TC-FUNC-363" name="Validation Constraints Check - Case 33 (Frontend Logic)" className="Validation Constraints" time="0.037">
+    </testcase>
+    <testcase id="TC-FUNC-364" name="Validation Constraints Check - Case 34 (Backend API)" className="Validation Constraints" time="0.002">
+    </testcase>
+    <testcase id="TC-FUNC-365" name="Validation Constraints Check - Case 35 (Frontend Logic)" className="Validation Constraints" time="0.005">
+    </testcase>
+    <testcase id="TC-FUNC-366" name="Validation Constraints Check - Case 36 (Backend API)" className="Validation Constraints" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-367" name="Validation Constraints Check - Case 37 (Frontend Logic)" className="Validation Constraints" time="0.039">
+    </testcase>
+    <testcase id="TC-FUNC-368" name="Validation Constraints Check - Case 38 (Backend API)" className="Validation Constraints" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-369" name="Validation Constraints Check - Case 39 (Frontend Logic)" className="Validation Constraints" time="0.015">
+    </testcase>
+    <testcase id="TC-FUNC-370" name="Validation Constraints Check - Case 40 (Backend API)" className="Validation Constraints" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-371" name="Validation Constraints Check - Case 41 (Frontend Logic)" className="Validation Constraints" time="0.000">
+    </testcase>
+    <testcase id="TC-FUNC-372" name="Validation Constraints Check - Case 42 (Backend API)" className="Validation Constraints" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-373" name="Validation Constraints Check - Case 43 (Frontend Logic)" className="Validation Constraints" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-374" name="Validation Constraints Check - Case 44 (Backend API)" className="Validation Constraints" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-375" name="Validation Constraints Check - Case 45 (Frontend Logic)" className="Validation Constraints" time="0.030">
+    </testcase>
+    <testcase id="TC-FUNC-376" name="Validation Constraints Check - Case 46 (Backend API)" className="Validation Constraints" time="0.024">
+    </testcase>
+    <testcase id="TC-FUNC-377" name="Validation Constraints Check - Case 47 (Frontend Logic)" className="Validation Constraints" time="0.038">
+    </testcase>
+    <testcase id="TC-FUNC-378" name="Validation Constraints Check - Case 48 (Backend API)" className="Validation Constraints" time="0.032">
+    </testcase>
+    <testcase id="TC-FUNC-379" name="Validation Constraints Check - Case 49 (Frontend Logic)" className="Validation Constraints" time="0.021">
+    </testcase>
+    <testcase id="TC-FUNC-380" name="Validation Constraints Check - Case 50 (Backend API)" className="Validation Constraints" time="0.023">
+    </testcase>
+    <testcase id="TC-FUNC-381" name="Validation Constraints Check - Case 51 (Frontend Logic)" className="Validation Constraints" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-382" name="Validation Constraints Check - Case 52 (Backend API)" className="Validation Constraints" time="0.033">
+    </testcase>
+    <testcase id="TC-FUNC-383" name="Validation Constraints Check - Case 53 (Frontend Logic)" className="Validation Constraints" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-384" name="Validation Constraints Check - Case 54 (Backend API)" className="Validation Constraints" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-385" name="Validation Constraints Check - Case 55 (Frontend Logic)" className="Validation Constraints" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-386" name="Validation Constraints Check - Case 56 (Backend API)" className="Validation Constraints" time="0.011">
+    </testcase>
+    <testcase id="TC-FUNC-387" name="Validation Constraints Check - Case 57 (Frontend Logic)" className="Validation Constraints" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-388" name="Validation Constraints Check - Case 58 (Backend API)" className="Validation Constraints" time="0.017">
+    </testcase>
+    <testcase id="TC-FUNC-389" name="Validation Constraints Check - Case 59 (Frontend Logic)" className="Validation Constraints" time="0.031">
+    </testcase>
+    <testcase id="TC-FUNC-390" name="Validation Constraints Check - Case 60 (Backend API)" className="Validation Constraints" time="0.036">
+    </testcase>
+    <testcase id="TC-FUNC-391" name="Validation Constraints Check - Case 61 (Frontend Logic)" className="Validation Constraints" time="0.026">
+    </testcase>
+    <testcase id="TC-FUNC-392" name="Validation Constraints Check - Case 62 (Backend API)" className="Validation Constraints" time="0.010">
+    </testcase>
+    <testcase id="TC-FUNC-393" name="Validation Constraints Check - Case 63 (Frontend Logic)" className="Validation Constraints" time="0.013">
+    </testcase>
+    <testcase id="TC-FUNC-394" name="Validation Constraints Check - Case 64 (Backend API)" className="Validation Constraints" time="0.022">
+    </testcase>
+    <testcase id="TC-FUNC-395" name="Validation Constraints Check - Case 65 (Frontend Logic)" className="Validation Constraints" time="0.009">
+    </testcase>
+    <testcase id="TC-FUNC-396" name="Validation Constraints Check - Case 66 (Backend API)" className="Validation Constraints" time="0.025">
+    </testcase>
+    <testcase id="TC-FUNC-397" name="Validation Constraints Check - Case 67 (Frontend Logic)" className="Validation Constraints" time="0.029">
+    </testcase>
+    <testcase id="TC-FUNC-398" name="Validation Constraints Check - Case 68 (Backend API)" className="Validation Constraints" time="0.006">
+    </testcase>
+    <testcase id="TC-FUNC-399" name="Validation Constraints Check - Case 69 (Frontend Logic)" className="Validation Constraints" time="0.027">
+    </testcase>
+    <testcase id="TC-FUNC-400" name="Validation Constraints Check - Case 70 (Backend API)" className="Validation Constraints" time="0.032">
+    </testcase>
+  </testsuite>
+</testsuites>

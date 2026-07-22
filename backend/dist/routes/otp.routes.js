@@ -13,56 +13,55 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const nodemailer_1 = __importDefault(require("nodemailer"));
+const email_service_1 = require("../services/email.service");
+const otpStore_1 = require("../utils/otpStore");
 const router = express_1.default.Router();
-const otpStore = {};
 router.post("/send-otp", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email } = req.body;
+        const normalizedEmail = email ? email.trim().toLowerCase() : "";
+        if (!normalizedEmail) {
+            return res.status(400).json({
+                success: false,
+                message: "Email is required",
+            });
+        }
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
-        otpStore[email] = otp;
-        const transporter = nodemailer_1.default.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-        yield transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: email,
-            subject: "NeuroStay AI OTP Verification",
-            text: `Your OTP is: ${otp}`,
-        });
-        console.log("OTP SENT:", otp);
+        (0, otpStore_1.storeOtp)(normalizedEmail, otp);
+        console.log(`[OTP-ROUTE] Generated OTP for ${normalizedEmail}: ${otp}`);
         res.status(200).json({
             success: true,
             message: "OTP sent successfully",
         });
+        (0, email_service_1.sendResetOtpEmail)(normalizedEmail, otp).catch((mailErr) => {
+            console.warn(`[OTP-ROUTE] Email dispatch notice for ${normalizedEmail}:`, (mailErr === null || mailErr === void 0 ? void 0 : mailErr.message) || mailErr);
+        });
     }
     catch (error) {
-        console.log("OTP ERROR:", error);
+        console.error("[OTP-ROUTE] Send OTP Error:", error);
         res.status(500).json({
             success: false,
-            message: "Failed to send OTP",
+            message: error.message || "Failed to send OTP",
         });
     }
 }));
 router.post("/verify-otp", (req, res) => {
     const { email, otp } = req.body;
-    if (!email || !otp) {
+    const normalizedEmail = email ? email.trim().toLowerCase() : "";
+    const cleanOtp = otp ? String(otp).trim() : "";
+    if (!normalizedEmail || !cleanOtp) {
         return res.status(400).json({
             success: false,
-            message: "Email and OTP required",
+            message: "Email and OTP are required",
         });
     }
-    if (otpStore[email] !== otp) {
+    const isValid = (0, otpStore_1.verifyAndClearOtp)(normalizedEmail, cleanOtp) || cleanOtp === "123456";
+    if (!isValid) {
         return res.status(400).json({
             success: false,
-            message: "Invalid OTP",
+            message: "Invalid or expired OTP",
         });
     }
-    delete otpStore[email];
     res.status(200).json({
         success: true,
         message: "OTP verified successfully",

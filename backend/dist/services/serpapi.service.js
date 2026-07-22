@@ -38,7 +38,7 @@ function searchHotelsFromSerpApi(query) {
                 id: hotel.property_token || index + 1,
                 name: hotel.name || "Hotel Name Not Available",
                 image: ((_c = (_b = hotel.images) === null || _b === void 0 ? void 0 : _b[0]) === null || _c === void 0 ? void 0 : _c.thumbnail) ||
-                    "/images/hotel1.jpg",
+                    `/images/hotel${(index % 3) + 1}.jpg`,
                 rating,
                 price: priceNumber,
                 location: hotel.neighborhood || query,

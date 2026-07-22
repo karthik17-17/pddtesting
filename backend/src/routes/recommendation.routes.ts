@@ -4,12 +4,22 @@ import axios from "axios";
 
 const router = express.Router();
 
+const recommendationsCache = new Map<string, { timestamp: number; data: any }>();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes cache
+
 router.post("/search", validateSearch, async (req, res) => {
   const { query } = req.body;
   const q = String(query || "").trim();
   
   if (!q) {
     return res.json([]);
+  }
+
+  const cacheKey = q.toLowerCase();
+  const cached = recommendationsCache.get(cacheKey);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    console.log(`CACHE HIT: Returning cached recommendations for "${cacheKey}"`);
+    return res.json(cached.data);
   }
 
   const defaultImage = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800";
@@ -44,9 +54,11 @@ router.post("/search", validateSearch, async (req, res) => {
         why: `Recommended based on location proximity in ${q}.`,
         mapLink: `https://www.openstreetmap.org/?mlat=${result.lat}&mlon=${result.lon}#map=18/${result.lat}/${result.lon}`
       }));
+      recommendationsCache.set(cacheKey, { timestamp: Date.now(), data: results });
       return res.json(results);
     }
     
+    recommendationsCache.set(cacheKey, { timestamp: Date.now(), data: [] });
     return res.json([]);
   } catch (error) {
     console.error("Recommendation search error:", error);

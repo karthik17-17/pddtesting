@@ -21,5 +21,8 @@ const userSchema = new mongoose_1.default.Schema({
     resetOtp: {
         type: String,
     },
+    resetOtpExpiry: {
+        type: Date,
+    },
 }, { timestamps: true });
 exports.default = mongoose_1.default.model("User", userSchema);

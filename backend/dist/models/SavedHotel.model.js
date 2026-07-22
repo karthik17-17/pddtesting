@@ -15,4 +15,7 @@ const savedHotelSchema = new mongoose_1.default.Schema({
     why: String,
     mapLink: String,
 }, { timestamps: true });
+savedHotelSchema.index({ userId: 1 });
+savedHotelSchema.index({ userId: 1, hotelName: 1 });
+savedHotelSchema.index({ userId: 1, createdAt: -1 });
 exports.default = mongoose_1.default.model("SavedHotel", savedHotelSchema);

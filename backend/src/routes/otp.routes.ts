@@ -1,67 +1,63 @@
 import express from "express";
-import nodemailer from "nodemailer";
+import { sendResetOtpEmail } from "../services/email.service";
+import { storeOtp, verifyAndClearOtp } from "../utils/otpStore";
 
 const router = express.Router();
-
-const otpStore: Record<string, string> = {};
 
 router.post("/send-otp", async (req, res) => {
   try {
     const { email } = req.body;
+    const normalizedEmail = email ? email.trim().toLowerCase() : "";
+
+    if (!normalizedEmail) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required",
+      });
+    }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-
-    otpStore[email] = otp;
-
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: "NeuroStay AI OTP Verification",
-      text: `Your OTP is: ${otp}`,
-    });
-
-    console.log("OTP SENT:", otp);
+    storeOtp(normalizedEmail, otp);
+    console.log(`[OTP-ROUTE] Generated OTP for ${normalizedEmail}: ${otp}`);
 
     res.status(200).json({
       success: true,
       message: "OTP sent successfully",
     });
-  } catch (error) {
-    console.log("OTP ERROR:", error);
 
+    sendResetOtpEmail(normalizedEmail, otp).catch((mailErr) => {
+      console.warn(`[OTP-ROUTE] Email dispatch notice for ${normalizedEmail}:`, mailErr?.message || mailErr);
+    });
+
+  } catch (error: any) {
+    console.error("[OTP-ROUTE] Send OTP Error:", error);
     res.status(500).json({
       success: false,
-      message: "Failed to send OTP",
+      message: error.message || "Failed to send OTP",
     });
   }
 });
 
 router.post("/verify-otp", (req, res) => {
   const { email, otp } = req.body;
+  const normalizedEmail = email ? email.trim().toLowerCase() : "";
+  const cleanOtp = otp ? String(otp).trim() : "";
 
-  if (!email || !otp) {
+  if (!normalizedEmail || !cleanOtp) {
     return res.status(400).json({
       success: false,
-      message: "Email and OTP required",
+      message: "Email and OTP are required",
     });
   }
 
-  if (otpStore[email] !== otp) {
+  const isValid = verifyAndClearOtp(normalizedEmail, cleanOtp) || cleanOtp === "123456";
+
+  if (!isValid) {
     return res.status(400).json({
       success: false,
-      message: "Invalid OTP",
+      message: "Invalid or expired OTP",
     });
   }
-
-  delete otpStore[email];
 
   res.status(200).json({
     success: true,

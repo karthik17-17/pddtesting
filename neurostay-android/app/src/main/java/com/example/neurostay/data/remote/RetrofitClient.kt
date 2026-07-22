@@ -9,7 +9,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private var token: String? = null
-    var baseUrl = "https://neurostay-ai.onrender.com/" // Production backend URL
+    var baseUrl = "http://10.29.67.140:5000/" // Local Wi-Fi backend URL
+
 
     fun setAuthToken(newToken: String?) {
         token = newToken

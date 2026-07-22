@@ -3,6 +3,9 @@ import axios from "axios";
 
 const router = express.Router();
 
+const searchCache = new Map<string, { timestamp: number; data: any }>();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes cache
+
 const localMockHotels: { [key: string]: any[] } = {
   tirupati: [
     {
@@ -146,6 +149,41 @@ const localMockHotels: { [key: string]: any[] } = {
       lng: 72.8205
     }
   ],
+  hyderabad: [
+    {
+      name: "ITC Kohenur, a Luxury Collection Hotel",
+      address: "Plot No. 5, Survey No. 83/1, HITEC City, Hyderabad, Telangana 500081",
+      rating: 4.8,
+      price: "₹12,500",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      matchScore: 96,
+      why: "Stunning modern architecture overlooking Durgam Cheruvu lake, top-tier dining, and unmatched luxury in HITEC City.",
+      lat: 17.4385,
+      lng: 78.3812
+    },
+    {
+      name: "Taj Falaknuma Palace",
+      address: "Engine Bowli, Falaknuma, Hyderabad, Telangana 500053",
+      rating: 4.9,
+      price: "₹32,000",
+      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+      matchScore: 98,
+      why: "Royal Nizam palace experience on a hill top, opulent suites, horse-drawn carriage arrival, and heritage luxury.",
+      lat: 17.3313,
+      lng: 78.4674
+    },
+    {
+      name: "Novotel Hyderabad Convention Centre",
+      address: "Near Hitec City, Kondapur, Hyderabad, Telangana 500081",
+      rating: 4.5,
+      price: "₹7,800",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
+      matchScore: 90,
+      why: "Spacious tech-hub hotel surrounded by greenery, excellent pool, business lounge, and international dining.",
+      lat: 17.4721,
+      lng: 78.3731
+    }
+  ],
   srikalahasti: [
     {
       name: "MG Grand Hotel",
@@ -260,7 +298,7 @@ const cleanImageUrl = (url: string): string => {
   return url;
 };
 
-const getFallbackHotelImage = (name: string): string => {
+const getFallbackHotelImage = (name: string, index?: number): string => {
   const fallbackImages = [
     "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800", // Exterior pool
     "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800", // Deluxe bed
@@ -284,8 +322,11 @@ const getFallbackHotelImage = (name: string): string => {
   for (let i = 0; i < name.length; i++) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
-  const index = Math.abs(hash) % fallbackImages.length;
-  return fallbackImages[index];
+  if (index !== undefined) {
+    hash += index;
+  }
+  const idx = Math.abs(hash) % fallbackImages.length;
+  return fallbackImages[idx];
 };
 
 const mapHotel = (hotel: any, index: number, city: string) => {
@@ -342,7 +383,7 @@ const mapHotel = (hotel: any, index: number, city: string) => {
   }
   
   if (!image) {
-    image = getFallbackHotelImage(name);
+    image = getFallbackHotelImage(name, index);
   }
   
   if (images.length === 0 && image) {
@@ -392,6 +433,13 @@ router.post("/hotels", async (req, res) => {
   const normalizedQuery = normalizeQuery(query);
   const city = getCityName(normalizedQuery);
   console.log(`Normalized Query: "${normalizedQuery}", City Name: "${city}"`);
+
+  const cacheKey = normalizedQuery.toLowerCase().trim();
+  const cached = searchCache.get(cacheKey);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    console.log(`CACHE HIT: Returning cached search results for "${cacheKey}"`);
+    return res.json(cached.data);
+  }
 
   let rawHotels: any[] = [];
   let source = "serpapi";
@@ -572,7 +620,7 @@ router.post("/hotels", async (req, res) => {
       console.log(`Fallback: Using local mock hotels list for key "${key}"`);
       source = "mock_fallback";
       hotels = mockList.map((m, index) => {
-        const img = getFallbackHotelImage(m.name);
+        const img = getFallbackHotelImage(m.name, index);
         return {
           id: index + 1,
           name: m.name,
@@ -591,14 +639,19 @@ router.post("/hotels", async (req, res) => {
     }
   }
 
+  console.log("Query received:", query);
+  console.log("Hotels found:", rawHotels.length);
+  console.log("Hotels returned:", hotels.length);
   console.log(`Final Response: success=true, source="${source}", hotelsCount=${hotels.length}`);
   console.log("-----------------------------------------");
 
-  res.json({
+  const responseData = {
     success: true,
     hotels,
     source,
-  });
+  };
+  searchCache.set(cacheKey, { timestamp: Date.now(), data: responseData });
+  res.json(responseData);
 });
 
 export default router;
