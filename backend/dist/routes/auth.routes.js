@@ -125,31 +125,24 @@ router.post("/forgot-password", validation_middleware_1.validateForgotPassword, 
             otp,
         });
         console.log(`[AUTH] OTP stored in MongoDB for ${normalizedEmail} (Expires in 10 minutes)`);
-        // Send real email via Nodemailer
-        try {
-            yield (0, email_service_1.sendResetOtpEmail)(normalizedEmail, otp);
-            console.log(`[AUTH] Email sent to ${normalizedEmail}`);
-            return res.status(200).json({
-                success: true,
-                message: "Password reset OTP sent to your email address.",
-            });
-        }
-        catch (mailErr) {
-            console.error(`[AUTH] Failed to send email to ${normalizedEmail}:`, mailErr.message);
-            // Clean up stored OTP if mail dispatch failed
-            yield Otp_model_1.default.deleteMany({ email: normalizedEmail });
-            return res.status(500).json({
-                success: false,
-                message: mailErr.message || "Failed to send OTP email. Please check SMTP settings.",
-            });
-        }
+        // Respond immediately to client to prevent gateway timeouts
+        res.status(200).json({
+            success: true,
+            message: "Password reset OTP sent to your email address.",
+        });
+        // Execute Nodemailer email dispatch asynchronously in background
+        (0, email_service_1.sendResetOtpEmail)(normalizedEmail, otp).catch((mailErr) => {
+            console.error(`[AUTH] Async email dispatch error for ${normalizedEmail}:`, mailErr.message || mailErr);
+        });
     }
     catch (error) {
         console.error("[AUTH] Forgot Password Exception:", error.message);
-        return res.status(500).json({
-            success: false,
-            message: error.message || "Internal server error during password recovery.",
-        });
+        if (!res.headersSent) {
+            return res.status(500).json({
+                success: false,
+                message: error.message || "Internal server error during password recovery.",
+            });
+        }
     }
 }));
 /**
