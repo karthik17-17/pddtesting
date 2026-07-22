@@ -33,7 +33,7 @@ export default function ResultsPage() {
   const storedQuery = localStorage.getItem("lastSearchQuery") || "";
   const rawQuery = urlQuery || storedQuery || "Mumbai";
 
-  const [hotels, setHotels] = useState<Hotel[]>([]);
+  const [hotels, setHotels] = useState<Hotel[]>(() => generateClientFallbackHotels(rawQuery));
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");

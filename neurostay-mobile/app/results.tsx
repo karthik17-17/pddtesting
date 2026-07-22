@@ -39,7 +39,7 @@ export default function ResultsPage() {
   const router = useRouter();
   const { query: rawQuery } = useLocalSearchParams<{ query?: string }>();
   const [query, setQuery] = useState<string>("");
-  const [hotels, setHotels] = useState<Hotel[]>([]);
+  const [hotels, setHotels] = useState<Hotel[]>(() => generateMobileFallbackHotels(rawQuery ? String(rawQuery) : "Chennai"));
   const [loading, setLoading] = useState(true);
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
 
