@@ -9,8 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private var token: String? = null
-    var baseUrl = "http://10.29.67.140:5000/" // Local Wi-Fi backend URL
-
+    var baseUrl = "https://neurostay-ai.onrender.com/"
 
     fun setAuthToken(newToken: String?) {
         token = newToken
@@ -36,8 +35,8 @@ object RetrofitClient {
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(authInterceptor)
         .addInterceptor(loggingInterceptor)
-        .connectTimeout(15, TimeUnit.SECONDS)
-        .readTimeout(15, TimeUnit.SECONDS)
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
         .build()
 
     val apiService: ApiService by lazy {
