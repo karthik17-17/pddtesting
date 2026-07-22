@@ -1,6 +1,6 @@
 # Executive Summary – NeuroStay AI Security Assessment
 
-**Date:** 2026-07-22 09:08:59 UTC · **Build:** #26
+**Date:** 2026-07-22 09:28:04 UTC · **Build:** #27
 
 ## Total Findings
 
