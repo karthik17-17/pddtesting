@@ -268,8 +268,9 @@ fun ResultsScreen(
         coroutineScope.launch {
             try {
                 val res = RetrofitClient.apiService.searchHotels(SearchRequest(query))
-                if (res.isSuccessful && res.body()?.success == true) {
-                    hotels = res.body()!!.hotels
+                if (res.isSuccessful && res.body() != null) {
+                    val list = res.body()!!.getHotelList()
+                    hotels = if (list.isNotEmpty()) list else generateMockHotels(query)
                 } else {
                     hotels = generateMockHotels(query)
                 }
@@ -361,7 +362,7 @@ fun ResultsScreen(
                                                     val request = SaveHotelRequest(
                                                         hotelName = hotel.name,
                                                         hotelImage = hotel.image,
-                                                        price = hotel.price,
+                                                        price = hotel.getFormattedPrice(),
                                                         address = hotel.address,
                                                         rating = hotel.rating,
                                                         matchScore = hotel.matchScore,
@@ -392,7 +393,7 @@ fun ResultsScreen(
                                     horizontalArrangement = Arrangement.SpaceBetween
                                 ) {
                                     Text("⭐ ${hotel.rating}", color = ThemeCyan, fontWeight = FontWeight.Bold, fontSize = 13.sp)
-                                    Text(hotel.price, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                                    Text(hotel.getFormattedPrice(), color = Color.White, fontWeight = FontWeight.Bold, fontSize = 13.sp)
                                     Box(
                                         modifier = Modifier
                                             .clip(RoundedCornerShape(6.dp))

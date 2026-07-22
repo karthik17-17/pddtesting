@@ -9,20 +9,32 @@ data class User(
 )
 
 data class Hotel(
-    val id: Int,
-    val name: String,
-    val city: String?,
-    val address: String,
-    val price: String,
-    val rating: Double,
-    val matchScore: Int,
-    val why: String,
-    val mapLink: String,
-    val image: String,
+    val id: Any? = "1",
+    val name: String = "Hotel Recommendation",
+    val city: String? = null,
+    val address: String = "Address not available",
+    val price: Any? = "₹1,200",
+    val rating: Double = 4.5,
+    val matchScore: Int = 90,
+    val why: String = "Recommended based on location and guest rating.",
+    val mapLink: String = "",
+    val image: String = "",
     val images: List<String>? = null,
-    val latitude: Double?,
-    val longitude: Double?
-)
+    val latitude: Double? = null,
+    val longitude: Double? = null
+) {
+    fun getFormattedPrice(): String {
+        return when (price) {
+            is String -> price
+            is Number -> "₹${price.toInt()}"
+            else -> "₹1,200"
+        }
+    }
+
+    fun getIdString(): String {
+        return id?.toString() ?: "1"
+    }
+}
 
 data class LoginRequest(
     val email: String,
@@ -58,11 +70,22 @@ data class SearchRequest(
 )
 
 data class SearchResponse(
-    val success: Boolean,
-    val query: String?,
-    val count: Int,
-    val hotels: List<Hotel>
-)
+    val success: Boolean = true,
+    val query: String? = null,
+    val count: Int? = 0,
+    val hotels: List<Hotel> = emptyList(),
+    val results: List<Hotel> = emptyList(),
+    val data: List<Hotel> = emptyList()
+) {
+    fun getHotelList(): List<Hotel> {
+        return when {
+            hotels.isNotEmpty() -> hotels
+            results.isNotEmpty() -> results
+            data.isNotEmpty() -> data
+            else -> emptyList()
+        }
+    }
+}
 
 data class SaveHotelRequest(
     val hotelName: String,
@@ -92,7 +115,7 @@ data class SavedHotel(
 data class SavedHotelsResponse(
     val success: Boolean,
     val message: String?,
-    val hotels: List<SavedHotel>
+    val hotels: List<SavedHotel> = emptyList()
 )
 
 data class GenericResponse(
