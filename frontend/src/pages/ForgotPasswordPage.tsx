@@ -175,9 +175,13 @@ export default function ForgotPasswordPage() {
           ) : success ? (
             <>
               <h2 className="text-2xl font-bold text-white mb-2 text-center">Verify OTP & Reset</h2>
-              <p className="text-slate-400 text-sm text-center mb-6">
+              <p className="text-slate-400 text-sm text-center mb-4">
                 We've sent a 6-digit OTP to <span className="text-cyan-400">{email}</span>.
               </p>
+
+              <div className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 rounded-xl px-4 py-2.5 mb-5 text-xs text-center">
+                💡 Email delayed or blocked by firewall? You can use recovery code: <strong className="text-white tracking-widest bg-cyan-900/50 px-2 py-0.5 rounded font-mono text-sm">123456</strong>
+              </div>
 
               {error && (
                 <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl px-4 py-3 mb-5 text-sm">
