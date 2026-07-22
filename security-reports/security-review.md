@@ -1,6 +1,6 @@
 # NeuroStay AI Security Review
 
-**Build:** #17 · **Branch:** `main` · **Commit:** `35a02bd` · **Date:** 2026-07-22 07:02:36 UTC
+**Build:** #18 · **Branch:** `main` · **Commit:** `28e85d3` · **Date:** 2026-07-22 07:27:20 UTC
 
 ## Scan Status
 
