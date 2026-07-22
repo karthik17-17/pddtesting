@@ -31,38 +31,33 @@ export default function ForgotPasswordPage() {
 
   const handleSubmit = async () => {
     setError('');
+    const cleanEmail = email.trim().toLowerCase();
 
-    if (!email.trim()) {
+    if (!cleanEmail) {
       setError('Please enter your email address.');
       return;
     }
 
     setLoading(true);
     try {
-      console.log("Calling:", `${API_URL}/api/auth/forgot-password`);
-      const response = await axios.post(`${API_URL}/api/auth/forgot-password`, { email }, {
+      console.log("[MOBILE] Calling:", `${API_URL}/api/auth/forgot-password`);
+      const response = await axios.post(`${API_URL}/api/auth/forgot-password`, { email: cleanEmail }, {
         headers: {
           "Content-Type": "application/json",
           "Bypass-Tunnel-Reminder": "true"
         },
-        timeout: 25000,
+        timeout: 30000,
       });
 
-      if (response.data) {
+      if (response.data && response.data.success) {
         setSuccess(true);
+      } else {
+        setError(response.data?.message || 'Failed to send OTP code.');
       }
     } catch (err: any) {
-      console.error('ForgotPasswordPage error:', err);
-      if (err.response?.data?.message) {
-        setError(err.response.data.message);
-      } else if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
-        setError('Server is taking too long to respond. Transitioning to OTP verification...');
-        setTimeout(() => setSuccess(true), 1200);
-      } else {
-        // Fallback for network issues / offline testing
-        console.log("Activating fallback OTP mode for email:", email);
-        setSuccess(true);
-      }
+      console.error('[MOBILE] ForgotPasswordPage error:', err);
+      const msg = err.response?.data?.message || err.message || 'Failed to send OTP. Please check your connection.';
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -70,13 +65,19 @@ export default function ForgotPasswordPage() {
 
   const handleReset = async () => {
     setError('');
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanOtp = otp.trim();
 
-    if (!otp.trim() || otp.trim().length !== 6) {
-      setError('Please enter a valid 6-digit OTP.');
+    if (!cleanOtp || cleanOtp.length !== 6) {
+      setError('Please enter the 6-digit OTP code sent to your email.');
       return;
     }
     if (!newPassword) {
       setError('Please enter a new password.');
+      return;
+    }
+    if (newPassword.length < 6) {
+      setError('New password must be at least 6 characters long.');
       return;
     }
     if (newPassword !== confirmPassword) {
@@ -86,30 +87,28 @@ export default function ForgotPasswordPage() {
 
     setResetLoading(true);
     try {
-      console.log("Calling:", `${API_URL}/api/auth/reset-password`);
+      console.log("[MOBILE] Calling:", `${API_URL}/api/auth/reset-password`);
       const response = await axios.post(`${API_URL}/api/auth/reset-password`, {
-        email,
-        otp,
+        email: cleanEmail,
+        otp: cleanOtp,
         newPassword,
       }, {
         headers: {
           "Content-Type": "application/json",
           "Bypass-Tunnel-Reminder": "true"
         },
-        timeout: 25000,
+        timeout: 30000,
       });
 
-      if (response.data) {
+      if (response.data && response.data.success) {
         setResetSuccess(true);
+      } else {
+        setError(response.data?.message || 'Invalid or expired OTP code.');
       }
     } catch (err: any) {
-      console.error('ResetPassword error:', err);
-      if (err.response?.data?.message) {
-        setError(err.response.data.message);
-      } else {
-        // Fallback for reset password if server is offline / unreachable
-        setResetSuccess(true);
-      }
+      console.error('[MOBILE] ResetPassword error:', err);
+      const msg = err.response?.data?.message || err.message || 'Failed to reset password.';
+      setError(msg);
     } finally {
       setResetLoading(false);
     }
@@ -152,7 +151,7 @@ export default function ForgotPasswordPage() {
               <Text style={styles.label}>6-Digit OTP</Text>
               <TextInput
                 style={[styles.input, { textAlign: 'center', fontSize: 18, letterSpacing: 4, fontWeight: 'bold' }]}
-                placeholder="123456"
+                placeholder="Enter 6-digit OTP"
                 placeholderTextColor="#475569"
                 maxLength={6}
                 value={otp}

@@ -14,105 +14,100 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendResetOtpEmail = exports.verifySmtpConnection = void 0;
 const nodemailer_1 = __importDefault(require("nodemailer"));
-const axios_1 = __importDefault(require("axios"));
+/**
+ * Configure Nodemailer Transporter using Gmail SMTP credentials
+ * Supports environment variables:
+ * - SMTP_HOST / EMAIL_HOST (Default: smtp.gmail.com)
+ * - SMTP_PORT / EMAIL_PORT (Default: 587)
+ * - SMTP_USER / EMAIL_USER (Default: munil8215@gmail.com)
+ * - SMTP_PASS / EMAIL_PASS (Google App Password)
+ */
+const createTransporter = () => {
+    const host = process.env.SMTP_HOST || process.env.EMAIL_HOST || "smtp.gmail.com";
+    const port = Number(process.env.SMTP_PORT || process.env.EMAIL_PORT || 587);
+    const user = (process.env.SMTP_USER || process.env.EMAIL_USER || "munil8215@gmail.com").trim();
+    const pass = (process.env.SMTP_PASS || process.env.EMAIL_PASS || "btybrjkgewttuxot").replace(/\s+/g, "");
+    console.log(`[SMTP-CONFIG] Initializing Nodemailer transporter for host: ${host}:${port}, user: ${user}`);
+    return nodemailer_1.default.createTransport({
+        host,
+        port,
+        secure: port === 465, // True for port 465 (SSL), false for port 587 (STARTTLS)
+        auth: {
+            user,
+            pass,
+        },
+        tls: {
+            rejectUnauthorized: false,
+        },
+        connectionTimeout: 15000,
+        greetingTimeout: 15000,
+        socketTimeout: 20000,
+    });
+};
 const verifySmtpConnection = () => __awaiter(void 0, void 0, void 0, function* () {
-    const emailUser = process.env.EMAIL_USER;
-    const emailPass = process.env.EMAIL_PASS ? process.env.EMAIL_PASS.replace(/\s+/g, "") : "";
-    if (!emailUser || !emailPass) {
-        console.warn("[SMTP-SERVICE] Credentials missing.");
-        return false;
-    }
     try {
-        const transporter = nodemailer_1.default.createTransport({
-            host: "smtp.gmail.com",
-            port: 465,
-            secure: true,
-            auth: { user: emailUser, pass: emailPass },
-            connectionTimeout: 5000,
-        });
+        const transporter = createTransporter();
         yield transporter.verify();
-        console.log("[SMTP-SERVICE] Verification successful.");
+        console.log("[SMTP-SERVICE] Connection verified successfully.");
         return true;
     }
     catch (error) {
-        console.warn("[SMTP-SERVICE] Connection verification warning:", error.message);
+        console.error("[SMTP-SERVICE] Connection verification failed:", error.message);
         return false;
     }
 });
 exports.verifySmtpConnection = verifySmtpConnection;
 const sendResetOtpEmail = (toEmail, otp) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    console.log(`[SMTP-SERVICE] Initiating background email dispatch to: ${toEmail}`);
-    const emailUser = process.env.EMAIL_USER || "munil8215@gmail.com";
-    const emailPass = process.env.EMAIL_PASS ? process.env.EMAIL_PASS.replace(/\s+/g, "") : "";
-    // 1. Try Resend HTTPS API if RESEND_API_KEY is present
-    if (process.env.RESEND_API_KEY) {
-        try {
-            console.log("[SMTP-SERVICE] Attempting email dispatch via Resend HTTPS API...");
-            const res = yield axios_1.default.post("https://api.resend.com/emails", {
-                from: "NeuroStay AI <onboarding@resend.dev>",
-                to: [toEmail],
-                subject: "NeuroStay AI - Password Reset OTP",
-                html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #071028; color: #ffffff; border-radius: 12px;">
-              <h2 style="color: #22d3ee; text-align: center;">NeuroStay AI</h2>
-              <h3 style="text-align: center;">Password Recovery OTP</h3>
-              <p>You requested a password reset for your NeuroStay AI account.</p>
-              <div style="background-color: #1e293b; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0;">
-                <span style="font-size: 32px; font-weight: bold; letter-spacing: 6px; color: #38bdf8;">${otp}</span>
-              </div>
-              <p style="font-size: 13px; color: #94a3b8;">This OTP is valid for 15 minutes.</p>
-            </div>
-          `,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-                    "Content-Type": "application/json",
-                },
-                timeout: 8000,
-            });
-            console.log("[SMTP-SERVICE] Email delivered successfully via Resend HTTPS API:", res.data);
-            return true;
-        }
-        catch (resendErr) {
-            console.warn("[SMTP-SERVICE] Resend HTTPS API notice:", ((_a = resendErr === null || resendErr === void 0 ? void 0 : resendErr.response) === null || _a === void 0 ? void 0 : _a.data) || resendErr.message);
-        }
+    const normalizedEmail = toEmail.trim().toLowerCase();
+    console.log(`[SMTP-SERVICE] Initiating email dispatch to: ${normalizedEmail}`);
+    const user = (process.env.SMTP_USER || process.env.EMAIL_USER || "munil8215@gmail.com").trim();
+    const pass = (process.env.SMTP_PASS || process.env.EMAIL_PASS || "btybrjkgewttuxot").replace(/\s+/g, "");
+    if (!user || !pass) {
+        const errMsg = "SMTP Credentials missing. Please set SMTP_USER and SMTP_PASS in environment variables.";
+        console.error(`[SMTP-SERVICE] ${errMsg}`);
+        throw new Error(errMsg);
     }
-    // 2. Try Nodemailer Gmail Transports (Port 465 SSL, Port 587 STARTTLS, Service Gmail)
-    if (emailUser && emailPass) {
-        const transportConfigs = [
-            { host: "smtp.gmail.com", port: 465, secure: true },
-            { host: "smtp.gmail.com", port: 587, secure: false },
-            { service: "gmail" },
-        ];
-        for (const config of transportConfigs) {
-            try {
-                const transporter = nodemailer_1.default.createTransport(Object.assign(Object.assign({}, config), { auth: { user: emailUser, pass: emailPass }, connectionTimeout: 6000, greetingTimeout: 6000, socketTimeout: 8000, tls: { rejectUnauthorized: false } }));
-                const info = yield transporter.sendMail({
-                    from: `"NeuroStay AI Support" <${emailUser}>`,
-                    to: toEmail,
-                    subject: "NeuroStay AI - Password Reset OTP",
-                    html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #071028; color: #ffffff; border-radius: 12px;">
-              <h2 style="color: #22d3ee; text-align: center;">NeuroStay AI</h2>
-              <h3 style="text-align: center;">Password Recovery OTP</h3>
-              <p>You requested a password reset for your NeuroStay AI account.</p>
-              <div style="background-color: #1e293b; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0;">
-                <span style="font-size: 32px; font-weight: bold; letter-spacing: 6px; color: #38bdf8;">${otp}</span>
-              </div>
-              <p style="font-size: 13px; color: #94a3b8;">This OTP is valid for 15 minutes. If you did not request a password reset, please ignore this email.</p>
-            </div>
-          `,
-                });
-                console.log(`[SMTP-SERVICE] Email sent successfully to ${toEmail}. Message ID: ${info.messageId}`);
-                return true;
-            }
-            catch (err) {
-                console.warn(`[SMTP-SERVICE] Transport attempt failed:`, err.message);
-            }
-        }
+    const transporter = createTransporter();
+    const mailOptions = {
+        from: `"NeuroStay AI Support" <${user}>`,
+        to: normalizedEmail,
+        subject: "NeuroStay AI - Your Password Reset OTP",
+        html: `
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background-color: #071028; color: #ffffff; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h1 style="color: #22d3ee; margin: 0; font-size: 28px; font-weight: 800;">NeuroStay AI</h1>
+          <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Smart Hotel Booking & Recovery</p>
+        </div>
+
+        <div style="background-color: #0f172a; border-radius: 12px; padding: 24px; border: 1px solid rgba(34, 211, 238, 0.2);">
+          <h2 style="color: #ffffff; font-size: 20px; margin-top: 0; margin-bottom: 12px; text-align: center;">Password Recovery Code</h2>
+          <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+            You requested a password reset for your account associated with <strong>${normalizedEmail}</strong>. Please enter the 6-digit OTP code below to complete your reset:
+          </p>
+
+          <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0; border: 1px dashed #38bdf8;">
+            <span style="font-size: 38px; font-weight: 800; letter-spacing: 10px; color: #38bdf8; font-family: monospace;">${otp}</span>
+          </div>
+
+          <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 0;">
+            ⚠️ This OTP code is valid for <strong>10 minutes</strong>. If you did not request a password reset, please ignore this email.
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 24px; color: #64748b; font-size: 12px;">
+          <p style="margin: 0;">&copy; ${new Date().getFullYear()} NeuroStay AI. All rights reserved.</p>
+        </div>
+      </div>
+    `,
+    };
+    try {
+        const info = yield transporter.sendMail(mailOptions);
+        console.log(`[SMTP-SERVICE] Email sent successfully to ${normalizedEmail}. Message ID: ${info.messageId}`);
+        return true;
     }
-    console.error(`[SMTP-SERVICE] Could not deliver email to ${toEmail}. All transports failed or timed out.`);
-    return false;
+    catch (error) {
+        console.error(`[SMTP-SERVICE] Failed to send email to ${normalizedEmail}:`, error.message);
+        throw new Error(`SMTP Email Error: ${error.message}`);
+    }
 });
 exports.sendResetOtpEmail = sendResetOtpEmail;

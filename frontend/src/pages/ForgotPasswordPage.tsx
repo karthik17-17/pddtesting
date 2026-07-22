@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
   const [resetLoading, setResetLoading] = useState(false);
   const [serverStatus, setServerStatus] = useState<"idle" | "warming" | "ready">("idle");
 
-  // Ping backend /health endpoint on mount to wake up sleeping Render instance
+  // Ping backend /health endpoint on mount to wake up sleeping Render cloud instances
   useEffect(() => {
     let isMounted = true;
     const warmUpBackend = async () => {
@@ -49,39 +49,36 @@ export default function ForgotPasswordPage() {
     }
 
     setLoading(true);
-    console.time("forgot-password-request");
     console.log("[FORGOT-PASSWORD] Initiating request to:", `${API_URL}/api/auth/forgot-password`);
-    console.log("[FORGOT-PASSWORD] Payload email:", cleanEmail);
-    
+    console.log("[FORGOT-PASSWORD] Email:", cleanEmail);
+
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 35000); // 35 seconds for Render cold-starts
+      const timeoutId = setTimeout(() => controller.abort(), 45000); // 45s timeout for Render cold-starts
 
       const res = await fetch(`${API_URL}/api/auth/forgot-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: cleanEmail }),
-        signal: controller.signal
+        signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
-      console.timeEnd("forgot-password-request");
-      console.log("[FORGOT-PASSWORD] HTTP Status Code:", res.status);
-
       const data = await res.json();
-      console.log("[FORGOT-PASSWORD] Full Response Data:", JSON.stringify(data, null, 2));
+      console.log("[FORGOT-PASSWORD] Server Response:", data);
 
-      if (res.ok && (data.success || res.status === 200)) {
+      if (res.ok && data.success) {
         setSuccess(true);
       } else {
-        const errorMsg = data.message || data.error || "Failed to send reset link. Please try again.";
-        setError(errorMsg);
+        setError(data.message || data.error || "Failed to send OTP code. Please check your email.");
       }
     } catch (err: any) {
-      console.timeEnd("forgot-password-request");
-      console.error("[FORGOT-PASSWORD] Exception caught:", err);
-      // Seamless fallback to OTP screen so user is never blocked
-      setSuccess(true);
+      console.error("[FORGOT-PASSWORD] Error:", err);
+      if (err.name === "AbortError") {
+        setError("Connection timed out while waking up cloud backend. Please click Send again.");
+      } else {
+        setError("Could not reach backend server. Please verify your internet connection.");
+      }
     } finally {
       setLoading(false);
     }
@@ -95,7 +92,7 @@ export default function ForgotPasswordPage() {
     const cleanOtp = otp.trim();
 
     if (!cleanOtp || cleanOtp.length !== 6) {
-      setError("Please enter a valid 6-digit OTP.");
+      setError("Please enter the 6-digit OTP code sent to your email.");
       return;
     }
     if (!newPassword) {
@@ -103,7 +100,7 @@ export default function ForgotPasswordPage() {
       return;
     }
     if (newPassword.length < 6) {
-      setError("Password must be at least 6 characters long.");
+      setError("New password must be at least 6 characters long.");
       return;
     }
     if (newPassword !== confirmPassword) {
@@ -120,17 +117,16 @@ export default function ForgotPasswordPage() {
       });
 
       const data = await res.json();
-      console.log("Reset Password API Response:", data);
+      console.log("[RESET-PASSWORD] Server Response:", data);
 
-      if (res.ok || data.success || cleanOtp === "123456" || (data.message && data.message.includes("Invalid OTP"))) {
+      if (res.ok && data.success) {
         setResetSuccess(true);
       } else {
-        setError(data.error || data.message || "Failed to reset password. Check your OTP and try again.");
+        setError(data.message || data.error || "Invalid or expired OTP code. Please try again.");
       }
     } catch (err) {
-      console.error("ResetPassword error:", err);
-      // If server is unreachable, complete reset in fallback mode
-      setResetSuccess(true);
+      console.error("[RESET-PASSWORD] Error:", err);
+      setError("Could not reach server to reset password. Please check your connection.");
     } finally {
       setResetLoading(false);
     }
@@ -163,7 +159,7 @@ export default function ForgotPasswordPage() {
               <div className="text-5xl mb-4">✅</div>
               <h2 className="text-xl font-bold text-white mb-2">Password Reset Successful</h2>
               <p className="text-slate-400 text-sm mb-6">
-                Your password has been successfully reset. You can now login.
+                Your password has been successfully reset. You can now login with your new password.
               </p>
               <Link
                 to="/login"
@@ -175,13 +171,9 @@ export default function ForgotPasswordPage() {
           ) : success ? (
             <>
               <h2 className="text-2xl font-bold text-white mb-2 text-center">Verify OTP & Reset</h2>
-              <p className="text-slate-400 text-sm text-center mb-4">
-                We've sent a 6-digit OTP to <span className="text-cyan-400">{email}</span>.
+              <p className="text-slate-400 text-sm text-center mb-6">
+                We've sent a 6-digit OTP code to <span className="text-cyan-400 font-semibold">{email}</span>.
               </p>
-
-              <div className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 rounded-xl px-4 py-2.5 mb-5 text-xs text-center">
-                💡 Email delayed or blocked by firewall? You can use recovery code: <strong className="text-white tracking-widest bg-cyan-900/50 px-2 py-0.5 rounded font-mono text-sm">123456</strong>
-              </div>
 
               {error && (
                 <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl px-4 py-3 mb-5 text-sm">
@@ -196,7 +188,7 @@ export default function ForgotPasswordPage() {
                     id="reset-otp"
                     type="text"
                     maxLength={6}
-                    placeholder="123456"
+                    placeholder="Enter 6-digit code"
                     value={otp}
                     onChange={(e) => { setOtp(e.target.value); setError(""); }}
                     className="w-full bg-[#0F172A] border border-white/10 text-white px-4 py-3 rounded-xl outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition placeholder:text-slate-600 text-center tracking-widest text-lg font-bold"
@@ -242,7 +234,7 @@ export default function ForgotPasswordPage() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                       </svg>
-                      Resetting...
+                      Resetting Password...
                     </span>
                   ) : (
                     "Reset Password"
@@ -256,7 +248,7 @@ export default function ForgotPasswordPage() {
                   onClick={() => { setSuccess(false); setError(""); }}
                   className="text-cyan-400 hover:text-cyan-300 font-semibold transition bg-transparent border-0 cursor-pointer"
                 >
-                  ← Back
+                  ← Back to Email Step
                 </button>
               </p>
             </>
@@ -264,7 +256,7 @@ export default function ForgotPasswordPage() {
             <>
               <h2 className="text-2xl font-bold text-white mb-2 text-center">Forgot Password?</h2>
               <p className="text-slate-400 text-sm text-center mb-6">
-                Enter your email and we'll send you a reset link.
+                Enter your registered email address to receive a 6-digit OTP code.
               </p>
 
               {error && (
@@ -299,7 +291,7 @@ export default function ForgotPasswordPage() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                       </svg>
-                      Sending...
+                      Sending OTP Email...
                     </span>
                   ) : (
                     "Send Reset Link"

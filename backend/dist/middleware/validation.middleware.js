@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validateSearch = exports.validatePasswordUpdate = exports.validateProfileUpdate = exports.validateResetPassword = exports.validateForgotPassword = exports.validateLogin = exports.validateRegister = void 0;
+exports.validateSearch = exports.validatePasswordUpdate = exports.validateProfileUpdate = exports.validateResetPassword = exports.validateVerifyOtp = exports.validateForgotPassword = exports.validateLogin = exports.validateRegister = void 0;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const validateRegister = (req, res, next) => {
     const { name, email, password } = req.body;
@@ -53,6 +53,23 @@ const validateForgotPassword = (req, res, next) => {
     next();
 };
 exports.validateForgotPassword = validateForgotPassword;
+const validateVerifyOtp = (req, res, next) => {
+    const { email, otp } = req.body;
+    if (!email || typeof email !== "string" || !emailRegex.test(email)) {
+        return res.status(400).json({
+            success: false,
+            message: "A valid email address is required"
+        });
+    }
+    if (!otp || (typeof otp !== "string" && typeof otp !== "number") || String(otp).trim().length !== 6) {
+        return res.status(400).json({
+            success: false,
+            message: "A valid 6-digit OTP is required"
+        });
+    }
+    next();
+};
+exports.validateVerifyOtp = validateVerifyOtp;
 const validateResetPassword = (req, res, next) => {
     const { email, otp, newPassword } = req.body;
     if (!email || typeof email !== "string" || !emailRegex.test(email)) {

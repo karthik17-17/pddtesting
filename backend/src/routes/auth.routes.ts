@@ -2,16 +2,17 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.model";
+import Otp from "../models/Otp.model";
 import {
   validateRegister,
   validateLogin,
   validateForgotPassword,
+  validateVerifyOtp,
   validateResetPassword,
   validateProfileUpdate,
   validatePasswordUpdate
 } from "../middleware/validation.middleware";
 import { sendResetOtpEmail } from "../services/email.service";
-import { storeOtp, verifyAndClearOtp } from "../utils/otpStore";
 
 const router = express.Router();
 
@@ -53,11 +54,10 @@ router.post("/register", validateRegister, async (req, res) => {
         email: user.email,
       },
     });
-  } catch (error) {
-    res.status(201).json({
-      success: true,
-      token: "demo-token",
-      user: { name: req.body.name || "Demo User", email: req.body.email?.trim().toLowerCase() || "demo@example.com" }
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message || "Registration failed",
     });
   }
 });
@@ -76,10 +76,7 @@ router.post("/login", validateLogin, async (req, res) => {
       });
     }
 
-    const isMatch = await bcrypt.compare(
-      password,
-      user.password
-    );
+    const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(400).json({
@@ -104,133 +101,171 @@ router.post("/login", validateLogin, async (req, res) => {
         email: user.email,
       },
     });
-  } catch (error) {
-    res.status(200).json({
-      success: true,
-      token: "demo-token",
-      user: { email: req.body.email?.trim().toLowerCase() || "demo@example.com" }
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message || "Login failed",
     });
   }
 });
 
+/**
+ * POST /api/auth/forgot-password
+ * 1. Verify user existence in DB
+ * 2. Generate secure 6-digit OTP
+ * 3. Store OTP in MongoDB Otp collection with 10-min expiry
+ * 4. Send email via Nodemailer Gmail SMTP
+ * 5. Return success or exact SMTP error
+ */
 router.post("/forgot-password", validateForgotPassword, async (req, res) => {
-  console.time("forgot-password");
   const { email } = req.body;
-  const normalizedEmail = email ? email.trim().toLowerCase() : "";
-  console.log("[FORGOT-PASSWORD] Request for email:", normalizedEmail);
+  const normalizedEmail = email.trim().toLowerCase();
+  console.log(`[AUTH] Forgot password request for email: ${normalizedEmail}`);
 
   try {
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    console.log(`[FORGOT-PASSWORD] Generated OTP for ${normalizedEmail}: ${otp}`);
+    const user = await User.findOne({ email: normalizedEmail });
 
-    // Store in shared in-memory store immediately
-    storeOtp(normalizedEmail, otp);
-
-    // Try MongoDB lookup and save with timeout (non-blocking for client)
-    try {
-      const mongoPromise = User.findOne({ email: normalizedEmail });
-      const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("MongoDB query timeout")), 3000)
-      );
-      const user: any = await Promise.race([mongoPromise, timeoutPromise]);
-
-      if (user) {
-        user.resetOtp = otp;
-        user.resetOtpExpiry = new Date(Date.now() + 15 * 60 * 1000);
-        await Promise.race([
-          user.save(),
-          new Promise((_, reject) => setTimeout(() => reject(new Error("MongoDB save timeout")), 3000))
-        ]);
-        console.log("[FORGOT-PASSWORD] Saved OTP to MongoDB user record.");
-      } else {
-        console.log(`[FORGOT-PASSWORD] User ${normalizedEmail} not in DB; active in memory OTP store.`);
-      }
-    } catch (dbErr: any) {
-      console.warn("[FORGOT-PASSWORD] MongoDB update notice:", dbErr?.message || dbErr);
-    }
-
-    // Respond immediately to client
-    res.json({
-      success: true,
-      message: "OTP sent successfully",
-    });
-    console.timeEnd("forgot-password");
-
-    // Asynchronous email dispatch
-    sendResetOtpEmail(normalizedEmail, otp).catch((mailErr: any) => {
-      console.error("[FORGOT-PASSWORD] Async email dispatch error:", mailErr?.message || mailErr);
-    });
-
-  } catch (error: any) {
-    console.error("[FORGOT-PASSWORD] Error:", error);
-    console.timeEnd("forgot-password");
-    if (!res.headersSent) {
-      res.status(500).json({
+    if (!user) {
+      console.warn(`[AUTH] User not found for email: ${normalizedEmail}`);
+      return res.status(404).json({
         success: false,
-        message: error.message || "Failed to process forgot password",
+        message: "No account found with this email address.",
       });
     }
+
+    // Generate secure random 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    console.log(`[AUTH] OTP generated for ${normalizedEmail}: ${otp}`);
+
+    // Remove any previous OTP records for this email
+    await Otp.deleteMany({ email: normalizedEmail });
+
+    // Store OTP in MongoDB with 10-minute TTL expiry
+    await Otp.create({
+      email: normalizedEmail,
+      otp,
+    });
+    console.log(`[AUTH] OTP stored in MongoDB for ${normalizedEmail} (Expires in 10 minutes)`);
+
+    // Send real email via Nodemailer
+    try {
+      await sendResetOtpEmail(normalizedEmail, otp);
+      console.log(`[AUTH] Email sent to ${normalizedEmail}`);
+
+      return res.status(200).json({
+        success: true,
+        message: "Password reset OTP sent to your email address.",
+      });
+    } catch (mailErr: any) {
+      console.error(`[AUTH] Failed to send email to ${normalizedEmail}:`, mailErr.message);
+      // Clean up stored OTP if mail dispatch failed
+      await Otp.deleteMany({ email: normalizedEmail });
+
+      return res.status(500).json({
+        success: false,
+        message: mailErr.message || "Failed to send OTP email. Please check SMTP settings.",
+      });
+    }
+  } catch (error: any) {
+    console.error("[AUTH] Forgot Password Exception:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Internal server error during password recovery.",
+    });
   }
 });
 
-router.post("/reset-password", validateResetPassword, async (req, res) => {
+/**
+ * POST /api/auth/verify-otp
+ * Verifies 6-digit OTP against MongoDB Otp collection
+ */
+router.post("/verify-otp", validateVerifyOtp, async (req, res) => {
+  const { email, otp } = req.body;
+  const normalizedEmail = email.trim().toLowerCase();
+  const cleanOtp = String(otp).trim();
+
+  console.log(`[AUTH] Verifying OTP for ${normalizedEmail} with code: ${cleanOtp}`);
+
   try {
-    const { email, otp, newPassword } = req.body;
-    const normalizedEmail = email ? email.trim().toLowerCase() : "";
-    const cleanOtp = String(otp).trim();
+    const otpRecord = await Otp.findOne({ email: normalizedEmail, otp: cleanOtp });
 
-    console.log(`[RESET-PASSWORD] Request for ${normalizedEmail} with OTP: ${cleanOtp}`);
-
-    // Check in-memory store verification
-    const inMemoryValid = verifyAndClearOtp(normalizedEmail, cleanOtp);
-
-    // Fallback demo OTP check
-    const isDemoOtp = cleanOtp === "123456";
-
-    // DB verification check
-    let dbUser: any = null;
-    let dbOtpValid = false;
-    try {
-      dbUser = await User.findOne({ email: normalizedEmail });
-      if (dbUser && dbUser.resetOtp === cleanOtp && dbUser.resetOtpExpiry && new Date(dbUser.resetOtpExpiry) > new Date()) {
-        dbOtpValid = true;
-      }
-    } catch (dbErr: any) {
-      console.warn("[RESET-PASSWORD] MongoDB find notice:", dbErr?.message || dbErr);
-    }
-
-    const isValid = inMemoryValid || dbOtpValid || isDemoOtp;
-
-    if (!isValid) {
+    if (!otpRecord) {
+      console.warn(`[AUTH] Invalid or expired OTP for ${normalizedEmail}`);
       return res.status(400).json({
         success: false,
-        message: "Invalid or expired OTP. Please enter the valid 6-digit code or request a new one.",
+        message: "Invalid or expired OTP. Please check your email or request a new code.",
       });
     }
 
-    // Update password in DB if user exists
-    if (dbUser) {
-      try {
-        dbUser.password = await bcrypt.hash(newPassword, 10);
-        dbUser.resetOtp = "";
-        dbUser.resetOtpExpiry = undefined;
-        await dbUser.save();
-        console.log(`[RESET-PASSWORD] Updated password in MongoDB for ${normalizedEmail}`);
-      } catch (saveErr: any) {
-        console.warn("[RESET-PASSWORD] MongoDB password save notice:", saveErr?.message || saveErr);
-      }
-    }
-
-    res.json({
+    console.log(`[AUTH] OTP verified successfully for ${normalizedEmail}`);
+    return res.status(200).json({
       success: true,
-      message: "Password reset successful",
+      message: "OTP verified successfully.",
     });
   } catch (error: any) {
-    console.error("[RESET-PASSWORD] Exception:", error);
-    // Graceful response fallback
-    res.status(200).json({
+    console.error("[AUTH] Verify OTP Exception:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Failed to verify OTP.",
+    });
+  }
+});
+
+/**
+ * POST /api/auth/reset-password
+ * 1. Verifies 6-digit OTP against MongoDB Otp collection
+ * 2. Hashes new password with bcrypt
+ * 3. Updates User model
+ * 4. Deletes OTP record
+ */
+router.post("/reset-password", validateResetPassword, async (req, res) => {
+  const { email, otp, newPassword } = req.body;
+  const normalizedEmail = email.trim().toLowerCase();
+  const cleanOtp = String(otp).trim();
+
+  console.log(`[AUTH] Resetting password for ${normalizedEmail}`);
+
+  try {
+    const otpRecord = await Otp.findOne({ email: normalizedEmail, otp: cleanOtp });
+
+    if (!otpRecord) {
+      console.warn(`[AUTH] Reset password rejected: Invalid or expired OTP for ${normalizedEmail}`);
+      return res.status(400).json({
+        success: false,
+        message: "Invalid or expired OTP code. Please request a new password reset.",
+      });
+    }
+
+    const user = await User.findOne({ email: normalizedEmail });
+
+    if (!user) {
+      console.warn(`[AUTH] Reset password rejected: User not found for ${normalizedEmail}`);
+      return res.status(404).json({
+        success: false,
+        message: "User account not found.",
+      });
+    }
+
+    // Hash new password using bcrypt
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    user.resetOtp = undefined;
+    user.resetOtpExpiry = undefined;
+    await user.save();
+
+    // Delete used OTP record
+    await Otp.deleteMany({ email: normalizedEmail });
+
+    console.log(`[AUTH] Password updated successfully for ${normalizedEmail}`);
+    return res.status(200).json({
       success: true,
-      message: "Password reset successful (Fallback Mode)",
+      message: "Password reset successful. You can now login with your new password.",
+    });
+  } catch (error: any) {
+    console.error("[AUTH] Reset Password Exception:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Failed to reset password.",
     });
   }
 });
