@@ -7,13 +7,11 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import compression from "compression";
 
-import otpRoutes from "./routes/otp.routes";
 import authRoutes from "./routes/auth.routes";
 import adminRoutes from "./routes/admin.routes";
 import recommendationRoutes from "./routes/recommendation.routes";
 import serpapiRoutes from "./routes/serpapi.routes";
 import savedRoutes from "./routes/saved.routes";
-import { createTransporter } from "./services/email.service";
 
 // Ensure critical environment variables are loaded
 if (!process.env.MONGO_URI) {
@@ -124,7 +122,6 @@ const authRateLimiter = rateLimit({
 
 import hotelRoutes from "./routes/hotel.routes";
 
-app.use("/api/otp", authRateLimiter, otpRoutes);
 app.use("/api/auth", authRateLimiter, authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/recommendations", recommendationRoutes);
@@ -164,17 +161,7 @@ mongoose
     console.log("MongoDB connection failed:", error.message);
   });
 
-// Verify SMTP connection on startup
-try {
-  const transporter = createTransporter();
-  transporter.verify().then(() => {
-    console.log("SMTP connected");
-  }).catch((err: any) => {
-    console.warn("SMTP connection notice:", err.message || err);
-  });
-} catch (err: any) {
-  console.warn("SMTP initialization notice:", err.message || err);
-}
+
 
 const PORT = process.env.PORT || 5000;
 

@@ -43,7 +43,7 @@ app.use("/download", express.static(path.join(__dirname, "../../download")));
 app.use("/download", express.static(path.join(__dirname, "../download")));
 app.use("/download", express.static(path.join(__dirname, "download")));
 
-app.get("/download*", (req, res, next) => {
+app.get(["/download", "/download/*"], (req, res, next) => {
   if (req.originalUrl.includes(".apk") || req.path.includes(".apk") || req.path === "/download" || req.path === "/download/") {
     const possiblePaths = [
       path.join(process.cwd(), "download/NeuroStayAI.apk"),

@@ -35,15 +35,10 @@ export default function ResultsPage() {
 
   const [hotels, setHotels] = useState<Hotel[]>(() => generateClientFallbackHotels(rawQuery));
   const [loading, setLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [retryTrigger, setRetryTrigger] = useState(0);
 
   useEffect(() => {
     const fetchHotels = async () => {
       setLoading(true);
-      setHasError(false);
-      setErrorMessage("");
       try {
         const targetUrl = `${API_URL}/api/serpapi/hotels`;
         console.log("ResultsPage: Initiating hotel search for query:", rawQuery);
@@ -97,7 +92,7 @@ export default function ResultsPage() {
     };
 
     fetchHotels();
-  }, [rawQuery, retryTrigger]);
+  }, [rawQuery]);
 
   const openDetails = (hotel: Hotel) => {
     localStorage.setItem("selectedHotel", JSON.stringify(hotel));
@@ -165,6 +160,8 @@ export default function ResultsPage() {
     );
   }
 
+  const displayHotels = hotels && hotels.length > 0 ? hotels : generateClientFallbackHotels(rawQuery);
+
   return (
     <div className="min-h-screen w-full bg-[#071028] text-white p-4 md:p-8 lg:p-10">
       <h1 className="text-3xl md:text-5xl font-bold mb-4">Hotel Recommendations</h1>
@@ -173,37 +170,21 @@ export default function ResultsPage() {
         Search: <span className="text-cyan-400">{rawQuery}</span>
       </p>
 
-      {hasError ? (
-        <div className="flex flex-col items-center justify-center py-20 text-center bg-slate-800/50 rounded-3xl border border-slate-700">
-          <span className="text-6xl mb-4">⚠️</span>
-          <h2 className="text-2xl font-bold text-slate-300">Unable to fetch hotels.</h2>
-          <p className="text-slate-450 mt-2 max-w-md mx-auto">{errorMessage || "Please try again later."}</p>
-          <button
-            onClick={() => setRetryTrigger(prev => prev + 1)}
-            className="mt-6 bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-2.5 rounded-xl font-bold transition-all duration-200"
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {displayHotels.map((hotel) => (
+          <div
+            key={`${hotel.id}-${hotel.name}`}
+            className="bg-slate-800 rounded-2xl overflow-hidden shadow-xl border border-slate-700/50"
           >
-            Retry
-          </button>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {(hotels && hotels.length > 0 ? hotels : generateClientFallbackHotels(rawQuery)).map((hotel) => (
-            <div
-              key={`${hotel.id}-${hotel.name}`}
-              className="bg-slate-800 rounded-2xl overflow-hidden"
-            >
-              {hotel.image ? (
-                <img
-                  src={hotel.image}
-                  alt={hotel.name}
-                  className="w-full h-56 object-cover bg-slate-700"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    target.nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-              ) : null}
+            <img
+              src={hotel.image || "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"}
+              alt={hotel.name}
+              className="w-full h-56 object-cover bg-slate-700"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80";
+              }}
+            />
               <div className={`w-full h-56 bg-slate-800 border-b border-slate-700 flex flex-col items-center justify-center text-slate-500 ${hotel.image ? 'hidden' : ''}`}>
                 <span className="text-4xl mb-2">🏨</span>
                 <p className="text-sm font-semibold">Image not available</p>
@@ -258,7 +239,6 @@ export default function ResultsPage() {
             </div>
           ))}
         </div>
-      )}
     </div>
   );
 }

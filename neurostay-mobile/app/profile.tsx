@@ -16,7 +16,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import axios from 'axios';
+import apiClient from '../services/api';
 import BottomNav from '../components/BottomNav';
 import { API_URL } from '../constants/Config';
 
@@ -49,20 +49,13 @@ export default function ProfilePage() {
 
       if (token) {
         try {
-          console.log("Calling:", `${API_URL}/api/saved`);
-          const res = await axios.get(`${API_URL}/api/saved`, {
-            headers: {
-              "Content-Type": "application/json",
-              "Bypass-Tunnel-Reminder": "true",
-              Authorization: `Bearer ${token}`
-            },
-            timeout: 15000,
-          });
+          console.log(`[ProfilePage] Loading stats from ${API_URL}/api/saved`);
+          const res = await apiClient.get('/api/saved');
           if (res.data.success && res.data.hotels) {
             setSavedHotels(res.data.hotels.length);
           }
         } catch (e) {
-          console.error('Failed to load stats:', e);
+          console.error('[ProfilePage] Failed to load saved hotel count:', e);
         }
       }
 
@@ -71,7 +64,7 @@ export default function ProfilePage() {
         setRecentSearches(JSON.parse(searchesStr));
       }
     } catch (e) {
-      console.error('Failed to load profile user data:', e);
+      console.error('[ProfilePage] Failed to load user profile data:', e);
     }
   };
 
@@ -97,7 +90,7 @@ export default function ProfilePage() {
               await AsyncStorage.removeItem('user');
               router.replace('/login');
             } catch (e) {
-              console.error('Logout failed:', e);
+              console.error('[ProfilePage] Logout failed:', e);
             }
           },
         },
@@ -111,7 +104,7 @@ export default function ProfilePage() {
       await AsyncStorage.removeItem('recent_searches');
       Alert.alert('Success', 'Search history cleared');
     } catch (e) {
-      console.error('Failed to clear search history:', e);
+      console.error('[ProfilePage] Failed to clear search history:', e);
     }
   };
 
@@ -122,19 +115,8 @@ export default function ProfilePage() {
   const handleEditProfile = async () => {
     try {
       setLoading(true);
-      const token = await AsyncStorage.getItem('token');
-      console.log("Calling:", `${API_URL}/api/auth/profile`);
-      const res = await axios.put(`${API_URL}/api/auth/profile`, 
-        { email, name: editName },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Bypass-Tunnel-Reminder": "true",
-            Authorization: `Bearer ${token}`
-          },
-          timeout: 15000,
-        }
-      );
+      console.log(`[ProfilePage] Updating profile to ${API_URL}/api/auth/profile`);
+      const res = await apiClient.put('/api/auth/profile', { email, name: editName });
       if (res.data.success) {
         setName(editName);
         const userStr = await AsyncStorage.getItem('user');
@@ -156,19 +138,8 @@ export default function ProfilePage() {
   const handleChangePassword = async () => {
     try {
       setLoading(true);
-      const token = await AsyncStorage.getItem('token');
-      console.log("Calling:", `${API_URL}/api/auth/password`);
-      const res = await axios.put(`${API_URL}/api/auth/password`, 
-        { email, currentPassword, newPassword },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Bypass-Tunnel-Reminder": "true",
-            Authorization: `Bearer ${token}`
-          },
-          timeout: 15000,
-        }
-      );
+      console.log(`[ProfilePage] Updating password to ${API_URL}/api/auth/password`);
+      const res = await apiClient.put('/api/auth/password', { email, currentPassword, newPassword });
       if (res.data.success) {
         Alert.alert('Success', 'Password updated successfully');
         setShowChangePassword(false);
@@ -199,141 +170,133 @@ export default function ProfilePage() {
           </View>
           <Text style={styles.userName}>{name}</Text>
           <Text style={styles.userEmail}>{email}</Text>
-          
-          <TouchableOpacity style={styles.blueButton} onPress={() => setShowEditProfile(true)}>
-            <Ionicons name="pencil" size={16} color="white" style={styles.btnIcon} />
-            <Text style={styles.buttonText}>Edit Profile</Text>
-          </TouchableOpacity>
 
-          <TouchableOpacity style={styles.purpleButton} onPress={() => setShowChangePassword(true)}>
-            <Ionicons name="lock-closed" size={16} color="white" style={styles.btnIcon} />
-            <Text style={styles.buttonText}>Change Password</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.redButton} onPress={handleLogout}>
-            <Ionicons name="log-out" size={16} color="white" style={styles.btnIcon} />
-            <Text style={styles.buttonText}>Logout</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Stats Grid */}
-        <View style={styles.statsGrid}>
-          <View style={styles.statCard}>
-            <Ionicons name="heart" size={24} color="#f43f5e" style={styles.statIcon} />
-            <View style={styles.statBottom}>
-              <Text style={styles.statLabel}>Saved Hotels</Text>
-              <Text style={styles.statValue}>{savedHotels}</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Account Status Card */}
-        <View style={styles.statusCard}>
-          <Ionicons name="checkbox" size={24} color="#4ade80" style={styles.statIcon} />
-          <View style={styles.statBottom}>
-            <Text style={styles.statusLabel}>Account Status</Text>
-            <Text style={styles.statusValue}>Active</Text>
+          <View style={styles.badgeRow}>
             <View style={styles.verifiedBadge}>
-              <Text style={styles.verifiedText}>Verified</Text>
+              <Ionicons name="checkmark-circle" size={14} color="#22d3ee" />
+              <Text style={styles.verifiedText}>Verified Account</Text>
             </View>
           </View>
         </View>
 
-        {/* Recent Searches */}
+        {/* Quick Stats */}
+        <View style={styles.statsContainer}>
+          <TouchableOpacity style={styles.statBox} onPress={() => router.push('/saved')}>
+            <Ionicons name="bookmark" size={24} color="#22d3ee" />
+            <Text style={styles.statNumber}>{savedHotels}</Text>
+            <Text style={styles.statLabel}>Saved Hotels</Text>
+          </TouchableOpacity>
+
+          <View style={styles.statBox}>
+            <Ionicons name="search" size={24} color="#a855f7" />
+            <Text style={styles.statNumber}>{recentSearches.length}</Text>
+            <Text style={styles.statLabel}>Recent Searches</Text>
+          </View>
+        </View>
+
+        {/* Account Actions */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Account Settings</Text>
+
+          <TouchableOpacity style={styles.menuItem} onPress={() => setShowEditProfile(true)}>
+            <View style={styles.menuItemLeft}>
+              <Ionicons name="person-outline" size={20} color="#94a3b8" />
+              <Text style={styles.menuItemText}>Edit Profile</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color="#64748b" />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.menuItem} onPress={() => setShowChangePassword(true)}>
+            <View style={styles.menuItemLeft}>
+              <Ionicons name="lock-closed-outline" size={20} color="#94a3b8" />
+              <Text style={styles.menuItemText}>Change Password</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color="#64748b" />
+          </TouchableOpacity>
+        </View>
+
+        {/* Recent Search History */}
         <View style={styles.section}>
           <View style={styles.sectionHeaderRow}>
-            <View style={styles.sectionTitleRow}>
-              <Ionicons name="search" size={20} color="#22d3ee" style={{ marginRight: 8 }} />
-              <Text style={styles.sectionTitle}>Recent Searches</Text>
-            </View>
+            <Text style={styles.sectionTitle}>Recent Searches</Text>
             {recentSearches.length > 0 && (
               <TouchableOpacity onPress={handleClearSearches}>
-                <Text style={styles.clearText}>Clear All</Text>
+                <Text style={styles.clearText}>Clear</Text>
               </TouchableOpacity>
             )}
           </View>
 
           {recentSearches.length === 0 ? (
-            <View style={styles.emptySearchBox}>
-              <Ionicons name="search-outline" size={24} color="#475569" />
-              <Text style={styles.emptySearchText}>Your search history is empty</Text>
-            </View>
+            <Text style={styles.emptyText}>No recent searches found.</Text>
           ) : (
-            <View style={styles.searchList}>
-              {recentSearches.map((search, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={styles.searchItem}
-                  onPress={() => handleSearchPress(search)}
-                >
-                  <View style={styles.searchItemLeft}>
-                    <Ionicons name="time-outline" size={18} color="#94a3b8" style={styles.timeIcon} />
-                    <Text style={styles.searchText}>{search}</Text>
-                  </View>
-                  <Text style={styles.searchAgainText}>Search again →</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
+            recentSearches.map((item, idx) => (
+              <TouchableOpacity key={idx} style={styles.historyItem} onPress={() => handleSearchPress(item)}>
+                <Ionicons name="time-outline" size={18} color="#22d3ee" />
+                <Text style={styles.historyText}>{item}</Text>
+              </TouchableOpacity>
+            ))
           )}
         </View>
+
+        {/* Logout Button */}
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+          <Ionicons name="log-out-outline" size={20} color="#ef4444" />
+          <Text style={styles.logoutText}>Log Out</Text>
+        </TouchableOpacity>
       </ScrollView>
 
       {/* Edit Profile Modal */}
-      <Modal visible={showEditProfile} transparent animationType="slide">
+      <Modal visible={showEditProfile} transparent animationType="slide" onRequestClose={() => setShowEditProfile(false)}>
         <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
+          <View style={styles.modalCard}>
             <Text style={styles.modalTitle}>Edit Profile</Text>
-            <Text style={styles.inputLabel}>Name</Text>
+            <Text style={styles.label}>Full Name</Text>
             <TextInput
               style={styles.input}
               value={editName}
               onChangeText={setEditName}
-              placeholder="Your Name"
-              placeholderTextColor="#94a3b8"
+              placeholder="Enter full name"
+              placeholderTextColor="#475569"
             />
-            <View style={styles.modalButtons}>
-              <TouchableOpacity style={[styles.modalButton, styles.cancelButton]} onPress={() => setShowEditProfile(false)}>
-                <Text style={styles.cancelButtonText}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.modalButton, styles.saveButton]} onPress={handleEditProfile} disabled={loading}>
-                {loading ? <ActivityIndicator color="white" /> : <Text style={styles.buttonText}>Save</Text>}
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.modalButton} onPress={handleEditProfile} disabled={loading}>
+              {loading ? <ActivityIndicator color="#071028" /> : <Text style={styles.modalButtonText}>Save Changes</Text>}
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.cancelButton} onPress={() => setShowEditProfile(false)}>
+              <Text style={styles.cancelText}>Cancel</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
 
       {/* Change Password Modal */}
-      <Modal visible={showChangePassword} transparent animationType="slide">
+      <Modal visible={showChangePassword} transparent animationType="slide" onRequestClose={() => setShowChangePassword(false)}>
         <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
+          <View style={styles.modalCard}>
             <Text style={styles.modalTitle}>Change Password</Text>
-            <Text style={styles.inputLabel}>Current Password</Text>
+            <Text style={styles.label}>Current Password</Text>
             <TextInput
               style={styles.input}
+              secureTextEntry
               value={currentPassword}
               onChangeText={setCurrentPassword}
-              placeholder="Current Password"
-              placeholderTextColor="#94a3b8"
-              secureTextEntry
+              placeholder="••••••••"
+              placeholderTextColor="#475569"
             />
-            <Text style={styles.inputLabel}>New Password</Text>
+            <Text style={styles.label}>New Password</Text>
             <TextInput
               style={styles.input}
+              secureTextEntry
               value={newPassword}
               onChangeText={setNewPassword}
-              placeholder="New Password"
-              placeholderTextColor="#94a3b8"
-              secureTextEntry
+              placeholder="••••••••"
+              placeholderTextColor="#475569"
             />
-            <View style={styles.modalButtons}>
-              <TouchableOpacity style={[styles.modalButton, styles.cancelButton]} onPress={() => setShowChangePassword(false)}>
-                <Text style={styles.cancelButtonText}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.modalButton, styles.saveButton]} onPress={handleChangePassword} disabled={loading}>
-                {loading ? <ActivityIndicator color="white" /> : <Text style={styles.buttonText}>Save</Text>}
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.modalButton} onPress={handleChangePassword} disabled={loading}>
+              {loading ? <ActivityIndicator color="#071028" /> : <Text style={styles.modalButtonText}>Update Password</Text>}
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.cancelButton} onPress={() => setShowChangePassword(false)}>
+              <Text style={styles.cancelText}>Cancel</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -352,34 +315,37 @@ const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 20,
     paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#1e293b',
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     color: 'white',
   },
   headerSubtitle: {
-    fontSize: 12,
+    fontSize: 14,
     color: '#94a3b8',
     marginTop: 4,
   },
   scrollContent: {
     padding: 20,
+    paddingBottom: 80,
   },
   userCard: {
     backgroundColor: '#1e293b',
+    borderRadius: 20,
     padding: 24,
-    borderRadius: 16,
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: '#334155',
-    marginBottom: 15,
-    alignItems: 'center',
+    marginBottom: 20,
   },
   avatarContainer: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: '#6366f1',
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: '#22d3ee',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 12,
@@ -387,7 +353,7 @@ const styles = StyleSheet.create({
   avatarText: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#071028',
   },
   userName: {
     fontSize: 20,
@@ -398,241 +364,182 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#94a3b8',
     marginTop: 4,
-    marginBottom: 20,
   },
-  blueButton: {
+  badgeRow: {
+    flexDirection: 'row',
+    marginTop: 12,
+  },
+  verifiedBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#3b82f6',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 8,
-    width: '100%',
-    justifyContent: 'center',
-    marginBottom: 10,
+    backgroundColor: 'rgba(34,211,238,0.1)',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+    gap: 4,
   },
-  purpleButton: {
+  verifiedText: {
+    color: '#22d3ee',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  statsContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#a855f7',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 8,
-    width: '100%',
-    justifyContent: 'center',
-    marginBottom: 10,
-  },
-  redButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#b91c1c',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 8,
-    width: '100%',
-    justifyContent: 'center',
-  },
-  btnIcon: {
-    marginRight: 8,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  statsGrid: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 15,
     gap: 15,
+    marginBottom: 25,
   },
-  statCard: {
+  statBox: {
     flex: 1,
     backgroundColor: '#1e293b',
     borderRadius: 16,
-    padding: 20,
+    padding: 16,
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: '#334155',
-    justifyContent: 'space-between',
-    minHeight: 120,
   },
-  statIcon: {
-    marginBottom: 10,
-  },
-  statBottom: {
-    marginTop: 'auto',
+  statNumber: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+    marginTop: 6,
   },
   statLabel: {
     fontSize: 12,
     color: '#94a3b8',
-    marginBottom: 4,
-  },
-  statValue: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#22d3ee',
-    paddingLeft: 4,
-  },
-  statusCard: {
-    backgroundColor: '#1e293b',
-    borderRadius: 16,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#334155',
-    marginBottom: 25,
-    minHeight: 120,
-    justifyContent: 'space-between',
-  },
-  statusLabel: {
-    fontSize: 12,
-    color: '#94a3b8',
-    marginBottom: 4,
-  },
-  statusValue: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#4ade80',
-    marginBottom: 8,
-  },
-  verifiedBadge: {
-    backgroundColor: 'rgba(74, 222, 128, 0.1)',
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    borderRadius: 4,
-    alignSelf: 'flex-start',
-    borderWidth: 1,
-    borderColor: 'rgba(74, 222, 128, 0.2)',
-  },
-  verifiedText: {
-    color: '#4ade80',
-    fontSize: 10,
-    fontWeight: 'bold',
+    marginTop: 2,
   },
   section: {
-    backgroundColor: '#1e293b',
-    borderRadius: 16,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#334155',
-    marginBottom: 30,
+    marginBottom: 25,
   },
   sectionHeaderRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
-  },
-  sectionTitleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    marginBottom: 12,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#22d3ee',
+    marginBottom: 12,
   },
   clearText: {
     color: '#ef4444',
-    fontSize: 12,
+    fontSize: 13,
+    fontWeight: '600',
   },
-  searchList: {
-    gap: 1,
-    backgroundColor: '#334155',
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
-  searchItem: {
+  menuItem: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 16,
-    paddingHorizontal: 16,
+    alignItems: 'center',
     backgroundColor: '#1e293b',
+    padding: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#334155',
+    marginBottom: 10,
   },
-  searchItemLeft: {
+  menuItemLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1,
+    gap: 12,
   },
-  timeIcon: {
-    marginRight: 12,
+  menuItemText: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '500',
   },
-  searchText: {
-    fontSize: 14,
+  historyItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1e293b',
+    padding: 14,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#334155',
+    marginBottom: 8,
+    gap: 10,
+  },
+  historyText: {
     color: '#e2e8f0',
-    flex: 1,
+    fontSize: 14,
   },
-  searchAgainText: {
-    fontSize: 12,
-    color: '#475569',
+  emptyText: {
+    color: '#64748b',
+    fontSize: 14,
+    fontStyle: 'italic',
   },
-  emptySearchBox: {
-    padding: 30,
+  logoutButton: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  emptySearchText: {
-    color: '#94a3b8',
-    fontSize: 14,
+    backgroundColor: 'rgba(239,68,68,0.1)',
+    padding: 16,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(239,68,68,0.3)',
+    gap: 8,
     marginTop: 10,
+  },
+  logoutText: {
+    color: '#ef4444',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'rgba(7,16,40,0.85)',
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
   },
-  modalContent: {
-    width: '100%',
+  modalCard: {
     backgroundColor: '#1e293b',
-    borderRadius: 16,
     padding: 24,
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: '#334155',
   },
   modalTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#22d3ee',
+    textAlign: 'center',
     marginBottom: 20,
   },
-  inputLabel: {
-    fontSize: 14,
+  label: {
     color: '#94a3b8',
-    marginBottom: 8,
+    fontSize: 13,
+    marginBottom: 6,
   },
   input: {
-    backgroundColor: '#0f172a',
+    backgroundColor: '#071028',
+    color: 'white',
+    padding: 14,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: '#334155',
-    borderRadius: 8,
-    color: 'white',
-    padding: 12,
     marginBottom: 16,
-    fontSize: 16,
-  },
-  modalButtons: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    gap: 12,
-    marginTop: 10,
+    fontSize: 15,
   },
   modalButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    minWidth: 100,
+    backgroundColor: '#22d3ee',
+    padding: 15,
+    borderRadius: 12,
     alignItems: 'center',
+    marginTop: 10,
+  },
+  modalButtonText: {
+    color: '#071028',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   cancelButton: {
-    backgroundColor: 'transparent',
+    alignItems: 'center',
+    padding: 12,
+    marginTop: 8,
   },
-  saveButton: {
-    backgroundColor: '#3b82f6',
-  },
-  cancelButtonText: {
-    color: '#94a3b8',
-    fontWeight: 'bold',
+  cancelText: {
+    color: '#64748b',
+    fontSize: 14,
   },
 });

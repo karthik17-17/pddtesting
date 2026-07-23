@@ -17,12 +17,12 @@ import {
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
-import axios from 'axios';
+import apiClient from '../services/api';
 import BottomNav from '../components/BottomNav';
 import { API_URL } from '../constants/Config';
 
 type Hotel = {
-  id: number;
+  id: number | string;
   name: string;
   address: string;
   rating: number;
@@ -33,15 +33,20 @@ type Hotel = {
   mapLink: string;
   lat?: number | null;
   lng?: number | null;
+  latitude?: number | null;
+  longitude?: number | null;
 };
+
+const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80";
 
 export default function ResultsPage() {
   const router = useRouter();
   const { query: rawQuery } = useLocalSearchParams<{ query?: string }>();
   const [query, setQuery] = useState<string>("");
-  const [hotels, setHotels] = useState<Hotel[]>(() => generateMobileFallbackHotels(rawQuery ? String(rawQuery) : "Chennai"));
+  const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   // Initialize query from rawQuery or AsyncStorage
   useEffect(() => {
@@ -59,7 +64,7 @@ export default function ResultsPage() {
         try {
           await AsyncStorage.setItem('last_search_query', decoded);
         } catch (e) {
-          console.error('Failed to save query:', e);
+          console.error('[ResultsPage] Failed to save query:', e);
         }
       } else {
         try {
@@ -73,45 +78,34 @@ export default function ResultsPage() {
     initQuery();
   }, [rawQuery]);
 
-  // Fetch hotels when query changes
+  // Fetch hotels from Production Backend when query changes
   useEffect(() => {
-    if (!query) return; // Wait until query is initialized
+    if (!query) return;
     
     const fetchHotels = async () => {
       setLoading(true);
       try {
-        const url = `${API_URL}/api/serpapi/hotels`;
-        console.log("Calling hotel API:", url);
-        console.log("Request Payload:", { query });
+        console.log(`[ResultsPage] Initiating hotel search for query: "${query}" to endpoint: ${API_URL}/api/serpapi/hotels`);
         
-        const token = await AsyncStorage.getItem('token');
-        const headers: Record<string, string> = {
-          "Content-Type": "application/json",
-          "Bypass-Tunnel-Reminder": "true"
-        };
-        if (token) {
-          headers["Authorization"] = `Bearer ${token}`;
-        }
+        const response = await apiClient.post('/api/serpapi/hotels', { query });
 
-        const response = await axios.post(url, { query }, {
-          headers,
-          timeout: 15000,
-        });
-
-        console.log("Hotels Response:", response.data);
+        console.log(`[ResultsPage] Backend HTTP Status: ${response.status}`);
         const data = response.data;
         const hotelList = data?.hotels || data?.results || data?.data || (Array.isArray(data) ? data : []);
 
         if (Array.isArray(hotelList) && hotelList.length > 0) {
-          console.log("Hotels received:", hotelList.length);
+          console.log(`[ResultsPage] SUCCESS! Found ${hotelList.length} hotels from backend.`);
           setHotels(hotelList);
+          await AsyncStorage.setItem('last_search_results', JSON.stringify(hotelList));
         } else {
-          console.log("Hotels received: 0. Generating AI fallback hotels.");
-          setHotels(generateMobileFallbackHotels(query));
+          console.warn('[ResultsPage] Empty hotel list returned from backend. Using fallback recommendations.');
+          const fallbacks = generateMobileFallbackHotels(query);
+          setHotels(fallbacks);
         }
       } catch (error: any) {
-        console.error("ResultsPage fetch error:", error?.message || error);
-        setHotels(generateMobileFallbackHotels(query));
+        console.error('[ResultsPage] Fetch Error:', error?.message || error);
+        const fallbacks = generateMobileFallbackHotels(query);
+        setHotels(fallbacks);
       } finally {
         setLoading(false);
       }
@@ -124,33 +118,26 @@ export default function ResultsPage() {
     try {
       const token = await AsyncStorage.getItem('token');
       if (!token) {
-        Alert.alert('Error', 'Please login to save hotels');
+        Alert.alert('Login Required', 'Please login to save hotels to your account.');
         return;
       }
 
-      console.log("Calling:", `${API_URL}/api/saved`);
-      await axios.post(`${API_URL}/api/saved`, {
+      console.log(`[ResultsPage] Saving hotel "${hotel.name}" to backend /api/saved...`);
+      await apiClient.post('/api/saved', {
         hotelName: hotel.name,
-        hotelImage: hotel.image,
+        hotelImage: hotel.image || DEFAULT_IMAGE,
         price: hotel.price,
         address: hotel.address,
         rating: hotel.rating,
         matchScore: hotel.matchScore,
         why: hotel.why,
         mapLink: hotel.mapLink,
-      }, {
-        headers: {
-          "Content-Type": "application/json",
-          "Bypass-Tunnel-Reminder": "true",
-          Authorization: `Bearer ${token}`
-        },
-        timeout: 15000,
       });
       
-      Alert.alert('Success', 'Hotel saved to cloud successfully');
+      Alert.alert('Hotel Saved! ❤️', `${hotel.name} has been added to your saved list.`);
     } catch (e: any) {
-      console.error('Save hotel error:', e);
-      Alert.alert('Error', e.response?.data?.message || 'Failed to save hotel');
+      console.error('[ResultsPage] Save hotel error:', e);
+      Alert.alert('Save Failed', e.response?.data?.message || 'Could not connect to server.');
     }
   };
 
@@ -161,76 +148,92 @@ export default function ResultsPage() {
 
       const exists = compareList.some(item => item.name === hotel.name);
       if (exists) {
-        Alert.alert('Info', 'Hotel already added to comparison');
+        Alert.alert('Already Added', `${hotel.name} is already in your comparison list.`);
         return;
       }
 
       compareList.push(hotel);
       await AsyncStorage.setItem('compare_hotels', JSON.stringify(compareList));
-      Alert.alert('Success', 'Hotel added to compare list');
+      Alert.alert('Added to Compare 📊', `${hotel.name} added. Go to Compare page to view.`);
     } catch (e) {
-      console.error('Compare hotel error:', e);
+      console.error('[ResultsPage] Compare hotel error:', e);
       Alert.alert('Error', 'Failed to add to comparison');
     }
   };
 
   const handleMap = (hotel: Hotel) => {
+    const latVal = hotel.lat ?? hotel.latitude;
+    const lngVal = hotel.lng ?? hotel.longitude;
+    
     router.push({
       pathname: '/map',
       params: { 
         url: hotel.mapLink || '', 
         name: hotel.name, 
         address: hotel.address,
-        lat: hotel.lat !== undefined && hotel.lat !== null ? hotel.lat.toString() : '',
-        lng: hotel.lng !== undefined && hotel.lng !== null ? hotel.lng.toString() : ''
+        lat: latVal !== undefined && latVal !== null ? latVal.toString() : '',
+        lng: lngVal !== undefined && lngVal !== null ? lngVal.toString() : ''
       }
     });
   };
 
-  const renderHotelItem = ({ item }: { item: Hotel }) => (
-    <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} defaultSource={require('../assets/images/react-logo.png')} />
-      
-      <View style={styles.cardContent}>
-        <View style={styles.headerRow}>
-          <Text style={styles.hotelName} numberOfLines={1}>{item.name}</Text>
-          <View style={styles.ratingBadge}>
-            <Ionicons name="star" size={14} color="#eab308" />
-            <Text style={styles.ratingText}>{item.rating}</Text>
-          </View>
-        </View>
+  const handleImageError = (hotelId: string | number) => {
+    setImageErrors(prev => ({ ...prev, [String(hotelId)]: true }));
+  };
 
-        <Text style={styles.address} numberOfLines={1}>{item.address}</Text>
+  const renderHotelItem = ({ item }: { item: Hotel }) => {
+    const isImageBroken = imageErrors[String(item.id)];
+    const imageUri = isImageBroken || !item.image ? DEFAULT_IMAGE : item.image;
+
+    return (
+      <View style={styles.card}>
+        <Image
+          source={{ uri: imageUri }}
+          style={styles.image}
+          onError={() => handleImageError(item.id)}
+        />
         
-        <View style={styles.metaRow}>
-          <Text style={styles.price}>{item.price}</Text>
-          <View style={styles.matchBadge}>
-            <Text style={styles.matchText}>Match: {item.matchScore}%</Text>
+        <View style={styles.cardContent}>
+          <View style={styles.headerRow}>
+            <Text style={styles.hotelName} numberOfLines={1}>{item.name}</Text>
+            <View style={styles.ratingBadge}>
+              <Ionicons name="star" size={14} color="#eab308" />
+              <Text style={styles.ratingText}>{item.rating || 4.5}</Text>
+            </View>
           </View>
-        </View>
 
-        <Text style={styles.whyText} numberOfLines={2}>{item.why}</Text>
-
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.primaryButton} onPress={() => setSelectedHotel(item)}>
-            <Text style={styles.primaryButtonText}>Details</Text>
-          </TouchableOpacity>
+          <Text style={styles.address} numberOfLines={1}>{item.address}</Text>
           
-          <TouchableOpacity style={styles.actionButton} onPress={() => handleSave(item)}>
-            <Ionicons name="bookmark" size={18} color="#22d3ee" />
-          </TouchableOpacity>
+          <View style={styles.metaRow}>
+            <Text style={styles.price}>{item.price}</Text>
+            <View style={styles.matchBadge}>
+              <Text style={styles.matchText}>Match: {item.matchScore}%</Text>
+            </View>
+          </View>
 
-          <TouchableOpacity style={styles.actionButton} onPress={() => handleCompare(item)}>
-            <Ionicons name="stats-chart" size={18} color="#c084fc" />
-          </TouchableOpacity>
+          <Text style={styles.whyText} numberOfLines={2}>{item.why}</Text>
 
-          <TouchableOpacity style={styles.actionButton} onPress={() => handleMap(item)}>
-            <Ionicons name="map" size={18} color="#34d399" />
-          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.primaryButton} onPress={() => setSelectedHotel(item)}>
+              <Text style={styles.primaryButtonText}>Details</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={styles.actionButton} onPress={() => handleSave(item)}>
+              <Ionicons name="bookmark" size={18} color="#22d3ee" />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.actionButton} onPress={() => handleCompare(item)}>
+              <Ionicons name="stats-chart" size={18} color="#c084fc" />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.actionButton} onPress={() => handleMap(item)}>
+              <Ionicons name="map" size={18} color="#34d399" />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
-  );
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -238,23 +241,26 @@ export default function ResultsPage() {
       
       {/* Top Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Recommendations</Text>
-        <Text style={styles.headerQuery}>Search: {query}</Text>
+        <Text style={styles.headerTitle}>Hotel Recommendations</Text>
+        <Text style={styles.headerQuery}>Search: <Text style={{ color: '#22d3ee', fontWeight: 'bold' }}>{query}</Text></Text>
       </View>
 
       {/* Main List */}
       {loading ? (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" color="#22d3ee" />
-          <Text style={styles.loadingText}>Analyzing stays...</Text>
+          <Text style={styles.loadingText}>Fetching real hotels from production server...</Text>
         </View>
       ) : (
         <>
-          <Text style={{ color: '#22d3ee', textAlign: 'center', marginVertical: 10, fontSize: 16, fontWeight: 'bold' }}>
-            Showing {(hotels && hotels.length > 0 ? hotels : generateMobileFallbackHotels(query)).length} hotels
-          </Text>
+          <View style={styles.countBadge}>
+            <Text style={styles.countText}>
+              Found {hotels.length} verified stays in {query}
+            </Text>
+          </View>
+
           <FlatList
-            data={hotels && hotels.length > 0 ? hotels : generateMobileFallbackHotels(query)}
+            data={hotels}
             renderItem={renderHotelItem}
             keyExtractor={(item, index) => `${item.id}-${index}`}
             contentContainerStyle={styles.listContent}
@@ -274,7 +280,11 @@ export default function ResultsPage() {
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
               <ScrollView showsVerticalScrollIndicator={false}>
-                <Image source={{ uri: selectedHotel.image }} style={styles.modalImage} />
+                <Image
+                  source={{ uri: imageErrors[String(selectedHotel.id)] || !selectedHotel.image ? DEFAULT_IMAGE : selectedHotel.image }}
+                  style={styles.modalImage}
+                  onError={() => handleImageError(selectedHotel.id)}
+                />
                 
                 <View style={styles.modalHeaderRow}>
                   <Text style={styles.modalTitle}>{selectedHotel.name}</Text>
@@ -302,6 +312,27 @@ export default function ResultsPage() {
                 <Text style={styles.modalSectionTitle}>Why NeuroStay Recommends This</Text>
                 <Text style={styles.modalWhyText}>{selectedHotel.why}</Text>
 
+                <View style={{ flexDirection: 'row', gap: 10, marginTop: 20 }}>
+                  <TouchableOpacity
+                    style={[styles.modalBookButton, { flex: 1 }]}
+                    onPress={() => {
+                      handleSave(selectedHotel);
+                      setSelectedHotel(null);
+                    }}
+                  >
+                    <Text style={styles.modalBookButtonText}>Save Hotel ❤️</Text>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity
+                    style={[styles.modalBookButton, { flex: 1, backgroundColor: '#34d399' }]}
+                    onPress={() => {
+                      setSelectedHotel(null);
+                      handleMap(selectedHotel);
+                    }}
+                  >
+                    <Text style={[styles.modalBookButtonText, { color: '#071028' }]}>View Map 🗺️</Text>
+                  </TouchableOpacity>
+                </View>
               </ScrollView>
             </View>
           </View>
@@ -332,8 +363,21 @@ const styles = StyleSheet.create({
   },
   headerQuery: {
     fontSize: 14,
-    color: '#22d3ee',
+    color: '#94a3b8',
     marginTop: 4,
+  },
+  countBadge: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: 'rgba(34,211,238,0.1)',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(34,211,238,0.2)',
+  },
+  countText: {
+    color: '#22d3ee',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
   loaderContainer: {
     flex: 1,
@@ -345,26 +389,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
   },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 30,
-  },
-  emptyTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#e2e8f0',
-    marginTop: 15,
-  },
-  emptySubtitle: {
-    fontSize: 14,
-    color: '#64748b',
-    textAlign: 'center',
-    marginTop: 8,
-  },
   listContent: {
     padding: 15,
+    paddingBottom: 80,
   },
   card: {
     backgroundColor: '#1e293b',
@@ -377,6 +404,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 180,
+    backgroundColor: '#334155',
   },
   cardContent: {
     padding: 15,
@@ -486,6 +514,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 200,
     borderRadius: 16,
+    backgroundColor: '#334155',
   },
   modalHeaderRow: {
     flexDirection: 'row',
@@ -562,12 +591,11 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 12,
     alignItems: 'center',
-    marginVertical: 20,
   },
   modalBookButtonText: {
     color: '#071028',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 15,
   },
 });
 

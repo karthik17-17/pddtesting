@@ -8,7 +8,6 @@ export default function RootLayout() {
         <Stack.Screen name="index" />
         <Stack.Screen name="login" />
         <Stack.Screen name="register" />
-        <Stack.Screen name="forgot-password" />
         <Stack.Screen name="home" />
         <Stack.Screen name="results" />
         <Stack.Screen name="map" />

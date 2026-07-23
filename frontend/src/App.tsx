@@ -17,7 +17,6 @@ const ContactPage = lazy(() => import("./pages/ContactPage"));
 const AdminDashboardPage = lazy(() => import("./pages/AdminDashboardPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
-const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -27,7 +26,7 @@ function AppContent() {
   const location = useLocation();
   const { token } = useAuth();
 
-  const isAuthRoute = ["/login", "/register", "/forgot-password"].includes(
+  const isAuthRoute = ["/login", "/register"].includes(
     location.pathname.toLowerCase()
   );
 
@@ -59,10 +58,6 @@ function AppContent() {
               {/* Auth */}
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-              <Route
-                path="/forgot-password"
-                element={<ForgotPasswordPage />}
-              />
 
               {/* Saved */}
               <Route path="/saved" element={<ProtectedRoute><SavedPage /></ProtectedRoute>} />

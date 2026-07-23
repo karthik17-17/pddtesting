@@ -16,12 +16,13 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import axios from 'axios';
+import apiClient from '../services/api';
 import BottomNav from '../components/BottomNav';
 import { API_URL } from '../constants/Config';
 
 type Hotel = {
-  id: number;
+  id: number | string;
+  _id?: string;
   name: string;
   address: string;
   rating: number;
@@ -32,32 +33,28 @@ type Hotel = {
   mapLink: string;
 };
 
+const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80";
+
 export default function SavedPage() {
   const router = useRouter();
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   const loadSavedHotels = async () => {
     try {
       const token = await AsyncStorage.getItem('token');
       if (!token) return;
 
-      console.log("Calling:", `${API_URL}/api/saved`);
-      const response = await axios.get(`${API_URL}/api/saved`, {
-        headers: {
-          "Content-Type": "application/json",
-          "Bypass-Tunnel-Reminder": "true",
-          Authorization: `Bearer ${token}`
-        },
-        timeout: 15000,
-      });
+      console.log(`[SavedPage] Fetching saved hotels from ${API_URL}/api/saved`);
+      const response = await apiClient.get('/api/saved');
 
       if (response.data.success) {
         const mapped = (response.data.hotels || []).map((h: any) => ({
           _id: h._id,
           id: h._id || h.id,
           name: h.hotelName || h.name || '',
-          image: h.hotelImage || h.image || '',
+          image: h.hotelImage || h.image || DEFAULT_IMAGE,
           address: h.address || '',
           rating: h.rating || 0,
           price: h.price || '',
@@ -68,7 +65,7 @@ export default function SavedPage() {
         setHotels(mapped);
       }
     } catch (e) {
-      console.error('Failed to load saved hotels:', e);
+      console.error('[SavedPage] Failed to load saved hotels:', e);
     }
   };
 
@@ -78,27 +75,16 @@ export default function SavedPage() {
 
   const handleRemove = async (hotel: Hotel) => {
     try {
-      const token = await AsyncStorage.getItem('token');
-      if (!token) return;
+      const hotelId = hotel._id || hotel.id;
 
-      // Ensure we use the MongoDB _id for removal if available, fallback to searching by name
-      const hotelId = (hotel as any)._id || hotel.id;
-
-      console.log("Calling:", `${API_URL}/api/saved/${hotelId}`);
-      await axios.delete(`${API_URL}/api/saved/${hotelId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          "Bypass-Tunnel-Reminder": "true",
-          Authorization: `Bearer ${token}`
-        },
-        timeout: 15000,
-      });
+      console.log(`[SavedPage] Deleting saved hotel ID: ${hotelId} from ${API_URL}/api/saved/${hotelId}`);
+      await apiClient.delete(`/api/saved/${hotelId}`);
 
       const updated = hotels.filter(item => item.name !== hotel.name);
       setHotels(updated);
-      Alert.alert('Success', 'Hotel removed from cloud');
+      Alert.alert('Success', 'Hotel removed from saved list');
     } catch (e: any) {
-      console.error('Failed to remove hotel:', e);
+      console.error('[SavedPage] Failed to remove hotel:', e);
       Alert.alert('Error', e.response?.data?.message || 'Failed to remove hotel');
     }
   };
@@ -110,7 +96,7 @@ export default function SavedPage() {
 
       const exists = compareList.some(item => item.name === hotel.name);
       if (exists) {
-        Alert.alert('Info', 'Hotel already added to comparison');
+        Alert.alert('Already Added', 'Hotel already added to comparison list');
         return;
       }
 
@@ -118,78 +104,85 @@ export default function SavedPage() {
       await AsyncStorage.setItem('compare_hotels', JSON.stringify(compareList));
       Alert.alert('Success', 'Hotel added to compare list');
     } catch (e) {
-      console.error('Failed to add to compare:', e);
+      console.error('[SavedPage] Failed to add to compare:', e);
     }
   };
 
   const handleMap = (hotel: Hotel) => {
-    if (!hotel.mapLink) {
-      Alert.alert('Error', 'No map link available');
-      return;
-    }
     router.push({
       pathname: '/map',
-      params: { url: hotel.mapLink, name: hotel.name }
+      params: { url: hotel.mapLink || '', name: hotel.name, address: hotel.address }
     });
   };
 
-  const renderHotelItem = ({ item }: { item: Hotel }) => (
-    <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
-      
-      <View style={styles.cardContent}>
-        <View style={styles.headerRow}>
-          <Text style={styles.hotelName} numberOfLines={1}>{item.name}</Text>
-          <View style={styles.ratingBadge}>
-            <Ionicons name="star" size={14} color="#eab308" />
-            <Text style={styles.ratingText}>{item.rating}</Text>
-          </View>
-        </View>
+  const renderHotelItem = ({ item }: { item: Hotel }) => {
+    const isImageBroken = imageErrors[String(item.id)];
+    const imageUri = isImageBroken || !item.image ? DEFAULT_IMAGE : item.image;
 
-        <Text style={styles.address} numberOfLines={1}>{item.address}</Text>
+    return (
+      <View style={styles.card}>
+        <Image
+          source={{ uri: imageUri }}
+          style={styles.image}
+          onError={() => setImageErrors(prev => ({ ...prev, [String(item.id)]: true }))}
+        />
         
-        <View style={styles.metaRow}>
-          <Text style={styles.price}>{item.price}</Text>
-          <View style={styles.matchBadge}>
-            <Text style={styles.matchText}>Match: {item.matchScore}%</Text>
+        <View style={styles.cardContent}>
+          <View style={styles.headerRow}>
+            <Text style={styles.hotelName} numberOfLines={1}>{item.name}</Text>
+            <View style={styles.ratingBadge}>
+              <Ionicons name="star" size={14} color="#eab308" />
+              <Text style={styles.ratingText}>{item.rating}</Text>
+            </View>
           </View>
-        </View>
 
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.primaryButton} onPress={() => setSelectedHotel(item)}>
-            <Text style={styles.primaryButtonText}>Details</Text>
-          </TouchableOpacity>
+          <Text style={styles.address} numberOfLines={1}>{item.address}</Text>
           
-          <TouchableOpacity style={styles.removeButton} onPress={() => handleRemove(item)}>
-            <Ionicons name="trash-outline" size={18} color="#ef4444" />
-          </TouchableOpacity>
+          <View style={styles.metaRow}>
+            <Text style={styles.price}>{item.price}</Text>
+            <View style={styles.matchBadge}>
+              <Text style={styles.matchText}>Match: {item.matchScore}%</Text>
+            </View>
+          </View>
 
-          <TouchableOpacity style={styles.actionButton} onPress={() => handleCompare(item)}>
-            <Ionicons name="stats-chart" size={18} color="#c084fc" />
-          </TouchableOpacity>
+          <Text style={styles.whyText} numberOfLines={2}>{item.why}</Text>
 
-          <TouchableOpacity style={styles.actionButton} onPress={() => handleMap(item)}>
-            <Ionicons name="map" size={18} color="#34d399" />
-          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.primaryButton} onPress={() => setSelectedHotel(item)}>
+              <Text style={styles.primaryButtonText}>Details</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={styles.actionButton} onPress={() => handleRemove(item)}>
+              <Ionicons name="trash" size={18} color="#ef4444" />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.actionButton} onPress={() => handleCompare(item)}>
+              <Ionicons name="stats-chart" size={18} color="#c084fc" />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.actionButton} onPress={() => handleMap(item)}>
+              <Ionicons name="map" size={18} color="#34d399" />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
-  );
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" />
-      
+
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Saved Stays</Text>
-        <Text style={styles.headerSubtitle}>Hotels you have bookmarked for later</Text>
+        <Text style={styles.headerTitle}>Saved Accommodations</Text>
+        <Text style={styles.headerSubtitle}>{hotels.length} properties saved to your account</Text>
       </View>
 
       {hotels.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Ionicons name="bookmark-outline" size={48} color="#475569" />
-          <Text style={styles.emptyTitle}>No Saved Hotels</Text>
-          <Text style={styles.emptySubtitle}>Go back to hotels tab and press bookmark to save your recommendations.</Text>
+          <Text style={styles.emptyTitle}>No Saved Hotels Yet</Text>
+          <Text style={styles.emptySubtitle}>Explore hotels and tap the bookmark icon to save your favorite stays.</Text>
         </View>
       ) : (
         <FlatList
@@ -212,7 +205,10 @@ export default function SavedPage() {
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
               <ScrollView showsVerticalScrollIndicator={false}>
-                <Image source={{ uri: selectedHotel.image }} style={styles.modalImage} />
+                <Image
+                  source={{ uri: imageErrors[String(selectedHotel.id)] || !selectedHotel.image ? DEFAULT_IMAGE : selectedHotel.image }}
+                  style={styles.modalImage}
+                />
                 
                 <View style={styles.modalHeaderRow}>
                   <Text style={styles.modalTitle}>{selectedHotel.name}</Text>
@@ -239,7 +235,6 @@ export default function SavedPage() {
 
                 <Text style={styles.modalSectionTitle}>Why NeuroStay Recommends This</Text>
                 <Text style={styles.modalWhyText}>{selectedHotel.why}</Text>
-
               </ScrollView>
             </View>
           </View>
@@ -269,7 +264,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   headerSubtitle: {
-    fontSize: 13,
+    fontSize: 14,
     color: '#94a3b8',
     marginTop: 4,
   },
@@ -290,10 +285,10 @@ const styles = StyleSheet.create({
     color: '#64748b',
     textAlign: 'center',
     marginTop: 8,
-    lineHeight: 20,
   },
   listContent: {
     padding: 15,
+    paddingBottom: 80,
   },
   card: {
     backgroundColor: '#1e293b',
@@ -306,6 +301,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 180,
+    backgroundColor: '#334155',
   },
   cardContent: {
     padding: 15,
@@ -363,6 +359,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
   },
+  whyText: {
+    color: '#cbd5e1',
+    fontSize: 13,
+    marginTop: 10,
+    lineHeight: 18,
+  },
   buttonContainer: {
     flexDirection: 'row',
     marginTop: 15,
@@ -391,16 +393,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#334155',
   },
-  removeButton: {
-    width: 40,
-    height: 40,
-    backgroundColor: 'rgba(239, 68, 68, 0.1)',
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'rgba(239, 68, 68, 0.2)',
-  },
   modalOverlay: {
     flex: 1,
     backgroundColor: 'rgba(7,16,40,0.85)',
@@ -419,6 +411,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 200,
     borderRadius: 16,
+    backgroundColor: '#334155',
   },
   modalHeaderRow: {
     flexDirection: 'row',
@@ -489,17 +482,5 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#334155',
-  },
-  modalBookButton: {
-    backgroundColor: '#22d3ee',
-    padding: 15,
-    borderRadius: 12,
-    alignItems: 'center',
-    marginVertical: 20,
-  },
-  modalBookButtonText: {
-    color: '#071028',
-    fontWeight: 'bold',
-    fontSize: 16,
   },
 });

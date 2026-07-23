@@ -6,7 +6,6 @@ export class LoginPage extends BasePage {
   private get passwordInput() { return '#login-password'; }
   private get loginBtn() { return '#login-submit'; }
   private get errorBanner() { return 'div.bg-red-500\\/10'; }
-  private get forgotPasswordLink() { return 'a[href="/forgot-password"]'; }
   private get registerLink() { return 'a[href="/register"]'; }
 
   public async login(email: string, password: string): Promise<void> {
@@ -22,9 +21,5 @@ export class LoginPage extends BasePage {
 
   public async navigateToRegister(): Promise<void> {
     await this.click(this.registerLink, 'Register Link');
-  }
-
-  public async navigateToForgotPassword(): Promise<void> {
-    await this.click(this.forgotPasswordLink, 'Forgot Password Link');
   }
 }

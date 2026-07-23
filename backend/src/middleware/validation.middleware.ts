@@ -49,65 +49,6 @@ export const validateLogin = (req: Request, res: Response, next: NextFunction) =
   next();
 };
 
-export const validateForgotPassword = (req: Request, res: Response, next: NextFunction) => {
-  const { email } = req.body;
-  
-  if (!email || typeof email !== "string" || !emailRegex.test(email)) {
-    return res.status(400).json({
-      success: false,
-      message: "A valid email address is required"
-    });
-  }
-  
-  next();
-};
-
-export const validateVerifyOtp = (req: Request, res: Response, next: NextFunction) => {
-  const { email, otp } = req.body;
-  
-  if (!email || typeof email !== "string" || !emailRegex.test(email)) {
-    return res.status(400).json({
-      success: false,
-      message: "A valid email address is required"
-    });
-  }
-  
-  if (!otp || (typeof otp !== "string" && typeof otp !== "number") || String(otp).trim().length !== 6) {
-    return res.status(400).json({
-      success: false,
-      message: "A valid 6-digit OTP is required"
-    });
-  }
-  
-  next();
-};
-
-export const validateResetPassword = (req: Request, res: Response, next: NextFunction) => {
-  const { email, otp, newPassword } = req.body;
-  
-  if (!email || typeof email !== "string" || !emailRegex.test(email)) {
-    return res.status(400).json({
-      success: false,
-      message: "A valid email address is required"
-    });
-  }
-  
-  if (!otp || typeof otp !== "string" || otp.trim().length !== 6 || isNaN(Number(otp))) {
-    return res.status(400).json({
-      success: false,
-      message: "A valid 6-digit OTP is required"
-    });
-  }
-  
-  if (!newPassword || typeof newPassword !== "string" || newPassword.length < 6) {
-    return res.status(400).json({
-      success: false,
-      message: "New password must be at least 6 characters long"
-    });
-  }
-  
-  next();
-};
 
 export const validateProfileUpdate = (req: Request, res: Response, next: NextFunction) => {
   const { email, name } = req.body;

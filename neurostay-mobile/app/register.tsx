@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter, Link } from 'expo-router';
-import axios from 'axios';
+import apiClient from '../services/api';
 import { API_URL } from '../constants/Config';
 
 export default function RegisterPage() {
@@ -41,17 +41,11 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      console.log("Calling:", `${API_URL}/api/auth/register`);
-      const response = await axios.post(`${API_URL}/api/auth/register`, {
+      console.log(`[RegisterPage] Registering user to ${API_URL}/api/auth/register for email: ${email}`);
+      const response = await apiClient.post('/api/auth/register', {
         name,
         email,
         password,
-      }, {
-        headers: {
-          "Content-Type": "application/json",
-          "Bypass-Tunnel-Reminder": "true"
-        },
-        timeout: 15000,
       });
 
       const data = response.data;
@@ -65,17 +59,16 @@ export default function RegisterPage() {
         setError(data.message || 'Registration failed. Please try again.');
       }
     } catch (err: any) {
-      console.error('RegisterPage error:', err);
+      console.error('[RegisterPage Error]:', err);
 
       if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
         setError('Connection timed out. Check your network.');
       } else if (err.response?.data?.message) {
         setError(err.response.data.message);
       } else {
-        // Offline/demo fallback
         Alert.alert(
-          'Server Unavailable',
-          'Could not reach server. Create demo account?',
+          'Server Connection',
+          'Could not reach production server. Create demo session?',
           [
             { text: 'Cancel', style: 'cancel' },
             {
@@ -103,18 +96,15 @@ export default function RegisterPage() {
       <StatusBar barStyle="light-content" />
       <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
         <View style={styles.card}>
-          {/* Logo */}
           <Text style={styles.title}>NeuroStay AI</Text>
           <Text style={styles.subtitle}>Create your smart hotel account</Text>
 
-          {/* Error */}
           {error ? (
             <View style={styles.errorBox}>
               <Text style={styles.errorText}>⚠️ {error}</Text>
             </View>
           ) : null}
 
-          {/* Name */}
           <Text style={styles.label}>Full Name</Text>
           <TextInput
             style={styles.input}
@@ -126,7 +116,6 @@ export default function RegisterPage() {
             returnKeyType="next"
           />
 
-          {/* Email */}
           <Text style={styles.label}>Email Address</Text>
           <TextInput
             style={styles.input}
@@ -139,7 +128,6 @@ export default function RegisterPage() {
             returnKeyType="next"
           />
 
-          {/* Password */}
           <Text style={styles.label}>Password</Text>
           <View style={styles.passwordContainer}>
             <TextInput
@@ -158,7 +146,6 @@ export default function RegisterPage() {
             </TouchableOpacity>
           </View>
 
-          {/* Register Button */}
           <TouchableOpacity
             style={[styles.button, loading && styles.buttonDisabled]}
             onPress={handleRegister}
@@ -166,13 +153,12 @@ export default function RegisterPage() {
             activeOpacity={0.8}
           >
             {loading ? (
-              <ActivityIndicator color="#071028" />
+              <ActivityIndicator color="#ffffff" />
             ) : (
               <Text style={styles.buttonText}>Create Account</Text>
             )}
           </TouchableOpacity>
 
-          {/* Links */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>Already have an account? </Text>
             <Link href="/login" asChild>

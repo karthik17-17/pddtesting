@@ -15,3 +15,6 @@ replay_pid*
 Thumbs.db
 .vercel
 .env*
+.expo/
+check_resp.js
+test_prod_backend.js

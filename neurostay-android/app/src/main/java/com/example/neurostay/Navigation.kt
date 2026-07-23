@@ -26,7 +26,6 @@ fun MainNavigation() {
         entry<Login> {
           LoginScreen(
             onNavigateToRegister = { backStack.add(Register) },
-            onNavigateToForgotPassword = { backStack.add(ForgotPassword) },
             onLoginSuccess = { 
               backStack.removeLastOrNull()
               backStack.add(Home) 
@@ -42,11 +41,7 @@ fun MainNavigation() {
             }
           )
         }
-        entry<ForgotPassword> {
-          ForgotPasswordScreen(
-            onNavigateToLogin = { backStack.removeLastOrNull() }
-          )
-        }
+
         entry<Home> {
           HomeScreen(
             onSearch = { query -> backStack.add(Results(query)) },

@@ -11,15 +11,6 @@ interface ApiService {
     @POST("/api/auth/login")
     suspend fun login(@Body request: LoginRequest): Response<AuthResponse>
 
-    @POST("/api/otp/send-otp")
-    suspend fun sendOtp(@Body request: Map<String, String>): Response<GenericResponse>
-
-    @POST("/api/auth/forgot-password")
-    suspend fun forgotPassword(@Body request: Map<String, String>): Response<GenericResponse>
-
-    @POST("/api/auth/reset-password")
-    suspend fun resetPassword(@Body request: Map<String, String>): Response<GenericResponse>
-
     @PUT("/api/auth/profile")
     suspend fun updateProfile(@Body request: UpdateProfileRequest): Response<AuthResponse>
 
