@@ -1,0 +1,29 @@
+name: Baseline Load Testing
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  load-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Baseline Load Test against Production Backend
+        env:
+          TEST_URL: 'https://neurostay-ai.onrender.com'
+          CONCURRENT_USERS: '100'
+          DURATION_SECONDS: '30'
+        run: |
+          node load_test.js
