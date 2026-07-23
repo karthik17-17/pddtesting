@@ -1,6 +1,6 @@
 # Dependency Vulnerability Report
 
-**Date:** 2026-07-22 10:58:50 UTC · **Build:** #33
+**Date:** 2026-07-23 08:51:07 UTC · **Build:** #34
 
 ## Tools Used
 - npm audit (Frontend + Mobile)
@@ -13,7 +13,6 @@
 found 0 vulnerabilities
 
 ## 📦 Mobile Dependency Audit
-        Depends on vulnerable versions of @expo/config
         node_modules/expo-constants
           expo-asset  <=0.0.1-canary-20240418-8d74597 || 8.6.1 - 55.0.0-canary-20260223-05214f1 || 55.0.3-canary-20260128-67ce8d5 || 55.0.8-canary-20260424-7bedc9d - 55.0.8-canary-20260429-a5e59cf || 55.0.11-canary-20260327-0789fbc - 55.0.11-canary-20260402-9da566b || 56.0.0-canary-20260212-4f61309 - 56.0.0-canary-20260506-964f25d
           Depends on vulnerable versions of expo-constants
@@ -29,11 +28,12 @@ found 0 vulnerabilities
       Depends on vulnerable versions of @expo/config
       Depends on vulnerable versions of @expo/config-plugins
       node_modules/@expo/prebuild-config
+      node_modules/expo/node_modules/@expo/cli/node_modules/@expo/prebuild-config
         expo-splash-screen  <=0.0.1-canary-20240418-8d74597 || 0.11.0 - 56.0.0-canary-20260506-964f25d
         Depends on vulnerable versions of @expo/prebuild-config
         node_modules/expo-splash-screen
 
-20 vulnerabilities (15 moderate, 4 high, 1 critical)
+18 vulnerabilities (15 moderate, 3 high)
 
 To address issues that do not require attention, run:
   npm audit fix
