@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Test Suite Configuration
-const WEB_URL = process.env.WEB_URL || 'https://karthik17-17.github.io/pddtesting/';
+const WEB_URL = process.env.WEB_URL || 'https://neurostay-g2ikgnmv2-munil8215-9361s-projects.vercel.app';
 const MOBILE_URL = process.env.MOBILE_URL || 'https://neurostay-ai.onrender.com';
 const LOGIN_EMAIL = 'munil8215@gmail.com';
 const LOGIN_PASSWORD = 'Muni@1234';

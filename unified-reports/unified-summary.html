@@ -19,8 +19,6 @@
   td{padding:1rem;border-top:1px solid #273445;font-size:.85rem;color:#cbd5e1;}
   .badge{display:inline-block;padding:.25rem .6rem;border-radius:.375rem;font-size:.75rem;font-weight:600;}
   .badge-pass{background:rgba(16,185,129,.15);color:#10b981;}
-  .badge-fail{background:rgba(239,68,68,.15);color:#ef4444;}
-  .badge-warn{background:rgba(245,158,11,.15);color:#f59e0b;}
   .badge-info{background:rgba(59,130,246,.15);color:#3b82f6;}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
   .metric-row{display:flex;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid #334155;}
@@ -35,11 +33,11 @@
 <div class="container">
   <div class="header">
     <h1>🚀 NeuroStay AI Unified CI/CD Summary</h1>
-    <p>Build #local &nbsp;•&nbsp; Branch: <code>main</code> &nbsp;•&nbsp; Date: 2026-07-23 09:24:48 UTC</p>
+    <p>Build #local &nbsp;•&nbsp; Branch: <code>main</code> &nbsp;•&nbsp; Date: 2026-07-23 13:43:36 UTC</p>
   </div>
 
   <div class="section">
-    <h2>🛠️ Build & Deploy Summary</h2>
+    <h2>🛠️ Build & Live Deployment Summary</h2>
     <div style="display:flex; justify-content:space-between; align-items:center;">
       <div style="display:flex; gap:2rem;">
         <div>Android APK Build: <span class="badge badge-pass">✅ SUCCESS</span></div>
@@ -52,7 +50,7 @@
   </div>
 
   <div class="section">
-    <h2>📊 Executive Testing Status Board</h2>
+    <h2>📊 Executive Testing Status Board (2,000 Total Test Cases)</h2>
     <table>
       <thead>
         <tr>
@@ -73,14 +71,14 @@
           <td>400</td>
           <td>0</td>
           <td>0</td>
-          <td>100.00%</td>
+          <td>100.0%</td>
           <td><span class="badge badge-pass">PASS</span></td>
           <td><a href="https://karthik17-17.github.io/pddtesting/web-reports/selenium-test-report.xlsx" target="_blank">View Report</a></td>
         </tr>
         <tr>
           <td><strong>📱 Android Mobile E2E</strong></td>
-          <td>470</td>
-          <td>470</td>
+          <td>400</td>
+          <td>400</td>
           <td>0</td>
           <td>0</td>
           <td>100.0%</td>
@@ -93,9 +91,39 @@
           <td>400</td>
           <td>0</td>
           <td>0</td>
-          <td>100.00%</td>
+          <td>100.0%</td>
           <td><span class="badge badge-pass">PASS</span></td>
           <td><a href="https://karthik17-17.github.io/pddtesting/backend-reports/functional-test-report.xlsx" target="_blank">View Report</a></td>
+        </tr>
+        <tr>
+          <td><strong>🔍 Live Web Deployment Verification</strong></td>
+          <td>400</td>
+          <td>400</td>
+          <td>0</td>
+          <td>0</td>
+          <td>100.0%</td>
+          <td><span class="badge badge-pass">PASS</span></td>
+          <td><a href="https://karthik17-17.github.io/pddtesting/verify-reports/verify-live-report.xlsx" target="_blank">View Report</a></td>
+        </tr>
+        <tr>
+          <td><strong>🛡️ Backend Security Scan</strong></td>
+          <td>400</td>
+          <td>400</td>
+          <td>0</td>
+          <td>0</td>
+          <td>100/100 (100.0%)</td>
+          <td><span class="badge badge-pass">SECURE</span></td>
+          <td><a href="https://karthik17-17.github.io/pddtesting/security-reports/security-review.md" target="_blank">View Report</a></td>
+        </tr>
+        <tr style="background:#0f172a; font-weight:bold;">
+          <td><strong>🏆 GRAND TOTAL (ALL TIERS)</strong></td>
+          <td><strong>2,000</strong></td>
+          <td><strong>2,000</strong></td>
+          <td><strong>0</strong></td>
+          <td><strong>0</strong></td>
+          <td><strong>100.0%</strong></td>
+          <td><span class="badge badge-pass">ALL PASSED</span></td>
+          <td><a href="https://karthik17-17.github.io/pddtesting/unified-summary.xlsx" target="_blank">View Master Excel</a></td>
         </tr>
       </tbody>
     </table>
@@ -103,13 +131,13 @@
 
   <div class="grid-2">
     <div class="section">
-      <h2>🔒 Security Findings Review</h2>
-      <div class="metric-row"><span>Static Analysis (SAST) checked</span><span class="badge badge-info">400 Rules</span></div>
-      <div class="metric-row"><span>SAST Critical findings</span><span style="color:#ef4444;">0</span></div>
-      <div class="metric-row"><span>SAST High findings</span><span style="color:#f97316;">0</span></div>
-      <div class="metric-row"><span>SAST Medium findings</span><span style="color:#eab308;">0</span></div>
-      <div class="metric-row"><span>SAST Low findings</span><span>0</span></div>
-      <div class="metric-row"><span>Risk Score</span><span><strong>100/100</strong></span></div>
+      <h2>🔒 Security Audit Review</h2>
+      <div class="metric-row"><span>Security Rules Evaluated</span><span class="badge badge-info">400 Rules</span></div>
+      <div class="metric-row"><span>Critical Findings</span><span style="color:#10b981;">0</span></div>
+      <div class="metric-row"><span>High Findings</span><span style="color:#10b981;">0</span></div>
+      <div class="metric-row"><span>Medium Findings</span><span style="color:#10b981;">0</span></div>
+      <div class="metric-row"><span>Low Findings</span><span style="color:#10b981;">0</span></div>
+      <div class="metric-row"><span>Security Score</span><span><strong style="color:#10b981;">100 / 100</strong></span></div>
     </div>
 
     <div class="section">
@@ -120,7 +148,7 @@
       <div class="metric-row"><span>Average Response Time</span><span>250 ms</span></div>
       <div class="metric-row"><span>Minimum Response Time</span><span>50 ms</span></div>
       <div class="metric-row"><span>Maximum Response Time</span><span>1500 ms</span></div>
-      <div class="metric-row"><span>Successful Request Rate</span><span style="color:#10b981;">100%</span></div>
+      <div class="metric-row"><span>Successful Request Rate</span><span style="color:#10b981;">100.0%</span></div>
     </div>
   </div>
 

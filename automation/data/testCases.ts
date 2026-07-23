@@ -34,19 +34,19 @@ const modulePrefixes: { [key: string]: string } = {
 
 const moduleSizes: { [key: string]: number } = {
   'Authentication': 40,
-  'Authorization': 40,
+  'Authorization': 30,
   'Navigation': 30,
-  'UI Validation': 50,
-  'Forms': 50,
-  'CRUD Operations': 50,
-  'Input Validation': 40,
-  'Error Handling': 20,
-  'Session Management': 20,
-  'File Upload': 20,
-  'Accessibility': 20,
-  'Responsive Design': 20,
-  'Performance Smoke': 20,
-  'Regression': 50
+  'UI Validation': 30,
+  'Forms': 30,
+  'CRUD Operations': 30,
+  'Input Validation': 30,
+  'Error Handling': 25,
+  'Session Management': 25,
+  'File Upload': 25,
+  'Accessibility': 25,
+  'Responsive Design': 25,
+  'Performance Smoke': 25,
+  'Regression': 30
 };
 
 // Custom overrides for specific test cases requested or failed deliberately

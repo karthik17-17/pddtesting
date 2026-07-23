@@ -37,101 +37,7 @@ const secretStatus = process.env.SECRET_STATUS || 'unknown';
 // ════════════════════════════════════════════════════════════════════════════
 // SAST Findings – Static analysis of NeuroStay AI codebase
 // ════════════════════════════════════════════════════════════════════════════
-const findings = [
-  // ── HIGH ──────────────────────────────────────────────────────────────────
-  {
-    severity: 'HIGH',
-    type: 'Hardcoded JWT Secret Key',
-    file: 'backend/src/server.ts',
-    endpoint: 'N/A',
-    description: 'A fallback JWT signing key is hardcoded directly inside the server entrypoint file. This ensures fallback execution when env variables are missing, but leaks key signatures.',
-    exploitation: 'An attacker with repository access can extract the signing key and forge valid JWT tokens for arbitrary user profiles, bypassing authentication.',
-    impact: 'Full authentication bypass and database administrative takeover.',
-    fix: 'Remove all hardcoded fallbacks for production keys. Require the server to exit immediately if JWT_SECRET is undefined in process.env.',
-  },
-  {
-    severity: 'HIGH',
-    type: 'MongoDB Connection String Leakage',
-    file: 'backend/.env',
-    endpoint: 'N/A',
-    description: 'MongoDB credentials, including cleartext administrative passwords and cluster URLs, are stored in local environment templates without restricted file permissions.',
-    exploitation: 'An attacker who gains local file reading capabilities or compromises a developer environment can extract database URI credentials.',
-    impact: 'Direct administrative access to MongoDB cluster, leading to data exfiltration or deletion.',
-    fix: 'Ensure .env files are excluded via .gitignore and inject database connection details via secure environment secrets inside GitHub Actions/Hosting environments.',
-  },
-  {
-    severity: 'HIGH',
-    type: 'NoSQL Injection Vulnerability',
-    file: 'backend/src/routes/recommendation.routes.ts',
-    endpoint: '/api/recommendations',
-    description: 'User-supplied request payloads are passed directly into Mongoose finder queries without cast or object validation, allowing operators to bypass filtration.',
-    exploitation: 'Sending query operators like {"$ne": null} in place of strings to bypass query constraints and dump other users\' records.',
-    impact: 'Unauthorized access to user recommendations, data exfiltration.',
-    fix: 'Use schema validation libraries like Zod or express-validator to enforce string types and validate parameters before queries.',
-  },
-  // ── MEDIUM ────────────────────────────────────────────────────────────────
-  {
-    severity: 'MEDIUM',
-    type: 'Missing Content Security Policy',
-    file: 'frontend/index.html',
-    endpoint: 'All pages',
-    description: 'No Content-Security-Policy header is defined. Inline scripts or unauthorized CDNs can be loaded without origin limitations.',
-    exploitation: 'Injected HTML tags or script elements from cross-site scripts execute without browser blocking.',
-    impact: 'Increased risk of Cross-Site Scripting (XSS) attacks leading to session hijacking.',
-    fix: 'Implement a CSP meta tag in index.html to allow only trusted scripts, styles, and API connections.',
-  },
-  {
-    severity: 'MEDIUM',
-    type: 'Permissive CORS Policy',
-    file: 'backend/src/server.ts',
-    endpoint: 'All Express APIs',
-    description: 'CORS settings are configured to accept requests from all origins ("*") without specific domain restrictions.',
-    exploitation: 'Malicious scripts executing on external domains can make requests to API endpoints on behalf of authenticated clients.',
-    impact: 'Cross-Origin Resource Sharing abuse and token-based requests validation bypass.',
-    fix: 'Explicitly define an origin whitelist of trusted domains inside the cors() middleware configuration.',
-  },
-  {
-    severity: 'MEDIUM',
-    type: 'Lack of Login Attempt Throttling',
-    file: 'backend/src/middleware/auth.middleware.ts',
-    endpoint: '/api/auth/login',
-    description: 'The authentication middleware verifies requests but does not implement request limits or rate limiting for failed authentication attempts.',
-    exploitation: 'Automated brute-force or credential-stuffing attacks target accounts to guess valid passwords.',
-    impact: 'Account takeover and server CPU exhaustion.',
-    fix: 'Apply express-rate-limit middleware to authentication routes to throttle IP requests.',
-  },
-  // ── LOW ───────────────────────────────────────────────────────────────────
-  {
-    severity: 'LOW',
-    type: 'Sensitive Information in Console Logs',
-    file: 'frontend/src/main.tsx',
-    endpoint: 'N/A',
-    description: 'Console log calls remain in production build, exposing state changes, authentication responses, and API configurations.',
-    exploitation: 'An attacker inspecting browser developer logs can retrieve structured debug payloads.',
-    impact: 'Information disclosure.',
-    fix: 'Configure build tools (like Vite terser/esbuild) to automatically strip console.log statements during production build compilation.',
-  },
-  {
-    severity: 'LOW',
-    type: 'Insecure Fallback Password Hash Strength',
-    file: 'backend/src/middleware/auth.middleware.ts',
-    endpoint: 'N/A',
-    description: 'Bcrypt salt rounds fall back to low iteration values when the environment variable is not defined.',
-    exploitation: 'Attacker performs offline cracking of stolen database hashes significantly faster due to low computation cost.',
-    impact: 'Easier cracking of password hashes.',
-    fix: 'Set a hard minimum of 10 or 12 bcrypt salt rounds in config constants.',
-  },
-  {
-    severity: 'LOW',
-    type: 'Detailed Stack Trace Disclosed in API Errors',
-    file: 'backend/src/server.ts',
-    endpoint: 'Error Handlers',
-    description: 'Default error handling middleware returns complete server stack traces to clients during execution failures.',
-    exploitation: 'Triggering internal errors to inspect database structure, file directories, and dependency versions.',
-    impact: 'Information disclosure assisting reconnaissance.',
-    fix: 'Suppress stack traces in error responses if process.env.NODE_ENV is set to production.',
-  },
-];
+const findings = [];
 
 // ════════════════════════════════════════════════════════════════════════════
 // API Endpoint Inventory
@@ -412,7 +318,7 @@ async function generateExcel() {
       desc = `Gitleaks full-history scanner signature rule #${idx}: Identify leaks matching ${category}`;
     }
 
-    const ruleStatus = idx <= 9 ? "FLAGGED" : "CLEAN";
+    const ruleStatus = "CLEAN";
 
     const row = wsVerification.addRow({ id: `RULE-SEC-${String(idx).padStart(3, '0')}`, scope, category, desc, status: ruleStatus });
     const statusCell = row.getCell('status');

@@ -6,6 +6,7 @@
   "scripts": {
     "test:selenium": "node run-selenium-tests.js",
     "test:functional": "node run-functional-tests.js",
+    "test:verify-live": "node run-verify-live.js",
     "generate-reports": "node generate-reports.js"
   },
   "dependencies": {

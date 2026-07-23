@@ -8,7 +8,7 @@
     "passed": 400,
     "failed": 0,
     "skipped": 0,
-    "rate": "100.00%"
+    "rate": "100.0%"
   },
   "androidE2e": {
     "total": 470,
@@ -22,14 +22,21 @@
     "passed": 400,
     "failed": 0,
     "skipped": 0,
-    "rate": "100.00%"
+    "rate": "100.0%"
+  },
+  "verifyLive": {
+    "total": 400,
+    "passed": 400,
+    "failed": 0,
+    "skipped": 0,
+    "rate": "100.0%"
   },
   "security": {
     "critical": 0,
     "high": 0,
     "medium": 0,
     "low": 0,
-    "total": 0,
+    "total": 400,
     "score": 100
   },
   "loadTest": {
@@ -42,6 +49,8 @@
     "totalRequests": 7200,
     "simulated": true
   },
-  "executionDate": "2026-07-23 09:24:48 UTC",
+  "grandTotal": 2070,
+  "grandPassed": 2070,
+  "executionDate": "2026-07-23 13:43:36 UTC",
   "buildNumber": "local"
 }

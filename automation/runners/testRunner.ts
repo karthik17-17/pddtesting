@@ -36,7 +36,7 @@ async function runTestSuite() {
   cleanDir(path.join(__dirname, '..', 'reports', 'JSON'));
   cleanDir(path.join(__dirname, '..', 'reports', 'Logs'));
 
-  const baseUrl = process.env.BASE_URL || 'https://karthik17-17.github.io/pddtesting/';
+  const baseUrl = process.env.BASE_URL || 'https://neurostay-g2ikgnmv2-munil8215-9361s-projects.vercel.app';
 
   if (!useSimulation) {
     try {
