@@ -283,6 +283,10 @@ jobs:
         working-directory: neurostay-mobile
         run: npm install
 
+      - name: "⚙️ Run Expo Prebuild for Android"
+        working-directory: neurostay-mobile
+        run: npx expo prebuild --platform android --clean
+
       - name: "☕ Setup Java ${{ env.JAVA_VERSION }}"
         uses: actions/setup-java@v4
         with:
