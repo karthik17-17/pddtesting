@@ -2,8 +2,8 @@
   "browserName": "Chrome (Headless)",
   "osVersion": "Ubuntu/ChromeOS",
   "appVersion": "1.0.0-web",
-  "totalDurationSec": 16.156,
-  "timestamp": "2026-06-23T10:04:25.351Z",
+  "totalDurationSec": 16.745,
+  "timestamp": "2026-07-23T09:24:00.866Z",
   "metrics": {
     "total": 470,
     "passed": 470,
@@ -19,7 +19,7 @@
       "name": "Valid Login",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -28,7 +28,7 @@
       "name": "Logout",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 27,
       "failureReason": null
     },
     {
@@ -37,7 +37,7 @@
       "name": "Authentication validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 30,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -46,7 +46,7 @@
       "name": "Authentication validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 37,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -55,7 +55,7 @@
       "name": "Authentication validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -64,7 +64,7 @@
       "name": "Authentication validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 13,
       "failureReason": null
     },
     {
@@ -73,7 +73,7 @@
       "name": "Authentication validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 56,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -82,7 +82,7 @@
       "name": "Authentication validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -91,7 +91,7 @@
       "name": "Authentication validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -100,7 +100,7 @@
       "name": "Authentication validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -109,7 +109,7 @@
       "name": "Authentication validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 14,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -118,7 +118,7 @@
       "name": "Authentication validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 53,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -127,7 +127,7 @@
       "name": "Authentication validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 18,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -136,7 +136,7 @@
       "name": "Authentication validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 44,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -145,7 +145,7 @@
       "name": "Authentication validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -154,7 +154,7 @@
       "name": "Authentication validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -163,7 +163,7 @@
       "name": "Authentication validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -172,7 +172,7 @@
       "name": "Authentication validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 60,
       "failureReason": null
     },
     {
@@ -181,7 +181,7 @@
       "name": "Authentication validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 28,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -190,7 +190,7 @@
       "name": "Authentication validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 23,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -199,7 +199,7 @@
       "name": "Authentication validation check - Scenario 21",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -208,7 +208,7 @@
       "name": "Authentication validation check - Scenario 22",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -217,7 +217,7 @@
       "name": "Authentication validation check - Scenario 23",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -226,7 +226,7 @@
       "name": "Authentication validation check - Scenario 24",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -235,7 +235,7 @@
       "name": "Authentication validation check - Scenario 25",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 48,
       "failureReason": null
     },
     {
@@ -244,7 +244,7 @@
       "name": "Authentication validation check - Scenario 26",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 35,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -253,7 +253,7 @@
       "name": "Authentication validation check - Scenario 27",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -262,7 +262,7 @@
       "name": "Authentication validation check - Scenario 28",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 38,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -271,7 +271,7 @@
       "name": "Authentication validation check - Scenario 29",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -280,7 +280,7 @@
       "name": "Authentication validation check - Scenario 30",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -289,7 +289,7 @@
       "name": "Authentication validation check - Scenario 31",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -298,7 +298,7 @@
       "name": "Authentication validation check - Scenario 32",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -307,7 +307,7 @@
       "name": "Authentication validation check - Scenario 33",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -316,7 +316,7 @@
       "name": "Authentication validation check - Scenario 34",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -325,7 +325,7 @@
       "name": "Authentication validation check - Scenario 35",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -334,7 +334,7 @@
       "name": "Authentication validation check - Scenario 36",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -343,7 +343,7 @@
       "name": "Authentication validation check - Scenario 37",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -352,7 +352,7 @@
       "name": "Authentication validation check - Scenario 38",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 36,
+      "executionTimeMs": 44,
       "failureReason": null
     },
     {
@@ -361,7 +361,7 @@
       "name": "Authentication validation check - Scenario 39",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 53,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -370,7 +370,7 @@
       "name": "Authentication validation check - Scenario 40",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -379,7 +379,7 @@
       "name": "Authorization validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 10,
+      "executionTimeMs": 63,
       "failureReason": null
     },
     {
@@ -388,7 +388,7 @@
       "name": "Authorization validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 12,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -397,7 +397,7 @@
       "name": "Authorization validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 61,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -406,7 +406,7 @@
       "name": "Authorization validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -415,7 +415,7 @@
       "name": "Authorization validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -424,7 +424,7 @@
       "name": "Authorization validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -433,7 +433,7 @@
       "name": "Authorization validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 38,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -442,7 +442,7 @@
       "name": "Authorization validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -451,7 +451,7 @@
       "name": "Authorization validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -460,7 +460,7 @@
       "name": "Authorization validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 24,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -469,7 +469,7 @@
       "name": "Authorization validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -478,7 +478,7 @@
       "name": "Authorization validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -487,7 +487,7 @@
       "name": "Authorization validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -496,7 +496,7 @@
       "name": "Authorization validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -505,7 +505,7 @@
       "name": "Authorization validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -514,7 +514,7 @@
       "name": "Authorization validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -523,7 +523,7 @@
       "name": "Authorization validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -532,7 +532,7 @@
       "name": "Authorization validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -541,7 +541,7 @@
       "name": "Authorization validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 48,
       "failureReason": null
     },
     {
@@ -550,7 +550,7 @@
       "name": "Authorization validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -559,7 +559,7 @@
       "name": "Authorization validation check - Scenario 21",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -568,7 +568,7 @@
       "name": "Authorization validation check - Scenario 22",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -577,7 +577,7 @@
       "name": "Authorization validation check - Scenario 23",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 18,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -586,7 +586,7 @@
       "name": "Authorization validation check - Scenario 24",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -604,7 +604,7 @@
       "name": "Authorization validation check - Scenario 26",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -613,7 +613,7 @@
       "name": "Authorization validation check - Scenario 27",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 45,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -622,7 +622,7 @@
       "name": "Authorization validation check - Scenario 28",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 44,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -631,7 +631,7 @@
       "name": "Authorization validation check - Scenario 29",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -640,7 +640,7 @@
       "name": "Authorization validation check - Scenario 30",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -649,7 +649,7 @@
       "name": "Authorization validation check - Scenario 31",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -658,7 +658,7 @@
       "name": "Authorization validation check - Scenario 32",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -667,7 +667,7 @@
       "name": "Authorization validation check - Scenario 33",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 23,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -676,7 +676,7 @@
       "name": "Authorization validation check - Scenario 34",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 36,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -685,7 +685,7 @@
       "name": "Authorization validation check - Scenario 35",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -694,7 +694,7 @@
       "name": "Authorization validation check - Scenario 36",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 35,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -703,7 +703,7 @@
       "name": "Authorization validation check - Scenario 37",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 60,
       "failureReason": null
     },
     {
@@ -712,7 +712,7 @@
       "name": "Authorization validation check - Scenario 38",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -721,7 +721,7 @@
       "name": "Authorization validation check - Scenario 39",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 18,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -730,7 +730,7 @@
       "name": "Authorization validation check - Scenario 40",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -739,7 +739,7 @@
       "name": "Navigation validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -748,7 +748,7 @@
       "name": "Navigation validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -757,7 +757,7 @@
       "name": "Navigation validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -766,7 +766,7 @@
       "name": "Navigation validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -775,7 +775,7 @@
       "name": "Navigation validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -784,7 +784,7 @@
       "name": "Navigation validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 63,
       "failureReason": null
     },
     {
@@ -793,7 +793,7 @@
       "name": "Navigation validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -802,7 +802,7 @@
       "name": "Navigation validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -811,7 +811,7 @@
       "name": "Navigation validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 63,
       "failureReason": null
     },
     {
@@ -820,7 +820,7 @@
       "name": "Navigation validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -829,7 +829,7 @@
       "name": "Navigation validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 12,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -838,7 +838,7 @@
       "name": "Navigation validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -847,7 +847,7 @@
       "name": "Navigation validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -856,7 +856,7 @@
       "name": "Navigation validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -865,7 +865,7 @@
       "name": "Navigation validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -874,7 +874,7 @@
       "name": "Navigation validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -892,7 +892,7 @@
       "name": "Navigation validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 43,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -901,7 +901,7 @@
       "name": "Navigation validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 62,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -910,7 +910,7 @@
       "name": "Navigation validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -919,7 +919,7 @@
       "name": "Navigation validation check - Scenario 21",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -928,7 +928,7 @@
       "name": "Navigation validation check - Scenario 22",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -937,7 +937,7 @@
       "name": "Navigation validation check - Scenario 23",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -946,7 +946,7 @@
       "name": "Navigation validation check - Scenario 24",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 23,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -955,7 +955,7 @@
       "name": "Navigation validation check - Scenario 25",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -964,7 +964,7 @@
       "name": "Navigation validation check - Scenario 26",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 39,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -973,7 +973,7 @@
       "name": "Navigation validation check - Scenario 27",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -982,7 +982,7 @@
       "name": "Navigation validation check - Scenario 28",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 12,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -991,7 +991,7 @@
       "name": "Navigation validation check - Scenario 29",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -1000,7 +1000,7 @@
       "name": "Navigation validation check - Scenario 30",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1009,7 +1009,7 @@
       "name": "UI Validation validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 63,
       "failureReason": null
     },
     {
@@ -1018,7 +1018,7 @@
       "name": "UI Validation validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1027,7 +1027,7 @@
       "name": "UI Validation validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1036,7 +1036,7 @@
       "name": "UI Validation validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1045,7 +1045,7 @@
       "name": "UI Validation validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1054,7 +1054,7 @@
       "name": "UI Validation validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 38,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -1063,7 +1063,7 @@
       "name": "UI Validation validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -1072,7 +1072,7 @@
       "name": "UI Validation validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1081,7 +1081,7 @@
       "name": "UI Validation validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1090,7 +1090,7 @@
       "name": "UI Validation validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1099,7 +1099,7 @@
       "name": "UI Validation validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 57,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1108,7 +1108,7 @@
       "name": "UI Validation validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 11,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1117,7 +1117,7 @@
       "name": "UI Validation validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1126,7 +1126,7 @@
       "name": "UI Validation validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1135,7 +1135,7 @@
       "name": "UI Validation validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 28,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -1144,7 +1144,7 @@
       "name": "UI Validation validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 44,
       "failureReason": null
     },
     {
@@ -1153,7 +1153,7 @@
       "name": "UI Validation validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1162,7 +1162,7 @@
       "name": "UI Validation validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1171,7 +1171,7 @@
       "name": "UI Validation validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1180,7 +1180,7 @@
       "name": "UI Validation validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1198,7 +1198,7 @@
       "name": "UI Validation validation check - Scenario 22",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 37,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -1207,7 +1207,7 @@
       "name": "UI Validation validation check - Scenario 23",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 48,
       "failureReason": null
     },
     {
@@ -1216,7 +1216,7 @@
       "name": "UI Validation validation check - Scenario 24",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -1225,7 +1225,7 @@
       "name": "UI Validation validation check - Scenario 25",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 12,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1234,7 +1234,7 @@
       "name": "UI Validation validation check - Scenario 26",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 14,
+      "executionTimeMs": 32,
       "failureReason": null
     },
     {
@@ -1243,7 +1243,7 @@
       "name": "UI Validation validation check - Scenario 27",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1252,7 +1252,7 @@
       "name": "UI Validation validation check - Scenario 28",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 45,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1261,7 +1261,7 @@
       "name": "UI Validation validation check - Scenario 29",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 11,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1270,7 +1270,7 @@
       "name": "UI Validation validation check - Scenario 30",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 50,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1279,7 +1279,7 @@
       "name": "UI Validation validation check - Scenario 31",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 12,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -1288,7 +1288,7 @@
       "name": "UI Validation validation check - Scenario 32",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1297,7 +1297,7 @@
       "name": "UI Validation validation check - Scenario 33",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1306,7 +1306,7 @@
       "name": "UI Validation validation check - Scenario 34",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 56,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -1315,7 +1315,7 @@
       "name": "UI Validation validation check - Scenario 35",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 11,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1324,7 +1324,7 @@
       "name": "UI Validation validation check - Scenario 36",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1333,7 +1333,7 @@
       "name": "UI Validation validation check - Scenario 37",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1342,7 +1342,7 @@
       "name": "UI Validation validation check - Scenario 38",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 12,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1351,7 +1351,7 @@
       "name": "UI Validation validation check - Scenario 39",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 56,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1360,7 +1360,7 @@
       "name": "UI Validation validation check - Scenario 40",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 60,
       "failureReason": null
     },
     {
@@ -1369,7 +1369,7 @@
       "name": "UI Validation validation check - Scenario 41",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -1378,7 +1378,7 @@
       "name": "UI Validation validation check - Scenario 42",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1387,7 +1387,7 @@
       "name": "UI Validation validation check - Scenario 43",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 50,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1396,7 +1396,7 @@
       "name": "UI Validation validation check - Scenario 44",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1405,7 +1405,7 @@
       "name": "UI Validation validation check - Scenario 45",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1414,7 +1414,7 @@
       "name": "UI Validation validation check - Scenario 46",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1423,7 +1423,7 @@
       "name": "UI Validation validation check - Scenario 47",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1432,7 +1432,7 @@
       "name": "UI Validation validation check - Scenario 48",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1441,7 +1441,7 @@
       "name": "UI Validation validation check - Scenario 49",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 8,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1450,7 +1450,7 @@
       "name": "UI Validation validation check - Scenario 50",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1459,7 +1459,7 @@
       "name": "Forms validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 28,
+      "executionTimeMs": 60,
       "failureReason": null
     },
     {
@@ -1468,7 +1468,7 @@
       "name": "Forms validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1477,7 +1477,7 @@
       "name": "Forms validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1486,7 +1486,7 @@
       "name": "Forms validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -1495,7 +1495,7 @@
       "name": "Forms validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1504,7 +1504,7 @@
       "name": "Forms validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1513,7 +1513,7 @@
       "name": "Forms validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1522,7 +1522,7 @@
       "name": "Forms validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1531,7 +1531,7 @@
       "name": "Forms validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 10,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1540,7 +1540,7 @@
       "name": "Forms validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 37,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1549,7 +1549,7 @@
       "name": "Forms validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1558,7 +1558,7 @@
       "name": "Forms validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1567,7 +1567,7 @@
       "name": "Forms validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1576,7 +1576,7 @@
       "name": "Forms validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1585,7 +1585,7 @@
       "name": "Forms validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1594,7 +1594,7 @@
       "name": "Forms validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -1603,7 +1603,7 @@
       "name": "Forms validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1612,7 +1612,7 @@
       "name": "Forms validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 17,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1621,7 +1621,7 @@
       "name": "Forms validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 24,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1630,7 +1630,7 @@
       "name": "Forms validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 60,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1639,7 +1639,7 @@
       "name": "Forms validation check - Scenario 21",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1648,7 +1648,7 @@
       "name": "Forms validation check - Scenario 22",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -1657,7 +1657,7 @@
       "name": "Forms validation check - Scenario 23",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 7,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1666,7 +1666,7 @@
       "name": "Forms validation check - Scenario 24",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1675,7 +1675,7 @@
       "name": "Forms validation check - Scenario 25",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -1684,7 +1684,7 @@
       "name": "Forms validation check - Scenario 26",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1693,7 +1693,7 @@
       "name": "Forms validation check - Scenario 27",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1702,7 +1702,7 @@
       "name": "Forms validation check - Scenario 28",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 23,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1711,7 +1711,7 @@
       "name": "Forms validation check - Scenario 29",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 38,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1720,7 +1720,7 @@
       "name": "Forms validation check - Scenario 30",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 32,
       "failureReason": null
     },
     {
@@ -1729,7 +1729,7 @@
       "name": "Forms validation check - Scenario 31",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1738,7 +1738,7 @@
       "name": "Forms validation check - Scenario 32",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 36,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1747,7 +1747,7 @@
       "name": "Forms validation check - Scenario 33",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 39,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1756,7 +1756,7 @@
       "name": "Forms validation check - Scenario 34",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1765,7 +1765,7 @@
       "name": "Forms validation check - Scenario 35",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -1774,7 +1774,7 @@
       "name": "Forms validation check - Scenario 36",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 24,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -1783,7 +1783,7 @@
       "name": "Forms validation check - Scenario 37",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 24,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -1792,7 +1792,7 @@
       "name": "Forms validation check - Scenario 38",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1801,7 +1801,7 @@
       "name": "Forms validation check - Scenario 39",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1810,7 +1810,7 @@
       "name": "Forms validation check - Scenario 40",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 35,
+      "executionTimeMs": 32,
       "failureReason": null
     },
     {
@@ -1819,7 +1819,7 @@
       "name": "Forms validation check - Scenario 41",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1828,7 +1828,7 @@
       "name": "Forms validation check - Scenario 42",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 37,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -1837,7 +1837,7 @@
       "name": "Forms validation check - Scenario 43",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 52,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -1846,7 +1846,7 @@
       "name": "Forms validation check - Scenario 44",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 43,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -1855,7 +1855,7 @@
       "name": "Forms validation check - Scenario 45",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 39,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -1864,7 +1864,7 @@
       "name": "Forms validation check - Scenario 46",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1873,7 +1873,7 @@
       "name": "Forms validation check - Scenario 47",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 35,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1882,7 +1882,7 @@
       "name": "Forms validation check - Scenario 48",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1891,7 +1891,7 @@
       "name": "Forms validation check - Scenario 49",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -1909,7 +1909,7 @@
       "name": "CRUD Operations validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -1918,7 +1918,7 @@
       "name": "CRUD Operations validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -1927,7 +1927,7 @@
       "name": "CRUD Operations validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1936,7 +1936,7 @@
       "name": "CRUD Operations validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -1945,7 +1945,7 @@
       "name": "CRUD Operations validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1954,7 +1954,7 @@
       "name": "CRUD Operations validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -1963,7 +1963,7 @@
       "name": "CRUD Operations validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -1972,7 +1972,7 @@
       "name": "CRUD Operations validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -1981,7 +1981,7 @@
       "name": "CRUD Operations validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1990,7 +1990,7 @@
       "name": "CRUD Operations validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -1999,7 +1999,7 @@
       "name": "CRUD Operations validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -2008,7 +2008,7 @@
       "name": "CRUD Operations validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 60,
       "failureReason": null
     },
     {
@@ -2017,7 +2017,7 @@
       "name": "CRUD Operations validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 8,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2026,7 +2026,7 @@
       "name": "CRUD Operations validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -2035,7 +2035,7 @@
       "name": "CRUD Operations validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2044,7 +2044,7 @@
       "name": "CRUD Operations validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 19,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2053,7 +2053,7 @@
       "name": "CRUD Operations validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 19,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2062,7 +2062,7 @@
       "name": "CRUD Operations validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 62,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2071,7 +2071,7 @@
       "name": "CRUD Operations validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2080,7 +2080,7 @@
       "name": "CRUD Operations validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2089,7 +2089,7 @@
       "name": "CRUD Operations validation check - Scenario 21",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 60,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -2098,7 +2098,7 @@
       "name": "CRUD Operations validation check - Scenario 22",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 56,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2107,7 +2107,7 @@
       "name": "CRUD Operations validation check - Scenario 23",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 61,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -2116,7 +2116,7 @@
       "name": "CRUD Operations validation check - Scenario 24",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 39,
       "failureReason": null
     },
     {
@@ -2125,7 +2125,7 @@
       "name": "CRUD Operations validation check - Scenario 25",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -2134,7 +2134,7 @@
       "name": "CRUD Operations validation check - Scenario 26",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 11,
+      "executionTimeMs": 52,
       "failureReason": null
     },
     {
@@ -2143,7 +2143,7 @@
       "name": "CRUD Operations validation check - Scenario 27",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2152,7 +2152,7 @@
       "name": "CRUD Operations validation check - Scenario 28",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2161,7 +2161,7 @@
       "name": "CRUD Operations validation check - Scenario 29",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2170,7 +2170,7 @@
       "name": "CRUD Operations validation check - Scenario 30",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 45,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -2179,7 +2179,7 @@
       "name": "CRUD Operations validation check - Scenario 31",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 53,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2188,7 +2188,7 @@
       "name": "CRUD Operations validation check - Scenario 32",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2197,7 +2197,7 @@
       "name": "CRUD Operations validation check - Scenario 33",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2206,7 +2206,7 @@
       "name": "CRUD Operations validation check - Scenario 34",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 51,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2215,7 +2215,7 @@
       "name": "CRUD Operations validation check - Scenario 35",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2224,7 +2224,7 @@
       "name": "CRUD Operations validation check - Scenario 36",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 28,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2233,7 +2233,7 @@
       "name": "CRUD Operations validation check - Scenario 37",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2242,7 +2242,7 @@
       "name": "CRUD Operations validation check - Scenario 38",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 31,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2251,7 +2251,7 @@
       "name": "CRUD Operations validation check - Scenario 39",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -2260,7 +2260,7 @@
       "name": "CRUD Operations validation check - Scenario 40",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -2269,7 +2269,7 @@
       "name": "CRUD Operations validation check - Scenario 41",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2278,7 +2278,7 @@
       "name": "CRUD Operations validation check - Scenario 42",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2287,7 +2287,7 @@
       "name": "CRUD Operations validation check - Scenario 43",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2296,7 +2296,7 @@
       "name": "CRUD Operations validation check - Scenario 44",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2305,7 +2305,7 @@
       "name": "CRUD Operations validation check - Scenario 45",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 52,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2314,7 +2314,7 @@
       "name": "CRUD Operations validation check - Scenario 46",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2323,7 +2323,7 @@
       "name": "CRUD Operations validation check - Scenario 47",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -2332,7 +2332,7 @@
       "name": "CRUD Operations validation check - Scenario 48",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -2341,7 +2341,7 @@
       "name": "CRUD Operations validation check - Scenario 49",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 45,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2350,7 +2350,7 @@
       "name": "CRUD Operations validation check - Scenario 50",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -2359,7 +2359,7 @@
       "name": "Input Validation validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -2368,7 +2368,7 @@
       "name": "Input Validation validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2377,7 +2377,7 @@
       "name": "Input Validation validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 14,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2386,7 +2386,7 @@
       "name": "Input Validation validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 70,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2395,7 +2395,7 @@
       "name": "Input Validation validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 38,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2404,7 +2404,7 @@
       "name": "Input Validation validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 39,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2413,7 +2413,7 @@
       "name": "Input Validation validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2422,7 +2422,7 @@
       "name": "Input Validation validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2431,7 +2431,7 @@
       "name": "Input Validation validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2440,7 +2440,7 @@
       "name": "Input Validation validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 43,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2449,7 +2449,7 @@
       "name": "Input Validation validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 19,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2458,7 +2458,7 @@
       "name": "Input Validation validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2467,7 +2467,7 @@
       "name": "Input Validation validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2476,7 +2476,7 @@
       "name": "Input Validation validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -2485,7 +2485,7 @@
       "name": "Input Validation validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 35,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2494,7 +2494,7 @@
       "name": "Input Validation validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2503,7 +2503,7 @@
       "name": "Input Validation validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2512,7 +2512,7 @@
       "name": "Input Validation validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2521,7 +2521,7 @@
       "name": "Input Validation validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2530,7 +2530,7 @@
       "name": "Input Validation validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2548,7 +2548,7 @@
       "name": "Input Validation validation check - Scenario 22",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -2557,7 +2557,7 @@
       "name": "Input Validation validation check - Scenario 23",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 35,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2566,7 +2566,7 @@
       "name": "Input Validation validation check - Scenario 24",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2575,7 +2575,7 @@
       "name": "Input Validation validation check - Scenario 25",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2584,7 +2584,7 @@
       "name": "Input Validation validation check - Scenario 26",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 24,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2593,7 +2593,7 @@
       "name": "Input Validation validation check - Scenario 27",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2602,7 +2602,7 @@
       "name": "Input Validation validation check - Scenario 28",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2611,7 +2611,7 @@
       "name": "Input Validation validation check - Scenario 29",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2620,7 +2620,7 @@
       "name": "Input Validation validation check - Scenario 30",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 37,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2629,7 +2629,7 @@
       "name": "Input Validation validation check - Scenario 31",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2638,7 +2638,7 @@
       "name": "Input Validation validation check - Scenario 32",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2647,7 +2647,7 @@
       "name": "Input Validation validation check - Scenario 33",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2656,7 +2656,7 @@
       "name": "Input Validation validation check - Scenario 34",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 12,
+      "executionTimeMs": 60,
       "failureReason": null
     },
     {
@@ -2665,7 +2665,7 @@
       "name": "Input Validation validation check - Scenario 35",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -2674,7 +2674,7 @@
       "name": "Input Validation validation check - Scenario 36",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2683,7 +2683,7 @@
       "name": "Input Validation validation check - Scenario 37",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 32,
       "failureReason": null
     },
     {
@@ -2692,7 +2692,7 @@
       "name": "Input Validation validation check - Scenario 38",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2701,7 +2701,7 @@
       "name": "Input Validation validation check - Scenario 39",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -2710,7 +2710,7 @@
       "name": "Input Validation validation check - Scenario 40",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -2719,7 +2719,7 @@
       "name": "Error Handling validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 23,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2728,7 +2728,7 @@
       "name": "Error Handling validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 11,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -2737,7 +2737,7 @@
       "name": "Error Handling validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 60,
       "failureReason": null
     },
     {
@@ -2746,7 +2746,7 @@
       "name": "Error Handling validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2755,7 +2755,7 @@
       "name": "Error Handling validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2764,7 +2764,7 @@
       "name": "Error Handling validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2773,7 +2773,7 @@
       "name": "Error Handling validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2782,7 +2782,7 @@
       "name": "Error Handling validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2791,7 +2791,7 @@
       "name": "Error Handling validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2800,7 +2800,7 @@
       "name": "Error Handling validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 17,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2809,7 +2809,7 @@
       "name": "Error Handling validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 14,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2818,7 +2818,7 @@
       "name": "Error Handling validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -2827,7 +2827,7 @@
       "name": "Error Handling validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2836,7 +2836,7 @@
       "name": "Error Handling validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -2845,7 +2845,7 @@
       "name": "Error Handling validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2854,7 +2854,7 @@
       "name": "Error Handling validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -2863,7 +2863,7 @@
       "name": "Error Handling validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2872,7 +2872,7 @@
       "name": "Error Handling validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2881,7 +2881,7 @@
       "name": "Error Handling validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 14,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2890,7 +2890,7 @@
       "name": "Error Handling validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 19,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -2899,7 +2899,7 @@
       "name": "Session Management validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2908,7 +2908,7 @@
       "name": "Session Management validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2917,7 +2917,7 @@
       "name": "Session Management validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2926,7 +2926,7 @@
       "name": "Session Management validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 17,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2935,7 +2935,7 @@
       "name": "Session Management validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2944,7 +2944,7 @@
       "name": "Session Management validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2953,7 +2953,7 @@
       "name": "Session Management validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -2962,7 +2962,7 @@
       "name": "Session Management validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2971,7 +2971,7 @@
       "name": "Session Management validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 30,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -2980,7 +2980,7 @@
       "name": "Session Management validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 52,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -2989,7 +2989,7 @@
       "name": "Session Management validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -2998,7 +2998,7 @@
       "name": "Session Management validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3007,7 +3007,7 @@
       "name": "Session Management validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 28,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3016,7 +3016,7 @@
       "name": "Session Management validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3025,7 +3025,7 @@
       "name": "Session Management validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -3034,7 +3034,7 @@
       "name": "Session Management validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -3043,7 +3043,7 @@
       "name": "Session Management validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3061,7 +3061,7 @@
       "name": "Session Management validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3070,7 +3070,7 @@
       "name": "Session Management validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 35,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3079,7 +3079,7 @@
       "name": "File Upload validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 48,
       "failureReason": null
     },
     {
@@ -3088,7 +3088,7 @@
       "name": "File Upload validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 17,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -3097,7 +3097,7 @@
       "name": "File Upload validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 18,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3106,7 +3106,7 @@
       "name": "File Upload validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3115,7 +3115,7 @@
       "name": "File Upload validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3124,7 +3124,7 @@
       "name": "File Upload validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3133,7 +3133,7 @@
       "name": "File Upload validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 18,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -3151,7 +3151,7 @@
       "name": "File Upload validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 50,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3160,7 +3160,7 @@
       "name": "File Upload validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3169,7 +3169,7 @@
       "name": "File Upload validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3178,7 +3178,7 @@
       "name": "File Upload validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 30,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3187,7 +3187,7 @@
       "name": "File Upload validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3196,7 +3196,7 @@
       "name": "File Upload validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3205,7 +3205,7 @@
       "name": "File Upload validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 36,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3214,7 +3214,7 @@
       "name": "File Upload validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3223,7 +3223,7 @@
       "name": "File Upload validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3232,7 +3232,7 @@
       "name": "File Upload validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3241,7 +3241,7 @@
       "name": "File Upload validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3250,7 +3250,7 @@
       "name": "File Upload validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 8,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3259,7 +3259,7 @@
       "name": "Accessibility validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3268,7 +3268,7 @@
       "name": "Accessibility validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 18,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -3277,7 +3277,7 @@
       "name": "Accessibility validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -3286,7 +3286,7 @@
       "name": "Accessibility validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3295,7 +3295,7 @@
       "name": "Accessibility validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3304,7 +3304,7 @@
       "name": "Accessibility validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 17,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3313,7 +3313,7 @@
       "name": "Accessibility validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 38,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3322,7 +3322,7 @@
       "name": "Accessibility validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3331,7 +3331,7 @@
       "name": "Accessibility validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3340,7 +3340,7 @@
       "name": "Accessibility validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3349,7 +3349,7 @@
       "name": "Accessibility validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3358,7 +3358,7 @@
       "name": "Accessibility validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 39,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3367,7 +3367,7 @@
       "name": "Accessibility validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3376,7 +3376,7 @@
       "name": "Accessibility validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3385,7 +3385,7 @@
       "name": "Accessibility validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 36,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3394,7 +3394,7 @@
       "name": "Accessibility validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 45,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -3403,7 +3403,7 @@
       "name": "Accessibility validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3412,7 +3412,7 @@
       "name": "Accessibility validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 28,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3421,7 +3421,7 @@
       "name": "Accessibility validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -3430,7 +3430,7 @@
       "name": "Accessibility validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3439,7 +3439,7 @@
       "name": "Responsive Design validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3448,7 +3448,7 @@
       "name": "Responsive Design validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 13,
       "failureReason": null
     },
     {
@@ -3457,7 +3457,7 @@
       "name": "Responsive Design validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 36,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3466,7 +3466,7 @@
       "name": "Responsive Design validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3475,7 +3475,7 @@
       "name": "Responsive Design validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 10,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -3484,7 +3484,7 @@
       "name": "Responsive Design validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3493,7 +3493,7 @@
       "name": "Responsive Design validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 43,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3502,7 +3502,7 @@
       "name": "Responsive Design validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3511,7 +3511,7 @@
       "name": "Responsive Design validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3520,7 +3520,7 @@
       "name": "Responsive Design validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 50,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3529,7 +3529,7 @@
       "name": "Responsive Design validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 45,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3538,7 +3538,7 @@
       "name": "Responsive Design validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3547,7 +3547,7 @@
       "name": "Responsive Design validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -3556,7 +3556,7 @@
       "name": "Responsive Design validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3565,7 +3565,7 @@
       "name": "Responsive Design validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3574,7 +3574,7 @@
       "name": "Responsive Design validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3583,7 +3583,7 @@
       "name": "Responsive Design validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 37,
+      "executionTimeMs": 60,
       "failureReason": null
     },
     {
@@ -3592,7 +3592,7 @@
       "name": "Responsive Design validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3601,7 +3601,7 @@
       "name": "Responsive Design validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3610,7 +3610,7 @@
       "name": "Responsive Design validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3619,7 +3619,7 @@
       "name": "Performance Smoke validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 28,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3628,7 +3628,7 @@
       "name": "Performance Smoke validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3637,7 +3637,7 @@
       "name": "Performance Smoke validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 34,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3646,7 +3646,7 @@
       "name": "Performance Smoke validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 61,
       "failureReason": null
     },
     {
@@ -3655,7 +3655,7 @@
       "name": "Performance Smoke validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3664,7 +3664,7 @@
       "name": "Performance Smoke validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 28,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3673,7 +3673,7 @@
       "name": "Performance Smoke validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 20,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3682,7 +3682,7 @@
       "name": "Performance Smoke validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 16,
       "failureReason": null
     },
     {
@@ -3691,7 +3691,7 @@
       "name": "Performance Smoke validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3700,7 +3700,7 @@
       "name": "Performance Smoke validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -3709,7 +3709,7 @@
       "name": "Performance Smoke validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3718,7 +3718,7 @@
       "name": "Performance Smoke validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3727,7 +3727,7 @@
       "name": "Performance Smoke validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3736,7 +3736,7 @@
       "name": "Performance Smoke validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3745,7 +3745,7 @@
       "name": "Performance Smoke validation check - Scenario 15",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 32,
       "failureReason": null
     },
     {
@@ -3754,7 +3754,7 @@
       "name": "Performance Smoke validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3763,7 +3763,7 @@
       "name": "Performance Smoke validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 50,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3772,7 +3772,7 @@
       "name": "Performance Smoke validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 31,
+      "executionTimeMs": 44,
       "failureReason": null
     },
     {
@@ -3781,7 +3781,7 @@
       "name": "Performance Smoke validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3799,7 +3799,7 @@
       "name": "Regression validation check - Scenario 1",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 30,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3808,7 +3808,7 @@
       "name": "Regression validation check - Scenario 2",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 12,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3817,7 +3817,7 @@
       "name": "Regression validation check - Scenario 3",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3826,7 +3826,7 @@
       "name": "Regression validation check - Scenario 4",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3835,7 +3835,7 @@
       "name": "Regression validation check - Scenario 5",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 16,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3844,7 +3844,7 @@
       "name": "Regression validation check - Scenario 6",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 33,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3853,7 +3853,7 @@
       "name": "Regression validation check - Scenario 7",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 11,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3862,7 +3862,7 @@
       "name": "Regression validation check - Scenario 8",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 15,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3871,7 +3871,7 @@
       "name": "Regression validation check - Scenario 9",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3880,7 +3880,7 @@
       "name": "Regression validation check - Scenario 10",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -3889,7 +3889,7 @@
       "name": "Regression validation check - Scenario 11",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 21,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3898,7 +3898,7 @@
       "name": "Regression validation check - Scenario 12",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 61,
+      "executionTimeMs": 45,
       "failureReason": null
     },
     {
@@ -3907,7 +3907,7 @@
       "name": "Regression validation check - Scenario 13",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -3916,7 +3916,7 @@
       "name": "Regression validation check - Scenario 14",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 7,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3934,7 +3934,7 @@
       "name": "Regression validation check - Scenario 16",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3943,7 +3943,7 @@
       "name": "Regression validation check - Scenario 17",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3952,7 +3952,7 @@
       "name": "Regression validation check - Scenario 18",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3961,7 +3961,7 @@
       "name": "Regression validation check - Scenario 19",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 24,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -3970,7 +3970,7 @@
       "name": "Regression validation check - Scenario 20",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 26,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -3979,7 +3979,7 @@
       "name": "Regression validation check - Scenario 21",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 30,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -3988,7 +3988,7 @@
       "name": "Regression validation check - Scenario 22",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 23,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -3997,7 +3997,7 @@
       "name": "Regression validation check - Scenario 23",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 27,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -4006,7 +4006,7 @@
       "name": "Regression validation check - Scenario 24",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 60,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -4015,7 +4015,7 @@
       "name": "Regression validation check - Scenario 25",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -4024,7 +4024,7 @@
       "name": "Regression validation check - Scenario 26",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 53,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -4033,7 +4033,7 @@
       "name": "Regression validation check - Scenario 27",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 30,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -4042,7 +4042,7 @@
       "name": "Regression validation check - Scenario 28",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 36,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -4051,7 +4051,7 @@
       "name": "Regression validation check - Scenario 29",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 22,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -4060,7 +4060,7 @@
       "name": "Regression validation check - Scenario 30",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 48,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -4069,7 +4069,7 @@
       "name": "Regression validation check - Scenario 31",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -4078,7 +4078,7 @@
       "name": "Regression validation check - Scenario 32",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 29,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -4087,7 +4087,7 @@
       "name": "Regression validation check - Scenario 33",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -4096,7 +4096,7 @@
       "name": "Regression validation check - Scenario 34",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 47,
+      "executionTimeMs": 32,
       "failureReason": null
     },
     {
@@ -4105,7 +4105,7 @@
       "name": "Regression validation check - Scenario 35",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 55,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -4114,7 +4114,7 @@
       "name": "Regression validation check - Scenario 36",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 41,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -4123,7 +4123,7 @@
       "name": "Regression validation check - Scenario 37",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 49,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -4132,7 +4132,7 @@
       "name": "Regression validation check - Scenario 38",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 25,
+      "executionTimeMs": 62,
       "failureReason": null
     },
     {
@@ -4141,7 +4141,7 @@
       "name": "Regression validation check - Scenario 39",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 42,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -4150,7 +4150,7 @@
       "name": "Regression validation check - Scenario 40",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 13,
+      "executionTimeMs": 47,
       "failureReason": null
     },
     {
@@ -4159,7 +4159,7 @@
       "name": "Regression validation check - Scenario 41",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 46,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -4168,7 +4168,7 @@
       "name": "Regression validation check - Scenario 42",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 31,
+      "executionTimeMs": 46,
       "failureReason": null
     },
     {
@@ -4177,7 +4177,7 @@
       "name": "Regression validation check - Scenario 43",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 53,
+      "executionTimeMs": 14,
       "failureReason": null
     },
     {
@@ -4186,7 +4186,7 @@
       "name": "Regression validation check - Scenario 44",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 32,
+      "executionTimeMs": 30,
       "failureReason": null
     },
     {
@@ -4195,7 +4195,7 @@
       "name": "Regression validation check - Scenario 45",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 50,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -4204,7 +4204,7 @@
       "name": "Regression validation check - Scenario 46",
       "priority": "CRITICAL",
       "status": "PASSED",
-      "executionTimeMs": 54,
+      "executionTimeMs": 29,
       "failureReason": null
     },
     {
@@ -4213,7 +4213,7 @@
       "name": "Regression validation check - Scenario 47",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 7,
+      "executionTimeMs": 31,
       "failureReason": null
     },
     {
@@ -4222,7 +4222,7 @@
       "name": "Regression validation check - Scenario 48",
       "priority": "HIGH",
       "status": "PASSED",
-      "executionTimeMs": 40,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -4231,7 +4231,7 @@
       "name": "Regression validation check - Scenario 49",
       "priority": "LOW",
       "status": "PASSED",
-      "executionTimeMs": 57,
+      "executionTimeMs": 15,
       "failureReason": null
     },
     {
@@ -4240,7 +4240,7 @@
       "name": "Regression validation check - Scenario 50",
       "priority": "MEDIUM",
       "status": "PASSED",
-      "executionTimeMs": 11,
+      "executionTimeMs": 15,
       "failureReason": null
     }
   ]
