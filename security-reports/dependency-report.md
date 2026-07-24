@@ -1,6 +1,6 @@
 # Dependency Vulnerability Report
 
-**Date:** 2026-07-23 13:46:26 UTC · **Build:** #38
+**Date:** 2026-07-24 03:31:47 UTC · **Build:** #39
 
 ## Tools Used
 - npm audit (Frontend + Mobile)
@@ -33,7 +33,7 @@ found 0 vulnerabilities
         Depends on vulnerable versions of @expo/prebuild-config
         node_modules/expo-splash-screen
 
-18 vulnerabilities (15 moderate, 3 high)
+18 vulnerabilities (14 moderate, 4 high)
 
 To address issues that do not require attention, run:
   npm audit fix
